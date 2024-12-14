@@ -1,0 +1,62 @@
+# Build directories
+/build/
+bin/
+lib/
+
+# CMake-related files
+CMakeCache.txt
+CMakeFiles/
+CMakeUserPresets.json
+CMakePresets.json
+
+# IDEs and editors
+# VSCode
+.vscode/
+
+# JetBrains IDEs (e.g., CLion, IntelliJ IDEA)
+.idea/
+
+# Xcode
+xcuserdata/
+*.xcodeproj
+
+# Visual Studio
+.vs/
+.vs2019/
+.vs2022/
+*.suo
+*.user
+*.userosscache
+*.sln
+*.vcxproj
+*.vcxproj.filters
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Debugging files
+*.dSYM/
+*.pdb
+*.idb
+
+# Compiled object files
+*.o
+*.obj
+*.so
+*.dll
+*.dylib
+
+# Archive files
+*.tar.gz
+*.zip
+*.7z
+*.tar
+
+# Temporary files
+*.bak
+*.swp
+*~
+
+# Log files
+*.log

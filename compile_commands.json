@@ -1,0 +1,98 @@
+[
+{
+  "directory": "/Users/vid/Dev/game/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/vid/Dev/game/include -I/Users/vid/Dev/game/libs/minifb/include -std=gnu++20 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/Game.dir/src/main.cpp.o -c /Users/vid/Dev/game/src/main.cpp",
+  "file": "/Users/vid/Dev/game/src/main.cpp",
+  "output": "CMakeFiles/Game.dir/src/main.cpp.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/libs/minifb",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -I/Users/vid/Dev/game/libs/minifb/src  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/minifb.dir/src/MiniFB_common.c.o -c /Users/vid/Dev/game/libs/minifb/src/MiniFB_common.c",
+  "file": "/Users/vid/Dev/game/libs/minifb/src/MiniFB_common.c",
+  "output": "libs/minifb/CMakeFiles/minifb.dir/src/MiniFB_common.c.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/libs/minifb",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -I/Users/vid/Dev/game/libs/minifb/src -std=c++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/minifb.dir/src/MiniFB_cpp.cpp.o -c /Users/vid/Dev/game/libs/minifb/src/MiniFB_cpp.cpp",
+  "file": "/Users/vid/Dev/game/libs/minifb/src/MiniFB_cpp.cpp",
+  "output": "libs/minifb/CMakeFiles/minifb.dir/src/MiniFB_cpp.cpp.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/libs/minifb",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -I/Users/vid/Dev/game/libs/minifb/src  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/minifb.dir/src/MiniFB_internal.c.o -c /Users/vid/Dev/game/libs/minifb/src/MiniFB_internal.c",
+  "file": "/Users/vid/Dev/game/libs/minifb/src/MiniFB_internal.c",
+  "output": "libs/minifb/CMakeFiles/minifb.dir/src/MiniFB_internal.c.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/libs/minifb",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -I/Users/vid/Dev/game/libs/minifb/src  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/minifb.dir/src/MiniFB_timer.c.o -c /Users/vid/Dev/game/libs/minifb/src/MiniFB_timer.c",
+  "file": "/Users/vid/Dev/game/libs/minifb/src/MiniFB_timer.c",
+  "output": "libs/minifb/CMakeFiles/minifb.dir/src/MiniFB_timer.c.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/libs/minifb",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -I/Users/vid/Dev/game/libs/minifb/src  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/minifb.dir/src/macosx/MacMiniFB.m.o -c /Users/vid/Dev/game/libs/minifb/src/macosx/MacMiniFB.m",
+  "file": "/Users/vid/Dev/game/libs/minifb/src/macosx/MacMiniFB.m",
+  "output": "libs/minifb/CMakeFiles/minifb.dir/src/macosx/MacMiniFB.m.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/libs/minifb",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -I/Users/vid/Dev/game/libs/minifb/src  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/minifb.dir/src/macosx/OSXWindow.m.o -c /Users/vid/Dev/game/libs/minifb/src/macosx/OSXWindow.m",
+  "file": "/Users/vid/Dev/game/libs/minifb/src/macosx/OSXWindow.m",
+  "output": "libs/minifb/CMakeFiles/minifb.dir/src/macosx/OSXWindow.m.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/libs/minifb",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -I/Users/vid/Dev/game/libs/minifb/src  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/minifb.dir/src/macosx/OSXView.m.o -c /Users/vid/Dev/game/libs/minifb/src/macosx/OSXView.m",
+  "file": "/Users/vid/Dev/game/libs/minifb/src/macosx/OSXView.m",
+  "output": "libs/minifb/CMakeFiles/minifb.dir/src/macosx/OSXView.m.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/libs/minifb",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -I/Users/vid/Dev/game/libs/minifb/src  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/minifb.dir/src/macosx/OSXViewDelegate.m.o -c /Users/vid/Dev/game/libs/minifb/src/macosx/OSXViewDelegate.m",
+  "file": "/Users/vid/Dev/game/libs/minifb/src/macosx/OSXViewDelegate.m",
+  "output": "libs/minifb/CMakeFiles/minifb.dir/src/macosx/OSXViewDelegate.m.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/libs/minifb",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/noise.dir/tests/noise.c.o -c /Users/vid/Dev/game/libs/minifb/tests/noise.c",
+  "file": "/Users/vid/Dev/game/libs/minifb/tests/noise.c",
+  "output": "libs/minifb/CMakeFiles/noise.dir/tests/noise.c.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/libs/minifb",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/input_events.dir/tests/input_events.c.o -c /Users/vid/Dev/game/libs/minifb/tests/input_events.c",
+  "file": "/Users/vid/Dev/game/libs/minifb/tests/input_events.c",
+  "output": "libs/minifb/CMakeFiles/input_events.dir/tests/input_events.c.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/libs/minifb",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -std=c++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/input_events_cpp.dir/tests/input_events_cpp.cpp.o -c /Users/vid/Dev/game/libs/minifb/tests/input_events_cpp.cpp",
+  "file": "/Users/vid/Dev/game/libs/minifb/tests/input_events_cpp.cpp",
+  "output": "libs/minifb/CMakeFiles/input_events_cpp.dir/tests/input_events_cpp.cpp.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/libs/minifb",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/multiple_windows.dir/tests/multiple_windows.c.o -c /Users/vid/Dev/game/libs/minifb/tests/multiple_windows.c",
+  "file": "/Users/vid/Dev/game/libs/minifb/tests/multiple_windows.c",
+  "output": "libs/minifb/CMakeFiles/multiple_windows.dir/tests/multiple_windows.c.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/libs/minifb",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/hidpi.dir/tests/hidpi.c.o -c /Users/vid/Dev/game/libs/minifb/tests/hidpi.c",
+  "file": "/Users/vid/Dev/game/libs/minifb/tests/hidpi.c",
+  "output": "libs/minifb/CMakeFiles/hidpi.dir/tests/hidpi.c.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/libs/minifb",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/fullscreen.dir/tests/fullscreen.c.o -c /Users/vid/Dev/game/libs/minifb/tests/fullscreen.c",
+  "file": "/Users/vid/Dev/game/libs/minifb/tests/fullscreen.c",
+  "output": "libs/minifb/CMakeFiles/fullscreen.dir/tests/fullscreen.c.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/libs/minifb",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/timer.dir/tests/timer.c.o -c /Users/vid/Dev/game/libs/minifb/tests/timer.c",
+  "file": "/Users/vid/Dev/game/libs/minifb/tests/timer.c",
+  "output": "libs/minifb/CMakeFiles/timer.dir/tests/timer.c.o"
+}
+]
