@@ -1,7 +1,5 @@
 # Build directories
-/build/
-bin/
-lib/
+build/
 
 # CMake-related files
 CMakeCache.txt
@@ -13,7 +11,7 @@ CMakePresets.json
 # VSCode
 .vscode/
 
-# JetBrains IDEs (e.g., CLion, IntelliJ IDEA)
+# JetBrains IDEs
 .idea/
 
 # Xcode
