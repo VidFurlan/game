@@ -4,9 +4,15 @@ target_sources(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
 )
 
+add_subdirectory(engine)
 add_subdirectory(image)
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(${PROJECT_NAME} PRIVATE 
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/oop
+    ${CMAKE_SOURCE_DIR}/libs/minifb
+)
 
 target_link_libraries(Game PRIVATE minifb)
 

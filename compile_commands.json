@@ -1,11 +1,5 @@
 [
 {
-  "directory": "/Users/vid/Dev/game/build",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/vid/Dev/game/include -I/Users/vid/Dev/game/libs/minifb/include -std=gnu++20 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/Game.dir/src/main.cpp.o -c /Users/vid/Dev/game/src/main.cpp",
-  "file": "/Users/vid/Dev/game/src/main.cpp",
-  "output": "CMakeFiles/Game.dir/src/main.cpp.o"
-},
-{
   "directory": "/Users/vid/Dev/game/build/libs/minifb",
   "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -I/Users/vid/Dev/game/libs/minifb/src  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/minifb.dir/src/MiniFB_common.c.o -c /Users/vid/Dev/game/libs/minifb/src/MiniFB_common.c",
   "file": "/Users/vid/Dev/game/libs/minifb/src/MiniFB_common.c",
@@ -94,5 +88,35 @@
   "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/timer.dir/tests/timer.c.o -c /Users/vid/Dev/game/libs/minifb/tests/timer.c",
   "file": "/Users/vid/Dev/game/libs/minifb/tests/timer.c",
   "output": "libs/minifb/CMakeFiles/timer.dir/tests/timer.c.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/src",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/vid/Dev/game/src/engine/core -I/Users/vid/Dev/game/src/engine/window -I/Users/vid/Dev/game/src/engine -I/Users/vid/Dev/game/src/image -I/Users/vid/Dev/game/src -I/Users/vid/Dev/game/include -I/Users/vid/Dev/game/src/oop -I/Users/vid/Dev/game/libs/minifb -I/Users/vid/Dev/game/libs/minifb/include -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/Game.dir/main.cpp.o -c /Users/vid/Dev/game/src/main.cpp",
+  "file": "/Users/vid/Dev/game/src/main.cpp",
+  "output": "src/CMakeFiles/Game.dir/main.cpp.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/src",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/vid/Dev/game/src/engine/core -I/Users/vid/Dev/game/src/engine/window -I/Users/vid/Dev/game/src/engine -I/Users/vid/Dev/game/src/image -I/Users/vid/Dev/game/src -I/Users/vid/Dev/game/include -I/Users/vid/Dev/game/src/oop -I/Users/vid/Dev/game/libs/minifb -I/Users/vid/Dev/game/libs/minifb/include -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/Game.dir/engine/game.cpp.o -c /Users/vid/Dev/game/src/engine/game.cpp",
+  "file": "/Users/vid/Dev/game/src/engine/game.cpp",
+  "output": "src/CMakeFiles/Game.dir/engine/game.cpp.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/src",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/vid/Dev/game/src/engine/core -I/Users/vid/Dev/game/src/engine/window -I/Users/vid/Dev/game/src/engine -I/Users/vid/Dev/game/src/image -I/Users/vid/Dev/game/src -I/Users/vid/Dev/game/include -I/Users/vid/Dev/game/src/oop -I/Users/vid/Dev/game/libs/minifb -I/Users/vid/Dev/game/libs/minifb/include -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/Game.dir/engine/core/game_object.cpp.o -c /Users/vid/Dev/game/src/engine/core/game_object.cpp",
+  "file": "/Users/vid/Dev/game/src/engine/core/game_object.cpp",
+  "output": "src/CMakeFiles/Game.dir/engine/core/game_object.cpp.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/src",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/vid/Dev/game/src/engine/core -I/Users/vid/Dev/game/src/engine/window -I/Users/vid/Dev/game/src/engine -I/Users/vid/Dev/game/src/image -I/Users/vid/Dev/game/src -I/Users/vid/Dev/game/include -I/Users/vid/Dev/game/src/oop -I/Users/vid/Dev/game/libs/minifb -I/Users/vid/Dev/game/libs/minifb/include -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/Game.dir/engine/window/game_window.cpp.o -c /Users/vid/Dev/game/src/engine/window/game_window.cpp",
+  "file": "/Users/vid/Dev/game/src/engine/window/game_window.cpp",
+  "output": "src/CMakeFiles/Game.dir/engine/window/game_window.cpp.o"
+},
+{
+  "directory": "/Users/vid/Dev/game/build/src",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/vid/Dev/game/src/engine/core -I/Users/vid/Dev/game/src/engine/window -I/Users/vid/Dev/game/src/engine -I/Users/vid/Dev/game/src/image -I/Users/vid/Dev/game/src -I/Users/vid/Dev/game/include -I/Users/vid/Dev/game/src/oop -I/Users/vid/Dev/game/libs/minifb -I/Users/vid/Dev/game/libs/minifb/include -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/Game.dir/image/image.cpp.o -c /Users/vid/Dev/game/src/image/image.cpp",
+  "file": "/Users/vid/Dev/game/src/image/image.cpp",
+  "output": "src/CMakeFiles/Game.dir/image/image.cpp.o"
 }
 ]

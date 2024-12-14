@@ -11,9 +11,12 @@ struct Color {
 class Image {
    public:
     Image();
+    Image(const char *path);
 	Image(int width, int height);
     ~Image();
 
+    int GetWidth() const;
+    int GetHeight() const;
     Color GetColor(int x, int y) const;
     void SetColor(int x, int y, const Color &color);
     
@@ -21,6 +24,6 @@ class Image {
     void Export(const char *path) const;
 
    private:
-    int width, height;
+    int mWidth, mHeight;
     std::vector<Color> colors;
 };
