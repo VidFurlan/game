@@ -1,27 +1,33 @@
 #pragma once
 
-#include <iostream>
-
 #include "game_window.hpp"
 #include "singleton.hpp"
 
+enum GameState {
+	GAME_ACTIVE,
+	GAME_MENU,
+};
+
 class Game : public Singleton {
    public:
-	static Game& GetInstance() {
+	static Game &GetInstance() {
 		static Game instance;
 		return instance;
 	}
 
-    void Init();
-    void Run();
-    void Stop();
+	void Init();
+	void ProcessInput(float deltaTime);
+	void Update(float deltaTime);
+	void Render();
 
-    GameWindow *GetWindow() const;
+    bool ShouldClose() const;
 
-    bool IsRunning() const;
+	GameWindow *GetWindow() const;
+
+	GameState State;
+	bool Keys[1024];
 
    private:
 	Game() {}
-
-    GameWindow *window;
+	GameWindow *mWindow;
 };

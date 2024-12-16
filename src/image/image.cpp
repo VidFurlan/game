@@ -1,5 +1,6 @@
 #include "image.hpp"
 
+#include <cstring>
 #include <fstream>
 #include <iostream>
 
@@ -14,22 +15,33 @@ Color::~Color() {}
 Image::Image() {}
 
 Image::Image(const char *path) {
+    data = nullptr;
 	this->Read(path);
 }
 
 Image::Image(int width, int height)
 	: mWidth(width),
-	  mHeight(height),
-	  colors(std::vector<Color>(width * height)) {}
+	  mHeight(height)
+{
+    data = new unsigned char[mWidth * mHeight * 3];
+}
 
-Image::~Image() {}
+Image::~Image() {
+    delete[] data;
+}
+
+unsigned char *Image::GetData() const {
+	return data;
+}
 
 Color Image::GetColor(int x, int y) const {
-	return colors[y * mWidth + x];
+	return Color(data[(y * mWidth + x) * 3] / 255.0f, data[(y * mWidth + x) * 3 + 1] / 255.0f, data[(y * mWidth + x) * 3 + 2] / 255.0f);
 }
 
 void Image::SetColor(int x, int y, const Color &color) {
-	colors[y * mWidth + x] = color;
+    data[(y * mWidth + x) * 3] = static_cast<unsigned char>(color.b * 255.0f);
+    data[(y * mWidth + x) * 3 + 1] = static_cast<unsigned char>(color.g * 255.0f);
+    data[(y * mWidth + x) * 3 + 2] = static_cast<unsigned char>(color.r * 255.0f);
 }
 
 void Image::Read(const char *path) {
@@ -60,7 +72,8 @@ void Image::Read(const char *path) {
 	mWidth = infoHeader[4] + (infoHeader[5] << 8) + (infoHeader[6] << 16) + (infoHeader[7] << 24);
 	mHeight = infoHeader[8] + (infoHeader[9] << 8) + (infoHeader[10] << 16) + (infoHeader[11] << 24);
 
-	colors.resize(mWidth * mHeight);
+    delete[] data;
+    data = new unsigned char[mWidth * mHeight * 3];
 
 	const int paddingSize = (4 - (mWidth * 3) % 4) % 4;
 

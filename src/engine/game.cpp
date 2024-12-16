@@ -1,22 +1,22 @@
 #include "game.hpp"
 
 void Game::Init() {
-	window = new GameWindow(800, 600, "Game");
+	mWindow = new GameWindow(800, 800, "Game");
 }
 
-void Game::Run() {
-    Image image("image.bmp");
-    while (window->IsRunning()) {
-        window->SetColor(Color(0.1f, 0.1f, 0.1f));
-        window->Draw(image, 200, 200);
-        window->Update();
-    }
+void Game::Update(float deltaTime) {
 }
 
-void Game::Stop() {
-	window->Close();
+void Game::ProcessInput(float deltaTime) {
+}
+
+void Game::Render() {
 }
 
 GameWindow *Game::GetWindow() const {
-    return window;
+	return mWindow;
+}
+
+bool Game::ShouldClose() const {
+	return glfwWindowShouldClose(mWindow->GetWindow());
 }

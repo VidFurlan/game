@@ -15,6 +15,8 @@ class Image {
 	Image(int width, int height);
     ~Image();
 
+    unsigned char *GetData() const;
+
     int GetWidth() const;
     int GetHeight() const;
     Color GetColor(int x, int y) const;
@@ -25,5 +27,5 @@ class Image {
 
    private:
     int mWidth, mHeight;
-    std::vector<Color> colors;
+    unsigned char *data;
 };

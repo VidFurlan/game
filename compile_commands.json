@@ -1,122 +1,194 @@
 [
 {
-  "directory": "/Users/vid/Dev/game/build/libs/minifb",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -I/Users/vid/Dev/game/libs/minifb/src  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/minifb.dir/src/MiniFB_common.c.o -c /Users/vid/Dev/game/libs/minifb/src/MiniFB_common.c",
-  "file": "/Users/vid/Dev/game/libs/minifb/src/MiniFB_common.c",
-  "output": "libs/minifb/CMakeFiles/minifb.dir/src/MiniFB_common.c.o"
-},
-{
-  "directory": "/Users/vid/Dev/game/build/libs/minifb",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -I/Users/vid/Dev/game/libs/minifb/src -std=c++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/minifb.dir/src/MiniFB_cpp.cpp.o -c /Users/vid/Dev/game/libs/minifb/src/MiniFB_cpp.cpp",
-  "file": "/Users/vid/Dev/game/libs/minifb/src/MiniFB_cpp.cpp",
-  "output": "libs/minifb/CMakeFiles/minifb.dir/src/MiniFB_cpp.cpp.o"
-},
-{
-  "directory": "/Users/vid/Dev/game/build/libs/minifb",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -I/Users/vid/Dev/game/libs/minifb/src  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/minifb.dir/src/MiniFB_internal.c.o -c /Users/vid/Dev/game/libs/minifb/src/MiniFB_internal.c",
-  "file": "/Users/vid/Dev/game/libs/minifb/src/MiniFB_internal.c",
-  "output": "libs/minifb/CMakeFiles/minifb.dir/src/MiniFB_internal.c.o"
-},
-{
-  "directory": "/Users/vid/Dev/game/build/libs/minifb",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -I/Users/vid/Dev/game/libs/minifb/src  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/minifb.dir/src/MiniFB_timer.c.o -c /Users/vid/Dev/game/libs/minifb/src/MiniFB_timer.c",
-  "file": "/Users/vid/Dev/game/libs/minifb/src/MiniFB_timer.c",
-  "output": "libs/minifb/CMakeFiles/minifb.dir/src/MiniFB_timer.c.o"
-},
-{
-  "directory": "/Users/vid/Dev/game/build/libs/minifb",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -I/Users/vid/Dev/game/libs/minifb/src  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/minifb.dir/src/macosx/MacMiniFB.m.o -c /Users/vid/Dev/game/libs/minifb/src/macosx/MacMiniFB.m",
-  "file": "/Users/vid/Dev/game/libs/minifb/src/macosx/MacMiniFB.m",
-  "output": "libs/minifb/CMakeFiles/minifb.dir/src/macosx/MacMiniFB.m.o"
-},
-{
-  "directory": "/Users/vid/Dev/game/build/libs/minifb",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -I/Users/vid/Dev/game/libs/minifb/src  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/minifb.dir/src/macosx/OSXWindow.m.o -c /Users/vid/Dev/game/libs/minifb/src/macosx/OSXWindow.m",
-  "file": "/Users/vid/Dev/game/libs/minifb/src/macosx/OSXWindow.m",
-  "output": "libs/minifb/CMakeFiles/minifb.dir/src/macosx/OSXWindow.m.o"
-},
-{
-  "directory": "/Users/vid/Dev/game/build/libs/minifb",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -I/Users/vid/Dev/game/libs/minifb/src  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/minifb.dir/src/macosx/OSXView.m.o -c /Users/vid/Dev/game/libs/minifb/src/macosx/OSXView.m",
-  "file": "/Users/vid/Dev/game/libs/minifb/src/macosx/OSXView.m",
-  "output": "libs/minifb/CMakeFiles/minifb.dir/src/macosx/OSXView.m.o"
-},
-{
-  "directory": "/Users/vid/Dev/game/build/libs/minifb",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -I/Users/vid/Dev/game/libs/minifb/src  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/minifb.dir/src/macosx/OSXViewDelegate.m.o -c /Users/vid/Dev/game/libs/minifb/src/macosx/OSXViewDelegate.m",
-  "file": "/Users/vid/Dev/game/libs/minifb/src/macosx/OSXViewDelegate.m",
-  "output": "libs/minifb/CMakeFiles/minifb.dir/src/macosx/OSXViewDelegate.m.o"
-},
-{
-  "directory": "/Users/vid/Dev/game/build/libs/minifb",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/noise.dir/tests/noise.c.o -c /Users/vid/Dev/game/libs/minifb/tests/noise.c",
-  "file": "/Users/vid/Dev/game/libs/minifb/tests/noise.c",
-  "output": "libs/minifb/CMakeFiles/noise.dir/tests/noise.c.o"
-},
-{
-  "directory": "/Users/vid/Dev/game/build/libs/minifb",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/input_events.dir/tests/input_events.c.o -c /Users/vid/Dev/game/libs/minifb/tests/input_events.c",
-  "file": "/Users/vid/Dev/game/libs/minifb/tests/input_events.c",
-  "output": "libs/minifb/CMakeFiles/input_events.dir/tests/input_events.c.o"
-},
-{
-  "directory": "/Users/vid/Dev/game/build/libs/minifb",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include -std=c++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/input_events_cpp.dir/tests/input_events_cpp.cpp.o -c /Users/vid/Dev/game/libs/minifb/tests/input_events_cpp.cpp",
-  "file": "/Users/vid/Dev/game/libs/minifb/tests/input_events_cpp.cpp",
-  "output": "libs/minifb/CMakeFiles/input_events_cpp.dir/tests/input_events_cpp.cpp.o"
-},
-{
-  "directory": "/Users/vid/Dev/game/build/libs/minifb",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/multiple_windows.dir/tests/multiple_windows.c.o -c /Users/vid/Dev/game/libs/minifb/tests/multiple_windows.c",
-  "file": "/Users/vid/Dev/game/libs/minifb/tests/multiple_windows.c",
-  "output": "libs/minifb/CMakeFiles/multiple_windows.dir/tests/multiple_windows.c.o"
-},
-{
-  "directory": "/Users/vid/Dev/game/build/libs/minifb",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/hidpi.dir/tests/hidpi.c.o -c /Users/vid/Dev/game/libs/minifb/tests/hidpi.c",
-  "file": "/Users/vid/Dev/game/libs/minifb/tests/hidpi.c",
-  "output": "libs/minifb/CMakeFiles/hidpi.dir/tests/hidpi.c.o"
-},
-{
-  "directory": "/Users/vid/Dev/game/build/libs/minifb",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/fullscreen.dir/tests/fullscreen.c.o -c /Users/vid/Dev/game/libs/minifb/tests/fullscreen.c",
-  "file": "/Users/vid/Dev/game/libs/minifb/tests/fullscreen.c",
-  "output": "libs/minifb/CMakeFiles/fullscreen.dir/tests/fullscreen.c.o"
-},
-{
-  "directory": "/Users/vid/Dev/game/build/libs/minifb",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -DUSE_METAL_API -I/Users/vid/Dev/game/libs/minifb/include  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -O2 -Wall -Wextra -Wno-switch -Wno-unused-function -Wno-unused-parameter -Wno-implicit-fallthrough -o CMakeFiles/timer.dir/tests/timer.c.o -c /Users/vid/Dev/game/libs/minifb/tests/timer.c",
-  "file": "/Users/vid/Dev/game/libs/minifb/tests/timer.c",
-  "output": "libs/minifb/CMakeFiles/timer.dir/tests/timer.c.o"
-},
-{
-  "directory": "/Users/vid/Dev/game/build/src",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/vid/Dev/game/src/engine/core -I/Users/vid/Dev/game/src/engine/window -I/Users/vid/Dev/game/src/engine -I/Users/vid/Dev/game/src/image -I/Users/vid/Dev/game/src -I/Users/vid/Dev/game/include -I/Users/vid/Dev/game/src/oop -I/Users/vid/Dev/game/libs/minifb -I/Users/vid/Dev/game/libs/minifb/include -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/Game.dir/main.cpp.o -c /Users/vid/Dev/game/src/main.cpp",
-  "file": "/Users/vid/Dev/game/src/main.cpp",
+  "directory": "/home/vid/Dev/personal/game/build/src",
+  "command": "/usr/bin/c++  -I/home/vid/Dev/personal/game/src/engine/core -I/home/vid/Dev/personal/game/src/engine/renderer -I/home/vid/Dev/personal/game/src/engine -I/home/vid/Dev/personal/game/src/image -I/home/vid/Dev/personal/game/src -I/home/vid/Dev/personal/game/include -I/home/vid/Dev/personal/game/src/oop -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glm-src/glm/.. -std=gnu++17 -o CMakeFiles/Game.dir/main.cpp.o -c /home/vid/Dev/personal/game/src/main.cpp",
+  "file": "/home/vid/Dev/personal/game/src/main.cpp",
   "output": "src/CMakeFiles/Game.dir/main.cpp.o"
 },
 {
-  "directory": "/Users/vid/Dev/game/build/src",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/vid/Dev/game/src/engine/core -I/Users/vid/Dev/game/src/engine/window -I/Users/vid/Dev/game/src/engine -I/Users/vid/Dev/game/src/image -I/Users/vid/Dev/game/src -I/Users/vid/Dev/game/include -I/Users/vid/Dev/game/src/oop -I/Users/vid/Dev/game/libs/minifb -I/Users/vid/Dev/game/libs/minifb/include -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/Game.dir/engine/game.cpp.o -c /Users/vid/Dev/game/src/engine/game.cpp",
-  "file": "/Users/vid/Dev/game/src/engine/game.cpp",
+  "directory": "/home/vid/Dev/personal/game/build/src",
+  "command": "/usr/bin/c++  -I/home/vid/Dev/personal/game/src/engine/core -I/home/vid/Dev/personal/game/src/engine/renderer -I/home/vid/Dev/personal/game/src/engine -I/home/vid/Dev/personal/game/src/image -I/home/vid/Dev/personal/game/src -I/home/vid/Dev/personal/game/include -I/home/vid/Dev/personal/game/src/oop -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glm-src/glm/.. -std=gnu++17 -o CMakeFiles/Game.dir/engine/game.cpp.o -c /home/vid/Dev/personal/game/src/engine/game.cpp",
+  "file": "/home/vid/Dev/personal/game/src/engine/game.cpp",
   "output": "src/CMakeFiles/Game.dir/engine/game.cpp.o"
 },
 {
-  "directory": "/Users/vid/Dev/game/build/src",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/vid/Dev/game/src/engine/core -I/Users/vid/Dev/game/src/engine/window -I/Users/vid/Dev/game/src/engine -I/Users/vid/Dev/game/src/image -I/Users/vid/Dev/game/src -I/Users/vid/Dev/game/include -I/Users/vid/Dev/game/src/oop -I/Users/vid/Dev/game/libs/minifb -I/Users/vid/Dev/game/libs/minifb/include -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/Game.dir/engine/core/game_object.cpp.o -c /Users/vid/Dev/game/src/engine/core/game_object.cpp",
-  "file": "/Users/vid/Dev/game/src/engine/core/game_object.cpp",
+  "directory": "/home/vid/Dev/personal/game/build/src",
+  "command": "/usr/bin/c++  -I/home/vid/Dev/personal/game/src/engine/core -I/home/vid/Dev/personal/game/src/engine/renderer -I/home/vid/Dev/personal/game/src/engine -I/home/vid/Dev/personal/game/src/image -I/home/vid/Dev/personal/game/src -I/home/vid/Dev/personal/game/include -I/home/vid/Dev/personal/game/src/oop -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glm-src/glm/.. -std=gnu++17 -o CMakeFiles/Game.dir/engine/core/game_object.cpp.o -c /home/vid/Dev/personal/game/src/engine/core/game_object.cpp",
+  "file": "/home/vid/Dev/personal/game/src/engine/core/game_object.cpp",
   "output": "src/CMakeFiles/Game.dir/engine/core/game_object.cpp.o"
 },
 {
-  "directory": "/Users/vid/Dev/game/build/src",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/vid/Dev/game/src/engine/core -I/Users/vid/Dev/game/src/engine/window -I/Users/vid/Dev/game/src/engine -I/Users/vid/Dev/game/src/image -I/Users/vid/Dev/game/src -I/Users/vid/Dev/game/include -I/Users/vid/Dev/game/src/oop -I/Users/vid/Dev/game/libs/minifb -I/Users/vid/Dev/game/libs/minifb/include -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/Game.dir/engine/window/game_window.cpp.o -c /Users/vid/Dev/game/src/engine/window/game_window.cpp",
-  "file": "/Users/vid/Dev/game/src/engine/window/game_window.cpp",
-  "output": "src/CMakeFiles/Game.dir/engine/window/game_window.cpp.o"
+  "directory": "/home/vid/Dev/personal/game/build/src",
+  "command": "/usr/bin/c++  -I/home/vid/Dev/personal/game/src/engine/core -I/home/vid/Dev/personal/game/src/engine/renderer -I/home/vid/Dev/personal/game/src/engine -I/home/vid/Dev/personal/game/src/image -I/home/vid/Dev/personal/game/src -I/home/vid/Dev/personal/game/include -I/home/vid/Dev/personal/game/src/oop -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glm-src/glm/.. -std=gnu++17 -o CMakeFiles/Game.dir/engine/renderer/game_window.cpp.o -c /home/vid/Dev/personal/game/src/engine/renderer/game_window.cpp",
+  "file": "/home/vid/Dev/personal/game/src/engine/renderer/game_window.cpp",
+  "output": "src/CMakeFiles/Game.dir/engine/renderer/game_window.cpp.o"
 },
 {
-  "directory": "/Users/vid/Dev/game/build/src",
-  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -I/Users/vid/Dev/game/src/engine/core -I/Users/vid/Dev/game/src/engine/window -I/Users/vid/Dev/game/src/engine -I/Users/vid/Dev/game/src/image -I/Users/vid/Dev/game/src -I/Users/vid/Dev/game/include -I/Users/vid/Dev/game/src/oop -I/Users/vid/Dev/game/libs/minifb -I/Users/vid/Dev/game/libs/minifb/include -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -o CMakeFiles/Game.dir/image/image.cpp.o -c /Users/vid/Dev/game/src/image/image.cpp",
-  "file": "/Users/vid/Dev/game/src/image/image.cpp",
+  "directory": "/home/vid/Dev/personal/game/build/src",
+  "command": "/usr/bin/c++  -I/home/vid/Dev/personal/game/src/engine/core -I/home/vid/Dev/personal/game/src/engine/renderer -I/home/vid/Dev/personal/game/src/engine -I/home/vid/Dev/personal/game/src/image -I/home/vid/Dev/personal/game/src -I/home/vid/Dev/personal/game/include -I/home/vid/Dev/personal/game/src/oop -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glm-src/glm/.. -std=gnu++17 -o CMakeFiles/Game.dir/engine/renderer/shader.cpp.o -c /home/vid/Dev/personal/game/src/engine/renderer/shader.cpp",
+  "file": "/home/vid/Dev/personal/game/src/engine/renderer/shader.cpp",
+  "output": "src/CMakeFiles/Game.dir/engine/renderer/shader.cpp.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/src",
+  "command": "/usr/bin/c++  -I/home/vid/Dev/personal/game/src/engine/core -I/home/vid/Dev/personal/game/src/engine/renderer -I/home/vid/Dev/personal/game/src/engine -I/home/vid/Dev/personal/game/src/image -I/home/vid/Dev/personal/game/src -I/home/vid/Dev/personal/game/include -I/home/vid/Dev/personal/game/src/oop -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glm-src/glm/.. -std=gnu++17 -o CMakeFiles/Game.dir/image/image.cpp.o -c /home/vid/Dev/personal/game/src/image/image.cpp",
+  "file": "/home/vid/Dev/personal/game/src/image/image.cpp",
   "output": "src/CMakeFiles/Game.dir/image/image.cpp.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/context.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/context.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/context.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/context.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/init.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/init.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/init.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/init.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/input.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/input.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/input.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/input.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/monitor.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/monitor.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/monitor.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/monitor.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/platform.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/platform.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/platform.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/platform.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/vulkan.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/vulkan.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/vulkan.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/vulkan.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/window.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/window.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/window.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/window.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/egl_context.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/egl_context.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/egl_context.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/egl_context.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/osmesa_context.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/osmesa_context.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/osmesa_context.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/osmesa_context.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/null_init.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/null_init.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/null_init.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/null_init.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/null_monitor.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/null_monitor.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/null_monitor.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/null_monitor.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/null_window.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/null_window.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/null_window.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/null_window.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/null_joystick.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/null_joystick.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/null_joystick.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/null_joystick.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/posix_module.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/posix_module.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/posix_module.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/posix_module.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/posix_time.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/posix_time.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/posix_time.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/posix_time.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/posix_thread.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/posix_thread.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/posix_thread.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/posix_thread.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/x11_init.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/x11_init.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/x11_init.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/x11_init.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/x11_monitor.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/x11_monitor.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/x11_monitor.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/x11_monitor.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/x11_window.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/x11_window.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/x11_window.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/x11_window.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/xkb_unicode.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/xkb_unicode.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/xkb_unicode.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/xkb_unicode.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/glx_context.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/glx_context.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/glx_context.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/glx_context.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/wl_init.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/wl_init.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/wl_init.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/wl_init.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/wl_monitor.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/wl_monitor.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/wl_monitor.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/wl_monitor.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/wl_window.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/wl_window.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/wl_window.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/wl_window.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/linux_joystick.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/linux_joystick.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/linux_joystick.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/linux_joystick.c.o"
+},
+{
+  "directory": "/home/vid/Dev/personal/game/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -DHAVE_MEMFD_CREATE -D_DEFAULT_SOURCE -D_GLFW_WAYLAND -D_GLFW_X11 -I/home/vid/Dev/personal/game/build/_deps/glfw-src/include -I/home/vid/Dev/personal/game/build/_deps/glfw-src/src -I/home/vid/Dev/personal/game/build/_deps/glfw-build/src -std=c99 -fPIC -Wall -o CMakeFiles/glfw.dir/posix_poll.c.o -c /home/vid/Dev/personal/game/build/_deps/glfw-src/src/posix_poll.c",
+  "file": "/home/vid/Dev/personal/game/build/_deps/glfw-src/src/posix_poll.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/posix_poll.c.o"
 }
 ]

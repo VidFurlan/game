@@ -1,6 +1,0 @@
-[submodule "dependencies/minifb"]
-	path = dependencies/minifb
-	url = https://github.com/emoon/minifb.git
-[submodule "libs/minifb"]
-	path = libs/minifb
-	url = https://github.com/emoon/minifb.git
