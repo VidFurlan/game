@@ -8,12 +8,15 @@
 #include "game_window.hpp"
 #include "image.hpp"
 
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+
 Shader ResourceManager::LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, const std::string& name) {
 	Shaders[name] = LoadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
 	return Shaders[name];
 }
 
-Shader ResourceManager::GetShader(const std::string& name) {
+Shader& ResourceManager::GetShader(const std::string& name) {
 	return Shaders[name];
 }
 
@@ -22,7 +25,7 @@ Texture ResourceManager::LoadTexture(const char* file, bool alpha, const std::st
 	return Textures[name];
 }
 
-Texture ResourceManager::GetTexture(const std::string& name) {
+Texture& ResourceManager::GetTexture(const std::string& name) {
 	return Textures[name];
 }
 
@@ -80,7 +83,10 @@ Texture ResourceManager::LoadTextureFromFile(const char* file, bool alpha) {
 		texture.ImageFormat = GL_RGBA;
 	}
 	int width, height, nrChannels;
-	unsigned char* data = Image(file).GetData();
+	/*Image *image = new Image();
+	image->Read(file);
+	unsigned char* data = image->GetData();*/
+	unsigned char* data = stbi_load(file, &width, &height, &nrChannels, 0);
 	texture.Generate(width, height, data);
 	return texture;
 }

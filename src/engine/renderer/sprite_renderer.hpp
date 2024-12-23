@@ -2,6 +2,7 @@
 
 #include <glm/fwd.hpp>
 
+#include "game_window.hpp"
 #include "shader.hpp"
 #include "texture.hpp"
 
@@ -16,7 +17,7 @@ class SpriteRenderer {
 
    private:
 	Shader shader;
-	unsigned int quadVAO;
+	GLuint quadVAO;
 
 	void initRenderData();
 };

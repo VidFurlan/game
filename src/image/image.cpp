@@ -31,6 +31,9 @@ Image::~Image() {
 }
 
 unsigned char *Image::GetData() const {
+    for (int i = 0; i < mWidth * mHeight * 3; i++) {
+        data[i] = 255;
+    }
 	return data;
 }
 
