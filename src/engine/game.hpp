@@ -2,6 +2,8 @@
 
 #include "game_window.hpp"
 #include "singleton.hpp"
+#include "sprite_renderer.hpp"
+#include "resource_manager.hpp"
 
 enum GameState {
 	GAME_ACTIVE,
@@ -30,4 +32,7 @@ class Game : public Singleton {
    private:
 	Game() {}
 	GameWindow *mWindow;
+
+	ResourceManager *resourceManager;
+    SpriteRenderer *mSpriteRenderer;
 };

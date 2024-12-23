@@ -12,6 +12,8 @@ class GameWindow {
 	void LoadTexture(const unsigned char* data, int width, int height);
 
     GLFWwindow* GetWindow() const;
+    int GetWidth() const;
+    int GetHeight() const;
 
    private:
 	GLFWwindow* window;
