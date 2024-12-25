@@ -1,82 +1,75 @@
 #pragma once
 
-#include <string>
 #include <map>
+#include <string>
 
-struct Pos2d {
-    float x;
-    float y;
-    float rot;
-
-    Pos2d();
-    Pos2d(float x, float y);
-    Pos2d(float x, float y, float rot);
-
-    Pos2d operator+(Pos2d pos) const;
-    Pos2d operator-(Pos2d pos) const;
-    Pos2d operator*(Pos2d pos) const;
-    Pos2d operator/(Pos2d pos) const;
-
-    Pos2d operator+=(Pos2d pos);
-    Pos2d operator-=(Pos2d pos);
-    Pos2d operator*=(Pos2d pos);
-    Pos2d operator/=(Pos2d pos);
-};
+#include "glm/ext/vector_float3.hpp"
+#include "glm/vec2.hpp"
+#include "glm/vec3.hpp"
 
 class GameObject {
    public:
-    GameObject(std::string name, Pos2d pos = Pos2d());
-    GameObject(std::string name, GameObject *parent, Pos2d pos = Pos2d());
+	GameObject(std::string name, glm::vec2 pos = glm::vec2());
+	GameObject(std::string name, glm::vec3 pos = glm::vec3());
+	GameObject(std::string name, GameObject *parent, glm::vec2 pos = glm::vec2());
+	GameObject(std::string name, GameObject *parent, glm::vec3 pos = glm::vec3());
 	~GameObject();
 
-    void Update();
+	virtual void Update();
+	virtual void Render();
 
-    std::string GetName() const;
+	std::string GetName() const;
 
-    void SetActive(bool active);
-    bool GetActive() const;
+	void SetActive(bool active);
+	bool GetActive() const;
 
-    void SetVisible(bool visible);
-    bool GetVisible() const;
+	void SetVisible(bool visible);
+	bool GetVisible() const;
 
-    void SetPosition(Pos2d pos);
-    void SetRotation(float rot);
-    void SetRotation(Pos2d rot);
+	void SetPosition(glm::vec2 pos);
+	void SetPosition(glm::vec3 pos);
+	void SetRotation(float rot);
+	void SetRotation(glm::vec3 rot);
 
-    Pos2d GetPosition() const;
-    Pos2d GetGlobalPosition() const;
-    float GetRotation() const;
-    float GetGlobalRotation() const;
+	glm::vec3 GetPosition() const;
+	glm::vec3 GetGlobalPosition() const;
+	float GetRotation() const;
+	float GetGlobalRotation() const;
 
-    void SetScale(float scaleX, float scaleY);
-    void SetScaleX(float scaleX);
-    void SetScaleY(float scaleY);
-    
-    float GetScaleX() const;
-    float GetScaleY() const;
+	void SetScale(float scaleX, float scaleY);
+	void SetScaleX(float scaleX);
+	void SetScaleY(float scaleY);
 
-    GameObject GetParent() const;
+	float GetScaleX() const;
+	float GetScaleY() const;
 
-    GameObject AddChild(GameObject *child);
-    GameObject AddChildToLocal(GameObject *child);
-    GameObject RemoveChild(std::string name);
-    void DeleteChild(std::string name);
-    
-    GameObject *operator+=(Pos2d pos);
-    GameObject *operator-=(Pos2d pos);
-    GameObject *operator*=(Pos2d pos);
-    GameObject *operator/=(Pos2d pos);
+	GameObject GetParent() const;
 
-  private:
-    const std::string mName;
+	GameObject AddChild(GameObject *child);
+	GameObject AddChildToLocalPos(GameObject *child);
+	GameObject RemoveChild(std::string name);
+	void DeleteChild(std::string name);
 
-    bool mActive;
-    bool mVisible;
+	GameObject *operator+=(glm::vec2 pos);
+	GameObject *operator-=(glm::vec2 pos);
+	GameObject *operator*=(glm::vec2 pos);
+	GameObject *operator/=(glm::vec2 pos);
 
-    Pos2d mPos;
-    float mScaleX;
-    float mScaleY;
+	GameObject *operator+=(glm::vec3 pos);
+	GameObject *operator-=(glm::vec3 pos);
+	GameObject *operator*=(glm::vec3 pos);
+	GameObject *operator/=(glm::vec3 pos);
 
-    GameObject *pParent;
-    std::map<std::string, GameObject *> children;
+   protected:
+	const std::string mName;
+
+	bool mActive;
+	bool mVisible;
+
+	glm::vec3 mPos;
+	float mScaleX;
+	float mScaleY;
+
+	GameObject *pParent;
+	std::map<std::string, GameObject *> children;
 };

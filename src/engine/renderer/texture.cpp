@@ -3,7 +3,7 @@
 #include "game_window.hpp"
 
 Texture::Texture()
-	: Width(0), Height(0), InternalFormat(GL_RGB), ImageFormat(GL_RGB), WrapS(GL_REPEAT), WrapT(GL_REPEAT), FilterMin(GL_LINEAR), FilterMax(GL_LINEAR) {
+	: Width(0), Height(0), InternalFormat(GL_RGB), ImageFormat(GL_RGB), WrapS(GL_REPEAT), WrapT(GL_REPEAT), FilterMin(GL_NEAREST), FilterMax(GL_NEAREST) {
 	glGenTextures(1, &this->ID);
 }
 

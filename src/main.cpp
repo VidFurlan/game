@@ -1,6 +1,7 @@
 #include <game.hpp>
 #include <game_window.hpp>
 #include "GLFW/glfw3.h"
+#include <iostream>
 
 int main() {
     Game &game = Game::GetInstance();

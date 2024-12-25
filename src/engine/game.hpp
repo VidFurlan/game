@@ -1,9 +1,9 @@
 #pragma once
 
 #include "game_window.hpp"
+#include "resource_manager.hpp"
 #include "singleton.hpp"
 #include "sprite_renderer.hpp"
-#include "resource_manager.hpp"
 
 enum GameState {
 	GAME_ACTIVE,
@@ -22,9 +22,10 @@ class Game : public Singleton {
 	void Update(float deltaTime);
 	void Render();
 
-    bool ShouldClose() const;
+	bool ShouldClose() const;
 
 	GameWindow *GetWindow() const;
+	SpriteRenderer *GetSpriteRenderer() const;
 
 	GameState State;
 	bool Keys[1024];
@@ -34,5 +35,5 @@ class Game : public Singleton {
 	GameWindow *mWindow;
 
 	ResourceManager *resourceManager;
-    SpriteRenderer *mSpriteRenderer;
+	SpriteRenderer *mSpriteRenderer;
 };

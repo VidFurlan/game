@@ -1,65 +1,25 @@
 #include "game_object.hpp"
+#include "glm/ext/vector_float3.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
-Pos2d::Pos2d()
-	: x(0), y(0), rot(0) {}
-Pos2d::Pos2d(float x, float y)
-	: x(x), y(y), rot(0) {}
-Pos2d::Pos2d(float x, float y, float rot)
-	: x(x), y(y), rot(rot) {}
-
-Pos2d Pos2d::operator+(Pos2d pos) const {
-	return Pos2d(x + pos.x, y + pos.y, rot + pos.rot);
+GameObject::GameObject(std::string name, glm::vec2 pos)
+    : mName(name), mPos(glm::make_vec3(pos)), pParent(nullptr), mActive(true), mVisible(true), mScaleX(1), mScaleY(1) {
 }
 
-Pos2d Pos2d::operator-(Pos2d pos) const {
-	return Pos2d(x - pos.x, y - pos.y, rot - pos.rot);
-}
-
-Pos2d Pos2d::operator*(Pos2d pos) const {
-	return Pos2d(x * pos.x, y * pos.y, rot * pos.rot);
-}
-
-Pos2d Pos2d::operator/(Pos2d pos) const {
-	return Pos2d(x / pos.x, y / pos.y, rot / pos.rot);
-}
-
-Pos2d Pos2d::operator+=(Pos2d pos) {
-	x += pos.x;
-	y += pos.y;
-	rot += pos.rot;
-	return *this;
-}
-
-Pos2d Pos2d::operator-=(Pos2d pos) {
-	x -= pos.x;
-	y -= pos.y;
-	rot -= pos.rot;
-	return *this;
-}
-
-Pos2d Pos2d::operator*=(Pos2d pos) {
-	x *= pos.x;
-	y *= pos.y;
-	rot *= pos.rot;
-	return *this;
-}
-
-Pos2d Pos2d::operator/=(Pos2d pos) {
-	x /= pos.x;
-	y /= pos.y;
-	rot /= pos.rot;
-	return *this;
-}
-
-GameObject::GameObject(std::string name, Pos2d pos)
+GameObject::GameObject(std::string name, glm::vec3 pos)
 	: mName(name), mPos(pos), pParent(nullptr), mActive(true), mVisible(true), mScaleX(1), mScaleY(1) {
 }
 
-GameObject::GameObject(std::string name, GameObject *parent, Pos2d pos)
+GameObject::GameObject(std::string name, GameObject *parent, glm::vec2 pos)
+    : mName(name), mPos(glm::make_vec3(pos)), pParent(parent), mActive(true), mVisible(true), mScaleX(1), mScaleY(1) {
+}   
+
+GameObject::GameObject(std::string name, GameObject *parent, glm::vec3 pos)
     : mName(name), mPos(pos), pParent(parent), mActive(true), mVisible(true), mScaleX(1), mScaleY(1) {
 }
 
 GameObject::~GameObject() {
+    pParent->RemoveChild(mName);
 	for (auto child : children) {
 		delete child.second;
 	}
@@ -69,6 +29,12 @@ void GameObject::Update() {
 	for (auto child : children) {
 		child.second->Update();
 	}
+}
+
+void GameObject::Render() {
+    for (auto child : children) {
+        child.second->Render();
+    }
 }
 
 std::string GameObject::GetName() const {
@@ -91,38 +57,49 @@ bool GameObject::GetVisible() const {
 	return mVisible;
 }
 
-void GameObject::SetPosition(Pos2d pos) {
-	this->mPos = pos;
+void GameObject::SetPosition(glm::vec2 pos) {
+    this->mPos.x = pos.x;
+    this->mPos.y = pos.y;
+}
+
+void GameObject::SetPosition(glm::vec3 pos) {
+    this->mPos = pos;
 }
 
 void GameObject::SetRotation(float rot) {
-	mPos.rot = rot;
+    this->mPos.z = rot;
 }
 
-void GameObject::SetRotation(Pos2d rot) {
-	mPos.rot = rot.rot;
+void GameObject::SetRotation(glm::vec3 rot) {
+    this->mPos.z = rot.z;
 }
 
-Pos2d GameObject::GetPosition() const {
-	return mPos;
+glm::vec3 GameObject::GetPosition() const {
+    return mPos;
 }
 
-Pos2d GameObject::GetGlobalPosition() const {
-	if (pParent) {
-		return mPos + pParent->GetGlobalPosition();
-	}
-	return mPos;
+glm::vec3 GameObject::GetGlobalPosition() const {
+    glm::vec3 pos = mPos;
+    GameObject *parent = pParent;
+    while (parent) {
+        pos += parent->mPos;
+        parent = parent->pParent;
+    }
+    return pos;
 }
 
 float GameObject::GetRotation() const {
-	return mPos.rot;
+    return mPos.z;
 }
 
 float GameObject::GetGlobalRotation() const {
-	if (pParent) {
-		return mPos.rot + pParent->GetGlobalRotation();
-	}
-	return mPos.rot;
+    float rot = mPos.z;
+    GameObject *parent = pParent;
+    while (parent) {
+        rot += parent->mPos.z;
+        parent = parent->pParent;
+    }
+    return rot;
 }
 
 void GameObject::SetScale(float scaleX, float scaleY) {
@@ -159,10 +136,17 @@ GameObject GameObject::AddChild(GameObject *child) {
 	return *child;
 }
 
-GameObject GameObject::AddChildToLocal(GameObject *child) {
+GameObject GameObject::AddChildToLocalPos(GameObject *child) {
+    glm::vec3 pos = child->GetPosition();
+    GameObject *parent = this;
+    while (parent) {
+        pos += parent->GetPosition();
+        parent = parent->pParent;
+    }
+    child->SetPosition(pos - GetGlobalPosition());
+
 	AddChild(child);
-	child->mPos -= mPos;
-	return *child;
+    return *child;
 }
 
 /**
@@ -184,22 +168,46 @@ void GameObject::DeleteChild(std::string name) {
 	delete child;
 }
 
-GameObject *GameObject::operator+=(Pos2d pos) {
-    this->mPos += pos;
+GameObject *GameObject::operator+=(glm::vec2 pos) {
+    mPos.x += pos.x;
+    mPos.y += pos.y;
     return this;
 }
 
-GameObject *GameObject::operator-=(Pos2d pos) {
-    this->mPos -= pos;
+GameObject *GameObject::operator-=(glm::vec2 pos) {
+    mPos.x -= pos.x;
+    mPos.y -= pos.y;
     return this;
 }
 
-GameObject *GameObject::operator*=(Pos2d pos) {
-    this->mPos *= pos;
+GameObject *GameObject::operator*=(glm::vec2 pos) {
+    mPos.x *= pos.x;
+    mPos.y *= pos.y;
     return this;
 }
 
-GameObject *GameObject::operator/=(Pos2d pos) {
-    this->mPos /= pos;
+GameObject *GameObject::operator/=(glm::vec2 pos) {
+    mPos.x /= pos.x;
+    mPos.y /= pos.y;
+    return this;
+}
+
+GameObject *GameObject::operator+=(glm::vec3 pos) {
+    mPos += pos;
+    return this;
+}
+
+GameObject *GameObject::operator-=(glm::vec3 pos) {
+    mPos -= pos;
+    return this;
+}
+
+GameObject *GameObject::operator*=(glm::vec3 pos) {
+    mPos *= pos;
+    return this;
+}
+
+GameObject *GameObject::operator/=(glm::vec3 pos) {
+    mPos /= pos;
     return this;
 }

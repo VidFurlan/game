@@ -36,12 +36,13 @@ target_sources(${PROJECT_NAME} PRIVATE
 )
 
 add_subdirectory(engine)
-add_subdirectory(image)
 
 target_include_directories(${PROJECT_NAME} PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/oop
+
+    ${stb_SOURCE_DIR}
 )
 
 find_package(OpenGL REQUIRED)
