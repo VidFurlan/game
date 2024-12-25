@@ -6,6 +6,8 @@
 
 #include "GLFW/glfw3.h"
 #include "game.hpp"
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
 #include "resource_manager.hpp"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -61,15 +63,15 @@ GLFWwindow* GameWindow::GetWindow() const {
 }
 
 int GameWindow::GetWidth() const {
-    int width, height;
-    glfwGetWindowSize(window, &width, &height);
-    return width;
+	int width, height;
+	glfwGetWindowSize(window, &width, &height);
+	return width;
 }
 
 int GameWindow::GetHeight() const {
-    int width, height;
-    glfwGetWindowSize(window, &width, &height);
-    return height;
+	int width, height;
+	glfwGetWindowSize(window, &width, &height);
+	return height;
 }
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode) {

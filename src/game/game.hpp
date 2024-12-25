@@ -18,6 +18,7 @@ class Game : public Singleton {
 	}
 
 	void Init();
+    void Run();
 	void ProcessInput(float deltaTime);
 	void Update(float deltaTime);
 	void Render();
