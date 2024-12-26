@@ -1,14 +1,20 @@
 #include <game.hpp>
 #include <game_window.hpp>
 
-int main() {
-	Game &game = Game::GetInstance();
+#include "main_menu_scene.hpp"
 
+int main() {
+	// Init game
+	Game &game = Game::GetInstance();
 	game.Init();
 
-	game.Run();
+	// Load scenes
+	game.AddScene("MainMenu", [&]() { return new MainMenuScene(); });
 
-	game.GetWindow()->Close();
+    game.LoadScene("MainMenu");
+
+    // Run game
+	game.Run();
 
 	return 0;
 }
