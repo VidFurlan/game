@@ -11,9 +11,9 @@ int main() {
 	// Load scenes
 	game.AddScene("MainMenu", [&]() { return new MainMenuScene(); });
 
-    game.LoadScene("MainMenu");
+	game.LoadScene("MainMenu");
 
-    // Run game
+	// Run game
 	game.Run();
 
 	return 0;

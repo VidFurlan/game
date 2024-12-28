@@ -1,5 +1,6 @@
 #pragma once
 
+#include <functional>
 #include <map>
 
 #include "game_window.hpp"
@@ -33,8 +34,8 @@ class Game : public Singleton {
 
 	GameWindow *GetWindow() const;
 	SpriteRenderer *GetSpriteRenderer() const;
-    ResourceManager *GetResourceManager() const;
-    SceneGameObject *GetActiveScene() const;
+	ResourceManager *GetResourceManager() const;
+	SceneGameObject *GetActiveScene() const;
 
 	GameState State;
 	bool Keys[1024];
