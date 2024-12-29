@@ -1,5 +1,6 @@
 #pragma once
 
+#include <functional>
 #include <map>
 #include <set>
 #include <string>
@@ -65,6 +66,8 @@ class GameObject {
 	GameObject *operator*=(glm::vec3 pos);
 	GameObject *operator/=(glm::vec3 pos);
 
+    static constexpr float GAME_SCALE_FACTOR = 10.0f;
+
    protected:
 	const std::string mName;
 
@@ -81,6 +84,6 @@ class GameObject {
 	static bool nameCmp(GameObject *a, GameObject *b) {
 		return a->GetName() < b->GetName();
 	}
-	std::map<int, std::set<GameObject *, bool (*)(GameObject *, GameObject *)>> mChildrenByZIndex{
+	std::map<int, std::set<GameObject *, bool (*)(GameObject *, GameObject *)>, std::greater<int>> mChildrenByZIndex{
 		{1000, std::set<GameObject *, bool (*)(GameObject *, GameObject *)>(nameCmp)}};
 };

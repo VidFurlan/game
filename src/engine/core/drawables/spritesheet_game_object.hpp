@@ -10,10 +10,10 @@
 
 class SpriteSheetGameObject : public AbstractImageGameObject {
    public:
-	SpriteSheetGameObject(std::string name, std::string textureName, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f, 1.0f), glm::vec3 color = glm::vec3(1.0f));
-	SpriteSheetGameObject(std::string name, GameObject *parent, std::string textureName, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f, 1.0f), glm::vec3 color = glm::vec3(1.0f));
-	SpriteSheetGameObject(std::string name, Texture &texture, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f, 1.0f), glm::vec3 color = glm::vec3(1.0f));
-	SpriteSheetGameObject(std::string name, GameObject *parent, Texture &texture, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f, 1.0f), glm::vec3 color = glm::vec3(1.0f));
+	SpriteSheetGameObject(std::string name, std::string textureName, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale = glm::vec2(10.0f), glm::vec3 color = glm::vec3(1.0f));
+	SpriteSheetGameObject(std::string name, GameObject *parent, std::string textureName, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale = glm::vec2(10.0f), glm::vec3 color = glm::vec3(1.0f));
+	SpriteSheetGameObject(std::string name, Texture &texture, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale = glm::vec2(10.0f), glm::vec3 color = glm::vec3(1.0f));
+	SpriteSheetGameObject(std::string name, GameObject *parent, Texture &texture, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale = glm::vec2(10.0f), glm::vec3 color = glm::vec3(1.0f));
 
 	void Render() override;
 

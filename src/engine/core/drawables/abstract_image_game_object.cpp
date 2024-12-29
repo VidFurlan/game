@@ -29,7 +29,7 @@ void AbstractImageGameObject::Render() {
 
     GameObject::Render();
 
-    mCameraOffset = mPos - Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetPosition();
+    mCameraOffset = GetGlobalPosition() * GAME_SCALE_FACTOR - Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetPosition() * GAME_SCALE_FACTOR;
     mCameraOffset.z = 0.0f;
 }
 
