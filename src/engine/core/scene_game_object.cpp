@@ -2,7 +2,7 @@
 #include "game.hpp"
 
 SceneGameObject::SceneGameObject(std::string name)
-	: GameObject(name, glm::vec2(0.0f, 0.0f)) {
+	: GameObject(name, glm::vec3(0.0f)) {
     pSpriteRenderer = Game::GetInstance().GetSpriteRenderer();
     pResourceManager = &Game::GetInstance().GetResourceManager()->GetInstance();
 }

@@ -20,7 +20,7 @@ class SpriteRenderer {
 					glm::vec2 size = glm::vec2(10.0f, 10.0f), float rotate = 0.0f,
 					glm::vec3 color = glm::vec3(1.0f));
 
-	void DrawSpritesheet(Texture &texture, glm::vec2 position,
+	void DrawSpriteSheet(Texture &texture, glm::vec2 position,
 						 int index, int rows, int cols,
 						 glm::vec2 size = glm::vec2(10.0f, 10.0f), float rotate = 0.0f,
 						 glm::vec3 color = glm::vec3(1.0f));

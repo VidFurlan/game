@@ -24,7 +24,6 @@ void Game::Init() {
 	resourceManager->GetShader("sprite").SetMatrix4("projection", projection);
 
 	mSpriteRenderer = new SpriteRenderer(resourceManager->GetShader("sprite"));
-	resourceManager->LoadTexture("assets/walk.png", true, "character");
 }
 
 void Game::Run() {

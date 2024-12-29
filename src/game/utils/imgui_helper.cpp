@@ -66,36 +66,31 @@ void ImGuiHelper::ImGuiDebugMenu() {
 		ImGui::Separator();
 
         // Hierarchical game object debug menu
-		auto dfsHierarchy = [](GameObject *gameObject, int level, bool active, auto dfsHierarchy) -> void {
-            if (level == 0) {
-                for (auto [name, child] : *gameObject->GetChildren()) {
-                    dfsHierarchy(child, level + 1, active, dfsHierarchy);
-                }
-                return;
-            }
+		auto dfsHierarchy = [](GameObject *gameObject, int level, bool active, std::string tagName, auto dfsHierarchy) -> void {
+            tagName += gameObject->GetName() + "/";
 
-			if (ImGui::Button((std::string("?##Debug") + gameObject->GetName()).c_str())) {
+			if (ImGui::Button((std::string("?##Debug") + tagName).c_str())) {
                 ImGuiHelper::mSelectedGameObject = gameObject;
             }
 			ImGui::SameLine();
 
 			bool isActive = gameObject->GetActive();
-			ImGui::Checkbox((std::string("##Active") + gameObject->GetName()).c_str(), &isActive);
+			ImGui::Checkbox((std::string("##Active") + tagName).c_str(), &isActive);
             ImGui::SameLine();
 			if (isActive != gameObject->GetActive()) gameObject->SetActive(isActive);
             active = active && isActive;
 
-			for (int i = 1; i < level; i++) {
+			for (int i = 0; i < level; i++) {
 				ImGui::Text("  ");
 				ImGui::SameLine();
 			}
 
 			ImGui::TextColored(ImVec4(1.0f, 1.0f, 1.0f, (active ? 1.0f : 0.7f)), "%s", gameObject->GetName().c_str());
 			for (auto [name, child] : *gameObject->GetChildren()) {
-				dfsHierarchy(child, level + 1, active, dfsHierarchy);
+				dfsHierarchy(child, level + 1, active, tagName, dfsHierarchy);
 			}
 		};
-		dfsHierarchy(scene, 0, true, dfsHierarchy);
+		dfsHierarchy(scene, 0, true, "", dfsHierarchy);
 
         // Selected game object debug menu
 		if (ImGuiHelper::mSelectedGameObject != nullptr) {

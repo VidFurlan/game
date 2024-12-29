@@ -1,19 +1,10 @@
 #include "game_object.hpp"
+#include <iostream>
 
 #include "glm/ext/vector_float3.hpp"
-#include "glm/gtc/type_ptr.hpp"
-
-GameObject::GameObject(std::string name, glm::vec2 pos, glm::vec2 scale)
-	: mName(name), mPos(glm::make_vec3(pos)), pParent(nullptr), mActive(true), mVisible(true), mScale(scale) {
-}
 
 GameObject::GameObject(std::string name, glm::vec3 pos, glm::vec2 scale)
 	: mName(name), mPos(pos), pParent(nullptr), mActive(true), mVisible(true), mScale(scale) {
-}
-
-GameObject::GameObject(std::string name, GameObject *parent, glm::vec2 pos, glm::vec2 scale)
-	: mName(name), mPos(glm::make_vec3(pos)), pParent(parent), mActive(true), mVisible(true), mScale(scale) {
-	parent->AddChild(this);
 }
 
 GameObject::GameObject(std::string name, GameObject *parent, glm::vec3 pos, glm::vec2 scale)
@@ -136,6 +127,10 @@ GameObject *GameObject::GetParent() const {
 }
 
 GameObject *GameObject::GetChild(std::string name) const {
+    if (children.find(name) == children.end()) {
+        std::cerr << "Child not found: " << name << std::endl;
+        return nullptr;
+    }
 	return children.at(name);
 }
 

@@ -1,43 +1,9 @@
 #pragma once
 
-#include "game_object.hpp"
-#include "glm/ext/vector_float3.hpp"
-#include "texture.hpp"
+#include "abstract_image_game_object.hpp"
 
-enum SpriteRenderType {
-	FIT,
-	STRETCH
-};
-
-class SpriteGameObject : public GameObject {
+class SpriteGameObject : public AbstractImageGameObject {
    public:
-	SpriteGameObject(std::string name, glm::vec3 color = glm::vec3(1.0f), glm::vec2 pos = glm::vec2(), glm::vec2 scale = glm::vec2(1.0f, 1.0f));
-	SpriteGameObject(std::string name, std::string textureName, glm::vec2 pos = glm::vec2(), glm::vec2 scale = glm::vec2(1.0f, 1.0f), glm::vec3 color = glm::vec3(1.0f));
-	SpriteGameObject(std::string name, std::string textureName, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f, 1.0f), glm::vec3 color = glm::vec3(1.0f));
-	SpriteGameObject(std::string name, GameObject *parent, std::string textureName, glm::vec2 pos = glm::vec2(), glm::vec2 scale = glm::vec2(1.0f, 1.0f), glm::vec3 color = glm::vec3(1.0f));
-	SpriteGameObject(std::string name, GameObject *parent, std::string textureName, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f, 1.0f), glm::vec3 color = glm::vec3(1.0f));
-	SpriteGameObject(std::string name, Texture &texture, glm::vec2 pos = glm::vec2(), glm::vec2 scale = glm::vec2(1.0f, 1.0f), glm::vec3 color = glm::vec3(1.0f));
-	SpriteGameObject(std::string name, Texture &texture, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f, 1.0f), glm::vec3 color = glm::vec3(1.0f));
-	SpriteGameObject(std::string name, GameObject *parent, Texture &texture, glm::vec2 pos = glm::vec2(), glm::vec2 scale = glm::vec2(1.0f, 1.0f), glm::vec3 color = glm::vec3(1.0f));
-	SpriteGameObject(std::string name, GameObject *parent, Texture &texture, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f, 1.0f), glm::vec3 color = glm::vec3(1.0f));
-	~SpriteGameObject();
-
-	void Draw() override;
-
-	SpriteRenderType GetRenderType();
-	glm::vec3 GetColor();
-	Texture &GetTexture();
-    Texture &GetMaskTexture(std::string name);
-
-	void SetRenderType(SpriteRenderType renderType);
-	void SetColor(glm::vec3 color);
-	void SetTexture(Texture &texture);
-    void SetMaskTexture(std::string name, Texture &texture);
-    void SetMaskTexture(std::string name, std::string textureName);
-
-   private:
-	Texture &mTexture;
-	std::map<std::string, Texture *> mMaskTextures;
-	glm::vec3 mColor;
-	SpriteRenderType mRenderType = STRETCH;
+	using AbstractImageGameObject::AbstractImageGameObject;
+	void Render() override;
 };

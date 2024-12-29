@@ -11,7 +11,4 @@ class MainMenuScene : public SceneGameObject {
 	void Init() override;
 	void Update(float deltaTime) override;
 	void Render() override;
-
-   private:
-    GameObject *pBackground;
 };
