@@ -1,4 +1,5 @@
 #include "game_object.hpp"
+
 #include <iostream>
 
 #include "glm/ext/vector_float3.hpp"
@@ -27,9 +28,14 @@ void GameObject::Update(float deltaTime) {
 }
 
 void GameObject::Render() {
-    if (!mVisible) return;
-	for (auto child : children) {
-		child.second->Render();
+	if (!mVisible) {
+		return;
+	}
+
+	for (auto &[zIndex, childrenByZIndex] : mChildrenByZIndex) {
+		for (auto child : childrenByZIndex) {
+			child->Render();
+		}
 	}
 }
 
@@ -37,37 +43,43 @@ std::string GameObject::GetName() const {
 	return mName;
 }
 
-void GameObject::SetActive(bool active) {
+GameObject *GameObject::SetActive(bool active) {
 	this->mActive = active;
+	return this;
 }
 
 bool GameObject::GetActive() const {
 	return mActive;
 }
 
-void GameObject::SetVisible(bool visible) {
+GameObject *GameObject::SetVisible(bool visible) {
 	this->mVisible = visible;
+	return this;
 }
 
 bool GameObject::GetVisible() const {
 	return mVisible;
 }
 
-void GameObject::SetPosition(glm::vec2 pos) {
+GameObject *GameObject::SetPosition(glm::vec2 pos) {
 	this->mPos.x = pos.x;
 	this->mPos.y = pos.y;
+	return this;
 }
 
-void GameObject::SetPosition(glm::vec3 pos) {
+GameObject *GameObject::SetPosition(glm::vec3 pos) {
 	this->mPos = pos;
+	return this;
 }
 
-void GameObject::SetRotation(float rot) {
+GameObject *GameObject::SetRotation(float rot) {
 	this->mPos.z = rot;
+	return this;
 }
 
-void GameObject::SetRotation(glm::vec3 rot) {
+GameObject *GameObject::SetRotation(glm::vec3 rot) {
 	this->mPos.z = rot.z;
+	return this;
 }
 
 glm::vec3 GameObject::GetPosition() const {
@@ -98,16 +110,46 @@ float GameObject::GetGlobalRotation() const {
 	return rot;
 }
 
-void GameObject::SetScale(glm::vec2 scale) {
+GameObject *GameObject::SetZIndex(int zIndex) {
+    if (mZIndex == zIndex) {
+        return this;
+    }
+
+    if (pParent) {
+        if (pParent->mChildrenByZIndex.find(mZIndex) == pParent->mChildrenByZIndex.end()) {
+            pParent->mChildrenByZIndex[mZIndex] = std::set<GameObject *, bool (*)(GameObject *, GameObject *)>(nameCmp);
+        }
+
+        pParent->mChildrenByZIndex[mZIndex].erase(this);
+
+        if (pParent->mChildrenByZIndex.find(zIndex) == pParent->mChildrenByZIndex.end()) {
+            pParent->mChildrenByZIndex[zIndex] = std::set<GameObject *, bool (*)(GameObject *, GameObject *)>(nameCmp);
+        }
+
+        pParent->mChildrenByZIndex[zIndex].insert(this);
+    }
+
+    mZIndex = zIndex;
+    return this;
+}
+
+int GameObject::GetZIndex() const {
+	return mZIndex;
+}
+
+GameObject *GameObject::SetScale(glm::vec2 scale) {
 	mScale = scale;
+	return this;
 }
 
-void GameObject::SetScaleX(float scaleX) {
+GameObject *GameObject::SetScaleX(float scaleX) {
 	mScale.x = scaleX;
+	return this;
 }
 
-void GameObject::SetScaleY(float scaleY) {
+GameObject *GameObject::SetScaleY(float scaleY) {
 	mScale.y = scaleY;
+	return this;
 }
 
 glm::vec2 GameObject::GetScale() const {
@@ -127,10 +169,10 @@ GameObject *GameObject::GetParent() const {
 }
 
 GameObject *GameObject::GetChild(std::string name) const {
-    if (children.find(name) == children.end()) {
-        std::cerr << "Child not found: " << name << std::endl;
-        return nullptr;
-    }
+	if (children.find(name) == children.end()) {
+		std::cerr << "Child not found: " << name << std::endl;
+		return nullptr;
+	}
 	return children.at(name);
 }
 
@@ -139,13 +181,13 @@ std::map<std::string, GameObject *> *GameObject::GetChildren() const {
 }
 
 unsigned int GameObject::GetChildrenCount() const {
-    unsigned int count = 0;
-    for (auto child : children) {
-        if (child.second->GetActive()) {
-            count += 1 + child.second->GetChildrenCount();
-        }
-    }
-    return count;
+	unsigned int count = 0;
+	for (auto child : children) {
+		if (child.second->GetActive()) {
+			count += 1 + child.second->GetChildrenCount();
+		}
+	}
+	return count;
 }
 
 GameObject *GameObject::AddChild(GameObject *child) {
@@ -154,6 +196,7 @@ GameObject *GameObject::AddChild(GameObject *child) {
 	}
 	child->pParent = this;
 	children[child->GetName()] = child;
+	mChildrenByZIndex[child->GetZIndex()].insert(child);
 	return child;
 }
 
@@ -178,6 +221,7 @@ GameObject *GameObject::RemoveChild(std::string name) {
 	GameObject *child = children[name];
 	if (child == nullptr) return child;
 	children.erase(name);
+	mChildrenByZIndex[child->GetZIndex()].erase(child);
 	child->pParent = nullptr;
 	return child;
 }
@@ -186,6 +230,7 @@ void GameObject::DeleteChild(std::string name) {
 	GameObject *child = children[name];
 	if (child == nullptr) return;
 	children.erase(name);
+	mChildrenByZIndex[child->GetZIndex()].erase(child);
 	delete child;
 }
 

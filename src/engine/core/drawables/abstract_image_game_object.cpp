@@ -1,4 +1,5 @@
 #include "abstract_image_game_object.hpp"
+
 #include "resource_manager.hpp"
 
 AbstractImageGameObject::AbstractImageGameObject(std::string name, std::string textureName, glm::vec3 pos, glm::vec2 scale, glm::vec3 color)
@@ -13,8 +14,8 @@ AbstractImageGameObject::AbstractImageGameObject(std::string name, Texture &text
 	: GameObject(name, pos, scale), mTexture(texture), mColor(color) {
 }
 
-AbstractImageGameObject::AbstractImageGameObject(std::string name, GameObject *parent, Texture &texture, glm::vec3 pos, glm::vec2 scale, glm::vec3 color) 
-    : GameObject(name, parent, pos, scale), mTexture(texture), mColor(color) {
+AbstractImageGameObject::AbstractImageGameObject(std::string name, GameObject *parent, Texture &texture, glm::vec3 pos, glm::vec2 scale, glm::vec3 color)
+	: GameObject(name, parent, pos, scale), mTexture(texture), mColor(color) {
 }
 
 AbstractImageGameObject::~AbstractImageGameObject() {
@@ -32,14 +33,17 @@ Texture &AbstractImageGameObject::GetTexture() {
 	return mTexture;
 }
 
-void AbstractImageGameObject::SetRenderType(SpriteRenderType renderType) {
+AbstractImageGameObject *AbstractImageGameObject::SetRenderType(SpriteRenderType renderType) {
 	mRenderType = renderType;
+	return this;
 }
 
-void AbstractImageGameObject::SetColor(glm::vec3 color) {
+AbstractImageGameObject *AbstractImageGameObject::SetColor(glm::vec3 color) {
 	mColor = color;
+	return this;
 }
 
-void AbstractImageGameObject::SetTexture(Texture &texture) {
+AbstractImageGameObject *AbstractImageGameObject::SetTexture(Texture &texture) {
 	mTexture = texture;
+	return this;
 }

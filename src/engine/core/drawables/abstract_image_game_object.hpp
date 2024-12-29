@@ -22,17 +22,17 @@ class AbstractImageGameObject : public GameObject {
 	AbstractImageGameObject(std::string name, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f, 1.0f)) = delete;
 	AbstractImageGameObject(std::string name, GameObject *parent, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f, 1.0f)) = delete;
 
-    ~AbstractImageGameObject();
+	~AbstractImageGameObject();
 
-    virtual void Render() = 0;
+	virtual void Render() = 0;
 
 	SpriteRenderType GetRenderType();
 	glm::vec3 GetColor();
 	Texture &GetTexture();
 
-	void SetRenderType(SpriteRenderType renderType);
-	void SetColor(glm::vec3 color);
-	void SetTexture(Texture &texture);
+	AbstractImageGameObject *SetRenderType(SpriteRenderType renderType);
+	AbstractImageGameObject *SetColor(glm::vec3 color);
+	AbstractImageGameObject *SetTexture(Texture &texture);
 
    protected:
 	Texture &mTexture;

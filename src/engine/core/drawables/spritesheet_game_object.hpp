@@ -17,8 +17,8 @@ class SpriteSheetGameObject : public AbstractImageGameObject {
 
 	void Render() override;
 
-	void SetSpriteSheetFrame(int frame);
-	void SetSpriteSheetFrame(glm::vec2 frame);
+	SpriteSheetGameObject *SetSpriteSheetFrame(int frame);
+	SpriteSheetGameObject *SetSpriteSheetFrame(glm::vec2 frame);
 
 	SpriteSheetGameObject *AddFrameSequence(std::string name, std::vector<glm::vec2> frames);
 

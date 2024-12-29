@@ -27,6 +27,8 @@ void SpriteSheetGameObject::Render() {
 		return;
 	}
 
+    GameObject::Render();
+
 	if (mFramesResolution.first == 0 || mFramesResolution.second == 0) {
 		return;
 	}
@@ -53,12 +55,14 @@ void SpriteSheetGameObject::Render() {
 	}
 }
 
-void SpriteSheetGameObject::SetSpriteSheetFrame(int frame) {
+SpriteSheetGameObject *SpriteSheetGameObject::SetSpriteSheetFrame(int frame) {
 	mFrameIndex = frame;
+    return this;
 }
 
-void SpriteSheetGameObject::SetSpriteSheetFrame(glm::vec2 frame) {
+SpriteSheetGameObject *SpriteSheetGameObject::SetSpriteSheetFrame(glm::vec2 frame) {
 	mFrameIndex = frame.x * mFramesResolution.first + frame.y;
+    return this;
 }
 
 SpriteSheetGameObject *SpriteSheetGameObject::AddFrameSequence(std::string name, std::vector<glm::vec2> frames) {

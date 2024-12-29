@@ -109,6 +109,11 @@ void ImGuiHelper::ImGuiDebugMenu() {
             ImGui::Checkbox("Visible", &visible);
             gameObject->SetVisible(visible);
 
+            ImGui::Text("Z Index:");
+            int layer = gameObject->GetZIndex();
+            ImGui::InputInt("##Layer", &layer);
+            gameObject->SetZIndex(layer);
+
 			ImGui::Text("Position:");
             glm::vec2 pos = gameObject->GetPosition();
             ImGui::InputFloat("X##Pos", &pos.x);

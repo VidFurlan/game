@@ -1,6 +1,7 @@
 #pragma once
 
 #include <map>
+#include <set>
 #include <string>
 
 #include "glm/ext/vector_float2.hpp"
@@ -17,34 +18,37 @@ class GameObject {
 
 	std::string GetName() const;
 
-	void SetActive(bool active);
+	GameObject *SetActive(bool active);
 	bool GetActive() const;
 
-	void SetVisible(bool visible);
+	GameObject *SetVisible(bool visible);
 	bool GetVisible() const;
 
-	void SetPosition(glm::vec2 pos);
-	void SetPosition(glm::vec3 pos);
-	void SetRotation(float rot);
-	void SetRotation(glm::vec3 rot);
+	GameObject *SetPosition(glm::vec2 pos);
+	GameObject *SetPosition(glm::vec3 pos);
+	GameObject *SetRotation(float rot);
+	GameObject *SetRotation(glm::vec3 rot);
 
 	glm::vec3 GetPosition() const;
 	glm::vec3 GetGlobalPosition() const;
 	float GetRotation() const;
 	float GetGlobalRotation() const;
 
-	void SetScale(glm::vec2 scale);
-	void SetScaleX(float scaleX);
-	void SetScaleY(float scaleY);
+	GameObject *SetZIndex(int zIndex);
+	int GetZIndex() const;
 
-    glm::vec2 GetScale() const;
+	GameObject *SetScale(glm::vec2 scale);
+	GameObject *SetScaleX(float scaleX);
+	GameObject *SetScaleY(float scaleY);
+
+	glm::vec2 GetScale() const;
 	float GetScaleX() const;
 	float GetScaleY() const;
 
 	GameObject *GetParent() const;
 	GameObject *GetChild(std::string name) const;
-    std::map<std::string, GameObject *> *GetChildren() const;
-    unsigned int GetChildrenCount() const;
+	std::map<std::string, GameObject *> *GetChildren() const;
+	unsigned int GetChildrenCount() const;
 
 	GameObject *AddChild(GameObject *child);
 	GameObject *AddChildToLocalPos(GameObject *child);
@@ -68,8 +72,15 @@ class GameObject {
 	bool mVisible;
 
 	glm::vec3 mPos;
-    glm::vec2 mScale;
+	glm::vec2 mScale;
+	int mZIndex = 1000;
 
 	GameObject *pParent = nullptr;
 	std::map<std::string, GameObject *> children;
+
+	static bool nameCmp(GameObject *a, GameObject *b) {
+		return a->GetName() < b->GetName();
+	}
+	std::map<int, std::set<GameObject *, bool (*)(GameObject *, GameObject *)>> mChildrenByZIndex{
+		{1000, std::set<GameObject *, bool (*)(GameObject *, GameObject *)>(nameCmp)}};
 };
