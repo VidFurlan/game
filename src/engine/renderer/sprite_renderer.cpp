@@ -72,6 +72,7 @@ void SpriteRenderer::DrawSprite(Texture &texture, glm::vec2 position,
 
 	this->shader.SetMatrix4("model", model);
 	this->shader.SetVector3f("spriteColor", color);
+    this->shader.SetBool("useMask", false);
 
 	// clang-format off
     GLfloat texCoords[] = {
@@ -119,4 +120,33 @@ void SpriteRenderer::DrawSpriteSheet(Texture &texture, glm::vec2 position, int i
 	float v2 = (index / cols + 1) / (float)rows;
 
 	this->DrawSprite(texture, position, u1, v1, u2, v2, size, rotate, color);
+}
+
+void SpriteRenderer::DrawSpriteWithMask(Texture &spriteTexture, Texture &maskTexture,
+                                        glm::vec2 position, glm::vec2 size, float rotate,
+                                        glm::vec3 color) {
+    this->shader.Use();
+
+    glm::mat4 model = glm::mat4(1.0f);
+    model = glm::translate(model, glm::vec3(position, 0.0f));
+    model = glm::translate(model, glm::vec3(0.5f * size.x, 0.5f * size.y, 0.0f));
+    model = glm::rotate(model, glm::radians(rotate), glm::vec3(0.0f, 0.0f, 1.0f));
+    model = glm::translate(model, glm::vec3(-0.5f * size.x, -0.5f * size.y, 0.0f));
+    model = glm::scale(model, glm::vec3(size, 1.0f));
+
+    this->shader.SetMatrix4("model", model);
+    this->shader.SetVector3f("spriteColor", color);
+    this->shader.SetBool("useMask", true);
+
+    glActiveTexture(GL_TEXTURE0);
+    spriteTexture.Bind();
+    this->shader.SetInteger("spriteTexture", 0);
+
+    glActiveTexture(GL_TEXTURE1);
+    maskTexture.Bind();
+    this->shader.SetInteger("maskTexture", 1);
+
+    glBindVertexArray(this->quadVAO);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glBindVertexArray(0);
 }

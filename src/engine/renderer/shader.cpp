@@ -50,6 +50,12 @@ void Shader::Compile(const char *vertexSource, const char *fragmentSource, const
 		glDeleteShader(gShader);
 }
 
+void Shader::SetBool(const char *name, bool value, bool useShader) {
+    if (useShader)
+        this->Use();
+    glUniform1i(glGetUniformLocation(this->ID, name), (int)value);
+}
+
 void Shader::SetFloat(const char *name, float value, bool useShader) {
 	if (useShader)
 		this->Use();
