@@ -9,7 +9,7 @@
 
 enum SpriteRenderType {
 	FIT,
-	STRETCH
+	STRETCH_TO_FIT
 };
 
 class AbstractImageGameObject : public GameObject {
@@ -24,7 +24,7 @@ class AbstractImageGameObject : public GameObject {
 
 	~AbstractImageGameObject();
 
-	virtual void Render() = 0;
+	virtual void Render() override;
 
 	SpriteRenderType GetRenderType();
 	glm::vec3 GetColor();
@@ -34,7 +34,11 @@ class AbstractImageGameObject : public GameObject {
 	AbstractImageGameObject *SetColor(glm::vec3 color);
 	AbstractImageGameObject *SetTexture(Texture &texture);
 
+    static constexpr float IMAGE_SCALE_FACTOR = 100.0f;
+
    protected:
+    glm::vec3 mCameraOffset = glm::vec3(0.0f);
+
 	Texture &mTexture;
 	glm::vec3 mColor;
 	SpriteRenderType mRenderType = FIT;

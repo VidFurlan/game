@@ -1,7 +1,7 @@
 #include <game.hpp>
 #include <game_window.hpp>
 
-#include "main_menu_scene.hpp"
+#include "demo_scene.hpp"
 
 int main() {
 	// Init game
@@ -9,9 +9,9 @@ int main() {
 	game.Init();
 
 	// Load scenes
-	game.AddScene("MainMenu", [&]() { return new MainMenuScene(); });
+	game.AddScene("Demo", [&]() { return new DemoScene(); });
 
-	game.LoadScene("MainMenu");
+	game.LoadScene("Demo");
 
 	// Run game
 	game.Run();

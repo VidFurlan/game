@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include "abstract_image_game_object.hpp"
 #include "game.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include "glm/ext/vector_float3.hpp"
@@ -27,7 +28,7 @@ void SpriteSheetGameObject::Render() {
 		return;
 	}
 
-    GameObject::Render();
+    AbstractImageGameObject::Render();
 
 	if (mFramesResolution.first == 0 || mFramesResolution.second == 0) {
 		return;
@@ -39,17 +40,17 @@ void SpriteSheetGameObject::Render() {
 
 	switch (mRenderType) {
 		case FIT: {
-			Game::GetInstance().GetSpriteRenderer()->DrawSpriteSheet(mTexture, glm::vec2(mPos.x, mPos.y),
+            float maxFactor = std::max(mTexture.Width / (mScale.x * mFramesResolution.second), mTexture.Height / (mScale.y * mFramesResolution.first));
+			Game::GetInstance().GetSpriteRenderer()->DrawSpriteSheet(mTexture, glm::vec2(mCameraOffset.x, mCameraOffset.y),
 																	 mFrameIndex, mFramesResolution.first, mFramesResolution.second,
-																	 glm::vec2(mScale.x * mTexture.Width / (float)mFramesResolution.second, mScale.y * mTexture.Height / (float)mFramesResolution.first),
+																	 glm::vec2(mTexture.Width / (maxFactor * mFramesResolution.second) * IMAGE_SCALE_FACTOR, mTexture.Height / (maxFactor * mFramesResolution.first) * IMAGE_SCALE_FACTOR),
 																	 mPos.z, mColor);
 		} break;
 
-		case STRETCH: {
-			float maxFactor = std::max(mTexture.Width / mScale.x, mTexture.Height / mScale.y);
-			Game::GetInstance().GetSpriteRenderer()->DrawSpriteSheet(mTexture, glm::vec2(mPos.x, mPos.y),
-																	 mFrameIndex, mFramesResolution.second, mFramesResolution.first,
-																	 glm::vec2(maxFactor * mScale.x / (float)mFramesResolution.second, maxFactor * mScale.y / (float)mFramesResolution.first),
+		case STRETCH_TO_FIT: {
+			Game::GetInstance().GetSpriteRenderer()->DrawSpriteSheet(mTexture, glm::vec2(mCameraOffset.x, mCameraOffset.y),
+																	 mFrameIndex, mFramesResolution.first, mFramesResolution.second,
+																	 glm::vec2(mScale.x * IMAGE_SCALE_FACTOR, mScale.y * IMAGE_SCALE_FACTOR),
 																	 mPos.z, mColor);
 		} break;
 	}

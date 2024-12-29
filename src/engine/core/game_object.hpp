@@ -9,8 +9,8 @@
 
 class GameObject {
    public:
-	GameObject(std::string name, glm::vec3 pos = glm::vec3(0.0f), glm::vec2 scale = glm::vec2(1.0f, 1.0f));
-	GameObject(std::string name, GameObject *parent, glm::vec3 pos = glm::vec3(0.0f), glm::vec2 scale = glm::vec2(1.0f, 1.0f));
+	GameObject(std::string name, glm::vec3 pos = glm::vec3(0.0f), glm::vec2 scale = glm::vec2(1.0f));
+	GameObject(std::string name, GameObject *parent, glm::vec3 pos = glm::vec3(0.0f), glm::vec2 scale = glm::vec2(1.0f));
 	~GameObject();
 
 	virtual void Update(float deltaTime = 0.0f);

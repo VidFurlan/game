@@ -1,5 +1,6 @@
 #include "abstract_image_game_object.hpp"
 
+#include "game.hpp"
 #include "resource_manager.hpp"
 
 AbstractImageGameObject::AbstractImageGameObject(std::string name, std::string textureName, glm::vec3 pos, glm::vec2 scale, glm::vec3 color)
@@ -19,6 +20,17 @@ AbstractImageGameObject::AbstractImageGameObject(std::string name, GameObject *p
 }
 
 AbstractImageGameObject::~AbstractImageGameObject() {
+}
+
+void AbstractImageGameObject::Render() {
+    if (!mVisible) {
+        return;
+    }
+
+    GameObject::Render();
+
+    mCameraOffset = mPos - Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetPosition();
+    mCameraOffset.z = 0.0f;
 }
 
 SpriteRenderType AbstractImageGameObject::GetRenderType() {
