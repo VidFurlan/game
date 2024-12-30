@@ -4,6 +4,7 @@
 #include <map>
 
 #include "game_window.hpp"
+#include "post_processor.hpp"
 #include "resource_manager.hpp"
 #include "scene_game_object.hpp"
 #include "singleton.hpp"
@@ -46,6 +47,7 @@ class Game : public Singleton {
 
 	ResourceManager *resourceManager = nullptr;
 	SpriteRenderer *mSpriteRenderer = nullptr;
+    PostProcessor *mPostProcessor = nullptr;
 
 	std::map<std::string, std::function<SceneGameObject *()>> mSceneFactory;
 	SceneGameObject *mCurrentScene = nullptr;

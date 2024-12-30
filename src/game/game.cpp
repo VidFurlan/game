@@ -11,18 +11,25 @@
 #include "sprite_renderer.hpp"
 
 void Game::Init() {
+    if (mWindow != nullptr) delete mWindow;
 	mWindow = new GameWindow(1200, 800, "Game");
-
-	// Load generic sprite shader
-	resourceManager = &ResourceManager::GetInstance();
-	resourceManager->LoadShader("shaders/sprite_vertex.glsl", "shaders/sprite_fragment.glsl", nullptr, "sprite");
 
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(mWindow->GetWidth()),
 									  static_cast<float>(mWindow->GetHeight()), 0.0f, -1.0f, 1.0f);
 
+	// Load generic sprite shader
+	resourceManager = &ResourceManager::GetInstance();
+
+	resourceManager->LoadShader("shaders/sprite_vertex.glsl", "shaders/sprite_fragment.glsl", nullptr, "sprite");
 	resourceManager->GetShader("sprite").Use().SetInteger("image", 0);
 	resourceManager->GetShader("sprite").SetMatrix4("projection", projection);
 
+    resourceManager->LoadShader("shaders/post_processing_vertex.glsl", "shaders/post_processing_fragment.glsl", nullptr, "post_processing");
+
+    if (mPostProcessor != nullptr) delete mPostProcessor;
+    mPostProcessor = new PostProcessor(resourceManager->GetShader("post_processing"), mWindow->GetWidth(), mWindow->GetHeight());
+
+    if (mCurrentScene != nullptr) delete mCurrentScene;
 	mSpriteRenderer = new SpriteRenderer(resourceManager->GetShader("sprite"));
 }
 
@@ -50,7 +57,10 @@ void Game::Run() {
 		ImGuiHelper::NewFrame();
 		ImGuiHelper::ImGuiDebugMenu();
 
+        mPostProcessor->BeginRender();
 		Render();
+        mPostProcessor->EndRender();
+        mPostProcessor->Render(glfwGetTime());
 
 		ImGuiHelper::Render();
 
