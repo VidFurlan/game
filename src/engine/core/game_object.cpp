@@ -1,8 +1,10 @@
 #include "game_object.hpp"
 
+#include <cmath>
 #include <iostream>
 
 #include "glm/ext/vector_float3.hpp"
+#include "glm/trigonometric.hpp"
 
 GameObject::GameObject(std::string name, glm::vec3 pos, glm::vec2 scale)
 	: mName(name), mPos(pos), pParent(nullptr), mActive(true), mVisible(true), mScale(scale) {
@@ -87,13 +89,31 @@ glm::vec3 GameObject::GetPosition() const {
 }
 
 glm::vec3 GameObject::GetGlobalPosition() const {
-	glm::vec3 pos = mPos;
-	GameObject *parent = pParent;
-	while (parent) {
-		pos += parent->mPos;
-		parent = parent->pParent;
-	}
-	return pos;
+    glm::vec2 pos(mPos.x, mPos.y);
+    float rotation = mPos.z;
+    const GameObject* parent = pParent;
+
+    while (parent) {
+        float parentRotation = parent->mPos.z;
+        glm::vec2 parentPos(parent->mPos.x, parent->mPos.y);
+
+        float radians = glm::radians(parentRotation);
+
+        float cosAngle = cos(radians);
+        float sinAngle = sin(radians);
+        pos = glm::vec2(
+            cosAngle * pos.x - sinAngle * pos.y,
+            sinAngle * pos.x + cosAngle * pos.y
+        );
+
+        pos += parentPos;
+
+        rotation += parentRotation;
+
+        parent = parent->pParent;
+    }
+
+    return glm::vec3(pos, rotation);
 }
 
 float GameObject::GetRotation() const {
@@ -101,36 +121,38 @@ float GameObject::GetRotation() const {
 }
 
 float GameObject::GetGlobalRotation() const {
-	float rot = mPos.z;
-	GameObject *parent = pParent;
-	while (parent) {
-		rot += parent->mPos.z;
-		parent = parent->pParent;
-	}
-	return rot;
+    float rotation = mPos.z;
+    const GameObject *parent = pParent;
+
+    while (parent) {
+        rotation += parent->mPos.z;
+        parent = parent->pParent;
+    }
+
+    return rotation;
 }
 
 GameObject *GameObject::SetZIndex(int zIndex) {
-    if (mZIndex == zIndex) {
-        return this;
-    }
+	if (mZIndex == zIndex) {
+		return this;
+	}
 
-    if (pParent) {
-        if (pParent->mChildrenByZIndex.find(mZIndex) == pParent->mChildrenByZIndex.end()) {
-            pParent->mChildrenByZIndex[mZIndex] = std::set<GameObject *, bool (*)(GameObject *, GameObject *)>(nameCmp);
-        }
+	if (pParent) {
+		if (pParent->mChildrenByZIndex.find(mZIndex) == pParent->mChildrenByZIndex.end()) {
+			pParent->mChildrenByZIndex[mZIndex] = std::set<GameObject *, bool (*)(GameObject *, GameObject *)>(nameCmp);
+		}
 
-        pParent->mChildrenByZIndex[mZIndex].erase(this);
+		pParent->mChildrenByZIndex[mZIndex].erase(this);
 
-        if (pParent->mChildrenByZIndex.find(zIndex) == pParent->mChildrenByZIndex.end()) {
-            pParent->mChildrenByZIndex[zIndex] = std::set<GameObject *, bool (*)(GameObject *, GameObject *)>(nameCmp);
-        }
+		if (pParent->mChildrenByZIndex.find(zIndex) == pParent->mChildrenByZIndex.end()) {
+			pParent->mChildrenByZIndex[zIndex] = std::set<GameObject *, bool (*)(GameObject *, GameObject *)>(nameCmp);
+		}
 
-        pParent->mChildrenByZIndex[zIndex].insert(this);
-    }
+		pParent->mChildrenByZIndex[zIndex].insert(this);
+	}
 
-    mZIndex = zIndex;
-    return this;
+	mZIndex = zIndex;
+	return this;
 }
 
 int GameObject::GetZIndex() const {

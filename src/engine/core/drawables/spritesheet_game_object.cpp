@@ -41,17 +41,17 @@ void SpriteSheetGameObject::Render() {
 	switch (mRenderType) {
 		case FIT: {
             float maxFactor = std::max(mTexture.Width / (mScale.x * mFramesResolution.second), mTexture.Height / (mScale.y * mFramesResolution.first));
-			Game::GetInstance().GetSpriteRenderer()->DrawSpriteSheet(mTexture, glm::vec2(mCameraOffset.x, mCameraOffset.y),
+			Game::GetInstance().GetSpriteRenderer()->DrawSpriteSheet(mTexture, glm::vec2(mCameraOffset.x - mScale.x / 2 * GAME_SCALE_FACTOR, mCameraOffset.y - mScale.y / 2 * GAME_SCALE_FACTOR),
 																	 mFrameIndex, mFramesResolution.first, mFramesResolution.second,
 																	 glm::vec2(mTexture.Width / (maxFactor * mFramesResolution.second) * GAME_SCALE_FACTOR, mTexture.Height / (maxFactor * mFramesResolution.first) * GAME_SCALE_FACTOR),
-																	 mPos.z, mColor);
+																	 GetGlobalRotation(), mColor);
 		} break;
 
 		case STRETCH_TO_FIT: {
-			Game::GetInstance().GetSpriteRenderer()->DrawSpriteSheet(mTexture, glm::vec2(mCameraOffset.x, mCameraOffset.y),
+			Game::GetInstance().GetSpriteRenderer()->DrawSpriteSheet(mTexture, glm::vec2(mCameraOffset.x - mScale.x / 2 * GAME_SCALE_FACTOR, mCameraOffset.y - mScale.y / 2 * GAME_SCALE_FACTOR),
 																	 mFrameIndex, mFramesResolution.first, mFramesResolution.second,
 																	 glm::vec2(mScale.x * GAME_SCALE_FACTOR, mScale.y * GAME_SCALE_FACTOR),
-																	 mPos.z, mColor);
+																	 GetGlobalRotation(), mColor);
 		} break;
 	}
 }

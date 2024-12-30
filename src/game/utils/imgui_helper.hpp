@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include "game_object.hpp"
 class ImGuiHelper {
    public:
@@ -9,6 +10,8 @@ class ImGuiHelper {
 	static void Shutdown();
 
 	static void ImGuiDebugMenu();
+
+    static void SnapToRight(std::string text);
 
    private:
 	static bool mShowSceneDebugMenu;

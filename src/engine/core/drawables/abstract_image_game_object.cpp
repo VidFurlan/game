@@ -1,4 +1,6 @@
 #include "abstract_image_game_object.hpp"
+#include <algorithm>
+#include <deque>
 
 #include "game.hpp"
 #include "resource_manager.hpp"
@@ -30,6 +32,8 @@ void AbstractImageGameObject::Render() {
     GameObject::Render();
 
     mCameraOffset = GetGlobalPosition() * GAME_SCALE_FACTOR - Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetPosition() * GAME_SCALE_FACTOR;
+    mCameraOffset.x -= mAnchor.x * mScale.x * GAME_SCALE_FACTOR;
+    mCameraOffset.y -= mAnchor.y * mScale.y * GAME_SCALE_FACTOR;
     mCameraOffset.z = 0.0f;
 }
 
@@ -45,6 +49,10 @@ Texture &AbstractImageGameObject::GetTexture() {
 	return mTexture;
 }
 
+glm::vec2 AbstractImageGameObject::GetAnchor() {
+    return mAnchor;
+}
+
 AbstractImageGameObject *AbstractImageGameObject::SetRenderType(SpriteRenderType renderType) {
 	mRenderType = renderType;
 	return this;
@@ -58,4 +66,9 @@ AbstractImageGameObject *AbstractImageGameObject::SetColor(glm::vec3 color) {
 AbstractImageGameObject *AbstractImageGameObject::SetTexture(Texture &texture) {
 	mTexture = texture;
 	return this;
+}
+
+AbstractImageGameObject *AbstractImageGameObject::SetAnchor(glm::vec2 anchor) {
+    mAnchor = glm::clamp(anchor, glm::vec2(0.0f), glm::vec2(1.0f));
+    return this;
 }

@@ -29,10 +29,12 @@ class AbstractImageGameObject : public GameObject {
 	SpriteRenderType GetRenderType();
 	glm::vec3 GetColor();
 	Texture &GetTexture();
+    glm::vec2 GetAnchor();
 
 	AbstractImageGameObject *SetRenderType(SpriteRenderType renderType);
 	AbstractImageGameObject *SetColor(glm::vec3 color);
 	AbstractImageGameObject *SetTexture(Texture &texture);
+    AbstractImageGameObject *SetAnchor(glm::vec2 anchor);
 
    protected:
     glm::vec3 mCameraOffset = glm::vec3(0.0f);
@@ -40,4 +42,6 @@ class AbstractImageGameObject : public GameObject {
 	Texture &mTexture;
 	glm::vec3 mColor;
 	SpriteRenderType mRenderType = FIT;
+
+    glm::vec2 mAnchor = glm::vec2(0.5f);
 };

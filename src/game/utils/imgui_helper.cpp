@@ -5,7 +5,9 @@
 #include <imgui_impl_opengl3.h>
 
 #include <string>
+#include <type_traits>
 
+#include "abstract_image_game_object.hpp"
 #include "game.hpp"
 #include "scene_game_object.hpp"
 
@@ -61,11 +63,11 @@ void ImGuiHelper::ImGuiDebugMenu() {
 
 		ImGui::Text("Scene name: %s", scene->GetName().c_str());
 		ImGui::Text("Active Game Objects: %d", (int)(scene->GetChildrenCount()));
-        ImGui::Text("Camera position: (%.2f, %.2f)", scene->GetActiveCamera()->GetPosition().x, scene->GetActiveCamera()->GetPosition().y);
+		ImGui::Text("Camera position: (%.2f, %.2f)", scene->GetActiveCamera()->GetPosition().x, scene->GetActiveCamera()->GetPosition().y);
 
 		ImGui::Separator();
 
-        ImGui::Text("\t\tA | V \tName [AV]");
+		ImGui::Text("\t\tA | V \tName [AV]");
 
 		// Hierarchical game object debug menu
 		auto dfsHierarchy = [](GameObject *gameObject, int level, bool active, bool visible, std::string tagName, auto dfsHierarchy) -> void {
@@ -120,11 +122,24 @@ void ImGuiHelper::ImGuiDebugMenu() {
 		// Selected game object debug menu
 		if (ImGuiHelper::mSelectedGameObject != nullptr) {
 			ImGui::Separator();
+
 			GameObject *gameObject = ImGuiHelper::mSelectedGameObject;
 
 			ImGui::Text("Game object: ");
 			ImGui::SameLine();
-			ImGui::TextColored(ImVec4(0.0f, 0.5f, 1.0f, 1.0f), "%s", gameObject->GetName().c_str());
+			SnapToRight(gameObject->GetName());
+			ImGui::Text("Parent: ");
+			ImGui::SameLine();
+			if (gameObject->GetParent() != nullptr) {
+				SnapToRight(gameObject->GetParent()->GetName());
+			} else {
+				SnapToRight("None");
+			}
+			ImGui::Text("Type: ");
+			ImGui::SameLine();
+            SnapToRight(typeid(*gameObject).name());
+
+			ImGui::Separator();
 
 			bool active = gameObject->GetActive();
 			ImGui::Checkbox("Active", &active);
@@ -147,7 +162,7 @@ void ImGuiHelper::ImGuiDebugMenu() {
 
 			ImGui::Text("Rotation:");
 			float rot = gameObject->GetRotation();
-			ImGui::InputFloat("##Rot", &rot, 0.1f, 0.0f, "%.2f", ImGuiInputTextFlags_CharsDecimal);
+			ImGui::InputFloat("##Rot", &rot, 1.0f, 1.0f, "%.2f", ImGuiInputTextFlags_CharsDecimal);
 			gameObject->SetRotation(rot);
 
 			ImGui::Text("Scale:");
@@ -155,8 +170,31 @@ void ImGuiHelper::ImGuiDebugMenu() {
 			ImGui::InputFloat("X##Scale", &scale.x, 0.1f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
 			ImGui::InputFloat("Y##Scale", &scale.y, 0.1f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
 			gameObject->SetScale(scale);
+
+            if (dynamic_cast<AbstractImageGameObject*>(gameObject)) {
+                AbstractImageGameObject *imageGameObject = dynamic_cast<AbstractImageGameObject*>(gameObject);
+
+                ImGui::Text("Image path:");
+
+                glm::vec3 color = imageGameObject->GetColor();
+                ImGui::ColorEdit3("Color", &color.x);
+                imageGameObject->SetColor(color);
+
+                ImGui::Text("Anchor:");
+                glm::vec2 anchor = imageGameObject->GetAnchor();
+                ImGui::InputFloat("X##Anchor", &anchor.x, 0.1f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
+                ImGui::InputFloat("Y##Anchor", &anchor.y, 0.1f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
+                imageGameObject->SetAnchor(anchor);
+            }
 		}
 
 		ImGui::End();
 	}
+}
+
+void ImGuiHelper::SnapToRight(std::string text) {
+	auto posX = (ImGui::GetCursorPosX() + ImGui::GetColumnWidth() - ImGui::CalcTextSize(text.c_str()).x - ImGui::GetScrollX() - 2 * ImGui::GetStyle().ItemSpacing.x);
+	if (posX > ImGui::GetCursorPosX())
+		ImGui::SetCursorPosX(posX);
+	ImGui::Text("%s", text.c_str());
 }
