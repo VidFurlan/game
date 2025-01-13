@@ -54,50 +54,36 @@ void DemoScene::Init() {
     this->AddGameCamera(new CameraGameObject("main_camera", this, glm::vec3(0.0f, 0.0f, 1.0f)))
         ->SetActiveCamera("main_camera");
 
-	GameObject *imageDemos = this->AddChild(new GameObject("image_demos"));
+	GameObject *imageDemos = this->AddChild(new GameObject("image_demos"))
+        ->SetPosition(glm::vec3(30.0f, 30.0f, -90.0f));
 
 	GameObject *strechDemo = imageDemos->AddChild(new GameObject("strech_demo"))
         ->SetZIndex(2000);
 	static_cast<SpriteGameObject *>(strechDemo->AddChild(new SpriteGameObject("clouds_1_1", "clouds_1_1")))
-		->SetRenderType(SpriteRenderType::STRETCH_TO_FIT)
-        ->SetAnchor(glm::vec2(0.0f))
         ->SetScale(glm::vec2(40.0f))
 		->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 	static_cast<SpriteGameObject *>(strechDemo->AddChild(new SpriteGameObject("clouds_1_2", "clouds_1_2")))
-		->SetRenderType(SpriteRenderType::STRETCH_TO_FIT)
-        ->SetAnchor(glm::vec2(0.0f))
         ->SetScale(glm::vec2(40.0f))
 		->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 	static_cast<SpriteGameObject *>(strechDemo->AddChild(new SpriteGameObject("clouds_1_3", "clouds_1_3")))
-		->SetRenderType(SpriteRenderType::STRETCH_TO_FIT)
-        ->SetAnchor(glm::vec2(0.0f))
         ->SetScale(glm::vec2(40.0f))
 		->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 	static_cast<SpriteGameObject *>(strechDemo->AddChild(new SpriteGameObject("clouds_1_4", "clouds_1_4")))
-		->SetRenderType(SpriteRenderType::STRETCH_TO_FIT)
-        ->SetAnchor(glm::vec2(0.0f))
         ->SetScale(glm::vec2(40.0f))
 		->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
-	GameObject *fitDemo = imageDemos->AddChild(new GameObject("fit_demo"))
+    GameObject *fitDemo = imageDemos->AddChild(new GameObject("fit_demo"))
         ->SetPosition(glm::vec3(0.0f, 40.0f, 0.0f));
 	static_cast<SpriteGameObject *>(fitDemo->AddChild(new SpriteGameObject("clouds_2_1", "clouds_2_1")))
-		->SetRenderType(SpriteRenderType::FIT)
-        ->SetAnchor(glm::vec2(0.0f))
         ->SetScale(glm::vec2(40.0f));
 	static_cast<SpriteGameObject *>(fitDemo->AddChild(new SpriteGameObject("clouds_2_2", "clouds_2_2")))
-		->SetRenderType(SpriteRenderType::FIT)
-        ->SetAnchor(glm::vec2(0.0f))
         ->SetScale(glm::vec2(40.0f));
 	static_cast<SpriteGameObject *>(fitDemo->AddChild(new SpriteGameObject("clouds_2_3", "clouds_2_3")))
-		->SetRenderType(SpriteRenderType::FIT)
-        ->SetAnchor(glm::vec2(0.0f))
         ->SetScale(glm::vec2(40.0f));
 	static_cast<SpriteGameObject *>(fitDemo->AddChild(new SpriteGameObject("clouds_2_4", "clouds_2_4")))
-		->SetRenderType(SpriteRenderType::FIT)
-        ->SetAnchor(glm::vec2(0.0f))
         ->SetScale(glm::vec2(40.0f));
 
+	/*
 	static_cast<SpriteSheetGameObject *>(imageDemos->AddChild(new SpriteSheetGameObject("character_1", "character", {12, 4}, glm::vec3(15.0f, 75.0f, 0.0f), glm::vec2(10.0f))))
         ->SetRenderType(SpriteRenderType::STRETCH_TO_FIT);
 
@@ -129,6 +115,7 @@ void DemoScene::Init() {
     SpriteSheetGameObject *point3 = static_cast<SpriteSheetGameObject *>(point2->AddChild(new SpriteSheetGameObject("point_3", "background", {8, 8}, glm::vec3(15.0f, 0.0f, 45.0f), glm::vec2(5.0f, 5.0f))));
     point3->SetRenderType(SpriteRenderType::STRETCH_TO_FIT);
     point3->SetSpriteSheetFrame({7, 0});
+    */
 }
 
 void DemoScene::Update(float deltaTime) {
@@ -139,12 +126,12 @@ void DemoScene::Update(float deltaTime) {
 	mTime += deltaTime;
 	if (mTime > 0.1f) {
 		mTime = 0.0f;
-		SpriteSheetGameObject *character = static_cast<SpriteSheetGameObject *>(this->GetChild("image_demos")->GetChild("character_1"));
-		character->SetSpriteSheetFrame((character->GetFrameIndex() + 1) % 4 + 4 * 3);
-		character = static_cast<SpriteSheetGameObject *>(this->GetChild("image_demos")->GetChild("character_2"));
-		character->SetSpriteSheetFrame((character->GetFrameIndex() + 1) % 4 + 4 * 4);
-		character = static_cast<SpriteSheetGameObject *>(this->GetChild("image_demos")->GetChild("character_3"));
-		character->SetSpriteSheetFrame((character->GetFrameIndex() + 1) % 4 + 4 * 5);
+		// SpriteSheetGameObject *character = static_cast<SpriteSheetGameObject *>(this->GetChild("image_demos")->GetChild("character_1"));
+		// character->SetSpriteSheetFrame((character->GetFrameIndex() + 1) % 4 + 4 * 3);
+		// character = static_cast<SpriteSheetGameObject *>(this->GetChild("image_demos")->GetChild("character_2"));
+		// character->SetSpriteSheetFrame((character->GetFrameIndex() + 1) % 4 + 4 * 4);
+		// character = static_cast<SpriteSheetGameObject *>(this->GetChild("image_demos")->GetChild("character_3"));
+		// character->SetSpriteSheetFrame((character->GetFrameIndex() + 1) % 4 + 4 * 5);
 	}
 }
 

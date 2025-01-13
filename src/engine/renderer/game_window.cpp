@@ -1,6 +1,7 @@
 #include "game_window.hpp"
 
 #include <GL/glew.h>
+#include <GL/glu.h>
 
 #include <iostream>
 
@@ -25,7 +26,7 @@ GameWindow::GameWindow(int width, int height, const char* title) {
 #ifdef __APPLE__
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
-	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 
 	window = glfwCreateWindow(width, height, title, nullptr, nullptr);
 	if (window == nullptr) {
@@ -47,8 +48,8 @@ GameWindow::GameWindow(int width, int height, const char* title) {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    glEnable(GL_STENCIL_TEST);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+	glEnable(GL_STENCIL_TEST);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
 
 GameWindow::~GameWindow() {
@@ -88,6 +89,42 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 	}
 }
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
-	glViewport(0, 0, width, height);
+void framebuffer_size_callback(GLFWwindow* window,
+							   int widthOfFramebuffer,
+							   int heightOfFramebuffer) {
+	float desiredAspectRatio = 600.0f / 600.0f;
+
+	int widthOfViewport, heightOfViewport;
+	int lowerLeftCornerOfViewportX, lowerLeftCornerOfViewportY;
+
+	float requiredHeightOfViewport = widthOfFramebuffer * (1.0f / desiredAspectRatio);
+	if (requiredHeightOfViewport > heightOfFramebuffer) {
+		float requiredWidthOfViewport = heightOfFramebuffer * desiredAspectRatio;
+		if (requiredWidthOfViewport > widthOfFramebuffer) {
+			std::cout << "Error: Couldn't find dimensions that preserve the aspect ratio" << std::endl;
+		} else {
+			widthOfViewport = static_cast<int>(requiredWidthOfViewport);
+			heightOfViewport = heightOfFramebuffer;
+
+			float widthOfTheTwoVerticalBars = widthOfFramebuffer - widthOfViewport;
+
+			lowerLeftCornerOfViewportX = static_cast<int>(widthOfTheTwoVerticalBars / 2.0f);
+			lowerLeftCornerOfViewportY = 0;
+		}
+	} else {
+		widthOfViewport = widthOfFramebuffer;
+		heightOfViewport = static_cast<int>(requiredHeightOfViewport);
+
+		float heightOfTheTwoHorizontalBars = heightOfFramebuffer - heightOfViewport;
+
+		lowerLeftCornerOfViewportX = 0;
+		lowerLeftCornerOfViewportY = static_cast<int>(heightOfTheTwoHorizontalBars / 2.0f);
+	}
+
+	glViewport(lowerLeftCornerOfViewportX, lowerLeftCornerOfViewportY,
+			   widthOfViewport, heightOfViewport);
+	glScissor(lowerLeftCornerOfViewportX, lowerLeftCornerOfViewportY,
+			  widthOfViewport, heightOfViewport);
+
+    Game::GetInstance().GetPostProcessor()->Resize(widthOfViewport, heightOfViewport);
 }

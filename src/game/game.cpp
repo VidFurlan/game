@@ -11,7 +11,7 @@
 #include "sprite_renderer.hpp"
 
 void Game::Init() {
-    if (mWindow != nullptr) delete mWindow;
+	if (mWindow != nullptr) delete mWindow;
 	mWindow = new GameWindow(1200, 800, "Game");
 
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(mWindow->GetWidth()),
@@ -24,12 +24,12 @@ void Game::Init() {
 	resourceManager->GetShader("sprite").Use().SetInteger("image", 0);
 	resourceManager->GetShader("sprite").SetMatrix4("projection", projection);
 
-    resourceManager->LoadShader("shaders/post_processing_vertex.glsl", "shaders/post_processing_fragment.glsl", nullptr, "post_processing");
+	resourceManager->LoadShader("shaders/post_processing_vertex.glsl", "shaders/post_processing_fragment.glsl", nullptr, "post_processing");
 
-    if (mPostProcessor != nullptr) delete mPostProcessor;
-    mPostProcessor = new PostProcessor(resourceManager->GetShader("post_processing"), mWindow->GetWidth(), mWindow->GetHeight());
+	if (mPostProcessor != nullptr) delete mPostProcessor;
+	mPostProcessor = new PostProcessor(resourceManager->GetShader("post_processing"), mWindow->GetWidth(), mWindow->GetHeight());
 
-    if (mCurrentScene != nullptr) delete mCurrentScene;
+	if (mCurrentScene != nullptr) delete mCurrentScene;
 	mSpriteRenderer = new SpriteRenderer(resourceManager->GetShader("sprite"));
 }
 
@@ -50,17 +50,31 @@ void Game::Run() {
 
 		Update(deltaTime);
 
-		// Actual rendering
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-
+        // Render ImGui
 		ImGuiHelper::NewFrame();
 		ImGuiHelper::ImGuiDebugMenu();
 
-        mPostProcessor->BeginRender();
+        // Rendering
+        // Color for edges of the screen
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+        if (!mPostProcessingDisabled) {
+            mPostProcessor->BeginRender();
+        }
+
+        // Background color
+		glClearColor(0.05f, 0.65f, 1.0f, 1.0f);
+		glEnable(GL_SCISSOR_TEST);
+		glClear(GL_COLOR_BUFFER_BIT);
+		glDisable(GL_SCISSOR_TEST);
+
 		Render();
-        mPostProcessor->EndRender();
-        mPostProcessor->Render(glfwGetTime());
+
+        if (!mPostProcessingDisabled) {
+            mPostProcessor->EndRender();
+            mPostProcessor->Render(glfwGetTime());
+        }
 
 		ImGuiHelper::Render();
 
@@ -118,6 +132,18 @@ void Game::LoadScene(const std::string &sceneName) {
 	}
 }
 
+void Game::SetPostProcessingDisabled(bool disabled) {
+    mPostProcessingDisabled = disabled;
+}
+
+bool Game::IsPostProcessingDisabled() const {
+    return mPostProcessingDisabled;
+}
+
 SceneGameObject *Game::GetActiveScene() const {
-    return mCurrentScene;
+	return mCurrentScene;
+}
+
+PostProcessor *Game::GetPostProcessor() const {
+	return mPostProcessor;
 }

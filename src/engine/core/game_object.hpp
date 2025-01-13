@@ -38,13 +38,6 @@ class GameObject {
 	GameObject *SetZIndex(int zIndex);
 	int GetZIndex() const;
 
-	GameObject *SetScale(glm::vec2 scale);
-	GameObject *SetScaleX(float scaleX);
-	GameObject *SetScaleY(float scaleY);
-
-	glm::vec2 GetScale() const;
-	float GetScaleX() const;
-	float GetScaleY() const;
 
 	GameObject *GetParent() const;
 	GameObject *GetChild(std::string name) const;

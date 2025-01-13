@@ -12,6 +12,7 @@ class PostProcessor {
 	void BeginRender();
 	void EndRender();
 	void Render(float time);
+    void Resize(int newWidth, int newHeight);
 
    private:
 	unsigned int MSFBO, FBO;

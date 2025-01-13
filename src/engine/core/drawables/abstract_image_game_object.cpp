@@ -1,8 +1,9 @@
 #include "abstract_image_game_object.hpp"
-#include <algorithm>
-#include <deque>
+#include <filesystem>
 
 #include "game.hpp"
+#include "glm/detail/qualifier.hpp"
+#include "glm/ext/vector_float2.hpp"
 #include "resource_manager.hpp"
 
 AbstractImageGameObject::AbstractImageGameObject(std::string name, std::string textureName, glm::vec3 pos, glm::vec2 scale, glm::vec3 color)
@@ -32,13 +33,9 @@ void AbstractImageGameObject::Render() {
     GameObject::Render();
 
     mCameraOffset = GetGlobalPosition() * GAME_SCALE_FACTOR - Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetPosition() * GAME_SCALE_FACTOR;
-    mCameraOffset.x -= mAnchor.x * mScale.x * GAME_SCALE_FACTOR;
-    mCameraOffset.y -= mAnchor.y * mScale.y * GAME_SCALE_FACTOR;
+    mCameraOffset.x -= mAnchor.x * mScale.x * GAME_SCALE_FACTOR + mScale.x * GAME_SCALE_FACTOR / 2 * (0.5f - mAnchor.x); 
+    mCameraOffset.y -= mAnchor.y * mScale.y * GAME_SCALE_FACTOR + mScale.y * GAME_SCALE_FACTOR / 2 * (0.5f - mAnchor.y);
     mCameraOffset.z = 0.0f;
-}
-
-SpriteRenderType AbstractImageGameObject::GetRenderType() {
-	return mRenderType;
 }
 
 glm::vec3 AbstractImageGameObject::GetColor() {
@@ -51,11 +48,6 @@ Texture &AbstractImageGameObject::GetTexture() {
 
 glm::vec2 AbstractImageGameObject::GetAnchor() {
     return mAnchor;
-}
-
-AbstractImageGameObject *AbstractImageGameObject::SetRenderType(SpriteRenderType renderType) {
-	mRenderType = renderType;
-	return this;
 }
 
 AbstractImageGameObject *AbstractImageGameObject::SetColor(glm::vec3 color) {
@@ -71,4 +63,31 @@ AbstractImageGameObject *AbstractImageGameObject::SetTexture(Texture &texture) {
 AbstractImageGameObject *AbstractImageGameObject::SetAnchor(glm::vec2 anchor) {
     mAnchor = glm::clamp(anchor, glm::vec2(0.0f), glm::vec2(1.0f));
     return this;
+}
+
+AbstractImageGameObject *AbstractImageGameObject::SetScale(glm::vec2 scale) {
+	mScale = scale;
+	return this;
+}
+
+AbstractImageGameObject *AbstractImageGameObject::SetScaleX(float scaleX) {
+	mScale.x = scaleX;
+	return this;
+}
+
+AbstractImageGameObject *AbstractImageGameObject::SetScaleY(float scaleY) {
+	mScale.y = scaleY;
+	return this;
+}
+
+glm::vec2 AbstractImageGameObject::GetScale() const {
+	return mScale;
+}
+
+float AbstractImageGameObject::GetScaleX() const {
+	return mScale.x;
+}
+
+float AbstractImageGameObject::GetScaleY() const {
+	return mScale.y;
 }

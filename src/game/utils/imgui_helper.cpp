@@ -51,6 +51,10 @@ void ImGuiHelper::ImGuiDebugMenu() {
 	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
 	ImGui::Text("Active scene: %s", Game::GetInstance().GetActiveScene()->GetName().c_str());
 
+    bool disablePostProcessing = Game::GetInstance().IsPostProcessingDisabled();
+    ImGui::Checkbox("Disable post processing", &disablePostProcessing);
+    Game::GetInstance().SetPostProcessingDisabled(disablePostProcessing);
+
 	ImGui::Checkbox("Show scene debug", &mShowSceneDebugMenu);
 
 	ImGui::End();
@@ -165,16 +169,14 @@ void ImGuiHelper::ImGuiDebugMenu() {
 			ImGui::InputFloat("##Rot", &rot, 1.0f, 1.0f, "%.2f", ImGuiInputTextFlags_CharsDecimal);
 			gameObject->SetRotation(rot);
 
-			ImGui::Text("Scale:");
-			glm::vec2 scale = gameObject->GetScale();
-			ImGui::InputFloat("X##Scale", &scale.x, 0.1f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
-			ImGui::InputFloat("Y##Scale", &scale.y, 0.1f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
-			gameObject->SetScale(scale);
-
             if (dynamic_cast<AbstractImageGameObject*>(gameObject)) {
                 AbstractImageGameObject *imageGameObject = dynamic_cast<AbstractImageGameObject*>(gameObject);
 
-                ImGui::Text("Image path:");
+                glm::vec2 size = imageGameObject->GetScale();
+                ImGui::Text("Size:");
+                ImGui::InputFloat("Width##Size", &size.x, 1.0f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
+                ImGui::InputFloat("Height##Size", &size.y, 1.0f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
+                imageGameObject->SetScale(size);
 
                 glm::vec3 color = imageGameObject->GetColor();
                 ImGui::ColorEdit3("Color", &color.x);

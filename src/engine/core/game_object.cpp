@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "glm/ext/vector_float3.hpp"
+#include "glm/fwd.hpp"
 #include "glm/trigonometric.hpp"
 
 GameObject::GameObject(std::string name, glm::vec3 pos, glm::vec2 scale)
@@ -157,33 +158,6 @@ GameObject *GameObject::SetZIndex(int zIndex) {
 
 int GameObject::GetZIndex() const {
 	return mZIndex;
-}
-
-GameObject *GameObject::SetScale(glm::vec2 scale) {
-	mScale = scale;
-	return this;
-}
-
-GameObject *GameObject::SetScaleX(float scaleX) {
-	mScale.x = scaleX;
-	return this;
-}
-
-GameObject *GameObject::SetScaleY(float scaleY) {
-	mScale.y = scaleY;
-	return this;
-}
-
-glm::vec2 GameObject::GetScale() const {
-	return mScale;
-}
-
-float GameObject::GetScaleX() const {
-	return mScale.x;
-}
-
-float GameObject::GetScaleY() const {
-	return mScale.y;
 }
 
 GameObject *GameObject::GetParent() const {

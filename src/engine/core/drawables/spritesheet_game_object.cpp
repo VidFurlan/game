@@ -28,7 +28,7 @@ void SpriteSheetGameObject::Render() {
 		return;
 	}
 
-    AbstractImageGameObject::Render();
+	AbstractImageGameObject::Render();
 
 	if (mFramesResolution.first == 0 || mFramesResolution.second == 0) {
 		return;
@@ -38,32 +38,20 @@ void SpriteSheetGameObject::Render() {
 		mFrameIndex = 0;
 	}
 
-	switch (mRenderType) {
-		case FIT: {
-            float maxFactor = std::max(mTexture.Width / (mScale.x * mFramesResolution.second), mTexture.Height / (mScale.y * mFramesResolution.first));
-			Game::GetInstance().GetSpriteRenderer()->DrawSpriteSheet(mTexture, glm::vec2(mCameraOffset.x - mScale.x / 2 * GAME_SCALE_FACTOR, mCameraOffset.y - mScale.y / 2 * GAME_SCALE_FACTOR),
-																	 mFrameIndex, mFramesResolution.first, mFramesResolution.second,
-																	 glm::vec2(mTexture.Width / (maxFactor * mFramesResolution.second) * GAME_SCALE_FACTOR, mTexture.Height / (maxFactor * mFramesResolution.first) * GAME_SCALE_FACTOR),
-																	 GetGlobalRotation(), mColor);
-		} break;
-
-		case STRETCH_TO_FIT: {
-			Game::GetInstance().GetSpriteRenderer()->DrawSpriteSheet(mTexture, glm::vec2(mCameraOffset.x - mScale.x / 2 * GAME_SCALE_FACTOR, mCameraOffset.y - mScale.y / 2 * GAME_SCALE_FACTOR),
-																	 mFrameIndex, mFramesResolution.first, mFramesResolution.second,
-																	 glm::vec2(mScale.x * GAME_SCALE_FACTOR, mScale.y * GAME_SCALE_FACTOR),
-																	 GetGlobalRotation(), mColor);
-		} break;
-	}
+	Game::GetInstance().GetSpriteRenderer()->DrawSpriteSheet(mTexture, glm::vec2(mCameraOffset.x - mScale.x / 2 * GAME_SCALE_FACTOR, mCameraOffset.y - mScale.y / 2 * GAME_SCALE_FACTOR),
+															 mFrameIndex, mFramesResolution.first, mFramesResolution.second,
+															 glm::vec2(mScale.x * GAME_SCALE_FACTOR, mScale.y * GAME_SCALE_FACTOR),
+															 GetGlobalRotation(), mColor);
 }
 
 SpriteSheetGameObject *SpriteSheetGameObject::SetSpriteSheetFrame(int frame) {
 	mFrameIndex = frame;
-    return this;
+	return this;
 }
 
 SpriteSheetGameObject *SpriteSheetGameObject::SetSpriteSheetFrame(glm::vec2 frame) {
 	mFrameIndex = frame.x * mFramesResolution.first + frame.y;
-    return this;
+	return this;
 }
 
 SpriteSheetGameObject *SpriteSheetGameObject::AddFrameSequence(std::string name, std::vector<glm::vec2> frames) {
@@ -80,5 +68,5 @@ glm::vec2 SpriteSheetGameObject::GetFrameFromSequence(std::string name) const {
 }
 
 unsigned int SpriteSheetGameObject::GetFrameIndex() const {
-    return mFrameIndex;
+	return mFrameIndex;
 }

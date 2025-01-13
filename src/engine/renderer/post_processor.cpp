@@ -106,3 +106,19 @@ void PostProcessor::InitRenderData() {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 }
+
+void PostProcessor::Resize(int newWidth, int newHeight) {
+    this->mWidth = newWidth;
+    this->mHeight = newHeight;
+
+    glBindFramebuffer(GL_FRAMEBUFFER, this->MSFBO);
+    glBindRenderbuffer(GL_RENDERBUFFER, this->RBO);
+    glRenderbufferStorageMultisample(GL_RENDERBUFFER, 4, GL_RGB, newWidth, newHeight);
+
+    glBindFramebuffer(GL_FRAMEBUFFER, this->FBO);
+    this->mTexture.Generate(newWidth, newHeight, nullptr);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, this->mTexture.ID, 0);
+
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+

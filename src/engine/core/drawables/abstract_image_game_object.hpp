@@ -7,11 +7,6 @@
 #include "glm/ext/vector_float3.hpp"
 #include "texture.hpp"
 
-enum SpriteRenderType {
-	FIT,
-	STRETCH_TO_FIT
-};
-
 class AbstractImageGameObject : public GameObject {
    public:
 	AbstractImageGameObject(std::string name, std::string textureName, glm::vec3 pos = glm::vec3(), glm::vec2 scale = glm::vec2(10.0f), glm::vec3 color = glm::vec3(1.0f));
@@ -26,12 +21,18 @@ class AbstractImageGameObject : public GameObject {
 
 	virtual void Render() override;
 
-	SpriteRenderType GetRenderType();
 	glm::vec3 GetColor();
 	Texture &GetTexture();
     glm::vec2 GetAnchor();
 
-	AbstractImageGameObject *SetRenderType(SpriteRenderType renderType);
+	AbstractImageGameObject *SetScale(glm::vec2 scale);
+	AbstractImageGameObject *SetScaleX(float scaleX);
+	AbstractImageGameObject *SetScaleY(float scaleY);
+
+	glm::vec2 GetScale() const;
+	float GetScaleX() const;
+	float GetScaleY() const;
+
 	AbstractImageGameObject *SetColor(glm::vec3 color);
 	AbstractImageGameObject *SetTexture(Texture &texture);
     AbstractImageGameObject *SetAnchor(glm::vec2 anchor);
@@ -41,7 +42,6 @@ class AbstractImageGameObject : public GameObject {
 
 	Texture &mTexture;
 	glm::vec3 mColor;
-	SpriteRenderType mRenderType = FIT;
 
     glm::vec2 mAnchor = glm::vec2(0.5f);
 };
