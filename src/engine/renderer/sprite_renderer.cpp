@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include "game.hpp"
 #include "game_window.hpp"
 #include "glm/ext/matrix_transform.hpp"
 #include "glm/fwd.hpp"

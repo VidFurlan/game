@@ -33,8 +33,8 @@ void AbstractImageGameObject::Render() {
     GameObject::Render();
 
     mCameraOffset = GetGlobalPosition() * GAME_SCALE_FACTOR - Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetPosition() * GAME_SCALE_FACTOR;
-    mCameraOffset.x -= mAnchor.x * mScale.x * GAME_SCALE_FACTOR + mScale.x * GAME_SCALE_FACTOR / 2 * (0.5f - mAnchor.x); 
-    mCameraOffset.y -= mAnchor.y * mScale.y * GAME_SCALE_FACTOR + mScale.y * GAME_SCALE_FACTOR / 2 * (0.5f - mAnchor.y);
+    mCameraOffset.x -= mAnchor.x * mScale.x * GAME_SCALE_FACTOR + mScale.x * GAME_SCALE_FACTOR / 2 * (0.5f - mAnchor.x) - Game::GetInstance().GetWindow()->GetWidth() / (float)2;
+    mCameraOffset.y -= mAnchor.y * mScale.y * GAME_SCALE_FACTOR + mScale.y * GAME_SCALE_FACTOR / 2 * (0.5f - mAnchor.y) - Game::GetInstance().GetWindow()->GetHeight() / (float)2;
     mCameraOffset.z = 0.0f;
 }
 

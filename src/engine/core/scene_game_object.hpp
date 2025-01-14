@@ -5,6 +5,7 @@
 
 #include "camera_game_object.hpp"
 #include "game_object.hpp"
+#include "glm/fwd.hpp"
 #include "resource_manager.hpp"
 #include "sprite_renderer.hpp"
 
@@ -24,10 +25,14 @@ class SceneGameObject : public GameObject {
 
     CameraGameObject *GetActiveCamera() const;
 
+    glm::vec3 GetBackgroundColor() const;
+
    protected:
     std::map<std::string, CameraGameObject *> mCameras;
     CameraGameObject *pActiveCamera = nullptr;
 
 	SpriteRenderer *pSpriteRenderer = nullptr;
     ResourceManager *pResourceManager = nullptr;
+
+    glm::vec3 mBackgroundColor = glm::vec3(0.0f, 0.0f, 0.0f);
 };

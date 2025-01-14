@@ -50,31 +50,40 @@ void Game::Run() {
 
 		Update(deltaTime);
 
-        // Render ImGui
+        if (mWindow->GetWidth() == 0 || mWindow->GetHeight() == 0) {
+            continue;
+        }
+
+		// Render ImGui
 		ImGuiHelper::NewFrame();
 		ImGuiHelper::ImGuiDebugMenu();
 
-        // Rendering
-        // Color for edges of the screen
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		// Rendering
+		if (!mPostProcessingDisabled) {
+			mPostProcessor->BeginRender();
+		}
+
+		// Color for black bars
+		//glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+		//glClear(GL_COLOR_BUFFER_BIT);
+
+		// Background color
+		glm::vec3 bgColor = GetActiveScene()->GetBackgroundColor();
+		glClearColor(bgColor.x, bgColor.y, bgColor.z, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-        if (!mPostProcessingDisabled) {
-            mPostProcessor->BeginRender();
-        }
-
-        // Background color
-		glClearColor(0.05f, 0.65f, 1.0f, 1.0f);
-		glEnable(GL_SCISSOR_TEST);
-		glClear(GL_COLOR_BUFFER_BIT);
-		glDisable(GL_SCISSOR_TEST);
+		//glm::vec3 bgColor = GetActiveScene()->GetBackgroundColor();
+		//glClearColor(bgColor.x, bgColor.y, bgColor.z, 1.0f);
+		//glEnable(GL_SCISSOR_TEST);
+		//glClear(GL_COLOR_BUFFER_BIT);
+		//glDisable(GL_SCISSOR_TEST);
 
 		Render();
 
-        if (!mPostProcessingDisabled) {
-            mPostProcessor->EndRender();
-            mPostProcessor->Render(glfwGetTime());
-        }
+		if (!mPostProcessingDisabled) {
+			mPostProcessor->EndRender();
+			mPostProcessor->Render(glfwGetTime());
+		}
 
 		ImGuiHelper::Render();
 
@@ -133,11 +142,11 @@ void Game::LoadScene(const std::string &sceneName) {
 }
 
 void Game::SetPostProcessingDisabled(bool disabled) {
-    mPostProcessingDisabled = disabled;
+	mPostProcessingDisabled = disabled;
 }
 
 bool Game::IsPostProcessingDisabled() const {
-    return mPostProcessingDisabled;
+	return mPostProcessingDisabled;
 }
 
 SceneGameObject *Game::GetActiveScene() const {

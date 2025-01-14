@@ -121,4 +121,3 @@ void PostProcessor::Resize(int newWidth, int newHeight) {
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
-

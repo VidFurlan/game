@@ -8,6 +8,7 @@
 #include <type_traits>
 
 #include "abstract_image_game_object.hpp"
+#include "camera_game_object.hpp"
 #include "game.hpp"
 #include "scene_game_object.hpp"
 
@@ -20,6 +21,8 @@ void ImGuiHelper::Init() {
 	ImGuiIO &io = ImGui::GetIO();
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+    //io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
 	ImGui_ImplGlfw_InitForOpenGL(Game::GetInstance().GetWindow()->GetWindow(), true);
 	ImGui_ImplOpenGL3_Init();
@@ -36,6 +39,13 @@ void ImGuiHelper::NewFrame() {
 void ImGuiHelper::Render() {
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+	//ImGuiIO &io = ImGui::GetIO();
+    //
+	//if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
+	//	ImGui::UpdatePlatformWindows();
+	//	ImGui::RenderPlatformWindowsDefault();
+	//}
 }
 
 void ImGuiHelper::Shutdown() {
@@ -51,9 +61,9 @@ void ImGuiHelper::ImGuiDebugMenu() {
 	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
 	ImGui::Text("Active scene: %s", Game::GetInstance().GetActiveScene()->GetName().c_str());
 
-    bool disablePostProcessing = Game::GetInstance().IsPostProcessingDisabled();
-    ImGui::Checkbox("Disable post processing", &disablePostProcessing);
-    Game::GetInstance().SetPostProcessingDisabled(disablePostProcessing);
+	bool disablePostProcessing = Game::GetInstance().IsPostProcessingDisabled();
+	ImGui::Checkbox("Disable post processing", &disablePostProcessing);
+	Game::GetInstance().SetPostProcessingDisabled(disablePostProcessing);
 
 	ImGui::Checkbox("Show scene debug", &mShowSceneDebugMenu);
 
@@ -141,7 +151,7 @@ void ImGuiHelper::ImGuiDebugMenu() {
 			}
 			ImGui::Text("Type: ");
 			ImGui::SameLine();
-            SnapToRight(typeid(*gameObject).name());
+			SnapToRight(typeid(*gameObject).name());
 
 			ImGui::Separator();
 
@@ -169,24 +179,37 @@ void ImGuiHelper::ImGuiDebugMenu() {
 			ImGui::InputFloat("##Rot", &rot, 1.0f, 1.0f, "%.2f", ImGuiInputTextFlags_CharsDecimal);
 			gameObject->SetRotation(rot);
 
-            if (dynamic_cast<AbstractImageGameObject*>(gameObject)) {
-                AbstractImageGameObject *imageGameObject = dynamic_cast<AbstractImageGameObject*>(gameObject);
+			if (dynamic_cast<AbstractImageGameObject *>(gameObject)) {
+				AbstractImageGameObject *imageGameObject = dynamic_cast<AbstractImageGameObject *>(gameObject);
 
-                glm::vec2 size = imageGameObject->GetScale();
-                ImGui::Text("Size:");
-                ImGui::InputFloat("Width##Size", &size.x, 1.0f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
-                ImGui::InputFloat("Height##Size", &size.y, 1.0f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
-                imageGameObject->SetScale(size);
+				glm::vec2 size = imageGameObject->GetScale();
+				ImGui::Text("Size:");
+				ImGui::InputFloat("Width##Size", &size.x, 1.0f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
+				ImGui::InputFloat("Height##Size", &size.y, 1.0f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
+				imageGameObject->SetScale(size);
 
-                glm::vec3 color = imageGameObject->GetColor();
-                ImGui::ColorEdit3("Color", &color.x);
-                imageGameObject->SetColor(color);
+				glm::vec3 color = imageGameObject->GetColor();
+				ImGui::ColorEdit3("Color", &color.x);
+				imageGameObject->SetColor(color);
 
-                ImGui::Text("Anchor:");
-                glm::vec2 anchor = imageGameObject->GetAnchor();
-                ImGui::InputFloat("X##Anchor", &anchor.x, 0.1f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
-                ImGui::InputFloat("Y##Anchor", &anchor.y, 0.1f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
-                imageGameObject->SetAnchor(anchor);
+				ImGui::Text("Anchor:");
+				glm::vec2 anchor = imageGameObject->GetAnchor();
+				ImGui::InputFloat("X##Anchor", &anchor.x, 0.1f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
+				ImGui::InputFloat("Y##Anchor", &anchor.y, 0.1f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
+				imageGameObject->SetAnchor(anchor);
+			}
+
+            if (dynamic_cast<CameraGameObject *>(gameObject)) {
+                CameraGameObject *cameraGameObject = dynamic_cast<CameraGameObject *>(gameObject);
+
+                float zoom = cameraGameObject->GetZoom();
+                ImGui::Text("Zoom:");
+                ImGui::InputFloat("##Zoom", &zoom, 0.1f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
+                cameraGameObject->SetZoom(zoom);
+
+                if (ImGui::Button("Use Camera")) {
+                    cameraGameObject->Use();
+                }
             }
 		}
 
