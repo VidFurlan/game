@@ -6,6 +6,7 @@
 #include "game.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include "glm/ext/vector_float3.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 SpriteSheetGameObject::SpriteSheetGameObject(std::string name, std::string textureName, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale, glm::vec3 color)
 	: AbstractImageGameObject(name, textureName, pos, scale, color), mFramesResolution(framesResolution) {
@@ -38,9 +39,9 @@ void SpriteSheetGameObject::Render() {
 		mFrameIndex = 0;
 	}
 
-	Game::GetInstance().GetSpriteRenderer()->DrawSpriteSheet(mTexture, glm::vec2(mCameraOffset.x - mScale.x / 2 * GAME_SCALE_FACTOR, mCameraOffset.y - mScale.y / 2 * GAME_SCALE_FACTOR),
+	Game::GetInstance().GetSpriteRenderer()->DrawSpriteSheet(mTexture, glm::make_vec2(mRenderPosition) - mRenderSize / 2.0f * GAME_SCALE_FACTOR,
 															 mFrameIndex, mFramesResolution.first, mFramesResolution.second,
-															 glm::vec2(mScale.x * GAME_SCALE_FACTOR, mScale.y * GAME_SCALE_FACTOR),
+															 mRenderSize * GAME_SCALE_FACTOR,
 															 GetGlobalRotation(), mColor);
 }
 

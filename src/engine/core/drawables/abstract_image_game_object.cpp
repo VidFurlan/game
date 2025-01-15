@@ -33,10 +33,18 @@ void AbstractImageGameObject::Render() {
 
 	GameObject::Render();
 
-	mCameraOffset = GetGlobalPosition() * GAME_SCALE_FACTOR - Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetPosition() * GAME_SCALE_FACTOR;
-	//mCameraOffset.x += Game::GetInstance().GetWindow()->GetWidth() / 2.0f;
-	//mCameraOffset.y += Game::GetInstance().GetWindow()->GetHeight() / 2.0f;
-	mCameraOffset.z = 0.0f;
+	mRenderPosition = GetGlobalPosition() * GAME_SCALE_FACTOR - Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetPosition() * GAME_SCALE_FACTOR;
+	mRenderPosition.z = 0.0f;
+
+    float zoom = Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetZoom();
+    mRenderSize = mScale * zoom;
+
+    // Zoom origial position
+    mRenderPosition *= zoom;
+    // Set camera offset
+	mRenderPosition.x += Game::GetInstance().GetWindow()->GetWidth() / 2.0f;
+	mRenderPosition.y += Game::GetInstance().GetWindow()->GetHeight() / 2.0f;
+
 }
 
 glm::vec3 AbstractImageGameObject::GetColor() {

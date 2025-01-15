@@ -118,6 +118,7 @@ void DemoScene::Init() {
 	point3->SetSpriteSheetFrame({7, 0});
 	SpriteSheetGameObject *centerPoint = static_cast<SpriteSheetGameObject *>(this->AddChild(new SpriteSheetGameObject("point_3", "background", {8, 8}, glm::vec3(0.0f), glm::vec2(5.0f, 5.0f))));
 	centerPoint->SetSpriteSheetFrame({7, 0});
+    imageDemos->AddChild(centerPoint);
 }
 
 void DemoScene::Update(float deltaTime) {

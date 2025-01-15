@@ -4,6 +4,7 @@
 #include "game.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include "glm/ext/vector_float3.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 void SpriteGameObject::Render() {
 	if (!mVisible) {
@@ -12,7 +13,7 @@ void SpriteGameObject::Render() {
 
 	AbstractImageGameObject::Render();
 
-	Game::GetInstance().GetSpriteRenderer()->DrawSprite(mTexture, glm::vec2(mCameraOffset.x, mCameraOffset.y),
-														mScale * GAME_SCALE_FACTOR,
+	Game::GetInstance().GetSpriteRenderer()->DrawSprite(mTexture, glm::make_vec2(mRenderPosition) - mRenderSize / 2.0f * GAME_SCALE_FACTOR,
+														mRenderSize * GAME_SCALE_FACTOR,
 														GetGlobalRotation(), mColor);
 }
