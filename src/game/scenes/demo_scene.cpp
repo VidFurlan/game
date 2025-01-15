@@ -96,10 +96,10 @@ void DemoScene::Init() {
 	imageDemos->AddChild(new SpriteSheetGameObject("character_2", "character_red", {12, 4}, glm::vec3(25.0f, 75.0f, 0.0f), glm::vec2(10.0f)));
 	imageDemos->AddChild(new SpriteSheetGameObject("character_3", "character_blue", {12, 4}, glm::vec3(35.0f, 75.0f, 0.0f), glm::vec2(10.0f)));
 
+	/*
 	GameObject *background = this->AddChild(new GameObject("background"))
 								 ->SetPosition(glm::vec3(45.0f, 5.0f, 0.0f))
 								 ->SetZIndex(1001);
-	/*
 	for (int i = 0; i < 8; i++) {
 		GameObject *row = background->AddChild(new GameObject("row_" + std::to_string(i)));
 		for (int j = 0; j < 8; j++) {
@@ -108,6 +108,7 @@ void DemoScene::Init() {
 			if (cracked) static_cast<SpriteSheetGameObject *>(row->GetChild("background_" + std::to_string(i) + "_" + std::to_string(j)))->SetSpriteSheetFrame({1, 0});
 		}
 	}
+	*/
 
 	SpriteSheetGameObject *point1 = static_cast<SpriteSheetGameObject *>(this->AddChild(new SpriteSheetGameObject("point_1", "background", {8, 8}, glm::vec3(50.0f, 50.0f, 0.0f), glm::vec2(5.0f, 5.0f))));
 	point1->SetSpriteSheetFrame({7, 0});
@@ -115,7 +116,6 @@ void DemoScene::Init() {
 	point2->SetSpriteSheetFrame({7, 0});
 	SpriteSheetGameObject *point3 = static_cast<SpriteSheetGameObject *>(point2->AddChild(new SpriteSheetGameObject("point_3", "background", {8, 8}, glm::vec3(15.0f, 0.0f, 45.0f), glm::vec2(5.0f, 5.0f))));
 	point3->SetSpriteSheetFrame({7, 0});
-	*/
 	SpriteSheetGameObject *centerPoint = static_cast<SpriteSheetGameObject *>(this->AddChild(new SpriteSheetGameObject("point_3", "background", {8, 8}, glm::vec3(0.0f), glm::vec2(5.0f, 5.0f))));
 	centerPoint->SetSpriteSheetFrame({7, 0});
 }

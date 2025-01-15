@@ -1,4 +1,5 @@
 #include "abstract_image_game_object.hpp"
+
 #include <filesystem>
 
 #include "game.hpp"
@@ -26,16 +27,16 @@ AbstractImageGameObject::~AbstractImageGameObject() {
 }
 
 void AbstractImageGameObject::Render() {
-    if (!mVisible) {
-        return;
-    }
+	if (!mVisible) {
+		return;
+	}
 
-    GameObject::Render();
+	GameObject::Render();
 
-    mCameraOffset = GetGlobalPosition() * GAME_SCALE_FACTOR - Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetPosition() * GAME_SCALE_FACTOR;
-    mCameraOffset.x -= mAnchor.x * mScale.x * GAME_SCALE_FACTOR + mScale.x * GAME_SCALE_FACTOR / 2 * (0.5f - mAnchor.x) - Game::GetInstance().GetWindow()->GetWidth() / (float)2;
-    mCameraOffset.y -= mAnchor.y * mScale.y * GAME_SCALE_FACTOR + mScale.y * GAME_SCALE_FACTOR / 2 * (0.5f - mAnchor.y) - Game::GetInstance().GetWindow()->GetHeight() / (float)2;
-    mCameraOffset.z = 0.0f;
+	mCameraOffset = GetGlobalPosition() * GAME_SCALE_FACTOR - Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetPosition() * GAME_SCALE_FACTOR;
+	//mCameraOffset.x += Game::GetInstance().GetWindow()->GetWidth() / 2.0f;
+	//mCameraOffset.y += Game::GetInstance().GetWindow()->GetHeight() / 2.0f;
+	mCameraOffset.z = 0.0f;
 }
 
 glm::vec3 AbstractImageGameObject::GetColor() {
@@ -46,10 +47,6 @@ Texture &AbstractImageGameObject::GetTexture() {
 	return mTexture;
 }
 
-glm::vec2 AbstractImageGameObject::GetAnchor() {
-    return mAnchor;
-}
-
 AbstractImageGameObject *AbstractImageGameObject::SetColor(glm::vec3 color) {
 	mColor = color;
 	return this;
@@ -58,11 +55,6 @@ AbstractImageGameObject *AbstractImageGameObject::SetColor(glm::vec3 color) {
 AbstractImageGameObject *AbstractImageGameObject::SetTexture(Texture &texture) {
 	mTexture = texture;
 	return this;
-}
-
-AbstractImageGameObject *AbstractImageGameObject::SetAnchor(glm::vec2 anchor) {
-    mAnchor = glm::clamp(anchor, glm::vec2(0.0f), glm::vec2(1.0f));
-    return this;
 }
 
 AbstractImageGameObject *AbstractImageGameObject::SetScale(glm::vec2 scale) {

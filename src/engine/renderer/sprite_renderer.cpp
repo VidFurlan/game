@@ -64,6 +64,15 @@ void SpriteRenderer::DrawSprite(Texture &texture, glm::vec2 position,
 								glm::vec2 size, float rotate, glm::vec3 color) {
 	this->shader.Use();
 
+    float zoom = Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetZoom();
+    size *= zoom;
+
+    // Zoom origial position
+    position *= zoom;
+    // Set camera offset
+	position.x += Game::GetInstance().GetWindow()->GetWidth() / 2.0f;
+	position.y += Game::GetInstance().GetWindow()->GetHeight() / 2.0f;
+
 	glm::mat4 model = glm::mat4(1.0f);
 	model = glm::translate(model, glm::vec3(position, 0.0f));
 	model = glm::translate(model, glm::vec3(0.5f * size.x, 0.5f * size.y, 0.0f));

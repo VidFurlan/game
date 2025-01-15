@@ -23,7 +23,6 @@ class AbstractImageGameObject : public GameObject {
 
 	glm::vec3 GetColor();
 	Texture &GetTexture();
-    glm::vec2 GetAnchor();
 
 	AbstractImageGameObject *SetScale(glm::vec2 scale);
 	AbstractImageGameObject *SetScaleX(float scaleX);
@@ -35,13 +34,10 @@ class AbstractImageGameObject : public GameObject {
 
 	AbstractImageGameObject *SetColor(glm::vec3 color);
 	AbstractImageGameObject *SetTexture(Texture &texture);
-    AbstractImageGameObject *SetAnchor(glm::vec2 anchor);
 
    protected:
     glm::vec3 mCameraOffset = glm::vec3(0.0f);
 
 	Texture &mTexture;
 	glm::vec3 mColor;
-
-    glm::vec2 mAnchor = glm::vec2(0.5f);
 };

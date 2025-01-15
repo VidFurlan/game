@@ -191,12 +191,6 @@ void ImGuiHelper::ImGuiDebugMenu() {
 				glm::vec3 color = imageGameObject->GetColor();
 				ImGui::ColorEdit3("Color", &color.x);
 				imageGameObject->SetColor(color);
-
-				ImGui::Text("Anchor:");
-				glm::vec2 anchor = imageGameObject->GetAnchor();
-				ImGui::InputFloat("X##Anchor", &anchor.x, 0.1f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
-				ImGui::InputFloat("Y##Anchor", &anchor.y, 0.1f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
-				imageGameObject->SetAnchor(anchor);
 			}
 
             if (dynamic_cast<CameraGameObject *>(gameObject)) {
