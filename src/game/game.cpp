@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include "debug_shape_renderer.hpp"
 #include "glm/ext/matrix_clip_space.hpp"
 #include "glm/fwd.hpp"
 #include "imgui_helper.hpp"
@@ -53,6 +54,7 @@ void Game::Run() {
         if (mWindow->GetWidth() == 0 || mWindow->GetHeight() == 0) {
             continue;
         }
+
 
 		// Render ImGui
 		ImGuiHelper::NewFrame();

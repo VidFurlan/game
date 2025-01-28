@@ -2,6 +2,7 @@
 
 #include "shader.hpp"
 #include "texture.hpp"
+
 class PostProcessor {
    public:
 	Shader mPostProcessingShader;
@@ -12,7 +13,7 @@ class PostProcessor {
 	void BeginRender();
 	void EndRender();
 	void Render(float time);
-    void Resize(int newWidth, int newHeight);
+	void Resize(int newWidth, int newHeight);
 
    private:
 	unsigned int MSFBO, FBO;
