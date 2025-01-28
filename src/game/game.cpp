@@ -2,10 +2,12 @@
 
 #include <iostream>
 
-#include "debug_shape_renderer.hpp"
+#include "debug_renderer.hpp"
 #include "glm/ext/matrix_clip_space.hpp"
+#include "glm/ext/vector_float2.hpp"
 #include "glm/fwd.hpp"
 #include "imgui_helper.hpp"
+#include "polygon2d.hpp"
 #include "resource_manager.hpp"
 #include "scene_game_object.hpp"
 #include "shader.hpp"
