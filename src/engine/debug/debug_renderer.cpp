@@ -6,6 +6,9 @@
 #include "glm/trigonometric.hpp"
 
 void DebugRenderer::drawLineGlobalPos(glm::vec2 p1, glm::vec2 p2, const glm::vec3& color) {
+    p1 *= GameObject::GAME_SCALE_FACTOR;
+    p2 *= GameObject::GAME_SCALE_FACTOR;
+
     p1 -= glm::make_vec2(Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetPosition() * GameObject::GAME_SCALE_FACTOR);
     p2 -= glm::make_vec2(Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetPosition() * GameObject::GAME_SCALE_FACTOR);
 

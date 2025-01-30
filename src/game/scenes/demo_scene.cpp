@@ -1,4 +1,5 @@
 #include "demo_scene.hpp"
+
 #include <iostream>
 
 #include "camera_game_object.hpp"
@@ -6,10 +7,10 @@
 #include "game_object.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include "glm/ext/vector_float3.hpp"
+#include "physics/physics_game_object.hpp"
+#include "shapes/polygon2d.hpp"
 #include "sprite_game_object.hpp"
 #include "spritesheet_game_object.hpp"
-
-#include "shapes/polygon2d.hpp"
 
 DemoScene::DemoScene()
 	: SceneGameObject("Demo") {
@@ -59,7 +60,6 @@ void DemoScene::Init() {
 	this->AddGameCamera(new CameraGameObject("main_camera", this))
 		->SetActiveCamera("main_camera");
 	this->AddGameCamera(new CameraGameObject("extra_camera", this));
-    
 
 	GameObject *imageDemos = this->AddChild(new GameObject("image_demos"))
 								 ->SetPosition(glm::vec3(30.0f, 30.0f, -90.0f));
@@ -95,7 +95,7 @@ void DemoScene::Init() {
 	static_cast<SpriteGameObject *>(fitDemo->AddChild(new SpriteGameObject("clouds_2_4", "clouds_2_4")))
 		->SetScale(glm::vec2(40.0f));
 
-	imageDemos->AddChild(new SpriteSheetGameObject("character_1", "character", {12, 4}, glm::vec3(15.0f, 75.0f, 0.0f), glm::vec2(10.0f)));
+	this->AddChild(new SpriteSheetGameObject("character_1", "character", {12, 4}, glm::vec3(0.0f), glm::vec2(10.0f)));
 	imageDemos->AddChild(new SpriteSheetGameObject("character_2", "character_red", {12, 4}, glm::vec3(25.0f, 75.0f, 0.0f), glm::vec2(10.0f)));
 	imageDemos->AddChild(new SpriteSheetGameObject("character_3", "character_blue", {12, 4}, glm::vec3(35.0f, 75.0f, 0.0f), glm::vec2(10.0f)));
 
@@ -121,7 +121,11 @@ void DemoScene::Init() {
 	point3->SetSpriteSheetFrame({7, 0});
 	SpriteSheetGameObject *centerPoint = static_cast<SpriteSheetGameObject *>(this->AddChild(new SpriteSheetGameObject("point_3", "background", {8, 8}, glm::vec3(0.0f), glm::vec2(5.0f, 5.0f))));
 	centerPoint->SetSpriteSheetFrame({7, 0});
-    imageDemos->AddChild(centerPoint);
+	imageDemos->AddChild(centerPoint);
+
+	PhysicsGameObject *polygon =
+		new PhysicsGameObject("polygon", this->GetChild("character_1"), new Polygon2D({glm::vec2(-10.0f, 0.0f), glm::vec2(-5.0f, 5.0f), glm::vec2(5.0f, 5.0f), glm::vec2(5.0f, -5.0f), glm::vec2(-5.0f, -5.0f)}),
+							  glm::vec3(0.0f), glm::vec2(1.0f));
 }
 
 void DemoScene::Update(float deltaTime) {
@@ -132,7 +136,7 @@ void DemoScene::Update(float deltaTime) {
 	mTime += deltaTime;
 	if (mTime > 0.1f) {
 		mTime = 0.0f;
-		SpriteSheetGameObject *character = static_cast<SpriteSheetGameObject *>(this->GetChild("image_demos")->GetChild("character_1"));
+		SpriteSheetGameObject *character = static_cast<SpriteSheetGameObject *>(this->GetChild("character_1"));
 		character->SetSpriteSheetFrame((character->GetFrameIndex() + 1) % 4 + 4 * 3);
 		character = static_cast<SpriteSheetGameObject *>(this->GetChild("image_demos")->GetChild("character_2"));
 		character->SetSpriteSheetFrame((character->GetFrameIndex() + 1) % 4 + 4 * 4);

@@ -44,7 +44,6 @@ void AbstractImageGameObject::Render() {
     // Set camera offset
 	mRenderPosition.x += Game::GetInstance().GetWindow()->GetWidth() / 2.0f;
 	mRenderPosition.y += Game::GetInstance().GetWindow()->GetHeight() / 2.0f;
-
 }
 
 glm::vec3 AbstractImageGameObject::GetColor() {

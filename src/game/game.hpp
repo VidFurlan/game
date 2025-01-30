@@ -35,6 +35,8 @@ class Game : public Singleton {
 
     void SetPostProcessingDisabled(bool disabled);
     bool IsPostProcessingDisabled() const;
+    void SetDebugMode(bool debugMode);
+    bool IsDebugMode() const;
 
 	GameWindow *GetWindow() const;
 	SpriteRenderer *GetSpriteRenderer() const;
@@ -54,6 +56,7 @@ class Game : public Singleton {
     PostProcessor *mPostProcessor = nullptr;
 
     bool mPostProcessingDisabled = false;
+    bool mDebugMode = false;
 
 	std::map<std::string, std::function<SceneGameObject *()>> mSceneFactory;
 	SceneGameObject *mCurrentScene = nullptr;

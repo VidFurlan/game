@@ -153,6 +153,14 @@ bool Game::IsPostProcessingDisabled() const {
 	return mPostProcessingDisabled;
 }
 
+void Game::SetDebugMode(bool debugMode) {
+    mDebugMode = debugMode;
+}
+
+bool Game::IsDebugMode() const {
+    return mDebugMode;
+}
+
 SceneGameObject *Game::GetActiveScene() const {
 	return mCurrentScene;
 }

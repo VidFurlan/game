@@ -65,6 +65,10 @@ void ImGuiHelper::ImGuiDebugMenu() {
 	ImGui::Checkbox("Disable post processing", &disablePostProcessing);
 	Game::GetInstance().SetPostProcessingDisabled(disablePostProcessing);
 
+    bool debugMode = Game::GetInstance().IsDebugMode();
+    ImGui::Checkbox("Debug mode", &debugMode);
+    Game::GetInstance().SetDebugMode(debugMode);
+
 	ImGui::Checkbox("Show scene debug", &mShowSceneDebugMenu);
 
 	ImGui::End();
