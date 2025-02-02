@@ -16,6 +16,7 @@ class SceneGameObject : public GameObject {
 
 	virtual void Init() = 0;
     
+    virtual void Update(float deltaTime) override;
     virtual void Render() override;
 
     SceneGameObject *AddGameCamera(CameraGameObject *camera);

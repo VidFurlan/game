@@ -14,6 +14,12 @@ class PhysicsManager : public Singleton {
 
 	void Update(float deltaTime);
 
+    PhysicsGameObject::CollisionType CheckAgainsAll(PhysicsGameObject *obj1);
+    PhysicsGameObject::CollisionType CheckAgainsAllNoCallback(PhysicsGameObject *obj1);
+
+    void AddGameObject(PhysicsGameObject *gameObject);
+    void RemoveGameObject(PhysicsGameObject *gameObject);
+
    private:
 	PhysicsManager() = default;
 	~PhysicsManager() = default;

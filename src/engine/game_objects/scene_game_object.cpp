@@ -52,6 +52,10 @@ glm::vec3 SceneGameObject::GetBackgroundColor() const {
 	return mBackgroundColor;
 }
 
+void SceneGameObject::Update(float deltaTime) {
+    GameObject::Update(deltaTime);
+}
+
 void SceneGameObject::Render() {
 	if (!mVisible) {
 		return;

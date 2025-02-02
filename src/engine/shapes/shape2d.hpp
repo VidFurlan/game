@@ -16,12 +16,8 @@ class Shape2D {
 	virtual ~Shape2D() = default;
 
 	virtual void DrawDebug(glm::vec2 offset = glm::vec2(0.0f), float rot = 0.0f, glm::vec2 scale = glm::vec2(1.0f)) const = 0;
-	virtual bool CheckOverlap(const glm::vec3 &thisGlobalPos, const Shape2D *other, const glm::vec3 &otherGlobalPos) const = 0;
 	virtual std::vector<glm::vec2> GetEdges(glm::vec3 pos = glm::vec3(0.0f)) const = 0;
-
-	virtual std::vector<glm::vec2> &GetVertices() {
-		return vertices;
-	}
+	virtual std::vector<glm::vec2> GetVertices(glm::vec3 pos = glm::vec3(0.0f)) const = 0;
 
    public:
 	glm::vec3 color;

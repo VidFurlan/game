@@ -1,6 +1,7 @@
 #include "abstract_image_game_object.hpp"
 
 #include <filesystem>
+#include <iostream>
 
 #include "game.hpp"
 #include "glm/detail/qualifier.hpp"

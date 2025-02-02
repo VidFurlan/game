@@ -26,20 +26,6 @@ void Polygon2D::DrawDebug(glm::vec2 offset, float rot, glm::vec2 scale) const {
 	}
 }
 
-bool Polygon2D::CheckOverlap(const glm::vec3 &thisGlobalPos, const Shape2D *other, const glm::vec3 &otherGlobalPos) const {
-	if (other == nullptr) {
-		return false;
-	}
-
-	float distance = glm::distance(thisGlobalPos, otherGlobalPos);
-
-	if (distance < 30.0f) {
-		return true;
-	}
-
-	return false;
-}
-
 std::vector<glm::vec2> Polygon2D::GetEdges(glm::vec3 pos) const {
     float rotRad = glm::radians(pos.z);
     std::vector<glm::vec2> edges;
@@ -56,4 +42,16 @@ std::vector<glm::vec2> Polygon2D::GetEdges(glm::vec3 pos) const {
         edges.push_back(p2 - p1);
     }
     return edges;
+}
+
+std::vector<glm::vec2> Polygon2D::GetVertices(glm::vec3 pos) const {
+    float rotRad = glm::radians(pos.z);
+    std::vector<glm::vec2> vertices;
+    for (int i = 0; i < this->vertices.size(); i++) {
+        glm::vec2 p = this->vertices[i];
+        p = glm::vec2(p.x * cos(rotRad) - p.y * sin(rotRad), p.x * sin(rotRad) + p.y * cos(rotRad));
+        p += glm::make_vec2(pos);
+        vertices.push_back(p);
+    }
+    return vertices;
 }

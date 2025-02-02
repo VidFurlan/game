@@ -111,6 +111,8 @@ void DemoScene::Update(float deltaTime) {
 		return;
 	}
 
+    SceneGameObject::Update(deltaTime);
+
 	mTime += deltaTime;
 	if (mTime > 0.1f) {
 		mTime = 0.0f;
