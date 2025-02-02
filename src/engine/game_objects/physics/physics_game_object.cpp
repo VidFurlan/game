@@ -1,8 +1,8 @@
 #include "physics_game_object.hpp"
 
 #include <iostream>
-
 #include <unordered_set>
+
 #include "game.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include "glm/gtx/hash.hpp"
@@ -23,6 +23,10 @@ void PhysicsGameObject::Update(float deltaTime) {
 	GameObject::Update(deltaTime);
 }
 
+void PhysicsGameObject::OnCollision(PhysicsGameObject *other) {
+    mShape->color = glm::vec3(1.0f, 0.0f, 0.0f);
+}
+
 void PhysicsGameObject::Render() {
 	GameObject::Render();
 	if (mShape != nullptr && Game::GetInstance().IsDebugMode()) {
@@ -31,7 +35,7 @@ void PhysicsGameObject::Render() {
 	}
 }
 
-bool PhysicsGameObject::CheckCollision(PhysicsGameObject *other) {
+bool PhysicsGameObject::CheckCollision(PhysicsGameObject *other) const {
 	if (mShape == nullptr || other->mShape == nullptr) {
 		return false;
 	}
