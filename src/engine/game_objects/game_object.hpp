@@ -10,6 +10,8 @@
 
 class GameObject {
    public:
+	static constexpr float GAME_SCALE_FACTOR = 10.0f;
+
 	GameObject(std::string name, glm::vec3 pos = glm::vec3(0.0f), glm::vec2 scale = glm::vec2(1.0f));
 	GameObject(std::string name, GameObject *parent, glm::vec3 pos = glm::vec3(0.0f), glm::vec2 scale = glm::vec2(1.0f));
 	~GameObject();
@@ -38,7 +40,6 @@ class GameObject {
 	GameObject *SetZIndex(int zIndex);
 	int GetZIndex() const;
 
-
 	GameObject *GetParent() const;
 	GameObject *GetChild(std::string name) const;
 	std::map<std::string, GameObject *> *GetChildren() const;
@@ -58,8 +59,6 @@ class GameObject {
 	GameObject *operator-=(glm::vec3 pos);
 	GameObject *operator*=(glm::vec3 pos);
 	GameObject *operator/=(glm::vec3 pos);
-
-    static constexpr float GAME_SCALE_FACTOR = 10.0f;
 
    protected:
 	const std::string mName;

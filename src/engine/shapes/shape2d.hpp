@@ -15,7 +15,7 @@ class Shape2D {
 		: pos(pos), color(color) {}
 	virtual ~Shape2D() = default;
 
-	virtual void DrawDebug(glm::vec2 offset = glm::vec2(0.0f), float rot = 0.0f) const = 0;
+	virtual void DrawDebug(glm::vec2 offset = glm::vec2(0.0f), float rot = 0.0f, glm::vec2 scale = glm::vec2(1.0f)) const = 0;
 	virtual bool CheckOverlap(const glm::vec3 &thisGlobalPos, const Shape2D *other, const glm::vec3 &otherGlobalPos) const = 0;
 
    protected:
