@@ -95,36 +95,14 @@ void DemoScene::Init() {
 	static_cast<SpriteGameObject *>(fitDemo->AddChild(new SpriteGameObject("clouds_2_4", "clouds_2_4")))
 		->SetScale(glm::vec2(40.0f));
 
-	this->AddChild(new SpriteSheetGameObject("character_1", "character", {12, 4}, glm::vec3(0.0f), glm::vec2(10.0f)));
-	imageDemos->AddChild(new SpriteSheetGameObject("character_2", "character_red", {12, 4}, glm::vec3(25.0f, 75.0f, 0.0f), glm::vec2(10.0f)));
-	imageDemos->AddChild(new SpriteSheetGameObject("character_3", "character_blue", {12, 4}, glm::vec3(35.0f, 75.0f, 0.0f), glm::vec2(10.0f)));
-
-	/*
-	GameObject *background = this->AddChild(new GameObject("background"))
-								 ->SetPosition(glm::vec3(45.0f, 5.0f, 0.0f))
-								 ->SetZIndex(1001);
-	for (int i = 0; i < 8; i++) {
-		GameObject *row = background->AddChild(new GameObject("row_" + std::to_string(i)));
-		for (int j = 0; j < 8; j++) {
-			row->AddChild(new SpriteSheetGameObject("background_" + std::to_string(i) + "_" + std::to_string(j), "background", {8, 8}, glm::vec3(j * 5.0f, i * 5.0f, 0.0f), glm::vec2(5.0f, 5.0f)));
-			bool cracked = rand() % 6 == 0;
-			if (cracked) static_cast<SpriteSheetGameObject *>(row->GetChild("background_" + std::to_string(i) + "_" + std::to_string(j)))->SetSpriteSheetFrame({1, 0});
-		}
-	}
-	*/
-
-	SpriteSheetGameObject *point1 = static_cast<SpriteSheetGameObject *>(this->AddChild(new SpriteSheetGameObject("point_1", "background", {8, 8}, glm::vec3(50.0f, 50.0f, 0.0f), glm::vec2(5.0f, 5.0f))));
-	point1->SetSpriteSheetFrame({7, 0});
-	SpriteSheetGameObject *point2 = static_cast<SpriteSheetGameObject *>(point1->AddChild(new SpriteSheetGameObject("point_2", "background", {8, 8}, glm::vec3(15.0f, 0.0f, 65.0f), glm::vec2(5.0f, 5.0f))));
-	point2->SetSpriteSheetFrame({7, 0});
-	SpriteSheetGameObject *point3 = static_cast<SpriteSheetGameObject *>(point2->AddChild(new SpriteSheetGameObject("point_3", "background", {8, 8}, glm::vec3(15.0f, 0.0f, 45.0f), glm::vec2(5.0f, 5.0f))));
-	point3->SetSpriteSheetFrame({7, 0});
-	SpriteSheetGameObject *centerPoint = static_cast<SpriteSheetGameObject *>(this->AddChild(new SpriteSheetGameObject("point_3", "background", {8, 8}, glm::vec3(0.0f), glm::vec2(5.0f, 5.0f))));
-	centerPoint->SetSpriteSheetFrame({7, 0});
-	imageDemos->AddChild(centerPoint);
-
-	PhysicsGameObject *polygon =
+	this->AddChild(new SpriteSheetGameObject("character_1", "character_red", {12, 4}, glm::vec3(0.0f), glm::vec2(10.0f)));
+    PhysicsGameObject *polygon1 =
 		new PhysicsGameObject("polygon", this->GetChild("character_1"), new Polygon2D({glm::vec2(-10.0f, 0.0f), glm::vec2(-5.0f, 5.0f), glm::vec2(5.0f, 5.0f), glm::vec2(5.0f, -5.0f), glm::vec2(-5.0f, -5.0f)}),
+							  glm::vec3(0.0f), glm::vec2(1.0f));
+
+	this->AddChild(new SpriteSheetGameObject("character_2", "character_blue", {12, 4}, glm::vec3(0.0f), glm::vec2(10.0f)));
+    PhysicsGameObject *polygon2 =
+		new PhysicsGameObject("polygon", this->GetChild("character_2"), new Polygon2D({glm::vec2(-10.0f, 0.0f), glm::vec2(-5.0f, 5.0f), glm::vec2(5.0f, 5.0f), glm::vec2(5.0f, -5.0f), glm::vec2(-5.0f, -5.0f)}),
 							  glm::vec3(0.0f), glm::vec2(1.0f));
 }
 
@@ -136,12 +114,10 @@ void DemoScene::Update(float deltaTime) {
 	mTime += deltaTime;
 	if (mTime > 0.1f) {
 		mTime = 0.0f;
-		SpriteSheetGameObject *character = static_cast<SpriteSheetGameObject *>(this->GetChild("character_1"));
-		character->SetSpriteSheetFrame((character->GetFrameIndex() + 1) % 4 + 4 * 3);
-		character = static_cast<SpriteSheetGameObject *>(this->GetChild("image_demos")->GetChild("character_2"));
-		character->SetSpriteSheetFrame((character->GetFrameIndex() + 1) % 4 + 4 * 4);
-		character = static_cast<SpriteSheetGameObject *>(this->GetChild("image_demos")->GetChild("character_3"));
-		character->SetSpriteSheetFrame((character->GetFrameIndex() + 1) % 4 + 4 * 5);
+		SpriteSheetGameObject *character1 = static_cast<SpriteSheetGameObject *>(this->GetChild("character_1"));
+		character1->SetSpriteSheetFrame((character1->GetFrameIndex() + 1) % 4 + 4 * 3);
+		SpriteSheetGameObject *character2 = static_cast<SpriteSheetGameObject *>(this->GetChild("character_2"));
+		character2->SetSpriteSheetFrame((character2->GetFrameIndex() + 1) % 4 + 4 * 3);
 	}
 }
 

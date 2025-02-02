@@ -7,6 +7,7 @@
 #include "glm/ext/vector_float2.hpp"
 #include "glm/fwd.hpp"
 #include "imgui_helper.hpp"
+#include "physics/physics_manager.hpp"
 #include "polygon2d.hpp"
 #include "resource_manager.hpp"
 #include "scene_game_object.hpp"
@@ -53,6 +54,8 @@ void Game::Run() {
 
 		Update(deltaTime);
 
+        PhysicsManager::GetInstance().Update(deltaTime);
+
         if (mWindow->GetWidth() == 0 || mWindow->GetHeight() == 0) {
             continue;
         }
@@ -66,21 +69,10 @@ void Game::Run() {
 		if (!mPostProcessingDisabled) {
 			mPostProcessor->BeginRender();
 		}
-
-		// Color for black bars
-		//glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
-		//glClear(GL_COLOR_BUFFER_BIT);
-
 		// Background color
 		glm::vec3 bgColor = GetActiveScene()->GetBackgroundColor();
 		glClearColor(bgColor.x, bgColor.y, bgColor.z, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-
-		//glm::vec3 bgColor = GetActiveScene()->GetBackgroundColor();
-		//glClearColor(bgColor.x, bgColor.y, bgColor.z, 1.0f);
-		//glEnable(GL_SCISSOR_TEST);
-		//glClear(GL_COLOR_BUFFER_BIT);
-		//glDisable(GL_SCISSOR_TEST);
 
 		Render();
 

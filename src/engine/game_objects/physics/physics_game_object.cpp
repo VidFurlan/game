@@ -2,8 +2,10 @@
 
 #include <iostream>
 
+#include <unordered_set>
 #include "game.hpp"
 #include "glm/ext/vector_float2.hpp"
+#include "glm/gtx/hash.hpp"
 
 PhysicsGameObject::PhysicsGameObject(std::string name, Shape2D *shape, glm::vec3 pos, glm::vec2 scale)
 	: GameObject(name, pos, scale), mShape(shape) {
