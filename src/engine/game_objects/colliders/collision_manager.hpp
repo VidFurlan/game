@@ -2,7 +2,7 @@
 
 #include <set>
 
-#include "collisions/collider_game_object.hpp"
+#include "colliders/collider_game_object.hpp"
 #include "singleton.hpp"
 
 class CollisionManager : public Singleton {

@@ -45,7 +45,7 @@ class Game : public Singleton {
     PostProcessor *GetPostProcessor() const;
 
 	GameState State;
-	bool Keys[1024];
+	bool Keys[1024] = {false};
 
    private:
 	Game() {}

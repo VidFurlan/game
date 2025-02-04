@@ -7,7 +7,7 @@
 #include "glm/ext/vector_float2.hpp"
 #include "glm/fwd.hpp"
 #include "imgui_helper.hpp"
-#include "collisions/collision_manager.hpp"
+#include "colliders/collision_manager.hpp"
 #include "polygon2d.hpp"
 #include "resource_manager.hpp"
 #include "scene_game_object.hpp"
