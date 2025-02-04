@@ -7,7 +7,7 @@
 #include "game_object.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include "glm/ext/vector_float3.hpp"
-#include "physics/physics_game_object.hpp"
+#include "collisions/collider_game_object.hpp"
 #include "shapes/polygon2d.hpp"
 #include "sprite_game_object.hpp"
 #include "spritesheet_game_object.hpp"
@@ -96,13 +96,13 @@ void DemoScene::Init() {
 		->SetScale(glm::vec2(40.0f));
 
 	this->AddChild(new SpriteSheetGameObject("character_1", "character_red", {12, 4}, glm::vec3(0.0f), glm::vec2(10.0f)));
-    PhysicsGameObject *polygon1 =
-		new PhysicsGameObject("polygon", this->GetChild("character_1"), new Polygon2D({glm::vec2(-10.0f, 0.0f), glm::vec2(-5.0f, 5.0f), glm::vec2(5.0f, 5.0f), glm::vec2(5.0f, -5.0f), glm::vec2(-5.0f, -5.0f)}),
+    ColliderGameObject *polygon1 =
+		new ColliderGameObject("polygon", this->GetChild("character_1"), new Polygon2D({glm::vec2(-10.0f, 0.0f), glm::vec2(-5.0f, 5.0f), glm::vec2(5.0f, 5.0f), glm::vec2(5.0f, -5.0f), glm::vec2(-5.0f, -5.0f)}),
 							  glm::vec3(0.0f), glm::vec2(1.0f));
 
 	this->AddChild(new SpriteSheetGameObject("character_2", "character_blue", {12, 4}, glm::vec3(0.0f), glm::vec2(10.0f)));
-    PhysicsGameObject *polygon2 =
-		new PhysicsGameObject("polygon", this->GetChild("character_2"), new Polygon2D({glm::vec2(-10.0f, 0.0f), glm::vec2(-5.0f, 5.0f), glm::vec2(5.0f, 5.0f), glm::vec2(5.0f, -5.0f), glm::vec2(-5.0f, -5.0f)}),
+    ColliderGameObject *polygon2 =
+		new ColliderGameObject("polygon", this->GetChild("character_2"), new Polygon2D({glm::vec2(-10.0f, 0.0f), glm::vec2(-5.0f, 5.0f), glm::vec2(5.0f, 5.0f), glm::vec2(5.0f, -5.0f), glm::vec2(-5.0f, -5.0f)}),
 							  glm::vec3(0.0f), glm::vec2(1.0f));
 }
 

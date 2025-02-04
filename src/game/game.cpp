@@ -7,7 +7,7 @@
 #include "glm/ext/vector_float2.hpp"
 #include "glm/fwd.hpp"
 #include "imgui_helper.hpp"
-#include "physics/physics_manager.hpp"
+#include "collisions/collision_manager.hpp"
 #include "polygon2d.hpp"
 #include "resource_manager.hpp"
 #include "scene_game_object.hpp"
@@ -54,7 +54,7 @@ void Game::Run() {
 
 		Update(deltaTime);
 
-        PhysicsManager::GetInstance().Update(deltaTime);
+        CollisionManager::GetInstance().Update(deltaTime);
 
         if (mWindow->GetWidth() == 0 || mWindow->GetHeight() == 0) {
             continue;

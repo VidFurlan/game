@@ -1,4 +1,4 @@
-#include "physics_game_object.hpp"
+#include "collider_game_object.hpp"
 
 #include <iostream>
 #include <unordered_set>
@@ -6,33 +6,33 @@
 #include "game.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include "glm/gtx/hash.hpp"
-#include "physics_manager.hpp"
+#include "collision_manager.hpp"
 #include "shape2d.hpp"
 
-PhysicsGameObject::PhysicsGameObject(std::string name, Shape2D *shape, glm::vec3 pos, glm::vec2 scale)
+ColliderGameObject::ColliderGameObject(std::string name, Shape2D *shape, glm::vec3 pos, glm::vec2 scale)
 	: GameObject(name, pos, scale), mShape(shape) {
-        PhysicsManager::GetInstance().AddGameObject(this);
+        CollisionManager::GetInstance().AddGameObject(this);
 }
 
-PhysicsGameObject::PhysicsGameObject(std::string name, GameObject *parent, Shape2D *shape, glm::vec3 pos, glm::vec2 scale)
+ColliderGameObject::ColliderGameObject(std::string name, GameObject *parent, Shape2D *shape, glm::vec3 pos, glm::vec2 scale)
 	: GameObject(name, parent, pos, scale), mShape(shape) {
-        PhysicsManager::GetInstance().AddGameObject(this);
+        CollisionManager::GetInstance().AddGameObject(this);
 }
 
-PhysicsGameObject::~PhysicsGameObject() {
-    PhysicsManager::GetInstance().RemoveGameObject(this);
+ColliderGameObject::~ColliderGameObject() {
+    CollisionManager::GetInstance().RemoveGameObject(this);
 	delete mShape;
 }
 
-void PhysicsGameObject::Update(float deltaTime) {
+void ColliderGameObject::Update(float deltaTime) {
 	GameObject::Update(deltaTime);
 }
 
-void PhysicsGameObject::OnCollision(PhysicsGameObject *other, CollisionType type) {
+void ColliderGameObject::OnCollision(ColliderGameObject *other, CollisionType type) {
     mShape->color = glm::vec3(1.0f, 0.0f, 0.0f);
 }
 
-void PhysicsGameObject::Render() {
+void ColliderGameObject::Render() {
 	GameObject::Render();
 	if (mShape != nullptr && Game::GetInstance().IsDebugMode()) {
 		mGlobalPosition = GetGlobalPosition();
@@ -41,7 +41,7 @@ void PhysicsGameObject::Render() {
     mShape->color = glm::vec3(0.0f, 1.0f, 0.0f);
 }
 
-PhysicsGameObject::CollisionType PhysicsGameObject::CheckCollision(PhysicsGameObject *other) const {
+ColliderGameObject::CollisionType ColliderGameObject::CheckCollision(ColliderGameObject *other) const {
 	if (mShape == nullptr || other->mShape == nullptr) {
 		return CollisionType::NONE;
 	}
@@ -52,7 +52,7 @@ PhysicsGameObject::CollisionType PhysicsGameObject::CheckCollision(PhysicsGameOb
 	return CheckShapeOverlap(mShape, other->mShape, glm::vec3(pos1, GetGlobalRotation()), glm::vec3(pos2, other->GetGlobalRotation()));
 }
 
-PhysicsGameObject::CollisionType PhysicsGameObject::CheckShapeOverlap(Shape2D *shape1, Shape2D *shape2, glm::vec3 pos1, glm::vec3 pos2) {
+ColliderGameObject::CollisionType ColliderGameObject::CheckShapeOverlap(Shape2D *shape1, Shape2D *shape2, glm::vec3 pos1, glm::vec3 pos2) {
     std::vector<glm::vec2> edges1 = shape1->GetEdges(pos1);
     std::vector<glm::vec2> edges2 = shape2->GetEdges(pos2);
 
