@@ -1,5 +1,6 @@
-#include <game.hpp>
-#include <game_window.hpp>
+#include "game.hpp"
+#include "game_scene.hpp"
+#include "game_window.hpp"
 
 #include "demo_scene.hpp"
 
@@ -10,8 +11,9 @@ int main() {
 
 	// Load scenes
 	game.AddScene("Demo", [&]() { return new DemoScene(); });
+	game.AddScene("Game", [&]() { return new GameScene(); });
 
-	game.LoadScene("Demo");
+	game.LoadScene("Game");
 
 	// Run game
 	game.Run();

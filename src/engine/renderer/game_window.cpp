@@ -114,7 +114,6 @@ void GameWindow::Resize(int width, int height) {
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(GetWidth()), static_cast<float>(GetHeight()), 0.0f, -1.0f, 1.0f);
 	ResourceManager::GetInstance().GetShader("sprite").Use().SetInteger("image", 0);
 	ResourceManager::GetInstance().GetShader("sprite").SetMatrix4("projection", projection);
-	float zoom = Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetZoom();
 }
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode) {

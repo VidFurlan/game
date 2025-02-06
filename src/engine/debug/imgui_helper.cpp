@@ -81,7 +81,12 @@ void ImGuiHelper::ImGuiDebugMenu() {
 
 		ImGui::Text("Scene name: %s", scene->GetName().c_str());
 		ImGui::Text("Active Game Objects: %d", (int)(scene->GetChildrenCount()));
-		ImGui::Text("Camera position: (%.2f, %.2f)", scene->GetActiveCamera()->GetPosition().x, scene->GetActiveCamera()->GetPosition().y);
+        if (scene->GetActiveCamera() == nullptr) {
+            ImGui::Text("No active camera set");
+        } else {
+            ImGui::Text("Active camera: %s", scene->GetActiveCamera()->GetName().c_str());
+            ImGui::Text("Camera position: (%.2f, %.2f)", scene->GetActiveCamera()->GetPosition().x, scene->GetActiveCamera()->GetPosition().y);
+        }
 
 		ImGui::Separator();
 

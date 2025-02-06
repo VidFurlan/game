@@ -45,6 +45,9 @@ SceneGameObject *SceneGameObject::SetActiveCamera(std::string cameraName) {
 }
 
 CameraGameObject *SceneGameObject::GetActiveCamera() const {
+    if (pActiveCamera == nullptr) {
+        std::cerr << "No active camera set for scene " << mName << std::endl;
+    }
 	return pActiveCamera;
 }
 
@@ -53,6 +56,13 @@ glm::vec3 SceneGameObject::GetBackgroundColor() const {
 }
 
 void SceneGameObject::Update(float deltaTime) {
+    if (pActiveCamera == nullptr) {
+        std::cerr << "No active camera set for scene " << mName << std::endl;
+        if (!mCameras.empty()) {
+            pActiveCamera = mCameras.begin()->second;
+            std::cerr << "Setting active camera to " << pActiveCamera->GetName() << std::endl;
+        }
+    }
 	GameObject::Update(deltaTime);
 }
 
@@ -61,10 +71,13 @@ void SceneGameObject::Render() {
 		return;
 	}
 
-	if (!pActiveCamera) {
-		std::cerr << "No active camera set for scene " << mName << std::endl;
-		return;
-	}
+    if (pActiveCamera == nullptr) {
+        std::cerr << "No active camera set for scene " << mName << std::endl;
+        if (!mCameras.empty()) {
+            pActiveCamera = mCameras.begin()->second;
+            std::cerr << "Setting active camera to " << pActiveCamera->GetName() << std::endl;
+        }
+    }
 
 	GameObject::Render();
 }

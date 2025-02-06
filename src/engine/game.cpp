@@ -1,18 +1,18 @@
-#include "game.hpp"
+#include "../engine/game.hpp"
 
 #include <iostream>
 
-#include "colliders/collision_manager.hpp"
-#include "debug_renderer.hpp"
+#include "debug/debug_renderer.hpp"
+#include "debug/imgui_helper.hpp"
+#include "game_objects/colliders/collision_manager.hpp"
+#include "game_objects/scene_game_object.hpp"
 #include "glm/ext/matrix_clip_space.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include "glm/fwd.hpp"
-#include "imgui_helper.hpp"
-#include "polygon2d.hpp"
-#include "resource_manager.hpp"
-#include "scene_game_object.hpp"
-#include "shader.hpp"
-#include "sprite_renderer.hpp"
+#include "renderer/resource_manager.hpp"
+#include "renderer/shader.hpp"
+#include "renderer/sprite_renderer.hpp"
+#include "shapes/polygon2d.hpp"
 
 void Game::Init() {
 	if (mWindow != nullptr) delete mWindow;
