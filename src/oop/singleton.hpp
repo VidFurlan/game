@@ -2,16 +2,15 @@
 
 class Singleton {
    public:
-    static Singleton& GetInstance() {
-        static Singleton instance;
-        return instance;
-    }
+	static Singleton& GetInstance() {
+		static Singleton instance;
+		return instance;
+	}
 
    protected:
-    Singleton() {}
+	Singleton() {}
 
    public:
-    Singleton(Singleton const&) = delete;
-    void operator=(Singleton const&) = delete;
+	Singleton(Singleton const&) = delete;
+	void operator=(Singleton const&) = delete;
 };
-

@@ -36,8 +36,8 @@ class AbstractImageGameObject : public GameObject {
 	AbstractImageGameObject *SetTexture(Texture &texture);
 
    protected:
-    glm::vec3 mRenderPosition = glm::vec3(0.0f);
-    glm::vec2 mRenderSize = glm::vec2(0.0f);
+	glm::vec3 mRenderPosition = glm::vec3(0.0f);
+	glm::vec2 mRenderSize = glm::vec2(0.0f);
 
 	Texture &mTexture;
 	glm::vec3 mColor;

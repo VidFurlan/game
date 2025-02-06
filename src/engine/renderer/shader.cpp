@@ -51,9 +51,9 @@ void Shader::Compile(const char *vertexSource, const char *fragmentSource, const
 }
 
 void Shader::SetBool(const char *name, bool value, bool useShader) {
-    if (useShader)
-        this->Use();
-    glUniform1i(glGetUniformLocation(this->ID, name), (int)value);
+	if (useShader)
+		this->Use();
+	glUniform1i(glGetUniformLocation(this->ID, name), (int)value);
 }
 
 void Shader::SetFloat(const char *name, float value, bool useShader) {
@@ -110,16 +110,16 @@ void Shader::CheckCompileErrors(unsigned int object, std::string type) {
 		if (!success) {
 			glGetShaderInfoLog(object, 1024, NULL, infoLog);
 			std::cout << "| ERROR::SHADER: Compile-time error: Type: " << type << "\n"
-					  << infoLog << "\n -- --------------------------------------------------- -- "
-					  << std::endl;
+			          << infoLog << "\n -- --------------------------------------------------- -- "
+			          << std::endl;
 		}
 	} else {
 		glGetProgramiv(object, GL_LINK_STATUS, &success);
 		if (!success) {
 			glGetProgramInfoLog(object, 1024, NULL, infoLog);
 			std::cout << "| ERROR::Shader: Link-time error: Type: " << type << "\n"
-					  << infoLog << "\n -- --------------------------------------------------- -- "
-					  << std::endl;
+			          << infoLog << "\n -- --------------------------------------------------- -- "
+			          << std::endl;
 		}
 	}
 }

@@ -11,32 +11,32 @@
 #include "stb_image.h"
 
 Shader ResourceManager::LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, const std::string& name) {
-    if (Shaders.find(name) != Shaders.end()) {
-        return Shaders[name];
-    }
+	if (Shaders.find(name) != Shaders.end()) {
+		return Shaders[name];
+	}
 	Shaders[name] = LoadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
 	return Shaders[name];
 }
 
 Shader& ResourceManager::GetShader(const std::string& name) {
-    if (Shaders.find(name) == Shaders.end()) {
-        std::cerr << "Shader " << name << " not found" << std::endl;
-    }
+	if (Shaders.find(name) == Shaders.end()) {
+		std::cerr << "Shader " << name << " not found" << std::endl;
+	}
 	return Shaders[name];
 }
 
 Texture ResourceManager::LoadTexture(const char* file, bool alpha, const std::string& name) {
-    if (Textures.find(name) != Textures.end()) {
-        return Textures[name];
-    }
+	if (Textures.find(name) != Textures.end()) {
+		return Textures[name];
+	}
 	Textures[name] = LoadTextureFromFile(file, alpha);
 	return Textures[name];
 }
 
 Texture& ResourceManager::GetTexture(const std::string& name) {
-    if (Textures.find(name) == Textures.end()) {
-        std::cerr << "Texture " << name << " not found" << std::endl;
-    }
+	if (Textures.find(name) == Textures.end()) {
+		std::cerr << "Texture " << name << " not found" << std::endl;
+	}
 	return Textures[name];
 }
 

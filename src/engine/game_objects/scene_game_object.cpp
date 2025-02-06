@@ -6,7 +6,7 @@
 #include "glm/fwd.hpp"
 
 SceneGameObject::SceneGameObject(std::string name)
-	: GameObject(name, glm::vec3(0.0f)) {
+    : GameObject(name, glm::vec3(0.0f)) {
 	pSpriteRenderer = Game::GetInstance().GetSpriteRenderer();
 	pResourceManager = &Game::GetInstance().GetResourceManager()->GetInstance();
 }
@@ -53,7 +53,7 @@ glm::vec3 SceneGameObject::GetBackgroundColor() const {
 }
 
 void SceneGameObject::Update(float deltaTime) {
-    GameObject::Update(deltaTime);
+	GameObject::Update(deltaTime);
 }
 
 void SceneGameObject::Render() {

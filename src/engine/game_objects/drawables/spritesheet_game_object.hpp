@@ -24,7 +24,7 @@ class SpriteSheetGameObject : public AbstractImageGameObject {
 
 	std::vector<glm::vec2> *GetFrameSequence(std::string name) const;
 	glm::vec2 GetFrameFromSequence(std::string name) const;
-    unsigned int GetFrameIndex() const;
+	unsigned int GetFrameIndex() const;
 
    private:
 	std::map<std::string, std::vector<glm::vec2>> mFrameSequences;

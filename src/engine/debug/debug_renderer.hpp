@@ -16,7 +16,7 @@ class DebugRenderer : public Singleton {
 
    private:
 	DebugRenderer()
-		: __debugPixelTexture(ResourceManager::GetInstance().LoadTexture("assets/engine/textures/pixel.png", false, "pixel")) {}
+	    : __debugPixelTexture(ResourceManager::GetInstance().LoadTexture("assets/engine/textures/pixel.png", false, "pixel")) {}
 
 	Texture __debugPixelTexture;
 };

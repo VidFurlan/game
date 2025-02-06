@@ -21,8 +21,8 @@ void ImGuiHelper::Init() {
 	ImGuiIO &io = ImGui::GetIO();
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
-    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-    //io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+	// io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
 	ImGui_ImplGlfw_InitForOpenGL(Game::GetInstance().GetWindow()->GetWindow(), true);
 	ImGui_ImplOpenGL3_Init();
@@ -40,12 +40,12 @@ void ImGuiHelper::Render() {
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-	//ImGuiIO &io = ImGui::GetIO();
-    //
-	//if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
+	// ImGuiIO &io = ImGui::GetIO();
+	//
+	// if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
 	//	ImGui::UpdatePlatformWindows();
 	//	ImGui::RenderPlatformWindowsDefault();
-	//}
+	// }
 }
 
 void ImGuiHelper::Shutdown() {
@@ -65,9 +65,9 @@ void ImGuiHelper::ImGuiDebugMenu() {
 	ImGui::Checkbox("Disable post processing", &disablePostProcessing);
 	Game::GetInstance().SetPostProcessingDisabled(disablePostProcessing);
 
-    bool debugMode = Game::GetInstance().IsDebugMode();
-    ImGui::Checkbox("Debug mode", &debugMode);
-    Game::GetInstance().SetDebugMode(debugMode);
+	bool debugMode = Game::GetInstance().IsDebugMode();
+	ImGui::Checkbox("Debug mode", &debugMode);
+	Game::GetInstance().SetDebugMode(debugMode);
 
 	ImGui::Checkbox("Show scene debug", &mShowSceneDebugMenu);
 
@@ -120,10 +120,7 @@ void ImGuiHelper::ImGuiDebugMenu() {
 				flags |= ImGuiTreeNodeFlags_Selected;
 			}
 
-			bool showChildren = ImGui::TreeNodeEx((std::string("##") + tagName).c_str(), flags, "%s [%s%s]",
-												  gameObject->GetName().c_str(),
-												  active ? "A" : "-",
-												  visible ? "V" : "-");
+			bool showChildren = ImGui::TreeNodeEx((std::string("##") + tagName).c_str(), flags, "%s [%s%s]", gameObject->GetName().c_str(), active ? "A" : "-", visible ? "V" : "-");
 
 			if (showChildren) {
 				for (auto [name, child] : *gameObject->GetChildren()) {
@@ -197,18 +194,18 @@ void ImGuiHelper::ImGuiDebugMenu() {
 				imageGameObject->SetColor(color);
 			}
 
-            if (dynamic_cast<CameraGameObject *>(gameObject)) {
-                CameraGameObject *cameraGameObject = dynamic_cast<CameraGameObject *>(gameObject);
+			if (dynamic_cast<CameraGameObject *>(gameObject)) {
+				CameraGameObject *cameraGameObject = dynamic_cast<CameraGameObject *>(gameObject);
 
-                float zoom = cameraGameObject->GetZoom();
-                ImGui::Text("Zoom:");
-                ImGui::InputFloat("##Zoom", &zoom, 0.1f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
-                cameraGameObject->SetZoom(zoom);
+				float zoom = cameraGameObject->GetZoom();
+				ImGui::Text("Zoom:");
+				ImGui::InputFloat("##Zoom", &zoom, 0.1f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
+				cameraGameObject->SetZoom(zoom);
 
-                if (ImGui::Button("Use Camera")) {
-                    cameraGameObject->Use();
-                }
-            }
+				if (ImGui::Button("Use Camera")) {
+					cameraGameObject->Use();
+				}
+			}
 		}
 
 		ImGui::End();

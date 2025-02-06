@@ -15,25 +15,25 @@ class SceneGameObject : public GameObject {
 	virtual ~SceneGameObject();
 
 	virtual void Init() = 0;
-    
-    virtual void Update(float deltaTime) override;
-    virtual void Render() override;
 
-    SceneGameObject *AddGameCamera(CameraGameObject *camera);
-    SceneGameObject *RemoveGameCamera(CameraGameObject *camera);
-    SceneGameObject *SetActiveCamera(CameraGameObject *camera);
-    SceneGameObject *SetActiveCamera(std::string cameraName);
+	virtual void Update(float deltaTime) override;
+	virtual void Render() override;
 
-    CameraGameObject *GetActiveCamera() const;
+	SceneGameObject *AddGameCamera(CameraGameObject *camera);
+	SceneGameObject *RemoveGameCamera(CameraGameObject *camera);
+	SceneGameObject *SetActiveCamera(CameraGameObject *camera);
+	SceneGameObject *SetActiveCamera(std::string cameraName);
 
-    glm::vec3 GetBackgroundColor() const;
+	CameraGameObject *GetActiveCamera() const;
+
+	glm::vec3 GetBackgroundColor() const;
 
    protected:
-    std::map<std::string, CameraGameObject *> mCameras;
-    CameraGameObject *pActiveCamera = nullptr;
+	std::map<std::string, CameraGameObject *> mCameras;
+	CameraGameObject *pActiveCamera = nullptr;
 
 	SpriteRenderer *pSpriteRenderer = nullptr;
-    ResourceManager *pResourceManager = nullptr;
+	ResourceManager *pResourceManager = nullptr;
 
-    glm::vec3 mBackgroundColor = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 mBackgroundColor = glm::vec3(0.0f, 0.0f, 0.0f);
 };

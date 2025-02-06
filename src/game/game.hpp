@@ -33,16 +33,16 @@ class Game : public Singleton {
 	void AddScene(const std::string &sceneName, std::function<SceneGameObject *()> factory);
 	void LoadScene(const std::string &sceneName);
 
-    void SetPostProcessingDisabled(bool disabled);
-    bool IsPostProcessingDisabled() const;
-    void SetDebugMode(bool debugMode);
-    bool IsDebugMode() const;
+	void SetPostProcessingDisabled(bool disabled);
+	bool IsPostProcessingDisabled() const;
+	void SetDebugMode(bool debugMode);
+	bool IsDebugMode() const;
 
 	GameWindow *GetWindow() const;
 	SpriteRenderer *GetSpriteRenderer() const;
 	ResourceManager *GetResourceManager() const;
 	SceneGameObject *GetActiveScene() const;
-    PostProcessor *GetPostProcessor() const;
+	PostProcessor *GetPostProcessor() const;
 
 	GameState State;
 	bool Keys[1024] = {false};
@@ -53,10 +53,10 @@ class Game : public Singleton {
 
 	ResourceManager *resourceManager = nullptr;
 	SpriteRenderer *mSpriteRenderer = nullptr;
-    PostProcessor *mPostProcessor = nullptr;
+	PostProcessor *mPostProcessor = nullptr;
 
-    bool mPostProcessingDisabled = false;
-    bool mDebugMode = false;
+	bool mPostProcessingDisabled = false;
+	bool mDebugMode = false;
 
 	std::map<std::string, std::function<SceneGameObject *()>> mSceneFactory;
 	SceneGameObject *mCurrentScene = nullptr;

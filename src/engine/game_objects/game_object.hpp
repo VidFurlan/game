@@ -77,5 +77,5 @@ class GameObject {
 		return a->GetName() < b->GetName();
 	}
 	std::map<int, std::set<GameObject *, bool (*)(GameObject *, GameObject *)>, std::greater<int>> mChildrenByZIndex{
-		{1000, std::set<GameObject *, bool (*)(GameObject *, GameObject *)>(nameCmp)}};
+	    {1000, std::set<GameObject *, bool (*)(GameObject *, GameObject *)>(nameCmp)}};
 };

@@ -13,7 +13,7 @@
 #include "spritesheet_game_object.hpp"
 
 DemoScene::DemoScene()
-	: SceneGameObject("Demo") {
+    : SceneGameObject("Demo") {
 }
 
 DemoScene::~DemoScene() {
@@ -58,53 +58,50 @@ void DemoScene::Init() {
 	// Create game objects =====================================================
 	// =========================================================================
 	this->AddGameCamera(new CameraGameObject("main_camera", this))
-		->SetActiveCamera("main_camera");
+	    ->SetActiveCamera("main_camera");
 	this->AddGameCamera(new CameraGameObject("extra_camera", this));
 
 	GameObject *imageDemos = this->AddChild(new GameObject("image_demos"))
-								 ->SetPosition(glm::vec3(30.0f, 30.0f, -90.0f));
+	                             ->SetPosition(glm::vec3(30.0f, 30.0f, -90.0f));
 
 	GameObject *strechDemo = imageDemos->AddChild(new GameObject("strech_demo"))
-								 ->SetZIndex(1000);
+	                             ->SetZIndex(1000);
 
 	static_cast<SpriteGameObject *>(strechDemo->AddChild(new SpriteGameObject("clouds_1_1", "clouds_1_1")))
-		->SetScale(glm::vec2(40.0f))
-		->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+	    ->SetScale(glm::vec2(40.0f))
+	    ->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
 	static_cast<SpriteGameObject *>(strechDemo->AddChild(new SpriteGameObject("clouds_1_2", "clouds_1_2")))
-		->SetScale(glm::vec2(40.0f))
-		->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+	    ->SetScale(glm::vec2(40.0f))
+	    ->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
 	static_cast<SpriteGameObject *>(strechDemo->AddChild(new SpriteGameObject("clouds_1_3", "clouds_1_3")))
-		->SetScale(glm::vec2(40.0f))
-		->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+	    ->SetScale(glm::vec2(40.0f))
+	    ->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
 	static_cast<SpriteGameObject *>(strechDemo->AddChild(new SpriteGameObject("clouds_1_4", "clouds_1_4")))
-		->SetScale(glm::vec2(40.0f))
-		->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+	    ->SetScale(glm::vec2(40.0f))
+	    ->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 
 	GameObject *fitDemo = imageDemos->AddChild(new GameObject("fit_demo"))
-							  ->SetPosition(glm::vec3(0.0f, 40.0f, 0.0f));
+	                          ->SetPosition(glm::vec3(0.0f, 40.0f, 0.0f));
 
 	static_cast<SpriteGameObject *>(fitDemo->AddChild(new SpriteGameObject("clouds_2_1", "clouds_2_1")))
-		->SetScale(glm::vec2(40.0f));
+	    ->SetScale(glm::vec2(40.0f));
 	static_cast<SpriteGameObject *>(fitDemo->AddChild(new SpriteGameObject("clouds_2_2", "clouds_2_2")))
-		->SetScale(glm::vec2(40.0f));
+	    ->SetScale(glm::vec2(40.0f));
 	static_cast<SpriteGameObject *>(fitDemo->AddChild(new SpriteGameObject("clouds_2_3", "clouds_2_3")))
-		->SetScale(glm::vec2(40.0f));
+	    ->SetScale(glm::vec2(40.0f));
 	static_cast<SpriteGameObject *>(fitDemo->AddChild(new SpriteGameObject("clouds_2_4", "clouds_2_4")))
-		->SetScale(glm::vec2(40.0f));
+	    ->SetScale(glm::vec2(40.0f));
 
 	this->AddChild(new SpriteSheetGameObject("character_1", "character_red", {12, 4}, glm::vec3(0.0f), glm::vec2(10.0f)));
 	ColliderGameObject *polygon1 =
-		new ColliderGameObject("polygon", this->GetChild("character_1"),
-							   new Polygon2D({glm::vec2(-10.0f, 0.0f), glm::vec2(-5.0f, 5.0f), glm::vec2(5.0f, 5.0f), glm::vec2(5.0f, -5.0f), glm::vec2(-5.0f, -5.0f)}),
-							   glm::vec3(0.0f), glm::vec2(1.0f));
+	    new ColliderGameObject("polygon", this->GetChild("character_1"), new Polygon2D({glm::vec2(-10.0f, 0.0f), glm::vec2(-5.0f, 5.0f), glm::vec2(5.0f, 5.0f), glm::vec2(5.0f, -5.0f), glm::vec2(-5.0f, -5.0f)}), glm::vec3(0.0f), glm::vec2(1.0f));
 
 	this->AddChild(new SpriteSheetGameObject("character_2", "character_blue", {12, 4}, glm::vec3(0.0f), glm::vec2(10.0f)));
 	ColliderGameObject *polygon2 =
-		new ColliderGameObject("polygon", this->GetChild("character_2"), new Polygon2D({glm::vec2(-20.0f, 0.0f), glm::vec2(-10.0f, 10.0f), glm::vec2(10.0f, 10.0f), glm::vec2(10.0f, -10.0f), glm::vec2(-10.0f, -10.0f)}),
-							   glm::vec3(0.0f), glm::vec2(1.0f));
+	    new ColliderGameObject("polygon", this->GetChild("character_2"), new Polygon2D({glm::vec2(-20.0f, 0.0f), glm::vec2(-10.0f, 10.0f), glm::vec2(10.0f, 10.0f), glm::vec2(10.0f, -10.0f), glm::vec2(-10.0f, -10.0f)}), glm::vec3(0.0f), glm::vec2(1.0f));
 }
 
 void DemoScene::Update(float deltaTime) {
@@ -129,6 +126,7 @@ void DemoScene::Update(float deltaTime) {
 	if (Game::GetInstance().Keys[GLFW_KEY_A]) movement.x -= 1.0f;
 	if (Game::GetInstance().Keys[GLFW_KEY_D]) movement.x += 1.0f;
 	*((GameObject *)character1) += movement * 10.0f * deltaTime;
+    GetActiveCamera()->SetPosition(character1->GetPosition());
 }
 
 void DemoScene::Render() {

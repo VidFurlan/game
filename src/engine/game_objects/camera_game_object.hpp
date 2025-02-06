@@ -9,11 +9,11 @@ class CameraGameObject : public GameObject {
 
 	~CameraGameObject();
 
-    void Use();
+	void Use();
 
-    CameraGameObject *SetZoom(float zoom);
-    float GetZoom() const;
+	CameraGameObject *SetZoom(float zoom);
+	float GetZoom() const;
 
    private:
-    float mZoom = 1.0f;
+	float mZoom = 1.0f;
 };

@@ -1,6 +1,9 @@
 BasedOnStyle: Google
-UseTab: Always
+UseTab: ForIndentation
 IndentWidth: 4
 TabWidth: 4
 ColumnLimit: 0
-AllowShortFunctionsOnASingleLine: Empty
+
+AlignAfterOpenBracket: Align
+BinPackArguments: false
+BinPackParameters: false

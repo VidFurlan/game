@@ -14,11 +14,11 @@ class CollisionManager : public Singleton {
 
 	void Update(float deltaTime);
 
-    ColliderGameObject::CollisionType CheckAgainsAll(ColliderGameObject *obj1);
-    ColliderGameObject::CollisionType CheckAgainsAllNoCallback(ColliderGameObject *obj1);
+	ColliderGameObject::CollisionType CheckAgainsAll(ColliderGameObject *obj1);
+	ColliderGameObject::CollisionType CheckAgainsAllNoCallback(ColliderGameObject *obj1);
 
-    void AddGameObject(ColliderGameObject *gameObject);
-    void RemoveGameObject(ColliderGameObject *gameObject);
+	void AddGameObject(ColliderGameObject *gameObject);
+	void RemoveGameObject(ColliderGameObject *gameObject);
 
    private:
 	CollisionManager() = default;

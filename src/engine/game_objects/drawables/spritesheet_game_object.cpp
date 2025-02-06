@@ -9,19 +9,19 @@
 #include "glm/gtc/type_ptr.hpp"
 
 SpriteSheetGameObject::SpriteSheetGameObject(std::string name, std::string textureName, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale, glm::vec3 color)
-	: AbstractImageGameObject(name, textureName, pos, scale, color), mFramesResolution(framesResolution) {
+    : AbstractImageGameObject(name, textureName, pos, scale, color), mFramesResolution(framesResolution) {
 }
 
 SpriteSheetGameObject::SpriteSheetGameObject(std::string name, GameObject *parent, std::string textureName, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale, glm::vec3 color)
-	: AbstractImageGameObject(name, parent, textureName, pos, scale, color), mFramesResolution(framesResolution) {
+    : AbstractImageGameObject(name, parent, textureName, pos, scale, color), mFramesResolution(framesResolution) {
 }
 
 SpriteSheetGameObject::SpriteSheetGameObject(std::string name, Texture &texture, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale, glm::vec3 color)
-	: AbstractImageGameObject(name, texture, pos, scale, color), mFramesResolution(framesResolution) {
+    : AbstractImageGameObject(name, texture, pos, scale, color), mFramesResolution(framesResolution) {
 }
 
 SpriteSheetGameObject::SpriteSheetGameObject(std::string name, GameObject *parent, Texture &texture, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale, glm::vec3 color)
-	: AbstractImageGameObject(name, parent, texture, pos, scale, color), mFramesResolution(framesResolution) {
+    : AbstractImageGameObject(name, parent, texture, pos, scale, color), mFramesResolution(framesResolution) {
 }
 
 void SpriteSheetGameObject::Render() {
@@ -39,10 +39,7 @@ void SpriteSheetGameObject::Render() {
 		mFrameIndex = 0;
 	}
 
-	Game::GetInstance().GetSpriteRenderer()->DrawSpriteSheet(mTexture, glm::make_vec2(mRenderPosition) - mRenderSize / 2.0f * GAME_SCALE_FACTOR,
-															 mFrameIndex, mFramesResolution.first, mFramesResolution.second,
-															 mRenderSize * GAME_SCALE_FACTOR,
-															 GetGlobalRotation(), mColor);
+	Game::GetInstance().GetSpriteRenderer()->DrawSpriteSheet(mTexture, glm::make_vec2(mRenderPosition) - mRenderSize / 2.0f * GAME_SCALE_FACTOR, mFrameIndex, mFramesResolution.first, mFramesResolution.second, mRenderSize * GAME_SCALE_FACTOR, GetGlobalRotation(), mColor);
 }
 
 SpriteSheetGameObject *SpriteSheetGameObject::SetSpriteSheetFrame(int frame) {

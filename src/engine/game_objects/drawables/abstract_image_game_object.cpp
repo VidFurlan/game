@@ -9,19 +9,19 @@
 #include "resource_manager.hpp"
 
 AbstractImageGameObject::AbstractImageGameObject(std::string name, std::string textureName, glm::vec3 pos, glm::vec2 scale, glm::vec3 color)
-	: GameObject(name, pos, scale), mTexture(ResourceManager::GetInstance().GetTexture(textureName)), mColor(color) {
+    : GameObject(name, pos, scale), mTexture(ResourceManager::GetInstance().GetTexture(textureName)), mColor(color) {
 }
 
 AbstractImageGameObject::AbstractImageGameObject(std::string name, GameObject *parent, std::string textureName, glm::vec3 pos, glm::vec2 scale, glm::vec3 color)
-	: GameObject(name, parent, pos, scale), mTexture(ResourceManager::GetInstance().GetTexture(textureName)), mColor(color) {
+    : GameObject(name, parent, pos, scale), mTexture(ResourceManager::GetInstance().GetTexture(textureName)), mColor(color) {
 }
 
 AbstractImageGameObject::AbstractImageGameObject(std::string name, Texture &texture, glm::vec3 pos, glm::vec2 scale, glm::vec3 color)
-	: GameObject(name, pos, scale), mTexture(texture), mColor(color) {
+    : GameObject(name, pos, scale), mTexture(texture), mColor(color) {
 }
 
 AbstractImageGameObject::AbstractImageGameObject(std::string name, GameObject *parent, Texture &texture, glm::vec3 pos, glm::vec2 scale, glm::vec3 color)
-	: GameObject(name, parent, pos, scale), mTexture(texture), mColor(color) {
+    : GameObject(name, parent, pos, scale), mTexture(texture), mColor(color) {
 }
 
 AbstractImageGameObject::~AbstractImageGameObject() {
@@ -37,12 +37,12 @@ void AbstractImageGameObject::Render() {
 	mRenderPosition = GetGlobalPosition() * GAME_SCALE_FACTOR - Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetPosition() * GAME_SCALE_FACTOR;
 	mRenderPosition.z = 0.0f;
 
-    float zoom = Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetZoom();
-    mRenderSize = mScale * zoom;
+	float zoom = Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetZoom();
+	mRenderSize = mScale * zoom;
 
-    // Zoom origial position
-    mRenderPosition *= zoom;
-    // Set camera offset
+	// Zoom origial position
+	mRenderPosition *= zoom;
+	// Set camera offset
 	mRenderPosition.x += Game::GetInstance().GetWindow()->GetWidth() / 2.0f;
 	mRenderPosition.y += Game::GetInstance().GetWindow()->GetHeight() / 2.0f;
 }

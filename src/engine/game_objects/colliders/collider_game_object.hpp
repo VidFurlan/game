@@ -21,7 +21,7 @@ class ColliderGameObject : public GameObject {
 	virtual void OnCollision(ColliderGameObject *other, CollisionType type = CollisionType::OVERLAP);
 
 	CollisionType CheckCollision(ColliderGameObject *other) const;
-    CollisionType CheckPointCollision(glm::vec2 point) const;
+	CollisionType CheckPointCollision(glm::vec2 point) const;
 	static CollisionType CheckShapeOverlap(Shape2D *shape1, Shape2D *shape2, glm::vec3 pos1, glm::vec3 pos2);
 
    private:

@@ -15,9 +15,9 @@ class ResourceManager : public Singleton {
 	}
 
 	Texture LoadTexture(const char* file, bool alpha, const std::string& name);
-	Texture &GetTexture(const std::string& name);
+	Texture& GetTexture(const std::string& name);
 	Shader LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, const std::string& name);
-	Shader &GetShader(const std::string& name);
+	Shader& GetShader(const std::string& name);
 	void Clear();
 
    private:

@@ -12,7 +12,7 @@
 class Shape2D {
    public:
 	Shape2D(glm::vec2 pos = glm::vec2(0.0f), glm::vec3 color = glm::vec3(0.0f, 1.0f, 0.0f))
-		: pos(pos), color(color) {}
+	    : pos(pos), color(color) {}
 	virtual ~Shape2D() = default;
 
 	virtual void DrawDebug(glm::vec2 offset = glm::vec2(0.0f), float rot = 0.0f, glm::vec2 scale = glm::vec2(1.0f)) const = 0;

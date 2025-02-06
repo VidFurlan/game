@@ -8,11 +8,11 @@
 #include "glm/trigonometric.hpp"
 
 GameObject::GameObject(std::string name, glm::vec3 pos, glm::vec2 scale)
-	: mName(name), mPos(pos), pParent(nullptr), mActive(true), mVisible(true), mScale(scale) {
+    : mName(name), mPos(pos), pParent(nullptr), mActive(true), mVisible(true), mScale(scale) {
 }
 
 GameObject::GameObject(std::string name, GameObject *parent, glm::vec3 pos, glm::vec2 scale)
-	: mName(name), mPos(pos), pParent(parent), mActive(true), mVisible(true), mScale(scale) {
+    : mName(name), mPos(pos), pParent(parent), mActive(true), mVisible(true), mScale(scale) {
 	parent->AddChild(this);
 }
 
@@ -90,31 +90,30 @@ glm::vec3 GameObject::GetPosition() const {
 }
 
 glm::vec3 GameObject::GetGlobalPosition() const {
-    glm::vec2 pos(mPos.x, mPos.y);
-    float rotation = mPos.z;
-    const GameObject* parent = pParent;
+	glm::vec2 pos(mPos.x, mPos.y);
+	float rotation = mPos.z;
+	const GameObject *parent = pParent;
 
-    while (parent) {
-        float parentRotation = parent->mPos.z;
-        glm::vec2 parentPos(parent->mPos.x, parent->mPos.y);
+	while (parent) {
+		float parentRotation = parent->mPos.z;
+		glm::vec2 parentPos(parent->mPos.x, parent->mPos.y);
 
-        float radians = glm::radians(parentRotation);
+		float radians = glm::radians(parentRotation);
 
-        float cosAngle = cos(radians);
-        float sinAngle = sin(radians);
-        pos = glm::vec2(
-            cosAngle * pos.x - sinAngle * pos.y,
-            sinAngle * pos.x + cosAngle * pos.y
-        );
+		float cosAngle = cos(radians);
+		float sinAngle = sin(radians);
+		pos = glm::vec2(
+		    cosAngle * pos.x - sinAngle * pos.y,
+		    sinAngle * pos.x + cosAngle * pos.y);
 
-        pos += parentPos;
+		pos += parentPos;
 
-        rotation += parentRotation;
+		rotation += parentRotation;
 
-        parent = parent->pParent;
-    }
+		parent = parent->pParent;
+	}
 
-    return glm::vec3(pos, rotation);
+	return glm::vec3(pos, rotation);
 }
 
 float GameObject::GetRotation() const {
@@ -122,15 +121,15 @@ float GameObject::GetRotation() const {
 }
 
 float GameObject::GetGlobalRotation() const {
-    float rotation = mPos.z;
-    const GameObject *parent = pParent;
+	float rotation = mPos.z;
+	const GameObject *parent = pParent;
 
-    while (parent) {
-        rotation += parent->mPos.z;
-        parent = parent->pParent;
-    }
+	while (parent) {
+		rotation += parent->mPos.z;
+		parent = parent->pParent;
+	}
 
-    return rotation;
+	return rotation;
 }
 
 GameObject *GameObject::SetZIndex(int zIndex) {

@@ -80,22 +80,22 @@ int GameWindow::GetHeight() const {
 }
 
 void GameWindow::Resize(int width, int height) {
-    /* Resizing of viewport using black bars
+	/* Resizing of viewport using black bars
 	float desiredAspectRatio = Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetWidth() /
-							   static_cast<float>(Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetHeight());
+	                           static_cast<float>(Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetHeight());
 
 	int viewportWidth, viewportHeight;
 	int viewportX = 0, viewportY = 0;
 
 	float windowAspectRatio = width / static_cast<float>(height);
 	if (windowAspectRatio > desiredAspectRatio) {
-		viewportHeight = height;
-		viewportWidth = static_cast<int>(height * desiredAspectRatio);
-		viewportX = (width - viewportWidth) / 2;
+	    viewportHeight = height;
+	    viewportWidth = static_cast<int>(height * desiredAspectRatio);
+	    viewportX = (width - viewportWidth) / 2;
 	} else {
-		viewportWidth = width;
-		viewportHeight = static_cast<int>(width / desiredAspectRatio);
-		viewportY = (height - viewportHeight) / 2;
+	    viewportWidth = width;
+	    viewportHeight = static_cast<int>(width / desiredAspectRatio);
+	    viewportY = (height - viewportHeight) / 2;
 	}
 
 	glViewport(viewportX, viewportY, viewportWidth, viewportHeight);
@@ -104,18 +104,17 @@ void GameWindow::Resize(int width, int height) {
 	Game::GetInstance().GetPostProcessor()->Resize(viewportWidth, viewportHeight);
 
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(viewportWidth),
-									  static_cast<float>(viewportHeight), 0.0f, -1.0f, 1.0f);
+	                                  static_cast<float>(viewportHeight), 0.0f, -1.0f, 1.0f);
 	ResourceManager::GetInstance().GetShader("sprite").Use().SetInteger("image", 0);
 	ResourceManager::GetInstance().GetShader("sprite").SetMatrix4("projection", projection);
-    */
-    glViewport(0, 0, width, height);
+	*/
+	glViewport(0, 0, width, height);
 	Game::GetInstance().GetPostProcessor()->Resize(width, height);
 
-    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(GetWidth()), 
-            static_cast<float>(GetHeight()), 0.0f, -1.0f, 1.0f);
-    ResourceManager::GetInstance().GetShader("sprite").Use().SetInteger("image", 0);
-    ResourceManager::GetInstance().GetShader("sprite").SetMatrix4("projection", projection);
-    float zoom = Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetZoom();
+	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(GetWidth()), static_cast<float>(GetHeight()), 0.0f, -1.0f, 1.0f);
+	ResourceManager::GetInstance().GetShader("sprite").Use().SetInteger("image", 0);
+	ResourceManager::GetInstance().GetShader("sprite").SetMatrix4("projection", projection);
+	float zoom = Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetZoom();
 }
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode) {
@@ -130,7 +129,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 }
 
 void framebuffer_size_callback(GLFWwindow* window,
-							   int widthOfFramebuffer,
-							   int heightOfFramebuffer) {
-    Game::GetInstance().GetWindow()->Resize(widthOfFramebuffer, heightOfFramebuffer);
+                               int widthOfFramebuffer,
+                               int heightOfFramebuffer) {
+	Game::GetInstance().GetWindow()->Resize(widthOfFramebuffer, heightOfFramebuffer);
 }

@@ -2,12 +2,12 @@
 
 #include <iostream>
 
+#include "colliders/collision_manager.hpp"
 #include "debug_renderer.hpp"
 #include "glm/ext/matrix_clip_space.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include "glm/fwd.hpp"
 #include "imgui_helper.hpp"
-#include "colliders/collision_manager.hpp"
 #include "polygon2d.hpp"
 #include "resource_manager.hpp"
 #include "scene_game_object.hpp"
@@ -18,8 +18,7 @@ void Game::Init() {
 	if (mWindow != nullptr) delete mWindow;
 	mWindow = new GameWindow(1200, 800, "Game");
 
-	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(mWindow->GetWidth()),
-									  static_cast<float>(mWindow->GetHeight()), 0.0f, -1.0f, 1.0f);
+	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(mWindow->GetWidth()), static_cast<float>(mWindow->GetHeight()), 0.0f, -1.0f, 1.0f);
 
 	// Load generic sprite shader
 	resourceManager = &ResourceManager::GetInstance();
@@ -54,12 +53,11 @@ void Game::Run() {
 
 		Update(deltaTime);
 
-        CollisionManager::GetInstance().Update(deltaTime);
+		CollisionManager::GetInstance().Update(deltaTime);
 
-        if (mWindow->GetWidth() == 0 || mWindow->GetHeight() == 0) {
-            continue;
-        }
-
+		if (mWindow->GetWidth() == 0 || mWindow->GetHeight() == 0) {
+			continue;
+		}
 
 		// Render ImGui
 		ImGuiHelper::NewFrame();
@@ -146,11 +144,11 @@ bool Game::IsPostProcessingDisabled() const {
 }
 
 void Game::SetDebugMode(bool debugMode) {
-    mDebugMode = debugMode;
+	mDebugMode = debugMode;
 }
 
 bool Game::IsDebugMode() const {
-    return mDebugMode;
+	return mDebugMode;
 }
 
 SceneGameObject *Game::GetActiveScene() const {
