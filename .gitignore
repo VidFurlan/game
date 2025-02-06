@@ -151,3 +151,4 @@ project.xcworkspace
 
 # don't ignore the .gitignore file
 !.gitignore
+compile_commands.json
