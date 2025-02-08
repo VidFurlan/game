@@ -7,6 +7,7 @@
 #include "game_objects/colliders/collision_manager.hpp"
 #include "game_objects/scene_game_object.hpp"
 #include "glm/ext/matrix_clip_space.hpp"
+#include "glm/ext/matrix_float4x4.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include "glm/fwd.hpp"
 #include "renderer/resource_manager.hpp"
@@ -34,6 +35,9 @@ void Game::Init() {
 
 	if (mCurrentScene != nullptr) delete mCurrentScene;
 	mSpriteRenderer = new SpriteRenderer(resourceManager->GetShader("sprite"));
+
+    if (mBatchRenderer != nullptr) delete mBatchRenderer;
+    mBatchRenderer = new BatchRenderer(100000);
 }
 
 void Game::Run() {
@@ -97,64 +101,77 @@ void Game::ProcessInput(float deltaTime) {
 }
 
 void Game::Render() {
+    glm::mat4 ort = glm::ortho(0.0f, static_cast<float>(mWindow->GetWidth()), static_cast<float>(mWindow->GetHeight()), 0.0f, -1.0f, 1.0f);
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            mBatchRenderer->mMvp[i][j] = ort[i][j];
+        }
+    }
+
 	if (mCurrentScene != nullptr) {
 		mCurrentScene->Render();
 	}
+
+    mBatchRenderer->flush();
 }
 
 GameWindow *Game::GetWindow() const {
-	return mWindow;
+    return mWindow;
 }
 
 SpriteRenderer *Game::GetSpriteRenderer() const {
-	return mSpriteRenderer;
+    return mSpriteRenderer;
 }
 
 ResourceManager *Game::GetResourceManager() const {
-	return resourceManager;
+    return resourceManager;
 }
 
 bool Game::ShouldClose() const {
-	return glfwWindowShouldClose(mWindow->GetWindow());
+    return glfwWindowShouldClose(mWindow->GetWindow());
 }
 
 void Game::AddScene(const std::string &sceneName, std::function<SceneGameObject *()> factory) {
-	mSceneFactory[sceneName] = factory;
+    mSceneFactory[sceneName] = factory;
 }
 
 void Game::LoadScene(const std::string &sceneName) {
-	if (mCurrentScene) {
-		delete mCurrentScene;
-	}
-	auto it = mSceneFactory.find(sceneName);
-	if (it != mSceneFactory.end()) {
-		mCurrentScene = it->second();
-		mCurrentScene->Init();
-	} else {
-		std::cerr << "Scene not found: " << sceneName << std::endl;
-	}
+    if (mCurrentScene) {
+        delete mCurrentScene;
+    }
+    auto it = mSceneFactory.find(sceneName);
+    if (it != mSceneFactory.end()) {
+        mCurrentScene = it->second();
+        mCurrentScene->Init();
+    } else {
+        std::cerr << "Scene not found: " << sceneName << std::endl;
+    }
 }
 
 void Game::SetPostProcessingDisabled(bool disabled) {
-	mPostProcessingDisabled = disabled;
+    mPostProcessingDisabled = disabled;
 }
 
 bool Game::IsPostProcessingDisabled() const {
-	return mPostProcessingDisabled;
+    return mPostProcessingDisabled;
 }
 
 void Game::SetDebugMode(bool debugMode) {
-	mDebugMode = debugMode;
+    mDebugMode = debugMode;
 }
 
 bool Game::IsDebugMode() const {
-	return mDebugMode;
+    return mDebugMode;
 }
 
 SceneGameObject *Game::GetActiveScene() const {
-	return mCurrentScene;
+    return mCurrentScene;
 }
 
 PostProcessor *Game::GetPostProcessor() const {
-	return mPostProcessor;
+    return mPostProcessor;
+}
+
+BatchRenderer *Game::GetBatchRenderer() const {
+    return mBatchRenderer;
 }

@@ -3,6 +3,7 @@
 #include <functional>
 #include <map>
 
+#include "batch_renderer.hpp"
 #include "game_window.hpp"
 #include "post_processor.hpp"
 #include "resource_manager.hpp"
@@ -43,6 +44,7 @@ class Game : public Singleton {
 	ResourceManager *GetResourceManager() const;
 	SceneGameObject *GetActiveScene() const;
 	PostProcessor *GetPostProcessor() const;
+    BatchRenderer *GetBatchRenderer() const;
 
 	GameState State;
 	bool Keys[1024] = {false};
@@ -54,6 +56,7 @@ class Game : public Singleton {
 	ResourceManager *resourceManager = nullptr;
 	SpriteRenderer *mSpriteRenderer = nullptr;
 	PostProcessor *mPostProcessor = nullptr;
+    BatchRenderer *mBatchRenderer = nullptr;
 
 	bool mPostProcessingDisabled = false;
 	bool mDebugMode = false;

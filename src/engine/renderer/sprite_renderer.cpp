@@ -15,6 +15,7 @@ SpriteRenderer::SpriteRenderer(Shader &shader) {
 SpriteRenderer::~SpriteRenderer() { glDeleteVertexArrays(1, &this->quadVAO); }
 
 void SpriteRenderer::initRenderData() {
+	return;
 	GLuint posVBO, texVBO;
 
 	// clang-format off
@@ -71,7 +72,11 @@ void SpriteRenderer::DrawSprite(Texture &texture,
                                 glm::vec2 size,
                                 float rotate,
                                 glm::vec3 color) {
-	this->shader.Use();
+
+    Game::GetInstance().GetBatchRenderer()->pushObject(texture, position, {u1, v1, u2, v2}, size, color);
+	return;
+	
+    this->shader.Use();
 
 	glm::mat4 model = glm::mat4(1.0f);
 	model = glm::translate(model, glm::vec3(position, 0.0f));
