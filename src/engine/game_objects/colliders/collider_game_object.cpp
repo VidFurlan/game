@@ -29,7 +29,7 @@ void ColliderGameObject::Update(float deltaTime) {
 }
 
 void ColliderGameObject::OnCollision(ColliderGameObject *other, CollisionType type) {
-	mShape->color = glm::vec3(1.0f, 0.0f, 0.0f);
+	mShape->color = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
 }
 
 void ColliderGameObject::Render() {
@@ -38,7 +38,7 @@ void ColliderGameObject::Render() {
 		mGlobalPosition = GetGlobalPosition();
 		mShape->DrawDebug(mGlobalPosition, mGlobalPosition.z, mScale);
 	}
-	mShape->color = glm::vec3(0.0f, 1.0f, 0.0f);
+	mShape->color = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f);
 }
 
 ColliderGameObject::CollisionType ColliderGameObject::CheckCollision(ColliderGameObject *other) const {

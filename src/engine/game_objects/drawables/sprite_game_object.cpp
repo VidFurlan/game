@@ -7,11 +7,11 @@
 #include "glm/gtc/type_ptr.hpp"
 
 void SpriteGameObject::Render() {
+	AbstractImageGameObject::Render();
+
 	if (!mVisible) {
 		return;
 	}
-
-	AbstractImageGameObject::Render();
 
 	Game::GetInstance().GetSpriteRenderer()->DrawSprite(mTexture, glm::make_vec2(mRenderPosition), mRenderSize, GetGlobalRotation(), mColor);
 }

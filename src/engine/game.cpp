@@ -37,12 +37,10 @@ void Game::Init() {
 	mSpriteRenderer = new SpriteRenderer(resourceManager->GetShader("sprite"));
 
     if (mBatchRenderer != nullptr) delete mBatchRenderer;
-    mBatchRenderer = new BatchRenderer(200000);
+    mBatchRenderer = new BatchRenderer(2000000);
 }
 
 void Game::Run() {
-    std::cout << glGetString(GL_VERSION) << std::endl;
-
 	ImGuiHelper::Init();
 
 	float deltaTime = 0.0f;

@@ -11,8 +11,8 @@ class DebugRenderer : public Singleton {
 		static DebugRenderer instance;
 		return instance;
 	}
-	void drawLineGlobalPos(glm::vec2 start, glm::vec2 end, const glm::vec3& color);
-	void drawLineAbsolutPos(const glm::vec2& start, const glm::vec2& end, const glm::vec3& color);
+	void drawLineGlobalPos(glm::vec2 start, glm::vec2 end, const glm::vec4& color);
+	void drawLineAbsolutPos(const glm::vec2& start, const glm::vec2& end, const glm::vec4& color);
 
    private:
 	DebugRenderer()

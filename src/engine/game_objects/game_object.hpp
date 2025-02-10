@@ -4,7 +4,6 @@
 #include <map>
 #include <set>
 #include <string>
-#include <unordered_map>
 
 #include "glm/ext/vector_float2.hpp"
 #include "glm/ext/vector_float3.hpp"
@@ -43,7 +42,7 @@ class GameObject {
 
 	GameObject *GetParent() const;
 	GameObject *GetChild(std::string name) const;
-	std::map<std::string, GameObject *> *GetChildren() const;
+	std::unordered_map<std::string, GameObject *> *GetChildren() const;
 	unsigned int GetChildrenCount() const;
 
 	GameObject *AddChild(GameObject *child);
@@ -72,11 +71,6 @@ class GameObject {
 	int mZIndex = 1000;
 
 	GameObject *pParent = nullptr;
-	std::map<std::string, GameObject *> children;
-
-	static bool nameCmp(GameObject *a, GameObject *b) {
-		return a->GetName() < b->GetName();
-	}
-	std::map<int, std::set<GameObject *, bool (*)(GameObject *, GameObject *)>, std::greater<int>> mChildrenByZIndex{
-	    {1000, std::set<GameObject *, bool (*)(GameObject *, GameObject *)>(nameCmp)}};
+	std::unordered_map<std::string, GameObject *> children;
+	std::map<int, std::set<GameObject *>> mChildrenByZIndex;
 };

@@ -72,7 +72,7 @@ void SpriteRenderer::DrawSprite(Texture &texture,
                                 float v2,
                                 glm::vec2 size,
                                 float rotate,
-                                glm::vec3 color) {
+                                glm::vec4 color) {
 	Game::GetInstance().GetBatchRenderer()->pushObject(texture, {position, rotate}, {u1, v1, u2, v2}, size, glm::make_vec4(color));
 	return;
 
@@ -123,7 +123,7 @@ void SpriteRenderer::DrawSprite(Texture &texture,
 }
 
 void SpriteRenderer::DrawSprite(
-    Texture &texture, glm::vec2 position, glm::vec2 size, float rotate, glm::vec3 color) {
+    Texture &texture, glm::vec2 position, glm::vec2 size, float rotate, glm::vec4 color) {
 	this->DrawSprite(texture, position, 0.0f, 0.0f, 1.0f, 1.0f, size, rotate, color);
 }
 
@@ -134,7 +134,7 @@ void SpriteRenderer::DrawSpriteSheet(Texture &texture,
                                      int cols,
                                      glm::vec2 size,
                                      float rotate,
-                                     glm::vec3 color) {
+                                     glm::vec4 color) {
 	float u1 = (index % cols) / (float)cols;
 	float v1 = (index / cols) / (float)rows;
 	float u2 = (index % cols + 1) / (float)cols;
@@ -148,7 +148,7 @@ void SpriteRenderer::DrawSpriteWithMask(Texture &spriteTexture,
                                         glm::vec2 position,
                                         glm::vec2 size,
                                         float rotate,
-                                        glm::vec3 color) {
+                                        glm::vec4 color) {
 	this->shader.Use();
 
 	glm::mat4 model = glm::mat4(1.0f);

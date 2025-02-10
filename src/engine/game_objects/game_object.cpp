@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <iostream>
+#include <unordered_map>
 
 #include "glm/ext/vector_float3.hpp"
 #include "glm/fwd.hpp"
@@ -138,16 +139,7 @@ GameObject *GameObject::SetZIndex(int zIndex) {
 	}
 
 	if (pParent) {
-		if (pParent->mChildrenByZIndex.find(mZIndex) == pParent->mChildrenByZIndex.end()) {
-			pParent->mChildrenByZIndex[mZIndex] = std::set<GameObject *, bool (*)(GameObject *, GameObject *)>(nameCmp);
-		}
-
 		pParent->mChildrenByZIndex[mZIndex].erase(this);
-
-		if (pParent->mChildrenByZIndex.find(zIndex) == pParent->mChildrenByZIndex.end()) {
-			pParent->mChildrenByZIndex[zIndex] = std::set<GameObject *, bool (*)(GameObject *, GameObject *)>(nameCmp);
-		}
-
 		pParent->mChildrenByZIndex[zIndex].insert(this);
 	}
 
@@ -171,8 +163,8 @@ GameObject *GameObject::GetChild(std::string name) const {
 	return children.at(name);
 }
 
-std::map<std::string, GameObject *> *GameObject::GetChildren() const {
-	return (std::map<std::string, GameObject *> *)&children;
+std::unordered_map<std::string, GameObject *> *GameObject::GetChildren() const {
+	return (std::unordered_map<std::string, GameObject *> *)&children;
 }
 
 unsigned int GameObject::GetChildrenCount() const {

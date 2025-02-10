@@ -11,14 +11,15 @@
 
 class SpriteSheetGameObject : public AbstractImageGameObject {
    public:
-	SpriteSheetGameObject(std::string name, std::string textureName, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f), glm::vec3 color = glm::vec3(1.0f));
-	SpriteSheetGameObject(std::string name, GameObject *parent, std::string textureName, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos = glm::vec3(0.0f), glm::vec2 scale = glm::vec2(1.0f), glm::vec3 color = glm::vec3(1.0f));
-	SpriteSheetGameObject(std::string name, Texture &texture, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f), glm::vec3 color = glm::vec3(1.0f));
-	SpriteSheetGameObject(std::string name, GameObject *parent, Texture &texture, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f), glm::vec3 color = glm::vec3(1.0f));
+	SpriteSheetGameObject(std::string name, std::string textureName, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f), glm::vec4 color = glm::vec4(1.0f));
+	SpriteSheetGameObject(std::string name, GameObject *parent, std::string textureName, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos = glm::vec3(0.0f), glm::vec2 scale = glm::vec2(1.0f), glm::vec4 color = glm::vec4(1.0f));
+	SpriteSheetGameObject(std::string name, Texture &texture, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f), glm::vec4 color = glm::vec4(1.0f));
+	SpriteSheetGameObject(std::string name, GameObject *parent, Texture &texture, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f), glm::vec4 color = glm::vec4(1.0f));
 
 	void Render() override;
 
 	SpriteSheetGameObject *SetSpriteSheetFrame(int frame);
+    SpriteSheetGameObject *SetSpriteSheetFrame(int x, int y);
 	SpriteSheetGameObject *SetSpriteSheetFrame(glm::vec2 frame);
 
 	SpriteSheetGameObject *AddFrameSequence(std::string name, std::vector<glm::vec2> frames);

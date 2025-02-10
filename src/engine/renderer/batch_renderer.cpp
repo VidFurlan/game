@@ -48,8 +48,8 @@ void BatchRenderer::pushObject(Texture &texture, glm::vec3 position, glm::vec4 u
 	float cosTheta = cos(rad);
 	float sinTheta = sin(rad);
 
-	float halfWidth = (abs(size.x) / 2.0f) * GameObject::GAME_SCALE_FACTOR;
-	float halfHeight = (abs(size.y) / 2.0f) * GameObject::GAME_SCALE_FACTOR;
+	float halfWidth = (size.x / 2.0f) * GameObject::GAME_SCALE_FACTOR;
+	float halfHeight = (size.y / 2.0f) * GameObject::GAME_SCALE_FACTOR;
 
 	glm::vec2 corners[4] = {
 	    {halfWidth, halfHeight},
@@ -65,15 +65,12 @@ void BatchRenderer::pushObject(Texture &texture, glm::vec3 position, glm::vec4 u
 		rotated[i].y = position.y + (corners[i].x * sinTheta + corners[i].y * cosTheta);
 	}
 
-	float u1 = uv.x, v1 = uv.y;
-	float u2 = uv.z, v2 = uv.w;
+	float u1 = uv.x, v1 = uv.w;
+	float u2 = uv.z, v2 = uv.y;
 
 	if (mCount + 6 >= mMaxCount) {
 		flush();
 	}
-
-    if (size.x < 0) std::swap(u1, u2);
-    if (size.y > 0) std::swap(v1, v2);
 
 	pushVertex(texture, {rotated[0], {u2, v1}, color});
 	pushVertex(texture, {rotated[1], {u1, v1}, color});
@@ -102,8 +99,6 @@ void BatchRenderer::flush() {
 	if (mCount == 0) {
 		return;
 	}
-
-    std::cout << "Flushing " << mCount << " vertices" << std::endl;
 
 	glUseProgram(mShader);
 

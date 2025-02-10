@@ -13,6 +13,7 @@
 Player::Player(std::string name, GameObject *parent, glm::vec3 position)
     : GameObject(name, parent, position) {
 	mPos = glm::vec3(0.0f, 0.0f, 0.0f);
+    SetZIndex(1001);
     (new SpriteSheetGameObject("PlayerSprite", this, "player", {16, 16}, {0, 0, 0}, {8, 8}))
         ->SetSpriteSheetFrame({0, 0});
 }

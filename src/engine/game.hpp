@@ -44,7 +44,7 @@ class Game : public Singleton {
 	ResourceManager *GetResourceManager() const;
 	SceneGameObject *GetActiveScene() const;
 	PostProcessor *GetPostProcessor() const;
-    BatchRenderer *GetBatchRenderer() const;
+	BatchRenderer *GetBatchRenderer() const;
 
 	GameState State;
 	bool Keys[1024] = {false};
@@ -56,7 +56,7 @@ class Game : public Singleton {
 	ResourceManager *resourceManager = nullptr;
 	SpriteRenderer *mSpriteRenderer = nullptr;
 	PostProcessor *mPostProcessor = nullptr;
-    BatchRenderer *mBatchRenderer = nullptr;
+	BatchRenderer *mBatchRenderer = nullptr;
 
 	bool mPostProcessingDisabled = false;
 	bool mDebugMode = false;

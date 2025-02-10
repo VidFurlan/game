@@ -8,28 +8,28 @@
 #include "glm/ext/vector_float3.hpp"
 #include "glm/gtc/type_ptr.hpp"
 
-SpriteSheetGameObject::SpriteSheetGameObject(std::string name, std::string textureName, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale, glm::vec3 color)
+SpriteSheetGameObject::SpriteSheetGameObject(std::string name, std::string textureName, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale, glm::vec4 color)
     : AbstractImageGameObject(name, textureName, pos, scale, color), mFramesResolution(framesResolution) {
 }
 
-SpriteSheetGameObject::SpriteSheetGameObject(std::string name, GameObject *parent, std::string textureName, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale, glm::vec3 color)
+SpriteSheetGameObject::SpriteSheetGameObject(std::string name, GameObject *parent, std::string textureName, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale, glm::vec4 color)
     : AbstractImageGameObject(name, parent, textureName, pos, scale, color), mFramesResolution(framesResolution) {
 }
 
-SpriteSheetGameObject::SpriteSheetGameObject(std::string name, Texture &texture, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale, glm::vec3 color)
+SpriteSheetGameObject::SpriteSheetGameObject(std::string name, Texture &texture, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale, glm::vec4 color)
     : AbstractImageGameObject(name, texture, pos, scale, color), mFramesResolution(framesResolution) {
 }
 
-SpriteSheetGameObject::SpriteSheetGameObject(std::string name, GameObject *parent, Texture &texture, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale, glm::vec3 color)
+SpriteSheetGameObject::SpriteSheetGameObject(std::string name, GameObject *parent, Texture &texture, std::pair<unsigned int, unsigned int> framesResolution, glm::vec3 pos, glm::vec2 scale, glm::vec4 color)
     : AbstractImageGameObject(name, parent, texture, pos, scale, color), mFramesResolution(framesResolution) {
 }
 
 void SpriteSheetGameObject::Render() {
+	AbstractImageGameObject::Render();
+
 	if (!mVisible) {
 		return;
 	}
-
-	AbstractImageGameObject::Render();
 
 	if (mFramesResolution.first == 0 || mFramesResolution.second == 0) {
 		return;
@@ -45,6 +45,11 @@ void SpriteSheetGameObject::Render() {
 SpriteSheetGameObject *SpriteSheetGameObject::SetSpriteSheetFrame(int frame) {
 	mFrameIndex = frame;
 	return this;
+}
+
+SpriteSheetGameObject *SpriteSheetGameObject::SetSpriteSheetFrame(int x, int y) {
+    mFrameIndex = x * mFramesResolution.first + y;
+    return this;
 }
 
 SpriteSheetGameObject *SpriteSheetGameObject::SetSpriteSheetFrame(glm::vec2 frame) {

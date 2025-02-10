@@ -11,15 +11,15 @@
 
 class BatchRenderer {
    public:
-	typedef struct {
-		float cols[4][4];
-	} Matrix;
-
 	struct Vertex {
 		glm::vec2 position;
 		glm::vec2 uv;
-        glm::vec4 color;
-	};
+		glm::vec4 color;
+		glm::vec4 modelCol0;
+		glm::vec4 modelCol1;
+		glm::vec4 modelCol2;
+		glm::vec4 modelCol3;
+    };
 
 	BatchRenderer(int maxCapacity);
 	~BatchRenderer();

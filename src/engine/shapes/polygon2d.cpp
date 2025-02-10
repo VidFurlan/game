@@ -5,7 +5,7 @@
 #include "debug_renderer.hpp"
 #include "glm/gtc/type_ptr.hpp"
 
-Polygon2D::Polygon2D(std::vector<glm::vec2> vertices, glm::vec2 pos, glm::vec3 color)
+Polygon2D::Polygon2D(std::vector<glm::vec2> vertices, glm::vec2 pos, glm::vec4 color)
     : Shape2D(pos, color) {
 	this->vertices = vertices;
 }

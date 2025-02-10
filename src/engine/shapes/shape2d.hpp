@@ -5,13 +5,14 @@
 
 #include "glm/ext/vector_float2.hpp"
 #include "glm/ext/vector_float3.hpp"
+#include "glm/ext/vector_float4.hpp"
 #include "glm/fwd.hpp"
 #include "glm/vec2.hpp"
 #include "glm/vec3.hpp"
 
 class Shape2D {
    public:
-	Shape2D(glm::vec2 pos = glm::vec2(0.0f), glm::vec3 color = glm::vec3(0.0f, 1.0f, 0.0f))
+	Shape2D(glm::vec2 pos = glm::vec2(0.0f), glm::vec4 color = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f))
 	    : pos(pos), color(color) {}
 	virtual ~Shape2D() = default;
 
@@ -20,7 +21,7 @@ class Shape2D {
 	virtual std::vector<glm::vec2> GetVertices(glm::vec3 pos = glm::vec3(0.0f)) const = 0;
 
    public:
-	glm::vec3 color;
+	glm::vec4 color;
 
    protected:
 	glm::vec2 pos;
