@@ -190,8 +190,8 @@ void ImGuiHelper::ImGuiDebugMenu() {
 
 				glm::vec2 size = imageGameObject->GetScale();
 				ImGui::Text("Size:");
-				ImGui::InputFloat("Width##Size", &size.x, 1.0f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
-				ImGui::InputFloat("Height##Size", &size.y, 1.0f, 1.0f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
+				ImGui::InputFloat("Width##Size", &size.x, 0.01f, 0.01f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
+				ImGui::InputFloat("Height##Size", &size.y, 0.01f, 0.01f, "%.4f", ImGuiInputTextFlags_CharsDecimal);
 				imageGameObject->SetScale(size);
 
 				glm::vec3 color = imageGameObject->GetColor();

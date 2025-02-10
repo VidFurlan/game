@@ -6,13 +6,15 @@
 #include "game.hpp"
 #include "game_object.hpp"
 #include "glm/ext/vector_float2.hpp"
+#include "glm/ext/vector_float3.hpp"
+#include "sprite_game_object.hpp"
 #include "spritesheet_game_object.hpp"
 
 Player::Player(std::string name, GameObject *parent, glm::vec3 position)
     : GameObject(name, parent, position) {
 	mPos = glm::vec3(10.0f, 0.0f, 0.0f);
-	AddChild((new SpriteSheetGameObject("PlayerSprite", this, "player", {16, 16}))
-	             ->SetScale(glm::vec2(10.0f))
+	AddChild((new SpriteSheetGameObject("PlayerSprite", this, "player", {16, 16}, glm::vec3(0.0f), {8, 8}))
+	             ->SetScale(glm::vec2(1.0f))
 	             ->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f)));
 	AddChild(new GameObject("PlayerCollider", this));
 }
@@ -67,9 +69,14 @@ void Player::Update(float deltaTime) {
 		oldDir = movement;
 	}
 
+    dashTimeElapsed += deltaTime;
+    if (dashTimeElapsed > dashTime) {
+        dashTimeElapsed = 0.0f;
+        oldDir.x = -oldDir.x;
+    }
 	if (oldDir.x < 0) {
-		((SpriteSheetGameObject *)GetChild("PlayerSprite"))->SetScale(glm::vec2(-10.0f, 10.0f));
+		((SpriteSheetGameObject *)GetChild("PlayerSprite"))->SetScale(glm::vec2(-1.0f, 1.0f));
 	} else {
-		((SpriteSheetGameObject *)GetChild("PlayerSprite"))->SetScale(glm::vec2(10.0f, 10.0f));
+		((SpriteSheetGameObject *)GetChild("PlayerSprite"))->SetScale(glm::vec2(1.0f, 1.0f));
 	}
 }

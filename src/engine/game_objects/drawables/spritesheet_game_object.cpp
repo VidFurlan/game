@@ -39,7 +39,7 @@ void SpriteSheetGameObject::Render() {
 		mFrameIndex = 0;
 	}
 
-	Game::GetInstance().GetSpriteRenderer()->DrawSpriteSheet(mTexture, glm::make_vec2(mRenderPosition) - mRenderSize / 2.0f * GAME_SCALE_FACTOR, mFrameIndex, mFramesResolution.first, mFramesResolution.second, mRenderSize * GAME_SCALE_FACTOR, GetGlobalRotation(), mColor);
+	Game::GetInstance().GetSpriteRenderer()->DrawSpriteSheet(mTexture, mRenderPosition, mFrameIndex, mFramesResolution.first, mFramesResolution.second, mRenderSize, GetGlobalRotation(), mColor);
 }
 
 SpriteSheetGameObject *SpriteSheetGameObject::SetSpriteSheetFrame(int frame) {

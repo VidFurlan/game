@@ -6,6 +6,7 @@
 #include "game_window.hpp"
 #include "glm/ext/matrix_transform.hpp"
 #include "glm/fwd.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 SpriteRenderer::SpriteRenderer(Shader &shader) {
 	this->shader = shader;
@@ -72,11 +73,10 @@ void SpriteRenderer::DrawSprite(Texture &texture,
                                 glm::vec2 size,
                                 float rotate,
                                 glm::vec3 color) {
-
-    Game::GetInstance().GetBatchRenderer()->pushObject(texture, position, {u1, v1, u2, v2}, size, color);
+	Game::GetInstance().GetBatchRenderer()->pushObject(texture, {position, rotate}, {u1, v1, u2, v2}, size, glm::make_vec4(color));
 	return;
-	
-    this->shader.Use();
+
+	this->shader.Use();
 
 	glm::mat4 model = glm::mat4(1.0f);
 	model = glm::translate(model, glm::vec3(position, 0.0f));

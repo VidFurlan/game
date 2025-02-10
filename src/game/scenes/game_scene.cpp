@@ -44,7 +44,7 @@ void GameScene::Init() {
 		for (int j = 0; j < 100; j++) {
 			(new SpriteSheetGameObject("Tile" + std::to_string(i) + "_" + std::to_string(j), map, "atlas", {8, 8}, {0, 0, 0}, {8, 8}))
 			    ->SetSpriteSheetFrame({0, 0})
-			    ->SetPosition({i * 8.0f, j * 8.0f});
+			    ->SetPosition({i, j});
 		}
 	}
 
