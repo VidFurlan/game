@@ -12,11 +12,9 @@
 
 Player::Player(std::string name, GameObject *parent, glm::vec3 position)
     : GameObject(name, parent, position) {
-	mPos = glm::vec3(10.0f, 0.0f, 0.0f);
-	AddChild((new SpriteSheetGameObject("PlayerSprite", this, "player", {16, 16}, glm::vec3(0.0f), {8, 8}))
-	             ->SetScale(glm::vec2(1.0f))
-	             ->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f)));
-	AddChild(new GameObject("PlayerCollider", this));
+	mPos = glm::vec3(0.0f, 0.0f, 0.0f);
+    (new SpriteSheetGameObject("PlayerSprite", this, "player", {16, 16}, {0, 0, 0}, {8, 8}))
+        ->SetSpriteSheetFrame({0, 0});
 }
 
 void Player::Update(float deltaTime) {
@@ -28,7 +26,7 @@ void Player::Update(float deltaTime) {
 	if (animationTimeElapsed > 0.3f) {
 		animationTimeElapsed = 0.0f;
 		animationFrame = (animationFrame + 1) % 2;
-		((SpriteSheetGameObject *)GetChild("PlayerSprite"))->SetSpriteSheetFrame({0, (animationFrame)});
+		((SpriteSheetGameObject *)GetChild("PlayerSprite"))->SetSpriteSheetFrame({0, animationFrame});
 	}
 
 	glm::vec2 movement = glm::vec2(0.0f);
@@ -38,13 +36,13 @@ void Player::Update(float deltaTime) {
 	if (Game::GetInstance().Keys[GLFW_KEY_D]) movement.x += 1.0f;
 	if (movement.x != 0 || movement.y != 0) movement = glm::normalize(movement);
 
-    if (dashCooldown) {
-        dashCooldownElapsed += deltaTime;
-        if (dashCooldownElapsed > dashCooldownTime) {
-            dashCooldown = false;
-            dashCooldownElapsed = 0.0f;
-        }
-    }
+	if (dashCooldown) {
+		dashCooldownElapsed += deltaTime;
+		if (dashCooldownElapsed > dashCooldownTime) {
+			dashCooldown = false;
+			dashCooldownElapsed = 0.0f;
+		}
+	}
 
 	if (Game::GetInstance().Keys[GLFW_KEY_SPACE] && !dash && !dashCooldown) {
 		dashDir = movement;
@@ -55,7 +53,7 @@ void Player::Update(float deltaTime) {
 		dashTimeElapsed += deltaTime;
 		if (dashTimeElapsed > dashTime) {
 			dash = false;
-            dashCooldown = true;
+			dashCooldown = true;
 			dashTimeElapsed = 0.0f;
 		}
 		*((GameObject *)this) += dashDir * dashSpeed * deltaTime;
@@ -69,14 +67,9 @@ void Player::Update(float deltaTime) {
 		oldDir = movement;
 	}
 
-    dashTimeElapsed += deltaTime;
-    if (dashTimeElapsed > dashTime) {
-        dashTimeElapsed = 0.0f;
-        oldDir.x = -oldDir.x;
-    }
 	if (oldDir.x < 0) {
-		((SpriteSheetGameObject *)GetChild("PlayerSprite"))->SetScale(glm::vec2(-1.0f, 1.0f));
+		((SpriteSheetGameObject *)GetChild("PlayerSprite"))->SetScale(glm::vec2(-8.0f, 8.0f));
 	} else {
-		((SpriteSheetGameObject *)GetChild("PlayerSprite"))->SetScale(glm::vec2(1.0f, 1.0f));
+		((SpriteSheetGameObject *)GetChild("PlayerSprite"))->SetScale(glm::vec2(8.0f, 8.0f));
 	}
 }

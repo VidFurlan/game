@@ -40,11 +40,11 @@ void GameScene::Init() {
 	this->SetActiveCamera(camera);
 
 	GameObject *map = new GameObject("Map", this);
-	for (int i = 0; i < 100; i++) {
+	for (int i = 0; i < 1000; i++) {
 		for (int j = 0; j < 100; j++) {
 			(new SpriteSheetGameObject("Tile" + std::to_string(i) + "_" + std::to_string(j), map, "atlas", {8, 8}, {0, 0, 0}, {8, 8}))
 			    ->SetSpriteSheetFrame({0, 0})
-			    ->SetPosition({i, j});
+			    ->SetPosition({i*8, j*8});
 		}
 	}
 

@@ -103,6 +103,8 @@ void BatchRenderer::flush() {
 		return;
 	}
 
+    std::cout << "Flushing " << mCount << " vertices" << std::endl;
+
 	glUseProgram(mShader);
 
 	glActiveTexture(GL_TEXTURE0);
