@@ -14,7 +14,7 @@ class CollisionManager : public Singleton {
 
 	void Update(float deltaTime);
 
-	ColliderGameObject::CollisionType CheckAgainsAll(ColliderGameObject *obj1);
+	void CheckAgainsAll(ColliderGameObject *obj1);
 	ColliderGameObject::CollisionType CheckAgainsAllNoCallback(ColliderGameObject *obj1);
 
 	void AddGameObject(ColliderGameObject *gameObject);

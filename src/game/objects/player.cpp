@@ -1,21 +1,35 @@
 #include "player.hpp"
 
-#include <iostream>
-
 #include "GLFW/glfw3.h"
+#include "collider_game_object.hpp"
+#include "collision_manager.hpp"
 #include "game.hpp"
 #include "game_object.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include "glm/ext/vector_float3.hpp"
-#include "sprite_game_object.hpp"
+#include "polygon2d.hpp"
 #include "spritesheet_game_object.hpp"
 
-Player::Player(std::string name, GameObject *parent, glm::vec3 position)
-    : GameObject(name, parent, position) {
+const float hitboxSize = 2.5f;
+const float hitboxCorner = 0.9f;
+
+Player::Player(std::string name, GameObject *parent, glm::vec3 position) : ColliderGameObject(name,
+                                                                                              parent,
+                                                                                              new Polygon2D({{-hitboxSize + hitboxCorner, -hitboxSize},
+                                                                                                             {-hitboxSize, -hitboxSize + hitboxCorner},
+                                                                                                             {-hitboxSize, hitboxSize - hitboxCorner},
+                                                                                                             {-hitboxSize + hitboxCorner, hitboxSize},
+                                                                                                             {hitboxSize - hitboxCorner, hitboxSize},
+                                                                                                             {hitboxSize, hitboxSize - hitboxCorner},
+                                                                                                             {hitboxSize, -hitboxSize + hitboxCorner},
+                                                                                                             {hitboxSize - hitboxCorner, -hitboxSize}}),
+                                                                                              false,
+                                                                                              position,
+                                                                                              {1.0f, 1.0f}) {
 	mPos = glm::vec3(0.0f, 0.0f, 0.0f);
-    SetZIndex(1001);
-    (new SpriteSheetGameObject("PlayerSprite", this, "player", {16, 16}, {0, 0, 0}, {8, 8}))
-        ->SetSpriteSheetFrame({0, 0});
+	SetZIndex(1001);
+	(new SpriteSheetGameObject("PlayerSprite", this, "player", {16, 16}, {0.0f, -2.2f, 0.0f}, {8, 8}))
+	    ->SetSpriteSheetFrame({0, 0});
 }
 
 void Player::Update(float deltaTime) {
@@ -73,4 +87,6 @@ void Player::Update(float deltaTime) {
 	} else {
 		((SpriteSheetGameObject *)GetChild("PlayerSprite"))->SetScale(glm::vec2(8.0f, 8.0f));
 	}
+
+	CollisionManager::GetInstance().CheckAgainsAll(this);
 }

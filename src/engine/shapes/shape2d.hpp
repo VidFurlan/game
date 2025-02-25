@@ -20,10 +20,10 @@ class Shape2D {
 	virtual std::vector<glm::vec2> GetEdges(glm::vec3 pos = glm::vec3(0.0f)) const = 0;
 	virtual std::vector<glm::vec2> GetVertices(glm::vec3 pos = glm::vec3(0.0f)) const = 0;
 
-   public:
 	glm::vec4 color;
+	glm::vec2 scale = glm::vec2(1.0f);
+	glm::vec2 pos;
 
    protected:
-	glm::vec2 pos;
 	std::vector<glm::vec2> vertices;
 };

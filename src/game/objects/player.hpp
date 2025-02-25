@@ -1,9 +1,10 @@
 #pragma once
 
+#include "collider_game_object.hpp"
 #include "game_object.hpp"
 #include "game_scene.hpp"
 
-class Player : public GameObject {
+class Player : public ColliderGameObject {
    public:
 	Player(std::string name, GameObject *parent, glm::vec3 position = glm::vec3(0.0f));
 	void Update(float deltaTime) override;

@@ -57,7 +57,7 @@ void Game::Run() {
 
 		Update(deltaTime);
 
-		CollisionManager::GetInstance().Update(deltaTime);
+		//CollisionManager::GetInstance().Update(deltaTime);
 
 		if (mWindow->GetWidth() == 0 || mWindow->GetHeight() == 0) {
 			continue;

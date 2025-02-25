@@ -157,7 +157,6 @@ GameObject *GameObject::GetParent() const {
 
 GameObject *GameObject::GetChild(std::string name) const {
 	if (children.find(name) == children.end()) {
-		std::cerr << "Child not found: " << name << std::endl;
 		return nullptr;
 	}
 	return children.at(name);

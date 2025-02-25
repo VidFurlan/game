@@ -97,11 +97,11 @@ void DemoScene::Init() {
 
 	this->AddChild(new SpriteSheetGameObject("character_1", "character_red", {12, 4}, glm::vec3(0.0f), glm::vec2(10.0f)));
 	ColliderGameObject *polygon1 =
-	    new ColliderGameObject("polygon", this->GetChild("character_1"), new Polygon2D({glm::vec2(-10.0f, 0.0f), glm::vec2(-5.0f, 5.0f), glm::vec2(5.0f, 5.0f), glm::vec2(5.0f, -5.0f), glm::vec2(-5.0f, -5.0f)}), glm::vec3(0.0f), glm::vec2(1.0f));
+	    new ColliderGameObject("polygon", this->GetChild("character_1"), new Polygon2D({glm::vec2(-10.0f, 0.0f), glm::vec2(-5.0f, 5.0f), glm::vec2(5.0f, 5.0f), glm::vec2(5.0f, -5.0f), glm::vec2(-5.0f, -5.0f)}), true, glm::vec3(0.0f), glm::vec2(1.0f));
 
 	this->AddChild(new SpriteSheetGameObject("character_2", "character_blue", {12, 4}, glm::vec3(0.0f), glm::vec2(10.0f)));
 	ColliderGameObject *polygon2 =
-	    new ColliderGameObject("polygon", this->GetChild("character_2"), new Polygon2D({glm::vec2(-20.0f, 0.0f), glm::vec2(-10.0f, 10.0f), glm::vec2(10.0f, 10.0f), glm::vec2(10.0f, -10.0f), glm::vec2(-10.0f, -10.0f)}), glm::vec3(0.0f), glm::vec2(1.0f));
+	    new ColliderGameObject("polygon", this->GetChild("character_2"), new Polygon2D({glm::vec2(-20.0f, 0.0f), glm::vec2(-10.0f, 10.0f), glm::vec2(10.0f, 10.0f), glm::vec2(10.0f, -10.0f), glm::vec2(-10.0f, -10.0f)}), true, glm::vec3(0.0f), glm::vec2(1.0f));
 }
 
 void DemoScene::Update(float deltaTime) {
