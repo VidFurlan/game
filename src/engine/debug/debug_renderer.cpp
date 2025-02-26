@@ -27,6 +27,5 @@ void DebugRenderer::drawLineAbsolutPos(const glm::vec2& p1, const glm::vec2& p2,
 	glm::vec2 pos = (p1 + p2) / 2.0f;
 	glm::vec2 scale = glm::vec2(glm::distance(p1, p2), 2.0f) / GameObject::GAME_SCALE_FACTOR;
 	float angle = glm::degrees(glm::atan(p2.y - p1.y, p2.x - p1.x));
-	//pos -= scale / 2.0f;
 	Game::GetInstance().GetSpriteRenderer()->DrawSprite(__debugPixelTexture, pos, scale, angle, color);
 }

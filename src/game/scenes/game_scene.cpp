@@ -36,8 +36,6 @@ void GameScene::Init() {
 	pResourceManager->LoadTexture("assets/textures/enviroment/spritesheet.png", true, "atlas");
 	pResourceManager->LoadTexture("assets/textures/enviroment/tileset.png", true, "tileset");
 
-	pResourceManager->LoadTexture("assets/engine/textures/pixel.png", true, "pixel");
-
 	// =========================================================================
 	// Create game objects =====================================================
 	// =========================================================================
