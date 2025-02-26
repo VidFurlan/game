@@ -3,3 +3,5 @@ target_sources(${PROJECT_NAME} PRIVATE
 )
 
 add_subdirectory(dungeon)
+add_subdirectory(ui)
+add_subdirectory(entities)

@@ -47,13 +47,13 @@ SpriteSheetGameObject *SpriteSheetGameObject::SetSpriteSheetFrame(int frame) {
 	return this;
 }
 
-SpriteSheetGameObject *SpriteSheetGameObject::SetSpriteSheetFrame(int x, int y) {
-    mFrameIndex = x * mFramesResolution.first + y;
+SpriteSheetGameObject *SpriteSheetGameObject::SetSpriteSheetFrame(int row, int col) {
+    mFrameIndex = row * mFramesResolution.second + col;
     return this;
 }
 
 SpriteSheetGameObject *SpriteSheetGameObject::SetSpriteSheetFrame(glm::vec2 frame) {
-	mFrameIndex = frame.x * mFramesResolution.first + frame.y;
+	mFrameIndex = frame.x * mFramesResolution.second + frame.y;
 	return this;
 }
 

@@ -8,21 +8,21 @@
 #include "glm/ext/vector_float4.hpp"
 #include "texture.hpp"
 
+enum class ScreenAnchor {
+	CAMERA,
+	TOP_LEFT,
+	TOP_CENTER,
+	TOP_RIGHT,
+	CENTER_LEFT,
+	CENTER,
+	CENTER_RIGHT,
+	BOTTOM_LEFT,
+	BOTTOM_CENTER,
+	BOTTOM_RIGHT
+};
+
 class AbstractImageGameObject : public GameObject {
    public:
-	enum class Origin {
-		CAMERA,
-		TOP_LEFT,
-		TOP_CENTER,
-		TOP_RIGHT,
-		CENTER_LEFT,
-		CENTER,
-		CENTER_RIGHT,
-		BOTTOM_LEFT,
-		BOTTOM_CENTER,
-		BOTTOM_RIGHT
-	};
-
 	AbstractImageGameObject(std::string name, std::string textureName, glm::vec3 pos = glm::vec3(), glm::vec2 scale = glm::vec2(1.0f), glm::vec4 color = glm::vec4(1.0f));
 	AbstractImageGameObject(std::string name, GameObject *parent, std::string textureName, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f), glm::vec4 color = glm::vec4(1.0f));
 	AbstractImageGameObject(std::string name, Texture &texture, glm::vec3 pos = glm::vec3(), glm::vec2 scale = glm::vec2(1.0f), glm::vec4 color = glm::vec4(1.0f));
@@ -46,7 +46,7 @@ class AbstractImageGameObject : public GameObject {
 	AbstractImageGameObject *SetColor(glm::vec4 color);
 	AbstractImageGameObject *SetTexture(Texture &texture);
 
-	AbstractImageGameObject *SetOrigin(Origin origin);
+	AbstractImageGameObject *SetScreenAnchor(ScreenAnchor anchor);
 
    protected:
 	glm::vec3 mRenderPosition = glm::vec3(0.0f);
@@ -54,5 +54,5 @@ class AbstractImageGameObject : public GameObject {
 
 	Texture &mTexture;
 	glm::vec4 mColor;
-	Origin mOrigin = Origin::CAMERA;
+	ScreenAnchor mAnchor = ScreenAnchor::CAMERA;
 };

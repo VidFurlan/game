@@ -1,7 +1,6 @@
 #include "game_object.hpp"
 
 #include <cmath>
-#include <iostream>
 #include <unordered_map>
 
 #include "glm/ext/vector_float3.hpp"
@@ -29,6 +28,12 @@ void GameObject::Update(float deltaTime) {
 	for (auto child : children) {
 		child.second->Update(deltaTime);
 	}
+}
+
+void GameObject::LateUpdate(float deltaTime) {
+    for (auto child : children) {
+        child.second->LateUpdate(deltaTime);
+    }
 }
 
 void GameObject::Render() {

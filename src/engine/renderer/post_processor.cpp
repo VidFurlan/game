@@ -66,7 +66,7 @@ void PostProcessor::Render(float time) {
 	this->mPostProcessingShader.SetFloat("time", time);
 	this->mPostProcessingShader.SetVector2f("screenResolution", glm::vec2(mWidth, mHeight));
 	this->mPostProcessingShader.SetVector2f("scanLineOpacity", glm::vec2(0.15f, 0.15f));
-	this->mPostProcessingShader.SetFloat("vignetteOpacity", 0.75f);
+	this->mPostProcessingShader.SetFloat("vignetteOpacity", 0.25f);
 
 	this->mPostProcessingShader.SetFloat("distortion_amount", 0.02f);
 	this->mPostProcessingShader.SetFloat("blood_amount", 0.3f);

@@ -10,6 +10,7 @@
 #include "abstract_image_game_object.hpp"
 #include "camera_game_object.hpp"
 #include "game.hpp"
+#include "objects/player.hpp"
 #include "scene_game_object.hpp"
 
 bool ImGuiHelper::mShowSceneDebugMenu = false;
@@ -211,6 +212,22 @@ void ImGuiHelper::ImGuiDebugMenu() {
 					cameraGameObject->Use();
 				}
 			}
+
+            if (dynamic_cast<Player *>(gameObject)) {
+                Player *player = dynamic_cast<Player *>(gameObject);
+
+                ImGui::Text("Damage");
+                ImGui::Button("Damage##Damage");
+                if (ImGui::IsItemClicked()) {
+                    player->Damage(1);
+                }
+
+                ImGui::Text("Heal");
+                ImGui::Button("Heal##Heal");
+                if (ImGui::IsItemClicked()) {
+                    player->Damage(-1);
+                }
+            }
 		}
 
 		ImGui::End();

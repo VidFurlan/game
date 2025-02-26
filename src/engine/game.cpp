@@ -2,18 +2,14 @@
 
 #include <iostream>
 
-#include "debug/debug_renderer.hpp"
 #include "debug/imgui_helper.hpp"
-#include "game_objects/colliders/collision_manager.hpp"
 #include "game_objects/scene_game_object.hpp"
 #include "glm/ext/matrix_clip_space.hpp"
 #include "glm/ext/matrix_float4x4.hpp"
-#include "glm/ext/vector_float2.hpp"
 #include "glm/fwd.hpp"
 #include "renderer/resource_manager.hpp"
 #include "renderer/shader.hpp"
 #include "renderer/sprite_renderer.hpp"
-#include "shapes/polygon2d.hpp"
 
 void Game::Init() {
 	if (mWindow != nullptr) delete mWindow;
@@ -56,6 +52,7 @@ void Game::Run() {
 		ProcessInput(deltaTime);
 
 		Update(deltaTime);
+        LateUpdate(deltaTime);
 
 		//CollisionManager::GetInstance().Update(deltaTime);
 
@@ -95,6 +92,12 @@ void Game::Update(float deltaTime) {
 	if (mCurrentScene != nullptr) {
 		mCurrentScene->Update(deltaTime);
 	}
+}
+
+void Game::LateUpdate(float deltaTime) {
+    if (mCurrentScene != nullptr) {
+        mCurrentScene->LateUpdate(deltaTime);
+    }
 }
 
 void Game::ProcessInput(float deltaTime) {

@@ -1,7 +1,5 @@
 #include "debug_renderer.hpp"
 
-#include <iostream>
-
 #include "game.hpp"
 #include "game_object.hpp"
 #include "glm/gtc/type_ptr.hpp"

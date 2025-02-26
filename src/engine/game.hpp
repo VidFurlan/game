@@ -1,5 +1,8 @@
 #pragma once
 
+#define GLEW_STATIC
+#include <GL/glew.h>
+
 #include <functional>
 #include <map>
 
@@ -27,6 +30,7 @@ class Game : public Singleton {
 	void Run();
 	void ProcessInput(float deltaTime);
 	void Update(float deltaTime);
+    void LateUpdate(float deltaTime);
 	void Render();
 
 	bool ShouldClose() const;
