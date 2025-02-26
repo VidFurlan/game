@@ -1,8 +1,6 @@
 #include "abstract_image_game_object.hpp"
 
 #include <algorithm>
-#include <filesystem>
-#include <iostream>
 
 #include "game.hpp"
 #include "glm/common.hpp"
@@ -30,40 +28,33 @@ AbstractImageGameObject::~AbstractImageGameObject() {
 }
 
 void AbstractImageGameObject::Render() {
+	if (!mVisible) {
+		return;
+	}
+
 	mRenderPosition = GetGlobalPosition() * GAME_SCALE_FACTOR - Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetPosition() * GAME_SCALE_FACTOR;
 	mRenderPosition.z = 0.0f;
 
-	float zoom = Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetZoom();
-	mRenderSize = mScale * zoom;
+	switch (mOrigin) {
+		case Origin::CAMERA: {
+			float zoom = Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetZoom();
+			mRenderSize = mScale * zoom;
 
-	// Zoom origial position
-	mRenderPosition *= zoom;
-	// Set camera offset
-	mRenderPosition.x += Game::GetInstance().GetWindow()->GetWidth() / 2.0f;
-	mRenderPosition.y += Game::GetInstance().GetWindow()->GetHeight() / 2.0f;
+			mRenderPosition *= zoom;
+			mRenderPosition.x += Game::GetInstance().GetWindow()->GetWidth() / 2.0f;
+			mRenderPosition.y += Game::GetInstance().GetWindow()->GetHeight() / 2.0f;
+		} break;
+		default: {
 
-	float maxDist = GAME_SCALE_FACTOR * std::max(glm::abs(mRenderSize.x), glm::abs(mRenderSize.y));
-
-	if (mRenderPosition.x + maxDist < 0 || mRenderPosition.x - maxDist > Game::GetInstance().GetWindow()->GetWidth() ||
-	    mRenderPosition.y + maxDist < 0 || mRenderPosition.y - maxDist > Game::GetInstance().GetWindow()->GetHeight()) {
-		mVisible = false;
-	} else {
-		mVisible = true;
-	}
-
-	if (!mVisible) {
-		return;
+		} break;
 	}
 
 	GameObject::Render();
 }
 
-glm::vec4 AbstractImageGameObject::GetColor() {
-	return mColor;
-}
-
-Texture &AbstractImageGameObject::GetTexture() {
-	return mTexture;
+AbstractImageGameObject *AbstractImageGameObject::SetOrigin(Origin origin) {
+	mOrigin = origin;
+	return this;
 }
 
 AbstractImageGameObject *AbstractImageGameObject::SetColor(glm::vec4 color) {
@@ -89,6 +80,14 @@ AbstractImageGameObject *AbstractImageGameObject::SetScaleX(float scaleX) {
 AbstractImageGameObject *AbstractImageGameObject::SetScaleY(float scaleY) {
 	mScale.y = scaleY;
 	return this;
+}
+
+glm::vec4 AbstractImageGameObject::GetColor() {
+	return mColor;
+}
+
+Texture &AbstractImageGameObject::GetTexture() {
+	return mTexture;
 }
 
 glm::vec2 AbstractImageGameObject::GetScale() const {

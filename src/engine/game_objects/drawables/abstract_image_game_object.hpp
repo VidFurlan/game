@@ -10,6 +10,19 @@
 
 class AbstractImageGameObject : public GameObject {
    public:
+	enum class Origin {
+		CAMERA,
+		TOP_LEFT,
+		TOP_CENTER,
+		TOP_RIGHT,
+		CENTER_LEFT,
+		CENTER,
+		CENTER_RIGHT,
+		BOTTOM_LEFT,
+		BOTTOM_CENTER,
+		BOTTOM_RIGHT
+	};
+
 	AbstractImageGameObject(std::string name, std::string textureName, glm::vec3 pos = glm::vec3(), glm::vec2 scale = glm::vec2(1.0f), glm::vec4 color = glm::vec4(1.0f));
 	AbstractImageGameObject(std::string name, GameObject *parent, std::string textureName, glm::vec3 pos, glm::vec2 scale = glm::vec2(1.0f), glm::vec4 color = glm::vec4(1.0f));
 	AbstractImageGameObject(std::string name, Texture &texture, glm::vec3 pos = glm::vec3(), glm::vec2 scale = glm::vec2(1.0f), glm::vec4 color = glm::vec4(1.0f));
@@ -33,10 +46,13 @@ class AbstractImageGameObject : public GameObject {
 	AbstractImageGameObject *SetColor(glm::vec4 color);
 	AbstractImageGameObject *SetTexture(Texture &texture);
 
+	AbstractImageGameObject *SetOrigin(Origin origin);
+
    protected:
 	glm::vec3 mRenderPosition = glm::vec3(0.0f);
 	glm::vec2 mRenderSize = glm::vec2(0.0f);
 
 	Texture &mTexture;
 	glm::vec4 mColor;
+	Origin mOrigin = Origin::CAMERA;
 };

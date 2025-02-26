@@ -15,7 +15,7 @@ DungeonRoom::DungeonRoom(GameObject *parent) : GameObject("DungeonRoom", parent)
 		    if (type == ColliderGameObject::CollisionType::OVERLAP && other->GetName() == "Player") {
 			    Dungeon *dungeon = (Dungeon *)this->GetParent();
 			    dungeon->EnterRoom(dungeon->GetRoomPosition().x + 1, dungeon->GetRoomPosition().y);
-			    other->SetPosition({0.0f, 0.0f, 0.0f});
+			    other->SetPosition({other->GetPosition().x, -(m-3) * 4.0f, 0.0f});
 		    }
 	    })
 	    ->SetActive(false);
@@ -24,7 +24,7 @@ DungeonRoom::DungeonRoom(GameObject *parent) : GameObject("DungeonRoom", parent)
 		    if (type == ColliderGameObject::CollisionType::OVERLAP && other->GetName() == "Player") {
 			    Dungeon *dungeon = (Dungeon *)this->GetParent();
 			    dungeon->EnterRoom(dungeon->GetRoomPosition().x - 1, dungeon->GetRoomPosition().y);
-			    other->SetPosition({0.0f, 0.0f, 0.0f});
+			    other->SetPosition({other->GetPosition().x, (m-3) * 4.0f, 0.0f});
 		    }
 	    })
 	    ->SetActive(false);
@@ -33,7 +33,7 @@ DungeonRoom::DungeonRoom(GameObject *parent) : GameObject("DungeonRoom", parent)
 		    if (type == ColliderGameObject::CollisionType::OVERLAP && other->GetName() == "Player") {
 			    Dungeon *dungeon = (Dungeon *)this->GetParent();
 			    dungeon->EnterRoom(dungeon->GetRoomPosition().x, dungeon->GetRoomPosition().y - 1);
-			    other->SetPosition({0.0f, 0.0f, 0.0f});
+			    other->SetPosition({(n-3) * 4.0f, other->GetPosition().y, 0.0f});
 		    }
 	    })
 	    ->SetActive(false);
@@ -42,7 +42,7 @@ DungeonRoom::DungeonRoom(GameObject *parent) : GameObject("DungeonRoom", parent)
 		    if (type == ColliderGameObject::CollisionType::OVERLAP && other->GetName() == "Player") {
 			    Dungeon *dungeon = (Dungeon *)this->GetParent();
 			    dungeon->EnterRoom(dungeon->GetRoomPosition().x, dungeon->GetRoomPosition().y + 1);
-			    other->SetPosition({0.0f, 0.0f, 0.0f});
+			    other->SetPosition({-(n-3) * 4.0f, other->GetPosition().y, 0.0f});
 		    }
 	    })
 	    ->SetActive(false);
