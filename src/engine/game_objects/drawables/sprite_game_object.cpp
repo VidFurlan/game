@@ -13,5 +13,5 @@ void SpriteGameObject::Render() {
 		return;
 	}
 
-	Game::GetInstance().GetSpriteRenderer()->DrawSprite(mTexture, glm::make_vec2(mRenderPosition), mRenderSize, GetGlobalRotation(), mColor);
+	Game::GetInstance().GetSpriteRenderer()->DrawSprite(mTexture, mRenderPosition, mRenderSize, GetGlobalRotation(), mColor);
 }

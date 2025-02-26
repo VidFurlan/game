@@ -9,7 +9,5 @@ uniform sampler2D u_texture;
 
 void main() {
     f_color = texture(u_texture, v_texindex);
-    vec4 color = v_color;
-    color.a = 1.0;
-    f_color *= color;
+    f_color *= v_color;
 }

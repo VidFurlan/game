@@ -73,7 +73,7 @@ void SpriteRenderer::DrawSprite(Texture &texture,
                                 glm::vec2 size,
                                 float rotate,
                                 glm::vec4 color) {
-	Game::GetInstance().GetBatchRenderer()->pushObject(texture, {position, rotate}, {u1, v1, u2, v2}, size, glm::make_vec4(color));
+	Game::GetInstance().GetBatchRenderer()->pushObject(texture, {position, rotate}, {u1, v1, u2, v2}, size, color);
 	return;
 
 	this->shader.Use();
