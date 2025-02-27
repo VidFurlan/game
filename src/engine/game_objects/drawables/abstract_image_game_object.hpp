@@ -28,8 +28,6 @@ class AbstractImageGameObject : public GameObject {
 	AbstractImageGameObject(std::string name, Texture &texture, glm::vec3 pos = glm::vec3(), glm::vec2 scale = glm::vec2(1.0f), glm::vec4 color = glm::vec4(1.0f));
 	AbstractImageGameObject(std::string name, GameObject *parent, Texture &texture, glm::vec3 pos = glm::vec3(), glm::vec2 scale = glm::vec2(1.0f), glm::vec4 color = glm::vec4(1.0f));
 
-	~AbstractImageGameObject();
-
 	virtual void Render() override;
 
 	glm::vec4 GetColor();

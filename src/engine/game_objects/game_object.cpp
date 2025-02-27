@@ -1,6 +1,7 @@
 #include "game_object.hpp"
 
 #include <cmath>
+#include <iostream>
 #include <unordered_map>
 
 #include "glm/ext/vector_float3.hpp"
@@ -17,10 +18,19 @@ GameObject::GameObject(std::string name, GameObject *parent, glm::vec3 pos, glm:
 }
 
 GameObject::~GameObject() {
-	if (pParent)
+    for (auto &[zIndex, childrenByZIndex] : mChildrenByZIndex) {
+        for (auto child : childrenByZIndex) {
+            children.erase(child->GetName());
+            delete child;
+        }
+    }
+
+    for (auto child : children) {
+        delete child.second;
+    }
+
+	if (pParent) {
 		pParent->RemoveChild(mName);
-	for (auto child : children) {
-		delete child.second;
 	}
 }
 
@@ -31,9 +41,9 @@ void GameObject::Update(float deltaTime) {
 }
 
 void GameObject::LateUpdate(float deltaTime) {
-    for (auto child : children) {
-        child.second->LateUpdate(deltaTime);
-    }
+	for (auto child : children) {
+		child.second->LateUpdate(deltaTime);
+	}
 }
 
 void GameObject::Render() {
@@ -209,8 +219,10 @@ GameObject *GameObject::AddChildToLocalPos(GameObject *child) {
  * If memory is leaking check here!
  */
 GameObject *GameObject::RemoveChild(std::string name) {
+	if (children.find(name) == children.end()) {
+		return nullptr;
+	}
 	GameObject *child = children[name];
-	if (child == nullptr) return child;
 	children.erase(name);
 	mChildrenByZIndex[child->GetZIndex()].erase(child);
 	child->pParent = nullptr;

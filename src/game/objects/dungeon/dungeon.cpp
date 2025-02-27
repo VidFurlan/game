@@ -17,31 +17,40 @@ void Dungeon::Generate(int targetRoomCount, unsigned long long seed) {
 	q.push({0, 0});
 	int roomCount = 0;
 
-	while (!q.empty() && roomCount < mRoomCount) {
+	std::vector<int> dirs = {0, 1, 2, 3};
+	while (roomCount < mRoomCount) {
+		if (roomCount != mRoomCount && q.empty()) {
+			for (int i = -mRoomCount; i < mRoomCount; i++) {
+				for (int j = -mRoomCount; j < mRoomCount; j++) {
+					if (GetRoomData(i, j).type != DungeonRoom::Type::NOT_SET) q.push({i, j});
+				}
+			}
+		}
+
 		auto [x, y] = q.front();
 		q.pop();
 
 		if (CountAdjacentRooms(x, y) >= 2) continue;
 
 		if (GetRoomData(x, y).type == DungeonRoom::Type::NOT_SET) {
-			SetRoomType(x, y, DungeonRoom::Type::EMPTY);
+			int roomType = mDist(mRng);
+			if (roomType < 5) {
+				SetRoomType(x, y, DungeonRoom::Type::TREASURE);
+			} else if (roomType < 15) {
+				SetRoomType(x, y, DungeonRoom::Type::EMPTY);
+			} else {
+				SetRoomType(x, y, DungeonRoom::Type::MONSTER);
+			}
 			roomCount++;
 		}
 
+		std::shuffle(dirs.begin(), dirs.end(), mRng);
 		for (int i = 0; i < 4; i++) {
-			int nx = x + directions[i][0];
-			int ny = y + directions[i][1];
+			int nx = x + directions[dirs[i]][0];
+			int ny = y + directions[dirs[i]][1];
 			if (GetRoomData(nx, ny).type == DungeonRoom::Type::NOT_SET) {
 				if (mDist(mRng) & 1) continue;
 				q.push({nx, ny});
-			}
-		}
-
-		if (roomCount != mRoomCount && q.empty()) {
-			for (int i = -mRoomCount; i < mRoomCount; i++) {
-				for (int j = -mRoomCount; j < mRoomCount; j++) {
-					if (GetRoomData(i, j).type != DungeonRoom::Type::NOT_SET) q.push({i, j});
-				}
 			}
 		}
 	}
@@ -52,6 +61,10 @@ void Dungeon::Generate(int targetRoomCount, unsigned long long seed) {
 		for (int j = -mRoomCount; j < mRoomCount; j++) {
 			if (GetRoomData(i, j).type == DungeonRoom::Type::START)
 				std::cout << "S";
+			else if (GetRoomData(i, j).type == DungeonRoom::Type::MONSTER)
+				std::cout << "M";
+			else if (GetRoomData(i, j).type == DungeonRoom::Type::TREASURE)
+				std::cout << "T";
 			else if (GetRoomData(i, j).type != DungeonRoom::Type::NOT_SET)
 				std::cout << "#";
 			else
@@ -77,6 +90,10 @@ void Dungeon::EnterRoom(int x, int y) {
 void Dungeon::SetRoomType(int x, int y, DungeonRoom::Type type) {
 	if (x < -mRoomCount || x >= mRoomCount || y < -mRoomCount || y >= mRoomCount) throw std::runtime_error("Invalid room coordinates");
 	mRooms[x + mRoomCount][y + mRoomCount].type = type;
+	if (mRoomConfigs.find(type) != mRoomConfigs.end())
+		mRooms[x + mRoomCount][y + mRoomCount].roomContent = mDist(mRng) % mRoomConfigs.at(type).size();
+	else
+		mRooms[x + mRoomCount][y + mRoomCount].roomContent = -1;
 }
 
 Dungeon::RoomData &Dungeon::GetRoomData(int x, int y) {

@@ -10,7 +10,6 @@
 
 Enemy::Enemy(std::string name, GameObject *parent, glm::vec3 position)
     : Entity(name, parent, new Polygon2D({{-1.0f, -1.0f}, {-1.0f, 1.0f}, {1.0f, 1.0f}, {1.0f, -1.0f}}), false, position, {1.0f, 1.0f}) {
-	mPos = glm::vec3(0.0f, 0.0f, 0.0f);
 	SetZIndex(900);
 	(new SpriteSheetGameObject("EnemySprite", this, "enemy", {32, 32}, {0.0f, -2.2f, 0.0f}, {8, 8}))
 	    ->SetSpriteSheetFrame({0, 0});

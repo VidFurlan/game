@@ -16,9 +16,6 @@ DemoScene::DemoScene()
     : SceneGameObject("Demo") {
 }
 
-DemoScene::~DemoScene() {
-}
-
 void DemoScene::Init() {
 	pResourceManager = Game::GetInstance().GetResourceManager();
 

@@ -11,12 +11,6 @@ SceneGameObject::SceneGameObject(std::string name)
 	pResourceManager = &Game::GetInstance().GetResourceManager()->GetInstance();
 }
 
-SceneGameObject::~SceneGameObject() {
-	for (auto &child : children) {
-		delete child.second;
-	}
-}
-
 SceneGameObject *SceneGameObject::AddGameCamera(CameraGameObject *camera) {
 	mCameras[camera->GetName()] = camera;
 	return this;

@@ -24,9 +24,6 @@ AbstractImageGameObject::AbstractImageGameObject(std::string name, GameObject *p
     : GameObject(name, parent, pos, scale), mTexture(texture), mColor(color) {
 }
 
-AbstractImageGameObject::~AbstractImageGameObject() {
-}
-
 void AbstractImageGameObject::Render() {
 	if (!mVisible) {
 		return;

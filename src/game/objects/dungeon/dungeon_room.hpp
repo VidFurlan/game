@@ -1,6 +1,7 @@
 #pragma once
 
 #include "game_object.hpp"
+#include "objects/entities/entity.hpp"
 
 class DungeonRoom : public GameObject {
    public:
@@ -34,4 +35,5 @@ class DungeonRoom : public GameObject {
 	const int n = 13, m = 13;
 	Type mType;
 	State mState;
+    std::vector<Entity *> mEntities;
 };

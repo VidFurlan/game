@@ -17,9 +17,6 @@ GameScene::GameScene()
     : SceneGameObject("Game") {
 }
 
-GameScene::~GameScene() {
-}
-
 void GameScene::Init() {
 	pResourceManager = Game::GetInstance().GetResourceManager();
 
@@ -49,10 +46,8 @@ void GameScene::Init() {
 	Player *player = new Player("Player", this);
 	AddChild(new PlayerUI(player));
 
-    Enemy *enemy = new Enemy("Enemy", this);
-
 	Dungeon *dungeon = new Dungeon("Dungeon", this);
-	dungeon->Generate(10, std::hash<std::string>()("420"));
+	dungeon->Generate(10, std::hash<std::string>()("sigma"));
 }
 
 void GameScene::Update(float deltaTime) {

@@ -12,7 +12,6 @@
 class SceneGameObject : public GameObject {
    public:
 	SceneGameObject(std::string name);
-	virtual ~SceneGameObject();
 
 	virtual void Init() = 0;
 
