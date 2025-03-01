@@ -49,16 +49,16 @@ DungeonRoom::DungeonRoom(GameObject *parent) : GameObject("DungeonRoom", parent)
 	    })
 	    ->SetActive(false);
 
-	colliders->AddChild(new RectColliderGameObject("WallUp", true, {0.0f, -100.0f, 0.0f}, {300.0f, 112.0f}));
-	colliders->AddChild(new RectColliderGameObject("WallDown", true, {0.0f, 100.0f, 0.0f}, {300.0f, 112.0f}));
-	colliders->AddChild(new RectColliderGameObject("WallLeft", true, {-100.0f, 0.0f, 0.0f}, {112.0f, 300.0f}));
-	colliders->AddChild(new RectColliderGameObject("WallRight", true, {100.0f, 0.0f, 0.0f}, {112.0f, 300.0f}));
+	((ColliderGameObject *)colliders->AddChild(new RectColliderGameObject("WallUp", true, {0.0f, -100.0f, 0.0f}, {300.0f, 112.0f})))->SetFixed(true);
+	((ColliderGameObject *)colliders->AddChild(new RectColliderGameObject("WallDown", true, {0.0f, 100.0f, 0.0f}, {300.0f, 112.0f})))->SetFixed(true);
+	((ColliderGameObject *)colliders->AddChild(new RectColliderGameObject("WallLeft", true, {-100.0f, 0.0f, 0.0f}, {112.0f, 300.0f})))->SetFixed(true);
+	((ColliderGameObject *)colliders->AddChild(new RectColliderGameObject("WallRight", true, {100.0f, 0.0f, 0.0f}, {112.0f, 300.0f})))->SetFixed(true);
 
 	GameObject *tiles = AddChild(new GameObject("Tiles"));
 	tiles->SetPosition({-n * 4 + 4, -m * 4 + 4, 0.0f});
 
 	AddChild(new GameObject("Entities"))->SetZIndex(900);
-    EntityFactory::Init();
+	EntityFactory::Init();
 }
 
 void DungeonRoom::SetRoom(int x, int y) {
@@ -123,14 +123,14 @@ void DungeonRoom::SetRoom(int x, int y) {
 		}
 	}
 
-    delete GetChild("Entities");
-    AddChild(new GameObject("Entities"))->SetZIndex(900);
+	delete GetChild("Entities");
+	AddChild(new GameObject("Entities"))->SetZIndex(900);
 
 	if (Dungeon::mRoomConfigs.find(mType) != Dungeon::mRoomConfigs.end()) {
-        int idx = 0;
+		int idx = 0;
 		for (auto &entityData : Dungeon::mRoomConfigs.at(mType)[dungeon->GetRoomData(roomX, roomY).roomContent]) {
 			Entity *entity = EntityFactory::CreateEntity(entityData.type, std::to_string(idx), GetChild("Entities"), glm::make_vec3(entityData.position));
-            idx++;
+			idx++;
 		}
 	}
 }

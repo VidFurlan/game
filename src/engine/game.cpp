@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include "collision_manager.hpp"
 #include "debug/imgui_helper.hpp"
 #include "game_objects/scene_game_object.hpp"
 #include "glm/ext/matrix_clip_space.hpp"
@@ -54,7 +55,7 @@ void Game::Run() {
 		Update(deltaTime);
         LateUpdate(deltaTime);
 
-		//CollisionManager::GetInstance().Update(deltaTime);
+		CollisionManager::GetInstance().Update(deltaTime);
 
 		if (mWindow->GetWidth() == 0 || mWindow->GetHeight() == 0) {
 			continue;

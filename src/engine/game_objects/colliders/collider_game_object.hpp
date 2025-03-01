@@ -30,14 +30,18 @@ class ColliderGameObject : public GameObject {
 	CollisionType CheckPointCollision(glm::vec2 point) const;
 	static std::pair<ColliderGameObject::CollisionType, std::pair<float, glm::vec2>> CheckShapeOverlap(Shape2D *shape1, Shape2D *shape2, glm::vec3 pos1, glm::vec3 pos2);
 
+    bool IsSolid();
     bool IsFixed();
 
+    ColliderGameObject *SetSolid(bool solid);
+    ColliderGameObject *SetFixed(bool fixed);
     ColliderGameObject *SetOnCollision(std::function<void(ColliderGameObject *, CollisionType)> callback);
 
    private:
     std::function<void(ColliderGameObject *, CollisionType)> mOnCollision;
 
-    bool mFixed;
+    bool mSolid = false;
+    bool mFixed = false;
 	Shape2D *mShape;
 	glm::vec3 mGlobalPosition;
 };

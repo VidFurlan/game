@@ -47,7 +47,7 @@ void GameScene::Init() {
 	AddChild(new PlayerUI(player));
 
 	Dungeon *dungeon = new Dungeon("Dungeon", this);
-	dungeon->Generate(10, std::hash<std::string>()("sigma"));
+	dungeon->Generate(10, std::hash<std::string>()("ligma"));
 }
 
 void GameScene::Update(float deltaTime) {

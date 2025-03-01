@@ -1,5 +1,6 @@
 #include "dungeon.hpp"
 
+#include <algorithm>
 #include <iostream>
 #include <queue>
 #include <stdexcept>

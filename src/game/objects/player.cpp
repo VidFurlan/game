@@ -27,7 +27,7 @@ Player::Player(std::string name, GameObject *parent, glm::vec3 position) : Entit
                                                                                                  {hitboxSize, hitboxSize - hitboxCorner},
                                                                                                  {hitboxSize, -hitboxSize + hitboxCorner},
                                                                                                  {hitboxSize - hitboxCorner, -hitboxSize}}),
-                                                                                  false,
+                                                                                  true,
                                                                                   position,
                                                                                   {1.0f, 1.0f}) {
 	mPos = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -76,8 +76,10 @@ void Player::Update(float deltaTime) {
 			dashTimeElapsed = 0.0f;
 		}
 		mPos += glm::make_vec3(dashDir * dashSpeed * deltaTime);
+		SetSolid(false);
 	} else {
 		mPos += glm::make_vec3(movement * moveSpeed * deltaTime);
+		SetSolid(true);
 	}
 
 	if (movement.x != 0) {
@@ -89,8 +91,6 @@ void Player::Update(float deltaTime) {
 	} else {
 		((SpriteSheetGameObject *)GetChild("PlayerSprite"))->SetScale(glm::vec2(8.0f, 8.0f));
 	}
-
-	CollisionManager::GetInstance().CheckAgainsAll(this);
 }
 
 void Player::LateUpdate(float deltaTime) {

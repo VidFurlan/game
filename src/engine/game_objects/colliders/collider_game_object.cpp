@@ -16,11 +16,11 @@
 #include "glm/gtx/hash.hpp"
 #include "shape2d.hpp"
 
-ColliderGameObject::ColliderGameObject(std::string name, Shape2D *shape, bool fixed, glm::vec3 pos, glm::vec2 scale) : GameObject(name, pos, scale), mShape(shape), mFixed(fixed) {
+ColliderGameObject::ColliderGameObject(std::string name, Shape2D *shape, bool fixed, glm::vec3 pos, glm::vec2 scale) : GameObject(name, pos, scale), mShape(shape), mSolid(fixed) {
 	CollisionManager::GetInstance().AddGameObject(this);
 }
 
-ColliderGameObject::ColliderGameObject(std::string name, GameObject *parent, Shape2D *shape, bool fixed, glm::vec3 pos, glm::vec2 scale) : GameObject(name, parent, pos, scale), mShape(shape), mFixed(fixed) {
+ColliderGameObject::ColliderGameObject(std::string name, GameObject *parent, Shape2D *shape, bool fixed, glm::vec3 pos, glm::vec2 scale) : GameObject(name, parent, pos, scale), mShape(shape), mSolid(fixed) {
 	CollisionManager::GetInstance().AddGameObject(this);
 }
 
@@ -66,6 +66,12 @@ ColliderGameObject::CollisionType ColliderGameObject::CheckCollision(ColliderGam
 	return collisionType;
 }
 
+/**
+ * @brief Resolve collision between two objects (moves the object that is calling this)
+ *
+ * @param other 
+ * @return 
+ */
 ColliderGameObject::CollisionType ColliderGameObject::CheckCollisionAndResolve(ColliderGameObject *other) {
 	if (mShape == nullptr || other->mShape == nullptr) {
 		return CollisionType::NONE;
@@ -171,8 +177,22 @@ std::pair<ColliderGameObject::CollisionType, std::pair<float, glm::vec2>> Collid
 	return {minCollision, {minOverlap, minAxis}};
 }
 
+bool ColliderGameObject::IsSolid() {
+	return mSolid;
+}
+
 bool ColliderGameObject::IsFixed() {
-	return mFixed;
+    return mFixed;
+}
+
+ColliderGameObject *ColliderGameObject::SetSolid(bool solid) {
+    mSolid = solid;
+    return this;
+}
+
+ColliderGameObject *ColliderGameObject::SetFixed(bool fixed) {
+    mFixed = fixed;
+    return this;
 }
 
 ColliderGameObject *ColliderGameObject::SetOnCollision(std::function<void(ColliderGameObject *, CollisionType)> callback) {

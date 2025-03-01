@@ -5,7 +5,6 @@
 class DemoScene : public SceneGameObject {
    public:
 	DemoScene();
-	~DemoScene();
 
 	void Init() override;
 	void Update(float deltaTime) override;
