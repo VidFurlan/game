@@ -28,8 +28,6 @@ class DungeonRoom : public GameObject {
 
 	void SetType(Type type);
 	Type GetType();
-    void SetState(State state);
-    State GetState();
 
     void SetEnemyCount(int count);
     int GetEnemyCount();

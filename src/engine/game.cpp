@@ -44,6 +44,8 @@ void Game::Run() {
 	float lastFrame = 0.0f;
 
 	while (!ShouldClose()) {
+        LoadScene();
+
 		// Game updates
 		float currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
@@ -105,6 +107,7 @@ void Game::LateUpdate(float deltaTime) {
 }
 
 void Game::ProcessInput(float deltaTime) {
+
 }
 
 void Game::Render() {
@@ -135,24 +138,30 @@ ResourceManager *Game::GetResourceManager() const {
 }
 
 bool Game::ShouldClose() const {
-    return glfwWindowShouldClose(mWindow->GetWindow());
+    return glfwWindowShouldClose(mWindow->GetWindow()) || mShouldClose;
 }
 
 void Game::AddScene(const std::string &sceneName, std::function<SceneGameObject *()> factory) {
     mSceneFactory[sceneName] = factory;
 }
 
-void Game::LoadScene(const std::string &sceneName) {
+void Game::RequestLoadScene(const std::string &sceneName) {
+    mSceneToLoad = sceneName;
+}
+
+void Game::LoadScene() {
+    if (mSceneToLoad == "") return;
     if (mCurrentScene) {
         delete mCurrentScene;
     }
-    auto it = mSceneFactory.find(sceneName);
+    auto it = mSceneFactory.find(mSceneToLoad);
     if (it != mSceneFactory.end()) {
         mCurrentScene = it->second();
         mCurrentScene->Init();
     } else {
-        std::cerr << "Scene not found: " << sceneName << std::endl;
+        std::cerr << "Scene not found: " << mSceneToLoad << std::endl;
     }
+    mSceneToLoad = "";
 }
 
 void Game::SetPostProcessingDisabled(bool disabled) {
@@ -200,4 +209,9 @@ void Game::ApplyDeleteRequests() {
         delete gameObject;
     }
     mGameObjectsToDelete.clear();
+}
+
+void Game::Quit() {
+    glfwTerminate();
+    mShouldClose = true;
 }

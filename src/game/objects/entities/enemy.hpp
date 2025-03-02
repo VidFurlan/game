@@ -9,8 +9,6 @@ class Enemy : public Entity {
 
 	void Update(float deltaTime) override;
 
-	void Damage(int damage);
-
    private:
 	float moveSpeed = 20.0f;
 

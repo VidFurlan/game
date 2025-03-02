@@ -32,6 +32,10 @@ class Entity : public ColliderGameObject {
         RIGHT
     };
 
+    bool mImmune = false;
+    float mImmunityTime = 0.0f;
+    float mImmunityTimeElapsed = 0.0f;
+
 	int mMaxHealth = 1;
 	int mHealth = mMaxHealth;
 	float mMoveSpeed;

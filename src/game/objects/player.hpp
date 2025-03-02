@@ -11,15 +11,10 @@ class Player : public Entity {
    public:
 	Player(std::string name, GameObject *parent, glm::vec3 position = glm::vec3(0.0f));
 	void Update(float deltaTime) override;
-	void LateUpdate(float deltaTime) override;
-
-	void Damage(int damage);
+    void LateUpdate(float deltaTime) override;
 
    private:
     void Attack(float deltaTime);
-
-	int mMaxHealth = 6;
-	int mHealth = mMaxHealth;
 
 	float animationTimeElapsed = 0.0f;
 	int animationFrame = 0;

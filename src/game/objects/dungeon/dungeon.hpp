@@ -27,8 +27,10 @@ class Dungeon : public GameObject {
 	RoomData &GetRoomData(int x, int y);
 	glm::vec2 GetRoomPosition() const;
 
+    void SetRoomState(int x, int y, DungeonRoom::State state);
+
    private:
-	int mCurX, mCurY;
+	int mCurX = 0, mCurY = 0;
 	DungeonRoom *mCurRoom;
 
 	void SetRoomType(int x, int y, DungeonRoom::Type type);

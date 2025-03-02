@@ -11,7 +11,9 @@
 #include "glm/ext/vector_float3.hpp"
 #include "glm/gtc/type_ptr.hpp"
 #include "objects/entities/entity.hpp"
+#include "objects/menu_transition.hpp"
 #include "polygon2d.hpp"
+#include "rect_collider_game_object.hpp"
 #include "spritesheet_game_object.hpp"
 
 const float hitboxSize = 2.5f;
@@ -31,9 +33,22 @@ Player::Player(std::string name, GameObject *parent, glm::vec3 position) : Entit
                                                                                   true,
                                                                                   position,
                                                                                   {1.0f, 1.0f}) {
-	mPos = glm::vec3(0.0f, 0.0f, 0.0f);
+	mMaxHealth = 6;
+	mHealth = mMaxHealth;
+	mImmunityTime = 1.0f;
+
 	SetZIndex(900);
-	(new SpriteSheetGameObject("PlayerSprite", this, "player", {16, 16}, {0.0f, -2.2f, 0.0f}, {8, 8}))
+
+	(new RectColliderGameObject("Hitbox", this, false, {0.0f, 0.0f, 0.0f}, {hitboxSize * 2, hitboxSize * 2}))
+	    ->SetOnCollision([this](ColliderGameObject *other, ColliderGameObject::CollisionType type) {
+		    if (other->GetParent()->GetName() == "Player") return;
+		    if (other->GetTag() == "Enemy") {
+			    Damage(1);
+		    }
+	    })
+	    ->SetTag("Enemy");
+
+	(new SpriteSheetGameObject("Sprite", this, "player", {16, 16}, {0.0f, -2.2f, 0.0f}, {8, 8}))
 	    ->SetSpriteSheetFrame({0, 0});
 
 	(new SpriteSheetGameObject("SlashSpriteH", this, "horizontal_slash_1", {1, 5}, {0.0f, 0.0f, 0.0f}, {16, 16}))
@@ -42,20 +57,13 @@ Player::Player(std::string name, GameObject *parent, glm::vec3 position) : Entit
 	(new SpriteSheetGameObject("SlashSpriteV", this, "horizontal_slash_1", {1, 5}, {0.0f, 0.0f, 90.0f}, {16, 16}))
 	    ->SetSpriteSheetFrame({0, 0})
 	    ->SetVisible(false);
-	(new ColliderGameObject("SlashHitbox", this, 
-            new Polygon2D({
-                {0.0f, -slashSize}, 
-                {0.0f, slashSize}, 
-                {slashSize * 0.7, slashSize * 0.7},
-                {slashSize + slashSize * 0.3, 0.0f},
-                {slashSize * 0.7, -slashSize * 0.7}
-            }), 
-            false))
-        ->SetOnCollision([this](ColliderGameObject *other, ColliderGameObject::CollisionType type) {
-                ((Entity *)other)->Damage(1);
-        })
+	(new ColliderGameObject("SlashHitbox", this, new Polygon2D({{0.0f, -slashSize}, {-3.0f, -slashSize}, {-3.0f, slashSize}, {0.0f, slashSize}, {slashSize * 0.7, slashSize * 0.7}, {slashSize + slashSize * 0.3, 0.0f}, {slashSize * 0.7, -slashSize * 0.7}}), false))
+	    ->SetOnCollision([this](ColliderGameObject *other, ColliderGameObject::CollisionType type) {
+		    if (other->GetParent()->GetName() == "Player") return;
+		    ((Entity *)other)->Damage(1);
+	    })
 	    ->SetTag("Enemy")
-        ->SetActive(false);
+	    ->SetActive(false);
 }
 
 void Player::Update(float deltaTime) {
@@ -69,7 +77,7 @@ void Player::Update(float deltaTime) {
 	if (animationTimeElapsed > 0.3f) {
 		animationTimeElapsed = 0.0f;
 		animationFrame = (animationFrame + 1) % 2;
-		((SpriteSheetGameObject *)GetChild("PlayerSprite"))->SetSpriteSheetFrame({0, animationFrame});
+		((SpriteSheetGameObject *)GetChild("Sprite"))->SetSpriteSheetFrame({0, animationFrame});
 	}
 
 	glm::vec2 movement = glm::vec2(0.0f);
@@ -109,38 +117,16 @@ void Player::Update(float deltaTime) {
 	}
 
 	if (oldDir.x < 0) {
-		((SpriteSheetGameObject *)GetChild("PlayerSprite"))->SetScale(glm::vec2(-8.0f, 8.0f));
+		((SpriteSheetGameObject *)GetChild("Sprite"))->SetScale(glm::vec2(-8.0f, 8.0f));
 	} else {
-		((SpriteSheetGameObject *)GetChild("PlayerSprite"))->SetScale(glm::vec2(8.0f, 8.0f));
+		((SpriteSheetGameObject *)GetChild("Sprite"))->SetScale(glm::vec2(8.0f, 8.0f));
 	}
 
 	Attack(deltaTime);
 }
 
-void Player::LateUpdate(float deltaTime) {
-	if (mActive == false) {
-		return;
-	}
-
-	// Game::GetInstance().GetActiveScene()->GetActiveCamera()->SetPosition(glm::vec3((glm::vec2)this->GetPosition(), 0.0f));
-
-	ColliderGameObject::LateUpdate(deltaTime);
-}
-
-void Player::Damage(int damage) {
-	mHealth -= damage;
-
-	if (mHealth > mMaxHealth) {
-		mHealth = mMaxHealth;
-	}
-
-	if (mHealth <= 0) {
-		mHealth = 0;
-	}
-}
-
 void Player::Attack(float deltaTime) {
-    ColliderGameObject *slashHitbox = (ColliderGameObject *)GetChild("SlashHitbox");
+	ColliderGameObject *slashHitbox = (ColliderGameObject *)GetChild("SlashHitbox");
 	if (attacking) {
 		attackTimeElapsed += deltaTime;
 		if (attackDir == Direction::RIGHT) {
@@ -162,7 +148,7 @@ void Player::Attack(float deltaTime) {
 			attackTimeElapsed = 0.0f;
 			attacking = false;
 			attackingCooldown = true;
-            slashHitbox->SetActive(false);
+			slashHitbox->SetActive(false);
 		}
 	} else {
 		attackTimeElapsed += deltaTime;
@@ -171,7 +157,7 @@ void Player::Attack(float deltaTime) {
 		}
 		if (attackingCooldown) return;
 
-        constexpr float slashHitboxOffset = 3.5f;
+		constexpr float slashHitboxOffset = 3.5f;
 		if (Game::GetInstance().Keys[GLFW_KEY_RIGHT]) {
 			((SpriteSheetGameObject *)GetChild("SlashSpriteH"))
 			    ->SetScale(glm::vec2(16.0f, 16.0f))
@@ -179,10 +165,10 @@ void Player::Attack(float deltaTime) {
 			attacking = true;
 			attackDir = Direction::RIGHT;
 			attackTimeElapsed = 0.0f;
-            slashHitbox
-                ->SetPosition({slashHitboxOffset, 0.0f, 0.0f})
-                ->SetRotation(0.0f)
-                ->SetActive(true);
+			slashHitbox
+			    ->SetPosition({slashHitboxOffset, 0.0f, 0.0f})
+			    ->SetRotation(0.0f)
+			    ->SetActive(true);
 		}
 		if (Game::GetInstance().Keys[GLFW_KEY_LEFT]) {
 			((SpriteSheetGameObject *)GetChild("SlashSpriteH"))
@@ -191,10 +177,10 @@ void Player::Attack(float deltaTime) {
 			attacking = true;
 			attackDir = Direction::LEFT;
 			attackTimeElapsed = 0.0f;
-            slashHitbox
-                ->SetPosition({-slashHitboxOffset, 0.0f, 0.0f})
-                ->SetRotation(180.0f)
-                ->SetActive(true);
+			slashHitbox
+			    ->SetPosition({-slashHitboxOffset, 0.0f, 0.0f})
+			    ->SetRotation(180.0f)
+			    ->SetActive(true);
 		}
 		if (Game::GetInstance().Keys[GLFW_KEY_UP]) {
 			((SpriteSheetGameObject *)GetChild("SlashSpriteV"))
@@ -203,10 +189,10 @@ void Player::Attack(float deltaTime) {
 			attacking = true;
 			attackDir = Direction::UP;
 			attackTimeElapsed = 0.0f;
-            slashHitbox
-                ->SetPosition({0.0f, -slashHitboxOffset, 0.0f})
-                ->SetRotation(270.0f)
-                ->SetActive(true);
+			slashHitbox
+			    ->SetPosition({0.0f, -slashHitboxOffset, 0.0f})
+			    ->SetRotation(270.0f)
+			    ->SetActive(true);
 		}
 		if (Game::GetInstance().Keys[GLFW_KEY_DOWN]) {
 			((SpriteSheetGameObject *)GetChild("SlashSpriteV"))
@@ -215,10 +201,21 @@ void Player::Attack(float deltaTime) {
 			attacking = true;
 			attackDir = Direction::DOWN;
 			attackTimeElapsed = 0.0f;
-            slashHitbox
-                ->SetPosition({0.0f, slashHitboxOffset, 0.0f})
-                ->SetRotation(90.0f)
-                ->SetActive(true);
+			slashHitbox
+			    ->SetPosition({0.0f, slashHitboxOffset, 0.0f})
+			    ->SetRotation(90.0f)
+			    ->SetActive(true);
 		}
 	}
+}
+
+void Player::LateUpdate(float deltaTime) {
+	if (mHealth <= 0 && Game::GetInstance().GetState() == GameState::GAME_ACTIVE) {
+		Game::GetInstance().SetState(GameState::GAME_OVER);
+		((MenuTransition *)Game::GetInstance().GetActiveScene()->GetChild("MenuTransition"))->Transition([]() {
+			Game::GetInstance().GetActiveScene()->GetChild("UI")->SetActive(true)->SetVisible(true);
+		});
+	}
+
+	ColliderGameObject::LateUpdate(deltaTime);
 }

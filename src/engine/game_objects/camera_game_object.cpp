@@ -16,7 +16,7 @@ CameraGameObject::CameraGameObject(std::string name, GameObject *parent, glm::ve
 }
 
 CameraGameObject::~CameraGameObject() {
-	Game::GetInstance().GetActiveScene()->RemoveGameCamera(this);
+	//Game::GetInstance().GetActiveScene()->RemoveGameCamera(this);
 }
 
 void CameraGameObject::Use() {

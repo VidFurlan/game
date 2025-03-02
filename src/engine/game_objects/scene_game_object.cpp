@@ -17,6 +17,11 @@ SceneGameObject *SceneGameObject::AddGameCamera(CameraGameObject *camera) {
 }
 
 SceneGameObject *SceneGameObject::RemoveGameCamera(CameraGameObject *camera) {
+    if (camera == nullptr) {
+        std::cerr << "Camera is nullptr" << std::endl;
+        return this;
+    }
+    std::cout << camera << std::endl;
 	mCameras.erase(camera->GetName());
 	if (pActiveCamera == camera) {
 		pActiveCamera = nullptr;

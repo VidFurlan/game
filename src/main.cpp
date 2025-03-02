@@ -3,6 +3,7 @@
 #include "game_window.hpp"
 
 #include "demo_scene.hpp"
+#include "menu_scene.hpp"
 
 int main() {
 	// Init game
@@ -11,9 +12,10 @@ int main() {
 
 	// Load scenes
 	game.AddScene("Demo", [&]() { return new DemoScene(); });
+	game.AddScene("Menu", [&]() { return new MenuScene(); });
 	game.AddScene("Game", [&]() { return new GameScene(); });
 
-	game.LoadScene("Game");
+	game.RequestLoadScene("Menu");
 
 	// Run game
 	game.Run();

@@ -99,6 +99,8 @@ void DemoScene::Init() {
 	this->AddChild(new SpriteSheetGameObject("character_2", "character_blue", {12, 4}, glm::vec3(0.0f), glm::vec2(10.0f)));
 	ColliderGameObject *polygon2 =
 	    new ColliderGameObject("polygon", this->GetChild("character_2"), new Polygon2D({glm::vec2(-20.0f, 0.0f), glm::vec2(-10.0f, 10.0f), glm::vec2(10.0f, 10.0f), glm::vec2(10.0f, -10.0f), glm::vec2(-10.0f, -10.0f)}), true, glm::vec3(0.0f), glm::vec2(1.0f));
+
+    Game::GetInstance().RequestLoadScene("Game");
 }
 
 void DemoScene::Update(float deltaTime) {

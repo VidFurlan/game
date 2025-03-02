@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #define GLEW_STATIC
 #include <GL/glew.h>
 
@@ -18,6 +19,7 @@ enum GameState {
 	GAME_ACTIVE,
 	GAME_MENU,
     GAME_TRANSITION,
+    GAME_OVER
 };
 
 class Game : public Singleton {
@@ -37,7 +39,7 @@ class Game : public Singleton {
 	bool ShouldClose() const;
 
 	void AddScene(const std::string &sceneName, std::function<SceneGameObject *()> factory);
-	void LoadScene(const std::string &sceneName);
+    void RequestLoadScene(const std::string &sceneName);
 
 	void SetPostProcessingDisabled(bool disabled);
 	bool IsPostProcessingDisabled() const;
@@ -52,6 +54,7 @@ class Game : public Singleton {
 	BatchRenderer *GetBatchRenderer() const;
 
 	bool Keys[1024] = {false};
+    glm::vec2 MousePosition = {0.0f, 0.0f};
 
     void SetState(GameState state);
     GameState GetState() const;
@@ -59,8 +62,14 @@ class Game : public Singleton {
     void RequestDelete(GameObject *gameObject);
     void ApplyDeleteRequests();
 
+    void Quit();
+
    private:
 	Game() {}
+    bool mShouldClose = false;
+
+	void LoadScene();
+
 	GameWindow *mWindow = nullptr;
 
 	ResourceManager *resourceManager = nullptr;
@@ -75,6 +84,7 @@ class Game : public Singleton {
 
 	std::map<std::string, std::function<SceneGameObject *()>> mSceneFactory;
 	SceneGameObject *mCurrentScene = nullptr;
+    std::string mSceneToLoad = "";
 
     std::list<GameObject *> mGameObjectsToDelete;
 };

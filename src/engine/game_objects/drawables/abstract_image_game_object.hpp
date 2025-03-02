@@ -45,6 +45,7 @@ class AbstractImageGameObject : public GameObject {
 	AbstractImageGameObject *SetTexture(Texture &texture);
 
 	AbstractImageGameObject *SetScreenAnchor(ScreenAnchor anchor);
+    glm::vec3 GetRenderPosition();
 
    protected:
 	glm::vec3 mRenderPosition = glm::vec3(0.0f);

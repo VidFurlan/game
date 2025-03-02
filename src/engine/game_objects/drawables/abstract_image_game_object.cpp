@@ -1,6 +1,7 @@
 #include "abstract_image_game_object.hpp"
 
 #include <algorithm>
+#include <iostream>
 
 #include "game.hpp"
 #include "glm/common.hpp"
@@ -132,4 +133,8 @@ float AbstractImageGameObject::GetScaleX() const {
 
 float AbstractImageGameObject::GetScaleY() const {
 	return mScale.y;
+}
+
+glm::vec3 AbstractImageGameObject::GetRenderPosition() {
+    return mRenderPosition;
 }

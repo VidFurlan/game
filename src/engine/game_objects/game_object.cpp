@@ -15,7 +15,7 @@ GameObject::GameObject(std::string name, glm::vec3 pos, glm::vec2 scale)
 
 GameObject::GameObject(std::string name, GameObject *parent, glm::vec3 pos, glm::vec2 scale)
     : mName(name), mPos(pos), pParent(parent), mActive(true), mVisible(true), mScale(scale) {
-	parent->AddChild(this);
+    if (parent != nullptr) parent->AddChild(this);
 }
 
 GameObject::~GameObject() {

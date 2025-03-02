@@ -79,6 +79,9 @@ void Dungeon::Generate(int targetRoomCount, unsigned long long seed) {
 
 void Dungeon::EnterRoom(int x, int y) {
 	if (GetRoomData(x, y).type == DungeonRoom::Type::NOT_SET) return;
+    if (mCurX >= -mRoomCount && mCurX < mRoomCount && mCurY >= -mRoomCount && mCurY < mRoomCount) {
+        GetRoomData(mCurX, mCurY).state = DungeonRoom::State::CLEARED;
+    }
 	mCurX = x;
 	mCurY = y;
 	mCurRoom = (DungeonRoom *)GetChild("DungeonRoom");
@@ -115,4 +118,9 @@ int Dungeon::CountAdjacentRooms(int x, int y) {
 		if (GetRoomData(nx, ny).type != DungeonRoom::Type::NOT_SET) count++;
 	}
 	return count;
+}
+
+void Dungeon::SetRoomState(int x, int y, DungeonRoom::State state) {
+    if (x < -mRoomCount || x >= mRoomCount || y < -mRoomCount || y >= mRoomCount) throw std::runtime_error("Invalid room coordinates");
+    mRooms[x + mRoomCount][y + mRoomCount].state = state;
 }
