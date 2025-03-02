@@ -1,5 +1,6 @@
 #pragma once
 
+#include <list>
 #include <string>
 
 #include "game_object.hpp"
@@ -17,4 +18,5 @@ class ImGuiHelper {
    private:
 	static bool mShowSceneDebugMenu;
 	static GameObject *mSelectedGameObject;
+    static std::list<std::string> mPathToSelectedGameObject;
 };

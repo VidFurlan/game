@@ -1,6 +1,7 @@
 #pragma once
 
 #include <functional>
+#include <list>
 #include <map>
 #include <set>
 #include <string>
@@ -50,6 +51,7 @@ class GameObject {
 	GameObject *AddChild(GameObject *child);
 	GameObject *AddChildToLocalPos(GameObject *child);
 	GameObject *RemoveChild(std::string name);
+    void SafeDelete();
 	void DeleteChild(std::string name);
 
 	GameObject *operator+=(glm::vec2 pos);
@@ -75,4 +77,5 @@ class GameObject {
 	GameObject *pParent = nullptr;
 	std::unordered_map<std::string, GameObject *> children;
 	std::map<int, std::set<GameObject *>, std::greater<int>> mChildrenByZIndex;
+    std::list<GameObject *> mChildrenToRemove;
 };

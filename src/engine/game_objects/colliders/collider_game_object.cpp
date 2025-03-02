@@ -177,12 +177,16 @@ std::pair<ColliderGameObject::CollisionType, std::pair<float, glm::vec2>> Collid
 	return {minCollision, {minOverlap, minAxis}};
 }
 
-bool ColliderGameObject::IsSolid() {
+bool ColliderGameObject::IsSolid() const {
 	return mSolid;
 }
 
-bool ColliderGameObject::IsFixed() {
+bool ColliderGameObject::IsFixed() const {
     return mFixed;
+}
+
+std::string ColliderGameObject::GetTag() const {
+    return mTag;
 }
 
 ColliderGameObject *ColliderGameObject::SetSolid(bool solid) {
@@ -192,6 +196,13 @@ ColliderGameObject *ColliderGameObject::SetSolid(bool solid) {
 
 ColliderGameObject *ColliderGameObject::SetFixed(bool fixed) {
     mFixed = fixed;
+    return this;
+}
+
+ColliderGameObject *ColliderGameObject::SetTag(std::string tag) {
+    CollisionManager::GetInstance().RemoveGameObject(this);
+    mTag = tag;
+    CollisionManager::GetInstance().AddGameObject(this);
     return this;
 }
 

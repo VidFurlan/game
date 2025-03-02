@@ -12,7 +12,9 @@ enum EntityType {
 class Entity : public ColliderGameObject {
    public:
 	using ColliderGameObject::ColliderGameObject;
-	using ColliderGameObject::Update;
+	
+    virtual void Update(float deltaTime) override;
+    virtual void LateUpdate(float deltaTime) override;
 
 	void Damage(int damage);
 
@@ -22,8 +24,15 @@ class Entity : public ColliderGameObject {
 	int GetHealth() const;
 	int GetMaxHealth() const;
 
-   private:
-	int mMaxHealth;
-	int mHealth;
+   protected:
+    enum Direction {
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT
+    };
+
+	int mMaxHealth = 1;
+	int mHealth = mMaxHealth;
 	float mMoveSpeed;
 };

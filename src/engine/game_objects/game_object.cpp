@@ -4,6 +4,7 @@
 #include <iostream>
 #include <unordered_map>
 
+#include "game.hpp"
 #include "glm/ext/vector_float3.hpp"
 #include "glm/fwd.hpp"
 #include "glm/trigonometric.hpp"
@@ -25,7 +26,7 @@ GameObject::~GameObject() {
         }
     }
 
-    for (auto child : children) {
+    for (auto &child : children) {
         delete child.second;
     }
 
@@ -35,13 +36,13 @@ GameObject::~GameObject() {
 }
 
 void GameObject::Update(float deltaTime) {
-	for (auto child : children) {
+	for (auto &child : children) {
 		child.second->Update(deltaTime);
 	}
 }
 
 void GameObject::LateUpdate(float deltaTime) {
-	for (auto child : children) {
+	for (auto &child : children) {
 		child.second->LateUpdate(deltaTime);
 	}
 }
@@ -227,6 +228,12 @@ GameObject *GameObject::RemoveChild(std::string name) {
 	mChildrenByZIndex[child->GetZIndex()].erase(child);
 	child->pParent = nullptr;
 	return child;
+}
+
+void GameObject::SafeDelete() {
+    Game::GetInstance().RequestDelete(this);
+    mActive = false;
+    mVisible = false;
 }
 
 void GameObject::DeleteChild(std::string name) {

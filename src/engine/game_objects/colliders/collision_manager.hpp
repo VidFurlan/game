@@ -1,6 +1,7 @@
 #pragma once
 
 #include <set>
+#include <string>
 
 #include "colliders/collider_game_object.hpp"
 #include "singleton.hpp"
@@ -26,4 +27,5 @@ class CollisionManager : public Singleton {
 	~CollisionManager() = default;
 
 	std::set<ColliderGameObject *> mGameObjects;
+    std::unordered_map<std::string, std::set<ColliderGameObject *>> mTaggedGameObjects;
 };

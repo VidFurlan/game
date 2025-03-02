@@ -16,18 +16,28 @@ class Player : public Entity {
 	void Damage(int damage);
 
    private:
+    void Attack(float deltaTime);
+
 	int mMaxHealth = 6;
 	int mHealth = mMaxHealth;
 
 	float animationTimeElapsed = 0.0f;
 	int animationFrame = 0;
 
-	float moveSpeed = 40.0f;
+    bool attacking = false;
+    bool attackingCooldown = false;
+    Direction attackDir;
+    float attackTime = 0.2f;
+    float attackDelay = 0.2f;
+    int attackDamage = 1;
+    float attackTimeElapsed = 0.0f;
+
+	float moveSpeed = 35.0f;
 	bool dash = false;
 	bool dashCooldown = false;
-	float dashSpeed = 300.0f;
+	float dashSpeed = 120.0f;
 	float dashTimeElapsed = 0.0f;
-	float dashTime = 0.1f;
+	float dashTime = 0.13f;
 	float dashCooldownTime = 0.5f;
 	float dashCooldownElapsed = 0.0f;
 	glm::vec2 dashDir;

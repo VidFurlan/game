@@ -31,8 +31,12 @@ class DungeonRoom : public GameObject {
     void SetState(State state);
     State GetState();
 
+    void SetEnemyCount(int count);
+    int GetEnemyCount();
+
    private:
 	const int n = 13, m = 13;
+    int mEnemyCount = 0;
 	Type mType;
 	State mState;
     std::vector<Entity *> mEntities;

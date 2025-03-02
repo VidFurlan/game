@@ -53,9 +53,12 @@ void Game::Run() {
 		ProcessInput(deltaTime);
 
 		Update(deltaTime);
-        LateUpdate(deltaTime);
+        ApplyDeleteRequests();
 
 		CollisionManager::GetInstance().Update(deltaTime);
+
+        LateUpdate(deltaTime);
+        ApplyDeleteRequests();
 
 		if (mWindow->GetWidth() == 0 || mWindow->GetHeight() == 0) {
 			continue;
@@ -178,4 +181,23 @@ PostProcessor *Game::GetPostProcessor() const {
 
 BatchRenderer *Game::GetBatchRenderer() const {
     return mBatchRenderer;
+}
+
+void Game::SetState(GameState state) {
+    State = state;
+}
+
+GameState Game::GetState() const {
+    return State;
+}
+
+void Game::RequestDelete(GameObject *gameObject) {
+    mGameObjectsToDelete.push_back(gameObject);
+}
+
+void Game::ApplyDeleteRequests() {
+    for (auto gameObject : mGameObjectsToDelete) {
+        delete gameObject;
+    }
+    mGameObjectsToDelete.clear();
 }

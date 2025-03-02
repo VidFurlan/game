@@ -7,7 +7,7 @@ class CameraGameObject : public GameObject {
 	CameraGameObject(std::string name, glm::vec3 pos = glm::vec3(0.0f));
 	CameraGameObject(std::string name, GameObject *parent, glm::vec3 pos = glm::vec3(0.0f));
 
-	~CameraGameObject();
+	virtual ~CameraGameObject() override;
 
 	void Use();
 

@@ -17,6 +17,7 @@
 enum GameState {
 	GAME_ACTIVE,
 	GAME_MENU,
+    GAME_TRANSITION,
 };
 
 class Game : public Singleton {
@@ -50,8 +51,13 @@ class Game : public Singleton {
 	PostProcessor *GetPostProcessor() const;
 	BatchRenderer *GetBatchRenderer() const;
 
-	GameState State;
 	bool Keys[1024] = {false};
+
+    void SetState(GameState state);
+    GameState GetState() const;
+
+    void RequestDelete(GameObject *gameObject);
+    void ApplyDeleteRequests();
 
    private:
 	Game() {}
@@ -65,6 +71,10 @@ class Game : public Singleton {
 	bool mPostProcessingDisabled = false;
 	bool mDebugMode = false;
 
+	GameState State;
+
 	std::map<std::string, std::function<SceneGameObject *()>> mSceneFactory;
 	SceneGameObject *mCurrentScene = nullptr;
+
+    std::list<GameObject *> mGameObjectsToDelete;
 };

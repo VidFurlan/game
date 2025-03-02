@@ -4,17 +4,21 @@
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 
+#include <list>
 #include <string>
 #include <type_traits>
 
 #include "abstract_image_game_object.hpp"
 #include "camera_game_object.hpp"
 #include "game.hpp"
+#include "objects/entities/entity.hpp"
 #include "objects/player.hpp"
+#include "objects/room_transition.hpp"
 #include "scene_game_object.hpp"
 
 bool ImGuiHelper::mShowSceneDebugMenu = false;
 GameObject *ImGuiHelper::mSelectedGameObject = nullptr;
+std::list<std::string> ImGuiHelper::mPathToSelectedGameObject;
 
 void ImGuiHelper::Init() {
 	IMGUI_CHECKVERSION();
@@ -93,15 +97,18 @@ void ImGuiHelper::ImGuiDebugMenu() {
 
 		ImGui::Text("\t\tA | V \tName [AV]");
 
+        std::list<std::string> pathToSelectedGameObject;
 		// Hierarchical game object debug menu
-		auto dfsHierarchy = [](GameObject *gameObject, int level, bool active, bool visible, std::string tagName, auto dfsHierarchy) -> void {
+		auto dfsHierarchy = [&](GameObject *gameObject, int level, bool active, bool visible, std::string tagName, auto dfsHierarchy) -> bool {
 			tagName += gameObject->GetName() + "/";
 
+            pathToSelectedGameObject.push_back(gameObject->GetName());
 			if (ImGui::Button((std::string("Debug##Debug") + tagName).c_str())) {
 				if (ImGuiHelper::mSelectedGameObject == gameObject) {
 					ImGuiHelper::mSelectedGameObject = nullptr;
 				} else {
 					ImGuiHelper::mSelectedGameObject = gameObject;
+                    ImGuiHelper::mPathToSelectedGameObject = pathToSelectedGameObject;
 				}
 			}
 			ImGui::SameLine();
@@ -128,17 +135,30 @@ void ImGuiHelper::ImGuiDebugMenu() {
 
 			bool showChildren = ImGui::TreeNodeEx((std::string("##") + tagName).c_str(), flags, "%s [%s%s]", gameObject->GetName().c_str(), active ? "A" : "-", visible ? "V" : "-");
 
+            bool ret = mSelectedGameObject == gameObject;
 			if (showChildren) {
 				for (auto [name, child] : *gameObject->GetChildren()) {
-					dfsHierarchy(child, level + 1, active, visible, tagName, dfsHierarchy);
+					ret |= dfsHierarchy(child, level + 1, active, visible, tagName, dfsHierarchy);
 				}
 				ImGui::TreePop();
 			}
+
+            pathToSelectedGameObject.pop_back();
+            return ret;
 		};
 
 		for (auto [name, gameObject] : *scene->GetChildren()) {
 			dfsHierarchy(gameObject, 0, true, true, "", dfsHierarchy);
 		}
+        
+        GameObject *parent = Game::GetInstance().GetActiveScene();
+        for (auto it = mPathToSelectedGameObject.begin(); it != mPathToSelectedGameObject.end(); it++) {
+            if (parent->GetChild(*it) == nullptr) {
+                ImGuiHelper::mSelectedGameObject = nullptr;
+                break;
+            }
+            parent = parent->GetChild(*it);
+        }
 
 		// Selected game object debug menu
 		if (ImGuiHelper::mSelectedGameObject != nullptr) {
@@ -213,19 +233,30 @@ void ImGuiHelper::ImGuiDebugMenu() {
 				}
 			}
 
-            if (dynamic_cast<Player *>(gameObject)) {
-                Player *player = dynamic_cast<Player *>(gameObject);
+            if (dynamic_cast<Entity *>(gameObject)) {
+                Entity *entity = dynamic_cast<Entity *>(gameObject);
+
+                ImGui::Text("Health: %d", entity->GetHealth());
 
                 ImGui::Text("Damage");
                 ImGui::Button("Damage##Damage");
                 if (ImGui::IsItemClicked()) {
-                    player->Damage(1);
+                    entity->Damage(1);
                 }
 
                 ImGui::Text("Heal");
                 ImGui::Button("Heal##Heal");
                 if (ImGui::IsItemClicked()) {
-                    player->Damage(-1);
+                    entity->Damage(-1);
+                }
+            }
+
+            if (dynamic_cast<RoomTransition *>(gameObject)) {
+                RoomTransition *roomTransition = dynamic_cast<RoomTransition *>(gameObject);
+
+                ImGui::Button("Transition##Transition");
+                if (ImGui::IsItemClicked()) {
+                    roomTransition->Transition();
                 }
             }
 		}

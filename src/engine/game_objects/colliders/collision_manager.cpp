@@ -1,20 +1,24 @@
 #include "collision_manager.hpp"
+
 #include <iostream>
 
 #include "collider_game_object.hpp"
 
 void CollisionManager::Update(float deltaTime) {
-	for (ColliderGameObject *obj1 : mGameObjects) {
-		for (ColliderGameObject *obj2 : mGameObjects) {
-            if (obj1 < obj2) continue;
-            ColliderGameObject::CollisionType collision = CheckCollision(obj1, obj2);
+	for (auto &tagGroup : mTaggedGameObjects) {
+		for (std::set<ColliderGameObject *>::iterator it1 = tagGroup.second.begin(); it1 != tagGroup.second.end(); it1++) {
+            for (std::set<ColliderGameObject *>::iterator it2 = std::next(it1); it2 != tagGroup.second.end(); it2++) {
+                ColliderGameObject *obj1 = *it1;
+                ColliderGameObject *obj2 = *it2;
+				ColliderGameObject::CollisionType collision = CheckCollision(obj1, obj2);
 
-            if (collision == ColliderGameObject::CollisionType::OVERLAP) {
-				obj1->OnCollision(obj2);
-				obj2->OnCollision(obj1);
-			} else if (collision == ColliderGameObject::CollisionType::TOUCH) {
-				obj1->OnCollision(obj2);
-				obj2->OnCollision(obj1);
+				if (collision == ColliderGameObject::CollisionType::OVERLAP) {
+					obj1->OnCollision(obj2);
+					obj2->OnCollision(obj1);
+				} else if (collision == ColliderGameObject::CollisionType::TOUCH) {
+					obj1->OnCollision(obj2);
+					obj2->OnCollision(obj1);
+				}
 			}
 		}
 	}
@@ -22,9 +26,9 @@ void CollisionManager::Update(float deltaTime) {
 
 void CollisionManager::CheckAgainsAll(ColliderGameObject *obj1) {
 	ColliderGameObject::CollisionType maxCollision = ColliderGameObject::CollisionType::NONE;
-	for (std::set<ColliderGameObject *>::iterator it = mGameObjects.begin(); it != mGameObjects.end(); it++) {
+	for (std::set<ColliderGameObject *>::iterator it = mTaggedGameObjects[obj1->GetTag()].begin(); it != mTaggedGameObjects[obj1->GetTag()].end(); ++it) {
 		ColliderGameObject *obj2 = *it;
-        ColliderGameObject::CollisionType collision = CheckCollision(obj1, obj2);
+		ColliderGameObject::CollisionType collision = CheckCollision(obj1, obj2);
 
 		if (collision == ColliderGameObject::CollisionType::OVERLAP) {
 			obj1->OnCollision(obj2);
@@ -38,7 +42,7 @@ void CollisionManager::CheckAgainsAll(ColliderGameObject *obj1) {
 
 ColliderGameObject::CollisionType CollisionManager::CheckAgainsAllNoCallback(ColliderGameObject *obj1) {
 	ColliderGameObject::CollisionType maxCollision = ColliderGameObject::CollisionType::NONE;
-	for (ColliderGameObject *obj2 : mGameObjects) {
+	for (ColliderGameObject *obj2 : mTaggedGameObjects[obj1->GetTag()]) {
 		ColliderGameObject::CollisionType collision = obj1->CheckCollision(obj2);
 
 		if (collision == ColliderGameObject::CollisionType::OVERLAP) {
@@ -60,9 +64,11 @@ ColliderGameObject::CollisionType CollisionManager::CheckCollision(ColliderGameO
 }
 
 void CollisionManager::AddGameObject(ColliderGameObject *gameObject) {
+    mTaggedGameObjects[gameObject->GetTag()].insert(gameObject);
 	mGameObjects.insert(gameObject);
 }
 
 void CollisionManager::RemoveGameObject(ColliderGameObject *gameObject) {
+    mTaggedGameObjects[gameObject->GetTag()].erase(gameObject);
 	mGameObjects.erase(gameObject);
 }

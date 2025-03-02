@@ -17,7 +17,7 @@ class ColliderGameObject : public GameObject {
    public:
 	ColliderGameObject(std::string name, Shape2D *shape, bool fixed, glm::vec3 pos = glm::vec3(0.0f), glm::vec2 scale = glm::vec2(1.0f));
 	ColliderGameObject(std::string name, GameObject *parent, Shape2D *shape, bool fixed, glm::vec3 pos = glm::vec3(0.0f), glm::vec2 scale = glm::vec2(1.0f));
-	~ColliderGameObject();
+	virtual ~ColliderGameObject() override;
 
 	virtual void Update(float deltaTime) override;
 	virtual void Render() override;
@@ -30,11 +30,14 @@ class ColliderGameObject : public GameObject {
 	CollisionType CheckPointCollision(glm::vec2 point) const;
 	static std::pair<ColliderGameObject::CollisionType, std::pair<float, glm::vec2>> CheckShapeOverlap(Shape2D *shape1, Shape2D *shape2, glm::vec3 pos1, glm::vec3 pos2);
 
-    bool IsSolid();
-    bool IsFixed();
+    bool IsSolid() const;
+    bool IsFixed() const;
+
+    std::string GetTag() const;
 
     ColliderGameObject *SetSolid(bool solid);
     ColliderGameObject *SetFixed(bool fixed);
+    ColliderGameObject *SetTag(std::string tag);
     ColliderGameObject *SetOnCollision(std::function<void(ColliderGameObject *, CollisionType)> callback);
 
    private:
@@ -42,6 +45,8 @@ class ColliderGameObject : public GameObject {
 
     bool mSolid = false;
     bool mFixed = false;
+    std::string mTag;
+
 	Shape2D *mShape;
 	glm::vec3 mGlobalPosition;
 };
