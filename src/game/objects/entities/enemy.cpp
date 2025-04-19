@@ -4,11 +4,12 @@
 #include "game_object.hpp"
 #include "glm/geometric.hpp"
 #include "objects/dungeon/dungeon_room.hpp"
+#include "objects/entities/entity.hpp"
 #include "polygon2d.hpp"
 #include "spritesheet_game_object.hpp"
 
 Enemy::Enemy(std::string name, GameObject *parent, glm::vec3 position)
-    : Entity(name, parent, new Polygon2D({{-2.0f, -2.0f}, {-2.0f, 2.0f}, {2.0f, 2.0f}, {2.0f, -2.0f}}), true, position, {1.0f, 1.0f}) {
+    : Entity(name, parent, EntityType::GRAY_BLOB, new Polygon2D({{-2.0f, -2.0f}, {-2.0f, 2.0f}, {2.0f, 2.0f}, {2.0f, -2.0f}}), position, {1.0f, 1.0f}) {
     mMaxHealth = 3;
     mHealth = mMaxHealth;
     mImmunityTime = 0.3f;

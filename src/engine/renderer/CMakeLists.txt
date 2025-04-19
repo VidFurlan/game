@@ -6,6 +6,7 @@ target_sources(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/sprite_renderer.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/post_processor.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/batch_renderer.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/font_renderer.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

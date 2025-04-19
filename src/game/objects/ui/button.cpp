@@ -1,12 +1,15 @@
 #include "button.hpp"
 
-#include <algorithm>
+#include <functional>
 #include <iostream>
 
+// cmake-format off
+#include "game.hpp"
+// cmake-format on
+
+#include "GLFW/glfw3.h"
 #include "abstract_image_game_object.hpp"
 #include "collider_game_object.hpp"
-#include "collision_manager.hpp"
-#include "game.hpp"
 #include "game_object.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include "glm/gtc/type_ptr.hpp"
@@ -17,9 +20,10 @@ Button::Button(std::string name, GameObject *parent, glm::vec3 position, glm::ve
 	SetZIndex(0);
 	AddChild(image);
 	image->SetScreenAnchor(screenAnchor);
+	Game::GetInstance().AddOnPressKeyCallback(GLFW_MOUSE_BUTTON_LEFT, mName, [this]() { mClicked = true; });
 	(new RectColliderGameObject("Collider", this, false, {0.0f, 0.0f, 0.0f}, size))
 	    ->SetOnCollision({[this](ColliderGameObject *other, ColliderGameObject::CollisionType type) {
-		    if (type == ColliderGameObject::CollisionType::OVERLAP && other->GetName() == "MouseCollider" && mOnClick && Game::GetInstance().Keys[GLFW_MOUSE_BUTTON_LEFT]) {
+		    if (mClicked && type == ColliderGameObject::CollisionType::OVERLAP && other->GetName() == "MouseCollider" && mOnClick && Game::GetInstance().Keys[GLFW_MOUSE_BUTTON_LEFT]) {
 			    mOnClick();
 		    }
 	    }})
@@ -28,10 +32,17 @@ Button::Button(std::string name, GameObject *parent, glm::vec3 position, glm::ve
 	    ->SetTag(name);
 };
 
+Button::~Button() {
+    Game::GetInstance().RemoveOnPressKeyCallback(GLFW_MOUSE_BUTTON_LEFT, mName);
+}
+
 void Button::Update(float deltaTime) {
-	GetChild("MouseCollider")->SetPosition(Game::GetInstance().MousePosition / GAME_SCALE_FACTOR 
-            - glm::vec2(Game::GetInstance().GetWindow()->GetWidth() / 2.0f, Game::GetInstance().GetWindow()->GetHeight() / 2.0f) / GAME_SCALE_FACTOR
-            - glm::make_vec2(GetGlobalPosition()));
+	GetChild("MouseCollider")->SetPosition(Game::GetInstance().MousePosition / GAME_SCALE_FACTOR - glm::vec2(Game::GetInstance().GetWindow()->GetWidth() / 2.0f, Game::GetInstance().GetWindow()->GetHeight() / 2.0f) / GAME_SCALE_FACTOR - glm::make_vec2(GetGlobalPosition()));
 
 	GameObject::Update(deltaTime);
+}
+
+void Button::LateUpdate(float deltaTime) {
+	mClicked = false;
+	GameObject::LateUpdate(deltaTime);
 }

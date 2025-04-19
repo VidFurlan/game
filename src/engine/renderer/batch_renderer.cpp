@@ -1,8 +1,10 @@
 #include "batch_renderer.hpp"
 
 #include <iostream>
+#include <string>
 #include <utility>
 
+#include "game.hpp"
 #include "game_object.hpp"
 #include "game_window.hpp"
 #include "glm/ext/matrix_float4x4_precision.hpp"
@@ -11,6 +13,7 @@
 #include "glm/gtc/type_ptr.hpp"
 #include "glm/trigonometric.hpp"
 #include "resource_manager.hpp"
+#include "shader.hpp"
 
 BatchRenderer::BatchRenderer(int maxCapacity) {
 	mMaxCount = maxCapacity;
@@ -36,14 +39,14 @@ BatchRenderer::BatchRenderer(int maxCapacity) {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
-	mShader = ResourceManager::GetInstance().LoadShader("shaders/batch_renderer_vertex.glsl", "shaders/batch_renderer_fragment.glsl", nullptr, "batch_renderer").ID;
+	mShader = ResourceManager::GetInstance().LoadShader("shaders/batch_renderer_vertex.glsl", "shaders/batch_renderer_fragment.glsl", nullptr, "default_sprite").ID;
 }
 
 BatchRenderer::~BatchRenderer() {
 	delete[] mVertices;
 }
 
-void BatchRenderer::pushObject(Texture &texture, glm::vec3 position, glm::vec4 uv, glm::vec2 size, glm::vec4 color) {
+void BatchRenderer::pushObject(unsigned int textureID, glm::vec3 position, glm::vec4 uv, glm::vec2 size, glm::vec4 color, std::string shaderName) {
 	float rad = glm::radians(position.z);
 	float cosTheta = cos(rad);
 	float sinTheta = sin(rad);
@@ -68,23 +71,32 @@ void BatchRenderer::pushObject(Texture &texture, glm::vec3 position, glm::vec4 u
 	float u1 = uv.x, v1 = uv.w;
 	float u2 = uv.z, v2 = uv.y;
 
+    if (mShaderName != shaderName) {
+        flush();
+        mShaderName = shaderName;
+    }
+
 	if (mCount + 6 >= mMaxCount) {
 		flush();
 	}
 
-	pushVertex(texture, {rotated[0], {u2, v1}, color});
-	pushVertex(texture, {rotated[1], {u1, v1}, color});
-	pushVertex(texture, {rotated[2], {u1, v2}, color});
+	pushVertex(textureID, {rotated[0], {u2, v1}, color});
+	pushVertex(textureID, {rotated[1], {u1, v1}, color});
+	pushVertex(textureID, {rotated[2], {u1, v2}, color});
 
-	pushVertex(texture, {rotated[0], {u2, v1}, color});
-	pushVertex(texture, {rotated[2], {u1, v2}, color});
-	pushVertex(texture, {rotated[3], {u2, v2}, color});
+	pushVertex(textureID, {rotated[0], {u2, v1}, color});
+	pushVertex(textureID, {rotated[2], {u1, v2}, color});
+	pushVertex(textureID, {rotated[3], {u2, v2}, color});
 }
 
-void BatchRenderer::pushVertex(Texture &texture, Vertex vertex) {
-	if (mTexture != texture.ID) {
+void BatchRenderer::pushObject(Texture &texture, glm::vec3 position, glm::vec4 uv, glm::vec2 size, glm::vec4 color, std::string shaderName) {
+    pushObject(texture.ID, position, uv, size, color, shaderName);
+}
+
+void BatchRenderer::pushVertex(unsigned int textureID, Vertex vertex) {
+	if (mTexture != textureID) {
 		flush();
-		mTexture = texture.ID;
+		mTexture = textureID;
 	}
 
 	if (mCount >= mMaxCount) {
@@ -95,10 +107,16 @@ void BatchRenderer::pushVertex(Texture &texture, Vertex vertex) {
 	mCount++;
 }
 
+void BatchRenderer::pushVertex(Texture &texture, Vertex vertex) {
+    pushVertex(texture.ID, vertex);
+}
+
 void BatchRenderer::flush() {
 	if (mCount == 0) {
 		return;
 	}
+
+    mShader = Game::GetInstance().GetResourceManager()->GetShader(mShaderName).ID;
 
 	glUseProgram(mShader);
 

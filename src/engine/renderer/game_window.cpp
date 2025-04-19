@@ -8,6 +8,7 @@
 #include "GLFW/glfw3.h"
 #include "game.hpp"
 #include "glm/ext/matrix_clip_space.hpp"
+#include "glm/ext/matrix_float4x4.hpp"
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "resource_manager.hpp"
@@ -26,7 +27,7 @@ GameWindow::GameWindow(int width, int height, const char* title) {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 #ifdef __APPLE__
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
@@ -47,8 +48,8 @@ GameWindow::GameWindow(int width, int height, const char* title) {
 	}
 
 	glfwSetKeyCallback(window, key_callback);
-    glfwSetCursorPosCallback(window, mouse_callback);
-    glfwSetMouseButtonCallback(window, mouse_button_callback);
+	glfwSetCursorPosCallback(window, mouse_callback);
+	glfwSetMouseButtonCallback(window, mouse_button_callback);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 	glViewport(0, 0, width, height);
@@ -85,6 +86,10 @@ int GameWindow::GetHeight() const {
 	return height;
 }
 
+glm::mat4 GameWindow::GetMVP() const {
+    return mMvp;
+}
+
 void GameWindow::Resize(int width, int height) {
 	/* Resizing of viewport using black bars
 	float desiredAspectRatio = Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetWidth() /
@@ -115,6 +120,7 @@ void GameWindow::Resize(int width, int height) {
 	ResourceManager::GetInstance().GetShader("sprite").SetMatrix4("projection", projection);
 	*/
 	glViewport(0, 0, width, height);
+	mMvp = glm::ortho(0.0f, static_cast<float>(GetWidth()), static_cast<float>(GetHeight()), 0.0f, -1.0f, 1.0f);
 	Game::GetInstance().GetPostProcessor()->Resize(width, height);
 
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(GetWidth()), static_cast<float>(GetHeight()), 0.0f, -1.0f, 1.0f);
@@ -127,15 +133,26 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 		glfwSetWindowShouldClose(window, true);
 
 	if (key >= 0 && key < 1024) {
-		if (action == GLFW_PRESS)
+		if (action == GLFW_PRESS) {
+			if (Game::GetInstance().Keys[key] == false && Game::GetInstance().mOnPressKeyCallbacks[key].size()) {
+				for (auto& [id, callback] : Game::GetInstance().mOnPressKeyCallbacks[key]) {
+					callback();
+				}
+			}
 			Game::GetInstance().Keys[key] = true;
-		else if (action == GLFW_RELEASE)
+		} else if (action == GLFW_RELEASE) {
+			if (Game::GetInstance().Keys[key] == true && Game::GetInstance().mOnReleaseKeyCallbacks[key].size()) {
+				for (auto& [id, callback] : Game::GetInstance().mOnReleaseKeyCallbacks[key]) {
+					callback();
+				}
+			}
 			Game::GetInstance().Keys[key] = false;
+		}
 	}
 }
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
-    Game::GetInstance().MousePosition = {xpos, ypos};
+	Game::GetInstance().MousePosition = {xpos, ypos};
 }
 
 void framebuffer_size_callback(GLFWwindow* window,
@@ -145,10 +162,5 @@ void framebuffer_size_callback(GLFWwindow* window,
 }
 
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods) {
-    if (button >= 0 && button < 1024) {
-        if (action == GLFW_PRESS)
-            Game::GetInstance().Keys[button] = true;
-        else if (action == GLFW_RELEASE)
-            Game::GetInstance().Keys[button] = false;
-    }
+	key_callback(window, button, 0, action, mods);
 }

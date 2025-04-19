@@ -1,6 +1,8 @@
 #include "../engine/game.hpp"
 
+#include <algorithm>
 #include <iostream>
+#include <utility>
 
 #include "collision_manager.hpp"
 #include "debug/imgui_helper.hpp"
@@ -33,8 +35,8 @@ void Game::Init() {
 	if (mCurrentScene != nullptr) delete mCurrentScene;
 	mSpriteRenderer = new SpriteRenderer(resourceManager->GetShader("sprite"));
 
-    if (mBatchRenderer != nullptr) delete mBatchRenderer;
-    mBatchRenderer = new BatchRenderer(2000000);
+	if (mBatchRenderer != nullptr) delete mBatchRenderer;
+	mBatchRenderer = new BatchRenderer(2000000);
 }
 
 void Game::Run() {
@@ -44,7 +46,7 @@ void Game::Run() {
 	float lastFrame = 0.0f;
 
 	while (!ShouldClose()) {
-        LoadScene();
+		LoadScene();
 
 		// Game updates
 		float currentFrame = glfwGetTime();
@@ -55,12 +57,12 @@ void Game::Run() {
 		ProcessInput(deltaTime);
 
 		Update(deltaTime);
-        ApplyDeleteRequests();
+		ApplyDeleteRequests();
 
 		CollisionManager::GetInstance().Update(deltaTime);
 
-        LateUpdate(deltaTime);
-        ApplyDeleteRequests();
+		LateUpdate(deltaTime);
+		ApplyDeleteRequests();
 
 		if (mWindow->GetWidth() == 0 || mWindow->GetHeight() == 0) {
 			continue;
@@ -74,10 +76,13 @@ void Game::Run() {
 		if (!mPostProcessingDisabled) {
 			mPostProcessor->BeginRender();
 		}
+
 		// Background color
 		glm::vec3 bgColor = GetActiveScene()->GetBackgroundColor();
 		glClearColor(bgColor.x, bgColor.y, bgColor.z, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+
+        // mFontRenderers["default"]->DrawText("TEXT RENDERER", {100.0f, 100.0f}, 600.0f, {1.0f, 1.0f, 1.0f, 1.0f});
 
 		Render();
 
@@ -101,117 +106,170 @@ void Game::Update(float deltaTime) {
 }
 
 void Game::LateUpdate(float deltaTime) {
-    if (mCurrentScene != nullptr) {
-        mCurrentScene->LateUpdate(deltaTime);
-    }
+	if (mCurrentScene != nullptr) {
+		mCurrentScene->LateUpdate(deltaTime);
+	}
 }
 
 void Game::ProcessInput(float deltaTime) {
-
 }
 
 void Game::Render() {
-    glm::mat4 ort = glm::ortho(0.0f, static_cast<float>(mWindow->GetWidth()), static_cast<float>(mWindow->GetHeight()), 0.0f, -1.0f, 1.0f);
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            mBatchRenderer->mMvp[i][j] = ort[i][j];
-        }
-    }
+	glm::mat4 ort = glm::ortho(0.0f, static_cast<float>(mWindow->GetWidth()), static_cast<float>(mWindow->GetHeight()), 0.0f, -1.0f, 1.0f);
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			mBatchRenderer->mMvp[i][j] = ort[i][j];
+		}
+	}
 
 	if (mCurrentScene != nullptr) {
 		mCurrentScene->Render();
 	}
 
-    mBatchRenderer->flush();
+	mBatchRenderer->flush();
 }
 
 GameWindow *Game::GetWindow() const {
-    return mWindow;
+	return mWindow;
 }
 
 SpriteRenderer *Game::GetSpriteRenderer() const {
-    return mSpriteRenderer;
+	return mSpriteRenderer;
 }
 
 ResourceManager *Game::GetResourceManager() const {
-    return resourceManager;
+	return resourceManager;
 }
 
 bool Game::ShouldClose() const {
-    return glfwWindowShouldClose(mWindow->GetWindow()) || mShouldClose;
+	return glfwWindowShouldClose(mWindow->GetWindow()) || mShouldClose;
 }
 
 void Game::AddScene(const std::string &sceneName, std::function<SceneGameObject *()> factory) {
-    mSceneFactory[sceneName] = factory;
+	mSceneFactory[sceneName] = factory;
 }
 
 void Game::RequestLoadScene(const std::string &sceneName) {
-    mSceneToLoad = sceneName;
+	mSceneToLoad = sceneName;
 }
 
 void Game::LoadScene() {
-    if (mSceneToLoad == "") return;
-    if (mCurrentScene) {
-        delete mCurrentScene;
-    }
-    auto it = mSceneFactory.find(mSceneToLoad);
-    if (it != mSceneFactory.end()) {
-        mCurrentScene = it->second();
-        mCurrentScene->Init();
-    } else {
-        std::cerr << "Scene not found: " << mSceneToLoad << std::endl;
-    }
-    mSceneToLoad = "";
+	if (mSceneToLoad == "") return;
+	if (mCurrentScene) {
+		delete mCurrentScene;
+	}
+	auto it = mSceneFactory.find(mSceneToLoad);
+	if (it != mSceneFactory.end()) {
+		mCurrentScene = it->second();
+		mCurrentScene->Init();
+	} else {
+		std::cerr << "Scene not found: " << mSceneToLoad << std::endl;
+	}
+	mSceneToLoad = "";
 }
 
 void Game::SetPostProcessingDisabled(bool disabled) {
-    mPostProcessingDisabled = disabled;
+	mPostProcessingDisabled = disabled;
 }
 
 bool Game::IsPostProcessingDisabled() const {
-    return mPostProcessingDisabled;
+	return mPostProcessingDisabled;
 }
 
 void Game::SetDebugMode(bool debugMode) {
-    mDebugMode = debugMode;
+	mDebugMode = debugMode;
 }
 
 bool Game::IsDebugMode() const {
-    return mDebugMode;
+	return mDebugMode;
 }
 
 SceneGameObject *Game::GetActiveScene() const {
-    return mCurrentScene;
+	return mCurrentScene;
 }
 
 PostProcessor *Game::GetPostProcessor() const {
-    return mPostProcessor;
+	return mPostProcessor;
 }
 
 BatchRenderer *Game::GetBatchRenderer() const {
-    return mBatchRenderer;
+	return mBatchRenderer;
 }
 
 void Game::SetState(GameState state) {
-    State = state;
+	State = state;
 }
 
 GameState Game::GetState() const {
-    return State;
+	return State;
 }
 
 void Game::RequestDelete(GameObject *gameObject) {
-    mGameObjectsToDelete.push_back(gameObject);
+	mGameObjectsToDelete.push_back(gameObject);
 }
 
 void Game::ApplyDeleteRequests() {
-    for (auto gameObject : mGameObjectsToDelete) {
-        delete gameObject;
+	for (auto gameObject : mGameObjectsToDelete) {
+		delete gameObject;
+	}
+	mGameObjectsToDelete.clear();
+}
+
+void Game::AddOnPressKeyCallback(int key, std::string id, KeyCallback callback) {
+	if (key >= 0 && key < 1024) {
+		mOnPressKeyCallbacks[key][id] = callback;
     }
-    mGameObjectsToDelete.clear();
+}
+
+void Game::AddOnReleaseKeyCallback(int key, std::string id, KeyCallback callback) {
+	if (key >= 0 && key < 1024) {
+		mOnReleaseKeyCallbacks[key][id] = callback;
+	}
+}
+
+void Game::RemoveOnPressKeyCallback(int key, std::string id) {
+	if (key >= 0 && key < 1024) {
+		mOnPressKeyCallbacks[key].erase(id);
+	}
+}
+
+void Game::RemoveOnReleaseKeyCallback(int key, std::string id) {
+	if (key >= 0 && key < 1024) {
+        mOnReleaseKeyCallbacks[key].erase(id);
+	}
+}
+
+void Game::ClearOnPressKeyCallbacks(int key) {
+	if (key >= 0 && key < 1024) {
+		mOnPressKeyCallbacks[key].clear();
+	}
+}
+
+void Game::ClearOnReleaseKeyCallbacks(int key) {
+	if (key >= 0 && key < 1024) {
+		mOnReleaseKeyCallbacks[key].clear();
+	}
+}
+
+void Game::AddFont(std::string path, std::string id) {
+    if (mFontRenderers.find(id) != mFontRenderers.end()) {
+        std::cerr << "Font with id " << id << " already exists." << std::endl;
+        return;
+    }
+    mFontRenderers[id] = new FontRenderer(path);
+}
+
+FontRenderer *Game::GetFontRenderer(std::string id) {
+    auto it = mFontRenderers.find(id);
+    if (it != mFontRenderers.end()) {
+        return it->second;
+    } else {
+        std::cerr << "Font with id " << id << " not found." << std::endl;
+        return nullptr;
+    }
 }
 
 void Game::Quit() {
-    glfwTerminate();
-    mShouldClose = true;
+	glfwTerminate();
+	mShouldClose = true;
 }

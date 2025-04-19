@@ -22,6 +22,7 @@ const float slashSize = 5.0f;
 
 Player::Player(std::string name, GameObject *parent, glm::vec3 position) : Entity(name,
                                                                                   parent,
+                                                                                  EntityType::PLAYER,
                                                                                   new Polygon2D({{-hitboxSize + hitboxCorner, -hitboxSize},
                                                                                                  {-hitboxSize, -hitboxSize + hitboxCorner},
                                                                                                  {-hitboxSize, hitboxSize - hitboxCorner},
@@ -30,13 +31,11 @@ Player::Player(std::string name, GameObject *parent, glm::vec3 position) : Entit
                                                                                                  {hitboxSize, hitboxSize - hitboxCorner},
                                                                                                  {hitboxSize, -hitboxSize + hitboxCorner},
                                                                                                  {hitboxSize - hitboxCorner, -hitboxSize}}),
-                                                                                  true,
                                                                                   position,
                                                                                   {1.0f, 1.0f}) {
 	mMaxHealth = 6;
 	mHealth = mMaxHealth;
 	mImmunityTime = 1.0f;
-
 	SetZIndex(900);
 
 	(new RectColliderGameObject("Hitbox", this, false, {0.0f, 0.0f, 0.0f}, {hitboxSize * 2, hitboxSize * 2}))

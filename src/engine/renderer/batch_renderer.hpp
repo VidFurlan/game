@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstring>
+#include <string>
 
 #include "game_window.hpp"
 #include "glm/ext/matrix_float4x4.hpp"
@@ -24,12 +25,13 @@ class BatchRenderer {
 	BatchRenderer(int maxCapacity);
 	~BatchRenderer();
 
-	void pushObject(Texture &texture, glm::vec3 position = glm::vec3(0.0f), glm::vec4 uv = {0.0f, 0.0f, 1.0f, 1.0f}, glm::vec2 size = glm::vec2(0.0f), glm::vec4 color = glm::vec4(1.0f));
+	void pushObject(unsigned int textureID, glm::vec3 position = glm::vec3(0.0f), glm::vec4 uv = {0.0f, 0.0f, 1.0f, 1.0f}, glm::vec2 size = glm::vec2(1.0f), glm::vec4 color = glm::vec4(1.0f), std::string shaderName = "default_sprite");
+	void pushObject(Texture &texture, glm::vec3 position = glm::vec3(0.0f), glm::vec4 uv = {0.0f, 0.0f, 1.0f, 1.0f}, glm::vec2 size = glm::vec2(1.0f), glm::vec4 color = glm::vec4(1.0f), std::string shaderName = "default_sprite");
+    void pushVertex(unsigned int textureID, Vertex vertex);
 	void pushVertex(Texture &texture, Vertex vertex);
 	void flush();
 
    private:
-	GLuint mShader;
 	GLuint mVao;
 	GLuint mVbo;
 	int mCount;
@@ -37,6 +39,8 @@ class BatchRenderer {
 	Vertex *mVertices;
 
 	GLuint mTexture;
+    GLuint mShader;
+    std::string mShaderName;
 
    public:
 	float mMvp[4][4];

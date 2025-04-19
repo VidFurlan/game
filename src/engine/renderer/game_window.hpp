@@ -2,6 +2,7 @@
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include "glm/ext/matrix_float4x4.hpp"
 
 class GameWindow {
    public:
@@ -17,6 +18,9 @@ class GameWindow {
 	int GetWidth() const;
 	int GetHeight() const;
 
+    glm::mat4 GetMVP() const;
+
    private:
 	GLFWwindow* window;
+    glm::mat4 mMvp;
 };

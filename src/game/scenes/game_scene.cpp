@@ -23,7 +23,7 @@ GameScene::GameScene()
 
 void GameScene::Init() {
 	pResourceManager = Game::GetInstance().GetResourceManager();
-    Game::GetInstance().SetState(GameState::GAME_ACTIVE);
+	Game::GetInstance().SetState(GameState::GAME_ACTIVE);
 
 	// =========================================================================
 	// General Setup ===========================================================
@@ -40,7 +40,7 @@ void GameScene::Init() {
 	pResourceManager->LoadTexture("assets/textures/enviroment/spritesheet.png", true, "atlas");
 	pResourceManager->LoadTexture("assets/textures/enviroment/tileset.png", true, "tileset");
 
-    pResourceManager->LoadTexture("assets/textures/engine/pixel.png", false, "transition");
+	pResourceManager->LoadTexture("assets/textures/engine/pixel.png", false, "transition");
 
 	pResourceManager->LoadTexture("assets/textures/ui/hearts.png", true, "hearts");
 
@@ -52,40 +52,38 @@ void GameScene::Init() {
 	// Create game objects =====================================================
 	// =========================================================================
 	CameraGameObject *camera = new CameraGameObject("MainCamera", this);
-	//this->AddGameCamera(camera);
-	//this->SetActiveCamera(camera);
+	// this->AddGameCamera(camera);
+	// this->SetActiveCamera(camera);
 
 	Player *player = new Player("Player", this);
 	AddChild(new PlayerUI(player));
 
 	Dungeon *dungeon = new Dungeon("Dungeon", this);
 
-	//dungeon->Generate(10, std::hash<std::string>()("ligma"));
+	// dungeon->Generate(10, std::hash<std::string>()("ligma"));
 	dungeon->Generate(10, rand());
 
-    RoomTransition *roomTransition = new RoomTransition("Transition", this);
+	RoomTransition *roomTransition = new RoomTransition("Transition", this);
 
-    MenuTransition *menuTransition = new MenuTransition("MenuTransition", this);
+	MenuTransition *menuTransition = new MenuTransition("MenuTransition", this);
 
-    GameObject *ui = new GameObject("UI", this);
-    ui->SetZIndex(0);
-    ui->SetVisible(false);
-    ui->SetActive(false);
+	GameObject *ui = new GameObject("UI", this);
+	ui->SetZIndex(0);
+	ui->SetVisible(false);
+	ui->SetActive(false);
 
-    Button *menuButton = new Button ("MenuButton", ui, {0.0f, -20.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}, [ui]() {
+	Button *menuButton = new Button("MenuButton", ui, {0.0f, -20.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}, [ui]() {
             if (!ui->GetActive()) return;
-            Game::GetInstance().RequestLoadScene("Menu");
-            }, new SpriteGameObject("Image", "banner_menu", {0.0f, 0.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}), ScreenAnchor::CENTER);
+            Game::GetInstance().RequestLoadScene("Menu"); }, new SpriteGameObject("Image", "banner_menu", {0.0f, 0.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}), ScreenAnchor::CENTER);
 
-    Button *exitButton = new Button ("ExitButton", ui, {0.0f, 0.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}, [ui]() {
+	Button *exitButton = new Button("ExitButton", ui, {0.0f, 0.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}, [ui]() {
             if (!ui->GetActive()) return;
-            Game::GetInstance().Quit();
-            }, new SpriteGameObject("Image", "banner_quit", {0.0f, 00.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}), ScreenAnchor::CENTER);
+            Game::GetInstance().Quit(); }, new SpriteGameObject("Image", "banner_quit", {0.0f, 00.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}), ScreenAnchor::CENTER);
 }
 
 void GameScene::Update(float deltaTime) {
-    if (mActive == false) {
-        return;
+	if (mActive == false) {
+		return;
 	}
 
 	SceneGameObject::Update(deltaTime);

@@ -1,16 +1,27 @@
 #include "entity.hpp"
 
 #include "abstract_image_game_object.hpp"
+#include "collider_game_object.hpp"
 #include "game.hpp"
+#include "polygon2d.hpp"
+
+Entity::Entity(std::string name, GameObject *parent, EntityType type, Polygon2D *polygon, glm::vec3 position, glm::vec2 scale)
+    : ColliderGameObject(name, parent, polygon, false),
+      mType(type),
+      mMoveSpeed(0.0f) {
+    mPos = position;
+    mScale = scale;
+    mMaxHealth = 1;
+    mHealth = mMaxHealth;
+}
 
 void Entity::Update(float deltaTime) {
 	if (mImmune) {
-        if (mImmunityTimeElapsed < 0.1f) {
-            ((AbstractImageGameObject *)GetChild("Sprite"))->SetColor({1.0f, 1.0f * (mImmunityTimeElapsed / 0.1f), 1.0f * (mImmunityTimeElapsed / 0.1f), 1.0f});
-        }
-        else {
-            ((AbstractImageGameObject *)GetChild("Sprite"))->SetColor({1.0f, 1.0f, 1.0f, 1.0f});
-        }
+		if (mImmunityTimeElapsed < 0.1f) {
+			((AbstractImageGameObject *)GetChild("Sprite"))->SetColor({1.0f, 1.0f * (mImmunityTimeElapsed / 0.1f), 1.0f * (mImmunityTimeElapsed / 0.1f), 1.0f});
+		} else {
+			((AbstractImageGameObject *)GetChild("Sprite"))->SetColor({1.0f, 1.0f, 1.0f, 1.0f});
+		}
 		mImmunityTimeElapsed += deltaTime;
 		if (mImmunityTimeElapsed > mImmunityTime) {
 			mImmune = false;
@@ -65,4 +76,12 @@ int Entity::GetHealth() const {
 
 int Entity::GetMaxHealth() const {
 	return mMaxHealth;
+}
+
+Entity::SaveData Entity::GetSaveData() const {
+	SaveData data;
+	data.type = mType;
+	data.position = mPos;
+	data.health = mHealth;
+	return data;
 }
