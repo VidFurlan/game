@@ -16,4 +16,5 @@ class Button : public GameObject {
    private:
 	std::function<void()> mOnClick;
     bool mClicked = false;
+    bool mHovered = false;
 };

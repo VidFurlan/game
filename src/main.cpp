@@ -14,7 +14,7 @@ int main() {
 	ResourceManager::GetInstance().LoadShader("shaders/batch_renderer_vertex.glsl", "shaders/batch_renderer_fragment.glsl", nullptr, "default_sprite");
 
     // Load fonts
-    game.AddFont("assets/fonts/slkscr.ttf", "default");
+    game.AddFont("assets/fonts/alagard.ttf", "default");
     game.AddFont("assets/fonts/slkscr.ttf", "slkscr");
 
 	// Manage scenes

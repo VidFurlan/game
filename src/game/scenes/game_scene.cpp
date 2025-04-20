@@ -13,6 +13,7 @@
 #include "objects/menu_transition.hpp"
 #include "objects/player.hpp"
 #include "objects/room_transition.hpp"
+#include "objects/saver.hpp"
 #include "objects/ui/button.hpp"
 #include "objects/ui/player_ui.hpp"
 #include "sprite_game_object.hpp"
@@ -55,13 +56,29 @@ void GameScene::Init() {
 	// this->AddGameCamera(camera);
 	// this->SetActiveCamera(camera);
 
+    Saver *saver = new Saver("Saver", this);
+
 	Player *player = new Player("Player", this);
 	AddChild(new PlayerUI(player));
 
 	Dungeon *dungeon = new Dungeon("Dungeon", this);
 
-	// dungeon->Generate(10, std::hash<std::string>()("ligma"));
-	dungeon->Generate(10, rand());
+    // dungeon->Generate(10, std::hash<std::string>()("ligma"));
+    if (Saver::mShouldLoad && Saver::mReadyToLoad) {
+        saver->Load();
+        dungeon->Generate(Saver::mDungeonSaveData.roomCount, Saver::mDungeonSaveData.seed);
+        for (int i = -Saver::mDungeonSaveData.roomCount; i < Saver::mDungeonSaveData.roomCount; i++) {
+            for (int j = -Saver::mDungeonSaveData.roomCount; j < Saver::mDungeonSaveData.roomCount; j++) {
+                Dungeon::RoomData roomData = Saver::mRoomSaveData[i + Saver::mDungeonSaveData.roomCount][j + Saver::mDungeonSaveData.roomCount];
+                dungeon->SetRoomState(i, j, roomData.state);
+            }
+        }
+        dungeon->EnterRoom(Saver::mDungeonSaveData.curX, Saver::mDungeonSaveData.curY);
+    }
+    else {
+        srand(time(0));
+        dungeon->Generate(10, rand());
+    }
 
 	RoomTransition *roomTransition = new RoomTransition("Transition", this);
 

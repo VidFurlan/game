@@ -147,7 +147,7 @@ void Game::AddScene(const std::string &sceneName, std::function<SceneGameObject 
 	mSceneFactory[sceneName] = factory;
 }
 
-void Game::RequestLoadScene(const std::string &sceneName) {
+void Game::RequestLoadScene(const std::string &sceneName, ...) {
 	mSceneToLoad = sceneName;
 }
 

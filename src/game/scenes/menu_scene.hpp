@@ -6,7 +6,7 @@ class MenuScene : public SceneGameObject {
    public:
 	MenuScene();
 
-	void Init() override;
-	void Update(float deltaTime) override;
-	void Render() override;
+	virtual void Init() override;
+	virtual void Update(float deltaTime) override;
+	virtual void Render() override;
 };

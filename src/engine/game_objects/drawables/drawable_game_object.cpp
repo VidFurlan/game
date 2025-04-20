@@ -10,10 +10,6 @@ void DrawableGameObject::Render() {
 	mRenderPosition.z = 0.0f;
 	mRenderSize = mScale;
 
-    if (GetParent() != Game::GetInstance().GetActiveScene()) {
-        mAnchor = ScreenAnchor::CAMERA;
-    }
-
 	switch (mAnchor) {
 		case ScreenAnchor::CAMERA: {
 			mRenderPosition -= Game::GetInstance().GetActiveScene()->GetActiveCamera()->GetPosition() * GAME_SCALE_FACTOR;

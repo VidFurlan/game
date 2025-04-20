@@ -46,7 +46,7 @@ class Game : public Singleton {
 	bool ShouldClose() const;
 
 	void AddScene(const std::string &sceneName, std::function<SceneGameObject *()> factory);
-	void RequestLoadScene(const std::string &sceneName);
+	void RequestLoadScene(const std::string &sceneName, ...);
 
 	void SetPostProcessingDisabled(bool disabled);
 	bool IsPostProcessingDisabled() const;

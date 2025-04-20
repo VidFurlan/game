@@ -24,17 +24,27 @@ class Dungeon : public GameObject {
 
 	void Generate(int roomCount, unsigned long long seed);
 	void EnterRoom(int x, int y);
-	RoomData &GetRoomData(int x, int y);
+	RoomData GetRoomData(int x, int y) const;
 	glm::vec2 GetRoomPosition() const;
 
-    void SetRoomState(int x, int y, DungeonRoom::State state);
+	void SetRoomState(int x, int y, DungeonRoom::State state);
+
+	struct SaveData {
+		int roomCount;
+		unsigned long long seed;
+		int curX;
+		int curY;
+	};
+
+    SaveData GetSaveData() const;
 
    private:
-	int mCurX = 0, mCurY = 0;
-	DungeonRoom *mCurRoom;
-
 	void SetRoomType(int x, int y, DungeonRoom::Type type);
 	int CountAdjacentRooms(int x, int y);
+
+	DungeonRoom *mCurRoom;
+	int mCurX = 0;
+	int mCurY = 0;
 
 	int mRoomCount;
 	std::vector<std::vector<RoomData>> mRooms;
@@ -47,8 +57,6 @@ class Dungeon : public GameObject {
 		EntityType type;
 		glm::vec2 position;
 	};
-    
-	// clang-format off
+
 	static const std::unordered_map<DungeonRoom::Type, std::vector<std::vector<EntityData>>> mRoomConfigs;
-	// clang-format on
 };

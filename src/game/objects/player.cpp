@@ -12,6 +12,7 @@
 #include "glm/gtc/type_ptr.hpp"
 #include "objects/entities/entity.hpp"
 #include "objects/menu_transition.hpp"
+#include "objects/saver.hpp"
 #include "polygon2d.hpp"
 #include "rect_collider_game_object.hpp"
 #include "spritesheet_game_object.hpp"
@@ -214,6 +215,7 @@ void Player::LateUpdate(float deltaTime) {
 		((MenuTransition *)Game::GetInstance().GetActiveScene()->GetChild("MenuTransition"))->Transition([]() {
 			Game::GetInstance().GetActiveScene()->GetChild("UI")->SetActive(true)->SetVisible(true);
 		});
+        ((Saver *)Game::GetInstance().GetActiveScene()->GetChild("Saver"))->DeleteSave();
 	}
 
 	ColliderGameObject::LateUpdate(deltaTime);

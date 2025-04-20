@@ -6,7 +6,7 @@
 #include "polygon2d.hpp"
 
 Entity::Entity(std::string name, GameObject *parent, EntityType type, Polygon2D *polygon, glm::vec3 position, glm::vec2 scale)
-    : ColliderGameObject(name, parent, polygon, false),
+    : ColliderGameObject(name, parent, polygon, true),
       mType(type),
       mMoveSpeed(0.0f) {
     mPos = position;
