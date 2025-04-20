@@ -7,6 +7,7 @@
 
 #include "batch_renderer.hpp"
 #include "game.hpp"
+#include "game_object.hpp"
 #include "glm/ext/vector_float2.hpp"
 #include "glm/gtc/type_ptr.hpp"
 
@@ -94,6 +95,7 @@ FontRenderer::FontRenderer(std::string path) {
 
 void FontRenderer::DrawText(const std::string &text, glm::vec2 position, float scale, glm::vec4 color) {
 	int order[6] = {0, 1, 2, 0, 2, 3};
+    scale /= fontSize / 10.0f;
 	float pixelScale = 2.0f / Game::GetInstance().GetWindow()->GetHeight();
 
 	glm::vec3 localPosition = glm::make_vec3(position);

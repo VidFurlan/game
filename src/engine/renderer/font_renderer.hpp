@@ -21,12 +21,12 @@ class FontRenderer {
 	void DrawText(const std::string &text, glm::vec2 position, float scale, glm::vec4 color);
 
    private:
-	const int ATLAS_WIDTH = 1024;
-	const int ATLAS_HEIGHT = 1024;
+	const int ATLAS_WIDTH = 1024*2;
+	const int ATLAS_HEIGHT = 1024*2;
 
 	const int firstChar = 32;
 	const int charCount = 95;
-	const float fontSize = 32.0f;
+	const float fontSize = 128.0f;
 
     std::string mFontName;
 

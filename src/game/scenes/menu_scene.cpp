@@ -14,6 +14,7 @@
 #include "objects/ui/button.hpp"
 #include "objects/ui/player_ui.hpp"
 #include "sprite_game_object.hpp"
+#include "text_game_object.hpp"
 
 MenuScene::MenuScene()
     : SceneGameObject("Game") {
@@ -42,6 +43,7 @@ void MenuScene::Init() {
 
 	pResourceManager->LoadTexture("assets/textures/ui/hearts.png", true, "hearts");
 
+	pResourceManager->LoadTexture("assets/textures/ui/banner.png", true, "banner");
 	pResourceManager->LoadTexture("assets/textures/ui/banner_play.png", true, "banner_play");
 	pResourceManager->LoadTexture("assets/textures/ui/banner_quit.png", true, "banner_quit");
 	pResourceManager->LoadTexture("assets/textures/ui/banner_menu.png", true, "banner_menu");
@@ -54,9 +56,11 @@ void MenuScene::Init() {
 	// this->SetActiveCamera(camera);
 
 	GameObject *ui = new GameObject("UI", this);
-	Button *menuButton = new Button("PlayButton", ui, {0.0f, 0.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}, []() { Game::GetInstance().RequestLoadScene("Game"); }, new SpriteGameObject("Image", "banner_play", {0.0f, 0.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}), ScreenAnchor::CENTER);
+	Button *menuButton = new Button("PlayButton", ui, {0.0f, 0.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}, []() { Game::GetInstance().RequestLoadScene("Game"); }, new SpriteGameObject("Image", "banner", {0.0f, 0.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}), ScreenAnchor::CENTER);
+    menuButton->AddChild(new TextGameObject("Text", menuButton, "PLAY", TextGameObject::TextProperties ("default", 100.0f), {0.0f, 0.0f, 0.0f}, {20.0f, 20.0f}));
 
-	Button *exitButton = new Button("ExitButton", ui, {0.0f, 20.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}, []() { Game::GetInstance().Quit(); }, new SpriteGameObject("Image", "banner_quit", {0.0f, 00.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}), ScreenAnchor::CENTER);
+	Button *exitButton = new Button("ExitButton", ui, {0.0f, 20.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}, []() { Game::GetInstance().Quit(); }, new SpriteGameObject("Image", "banner", {0.0f, 00.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}), ScreenAnchor::CENTER);
+    menuButton->AddChild(new TextGameObject("Text", menuButton, "EXIT", TextGameObject::TextProperties ("default", 100.0f), {0.0f, 0.0f, 0.0f}, {20.0f, 20.0f}));
 }
 
 void MenuScene::Update(float deltaTime) {

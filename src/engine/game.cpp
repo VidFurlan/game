@@ -82,8 +82,6 @@ void Game::Run() {
 		glClearColor(bgColor.x, bgColor.y, bgColor.z, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-        // mFontRenderers["default"]->DrawText("TEXT RENDERER", {100.0f, 100.0f}, 600.0f, {1.0f, 1.0f, 1.0f, 1.0f});
-
 		Render();
 
 		if (!mPostProcessingDisabled) {
