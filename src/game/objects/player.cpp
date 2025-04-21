@@ -21,6 +21,10 @@ const float hitboxSize = 2.5f;
 const float hitboxCorner = 0.9f;
 const float slashSize = 5.0f;
 
+bool Player::mLevelCleared = false;
+int Player::mKillCount = 0;
+int Player::mCatCount = 0;
+
 Player::Player(std::string name, GameObject *parent, glm::vec3 position) : Entity(name,
                                                                                   parent,
                                                                                   EntityType::PLAYER,
@@ -34,6 +38,9 @@ Player::Player(std::string name, GameObject *parent, glm::vec3 position) : Entit
                                                                                                  {hitboxSize - hitboxCorner, -hitboxSize}}),
                                                                                   position,
                                                                                   {1.0f, 1.0f}) {
+	mKillCount = 0;
+	mCatCount = 0;
+
 	mMaxHealth = 6;
 	mHealth = mMaxHealth;
 	mImmunityTime = 1.0f;
@@ -42,7 +49,7 @@ Player::Player(std::string name, GameObject *parent, glm::vec3 position) : Entit
 	(new RectColliderGameObject("Hitbox", this, false, {0.0f, 0.0f, 0.0f}, {hitboxSize * 2, hitboxSize * 2}))
 	    ->SetOnCollision([this](ColliderGameObject *other, ColliderGameObject::CollisionType type) {
 		    if (other->GetParent()->GetName() == "Player") return;
-		    if (other->GetTag() == "Enemy") {
+		    if (other->GetTag() == "Enemy" && ((Entity *)other)->GetEntityType() != EntityType::TREASURE_CHEST) {
 			    Damage(1);
 		    }
 	    })
@@ -215,7 +222,7 @@ void Player::LateUpdate(float deltaTime) {
 		((MenuTransition *)Game::GetInstance().GetActiveScene()->GetChild("MenuTransition"))->Transition([]() {
 			Game::GetInstance().GetActiveScene()->GetChild("UI")->SetActive(true)->SetVisible(true);
 		});
-        ((Saver *)Game::GetInstance().GetActiveScene()->GetChild("Saver"))->DeleteSave();
+		((Saver *)Game::GetInstance().GetActiveScene()->GetChild("Saver"))->DeleteSave();
 	}
 
 	ColliderGameObject::LateUpdate(deltaTime);

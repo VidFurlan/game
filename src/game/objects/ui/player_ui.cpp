@@ -2,7 +2,9 @@
 
 #include <string>
 
+#include "drawable_game_object.hpp"
 #include "spritesheet_game_object.hpp"
+#include "text_game_object.hpp"
 
 PlayerUI::PlayerUI(Player *player)
     : GameObject("PlayerUI"), mPlayer(player) {
@@ -10,12 +12,28 @@ PlayerUI::PlayerUI(Player *player)
 
 	AddChild(new GameObject("Hearts"));
 	UpdateHealth();
+
+	(new SpriteSheetGameObject("Cat", this, "cat", {8, 8}, {5.0f, 10.0f, 0.0f}, {10.0f, 10.0f}))
+	    ->SetSpriteSheetFrame({0, 6})
+	    ->SetScreenAnchor(ScreenAnchor::TOP_LEFT)
+	    ->SetZIndex(1100);
+    
+	(new TextGameObject("CatsCnt", this, std::to_string(Player::mKillCount), TextGameObject::TextProperties("default", 200.0f), {11.0f, 13.0f, 0.0f}, {20.0f, 20.0f}))
+	    ->SetScreenAnchor(ScreenAnchor::TOP_LEFT)
+	    ->SetZIndex(0);
+
+	(new TextGameObject("Score", this, std::to_string(Player::mKillCount), TextGameObject::TextProperties("default", 200.0f), {4.0f, 20.0f, 0.0f}, {20.0f, 20.0f}))
+	    ->SetScreenAnchor(ScreenAnchor::TOP_LEFT)
+	    ->SetZIndex(0);
 }
 
 void PlayerUI::Update(float deltaTime) {
 	if (mActive == false) {
 		return;
 	}
+
+	((TextGameObject *)GetChild("CatsCnt"))->SetText("x" + std::to_string(Player::mCatCount));
+	((TextGameObject *)GetChild("Score"))->SetText(std::to_string(Player::mKillCount + Player::mCatCount * 5));
 
 	if (mDisplayedHealth != mPlayer->mHealth) {
 		UpdateHealth();

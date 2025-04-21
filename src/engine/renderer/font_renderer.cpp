@@ -9,6 +9,7 @@
 #include "game.hpp"
 #include "game_object.hpp"
 #include "glm/ext/vector_float2.hpp"
+#include "glm/ext/vector_float3.hpp"
 #include "glm/gtc/type_ptr.hpp"
 
 #define STB_IMAGE_WRITE_IMPLEMENTATION
@@ -93,13 +94,34 @@ FontRenderer::FontRenderer(std::string path) {
 	delete[] fontData;
 }
 
-void FontRenderer::DrawText(const std::string &text, glm::vec2 position, float scale, glm::vec4 color) {
+void FontRenderer::DrawText(const std::string &text, glm::vec2 position, float scale, glm::vec4 color, bool center) {
 	int order[6] = {0, 1, 2, 0, 2, 3};
-    scale /= fontSize / 10.0f;
-	float pixelScale = 2.0f / Game::GetInstance().GetWindow()->GetHeight();
+	scale /= fontSize / 10.0f;
+	float pixelScale = 2.0f / 1600.0f;
 
-	glm::vec3 localPosition = glm::make_vec3(position);
+	std::vector<glm::vec3> positions;
+	float width = 0.0f;
 	for (char ch : text) {
+		if (ch >= firstChar && ch <= firstChar + charCount) {
+			stbtt_packedchar *packedChar = &packedChars[ch - firstChar];
+			width += packedChar->xadvance * pixelScale * scale;
+		} else if (ch == '\n') {
+			if (center)
+				positions.push_back(glm::vec3(position.x - width / 2.0f, position.y, 0.0f));
+			else
+				positions.push_back(glm::vec3(position.x, position.y, 0.0f));
+			width = 0.0f;
+		}
+	}
+	if (center)
+		positions.push_back(glm::vec3(position.x - width / 2.0f, position.y, 0.0f));
+	else
+		positions.push_back(glm::vec3(position.x, position.y, 0.0f));
+
+	int row = 0;
+	glm::vec3 localPosition = positions[row];
+	for (char ch : text) {
+		localPosition.y += row * fontSize * pixelScale * scale;
 		if (ch >= firstChar && ch <= firstChar + charCount) {
 			stbtt_packedchar *packedChar = &packedChars[ch - firstChar];
 			stbtt_aligned_quad *alignedQuad = &alignedQuads[ch - firstChar];
@@ -124,13 +146,11 @@ void FontRenderer::DrawText(const std::string &text, glm::vec2 position, float s
 			    {alignedQuad->s1, alignedQuad->t0},
 			    {alignedQuad->s0, alignedQuad->t0}};
 
-			Game::GetInstance().GetBatchRenderer()->pushObject(mFontAtlasTexture, localPosition, 
-                    {alignedQuad->s0, alignedQuad->t0, alignedQuad->s1, alignedQuad->t1}, glm::vec2(glyphSize.x, glyphSize.y) / GameObject::GAME_SCALE_FACTOR, color, "default_font");
+			Game::GetInstance().GetBatchRenderer()->pushObject(mFontAtlasTexture, localPosition, {alignedQuad->s0, alignedQuad->t0, alignedQuad->s1, alignedQuad->t1}, glm::vec2(glyphSize.x, glyphSize.y) / GameObject::GAME_SCALE_FACTOR, color, "default_font");
 
 			localPosition.x += packedChar->xadvance * pixelScale * scale;
 		} else if (ch == '\n') {
-			localPosition.y -= fontSize * pixelScale * scale;
-			localPosition.x = position.x;
+			localPosition = positions[++row];
 		}
 	}
 }

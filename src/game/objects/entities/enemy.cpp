@@ -10,22 +10,24 @@
 
 Enemy::Enemy(std::string name, GameObject *parent, glm::vec3 position)
     : Entity(name, parent, EntityType::GRAY_BLOB, new Polygon2D({{-2.0f, -2.0f}, {-2.0f, 2.0f}, {2.0f, 2.0f}, {2.0f, -2.0f}}), position, {1.0f, 1.0f}) {
-    mMaxHealth = 3;
-    mHealth = mMaxHealth;
-    mImmunityTime = 0.3f;
+	mMaxHealth = 3;
+	mHealth = mMaxHealth;
+	mImmunityTime = 0.3f;
 	SetTag("Enemy");
 	SetZIndex(900);
 	(new SpriteSheetGameObject("Sprite", this, "enemy", {32, 32}, {0.0f, -2.2f, 0.0f}, {8, 8}))
 	    ->SetSpriteSheetFrame({1, 23});
 	moveSpeed *= (rand() % 100) / 200.0f - 0.5f + 1.0f;
 
-    DungeonRoom *room = ((DungeonRoom *)GetParent()->GetParent());
-    room->SetEnemyCount(room->GetEnemyCount() + 1);
+	DungeonRoom *room = ((DungeonRoom *)GetParent()->GetParent());
 }
 
 Enemy::~Enemy() {
-    DungeonRoom *room = ((DungeonRoom *)GetParent()->GetParent());
-    room->SetEnemyCount(room->GetEnemyCount() - 1);
+	DungeonRoom *room = ((DungeonRoom *)GetParent()->GetParent());
+}
+
+void Enemy::Death() {
+	Player::mKillCount++;
 }
 
 void Enemy::Update(float deltaTime) {

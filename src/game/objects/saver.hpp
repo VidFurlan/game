@@ -21,6 +21,7 @@ class Saver : public GameObject {
 	static std::vector<Entity::SaveData> mEntitySaveData;
 	static std::vector<std::vector<Dungeon::RoomData>> mRoomSaveData;
 	static Dungeon::SaveData mDungeonSaveData;
+    static Entity::SaveData mPlayerSaveData;
 
    private:
 	const std::string mSaveFilePath = "saves/";

@@ -3,11 +3,17 @@
 #include <iostream>
 
 #include "collider_game_object.hpp"
+#include "game.hpp"
 
 void CollisionManager::Update(float deltaTime) {
+    if (Game::GetInstance().GetState() == GameState::GAME_REPLAY) {
+        return;
+    }
 	for (auto &tagGroup : mTaggedGameObjects) {
+        //std::cout << "Tag: " << tagGroup.first << " Count: " << tagGroup.second.size() << std::endl;
 		for (std::set<ColliderGameObject *>::iterator it1 = tagGroup.second.begin(); it1 != tagGroup.second.end(); it1++) {
             for (std::set<ColliderGameObject *>::iterator it2 = std::next(it1); it2 != tagGroup.second.end(); it2++) {
+                if (!(*it1)->GetActive() || !(*it2)->GetActive()) continue;
                 ColliderGameObject *obj1 = *it1;
                 ColliderGameObject *obj2 = *it2;
 				ColliderGameObject::CollisionType collision = CheckCollision(obj1, obj2);

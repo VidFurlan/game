@@ -18,7 +18,7 @@ class FontRenderer {
    public:
 	FontRenderer(std::string path);
 
-	void DrawText(const std::string &text, glm::vec2 position, float scale, glm::vec4 color);
+	void DrawText(const std::string &text, glm::vec2 position, float scale, glm::vec4 color, bool center = false);
 
    private:
 	const int ATLAS_WIDTH = 1024*2;

@@ -15,7 +15,7 @@ class MenuTransition : public SpriteGameObject {
 
    private:
 	bool mTransitioning = false;
-	float mTransitionTime = 0.5f;
+	float mTransitionTime = 0.0f;
 	float mTransitionTimeElapsed = 0.0f;
 
 	std::function<void()> mCallback;

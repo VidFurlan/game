@@ -53,6 +53,7 @@ void Entity::Damage(int damage) {
 		mHealth = 0;
 		mActive = false;
 		mVisible = false;
+        Death();
 	}
 
 	if (mHealth > mMaxHealth) {
@@ -62,12 +63,14 @@ void Entity::Damage(int damage) {
 	mImmune = true;
 }
 
-void Entity::SetHealth(int health) {
+Entity *Entity::SetHealth(int health) {
 	mHealth = health;
+    return this;
 }
 
-void Entity::SetMaxHealth(int maxHealth) {
+Entity *Entity::SetMaxHealth(int maxHealth) {
 	mMaxHealth = maxHealth;
+    return this;
 }
 
 int Entity::GetHealth() const {
@@ -76,6 +79,10 @@ int Entity::GetHealth() const {
 
 int Entity::GetMaxHealth() const {
 	return mMaxHealth;
+}
+
+EntityType Entity::GetEntityType() const {
+    return mType;
 }
 
 Entity::SaveData Entity::GetSaveData() const {

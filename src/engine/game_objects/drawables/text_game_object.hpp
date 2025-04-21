@@ -6,6 +6,7 @@
 #include "drawable_game_object.hpp"
 #include "game_object.hpp"
 #include "glm/ext/vector_float4.hpp"
+#include "imgui.h"
 
 class TextGameObject : public DrawableGameObject {
    public:
@@ -13,9 +14,11 @@ class TextGameObject : public DrawableGameObject {
 		std::string fontName;
 		glm::vec4 color;
 		float scale;
+		bool center;
 
-		TextProperties(std::string fontName = "default", float scale = 100.0f, glm::vec4 color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f))
-		    : fontName(fontName), color(color), scale(scale) {}
+		TextProperties(std::string fontName = "default", float scale = 100.0f, bool center = false, glm::vec4 color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f))
+		    : fontName(fontName), color(color), scale(scale), center(center) {
+		}
 	};
 
 	TextGameObject(std::string name, std::string text, TextProperties textProperties = TextProperties(), glm::vec3 pos = glm::vec3(0.0f), glm::vec2 scale = glm::vec2(1.0f));
@@ -23,8 +26,11 @@ class TextGameObject : public DrawableGameObject {
 
 	virtual void Render() override;
 
-	void SetText(std::string text);
+	TextGameObject *SetText(std::string text);
 	std::string GetText() const;
+
+	TextGameObject *SetTextProperties(TextProperties textProperties);
+	TextProperties GetTextProperties() const;
 
    private:
 	std::string mText;

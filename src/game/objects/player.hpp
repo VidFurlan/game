@@ -10,8 +10,14 @@ class Player : public Entity {
 
    public:
 	Player(std::string name, GameObject *parent, glm::vec3 position = glm::vec3(0.0f));
-	void Update(float deltaTime) override;
-    void LateUpdate(float deltaTime) override;
+	virtual void Update(float deltaTime) override;
+    virtual void LateUpdate(float deltaTime) override;
+
+    virtual void Death() override {};
+
+    static bool mLevelCleared;
+    static int mKillCount;
+    static int mCatCount;
 
    private:
     void Attack(float deltaTime);

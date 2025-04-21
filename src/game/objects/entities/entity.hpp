@@ -27,12 +27,15 @@ class Entity : public ColliderGameObject {
     virtual void LateUpdate(float deltaTime) override;
 
 	void Damage(int damage);
+    virtual void Death() = 0;
 
-	void SetHealth(int health);
-	void SetMaxHealth(int maxHealth);
+	Entity *SetHealth(int health);
+	Entity *SetMaxHealth(int maxHealth);
 
 	int GetHealth() const;
 	int GetMaxHealth() const;
+
+    EntityType GetEntityType() const;
 
     SaveData GetSaveData() const;
 

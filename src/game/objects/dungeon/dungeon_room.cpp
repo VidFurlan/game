@@ -10,15 +10,18 @@
 #include "objects/dungeon/dungeon.hpp"
 #include "objects/entities/entity.hpp"
 #include "objects/entities/entity_factory.hpp"
+#include "objects/player.hpp"
 #include "objects/room_transition.hpp"
+#include "objects/saver.hpp"
 #include "rect_collider_game_object.hpp"
+#include "scene_game_object.hpp"
 #include "spritesheet_game_object.hpp"
 
 DungeonRoom::DungeonRoom(GameObject *parent) : GameObject("DungeonRoom", parent) {
 	GameObject *colliders = AddChild(new GameObject("Colliders", {0.0f, 0.0f, 0.0f}));
 	((ColliderGameObject *)colliders->AddChild(new RectColliderGameObject("DoorUp", false, {0.0f, 44.0f, 0.0f}, {10.0f, 2.0f})))
 	    ->SetOnCollision([this](ColliderGameObject *other, ColliderGameObject::CollisionType type) {
-		    if (mEnemyCount > 0) return;
+		    if (GetEnemyCount() > 0) return;
 		    if (type == ColliderGameObject::CollisionType::OVERLAP && other->GetName() == "Player") {
 			    ((RoomTransition *)Game::GetInstance().GetActiveScene()->GetChild("Transition"))->Transition([this]() {
 				    Dungeon *dungeon = (Dungeon *)this->GetParent();
@@ -31,7 +34,7 @@ DungeonRoom::DungeonRoom(GameObject *parent) : GameObject("DungeonRoom", parent)
 	    ->SetActive(false);
 	((ColliderGameObject *)colliders->AddChild(new RectColliderGameObject("DoorDown", false, {0.0f, -44.0f, 0.0f}, {10.0f, 2.0f})))
 	    ->SetOnCollision([this](ColliderGameObject *other, ColliderGameObject::CollisionType type) {
-		    if (mEnemyCount > 0) return;
+		    if (GetEnemyCount() > 0) return;
 		    if (type == ColliderGameObject::CollisionType::OVERLAP && other->GetName() == "Player") {
 			    ((RoomTransition *)Game::GetInstance().GetActiveScene()->GetChild("Transition"))->Transition([this]() {
 				    Dungeon *dungeon = (Dungeon *)this->GetParent();
@@ -44,7 +47,7 @@ DungeonRoom::DungeonRoom(GameObject *parent) : GameObject("DungeonRoom", parent)
 	    ->SetActive(false);
 	((ColliderGameObject *)colliders->AddChild(new RectColliderGameObject("DoorLeft", false, {-44.0f, 0.0f, 0.0f}, {2.0f, 10.0f})))
 	    ->SetOnCollision([this](ColliderGameObject *other, ColliderGameObject::CollisionType type) {
-		    if (mEnemyCount > 0) return;
+		    if (GetEnemyCount() > 0) return;
 		    if (type == ColliderGameObject::CollisionType::OVERLAP && other->GetName() == "Player") {
 			    ((RoomTransition *)Game::GetInstance().GetActiveScene()->GetChild("Transition"))->Transition([this]() {
 				    Dungeon *dungeon = (Dungeon *)this->GetParent();
@@ -57,7 +60,7 @@ DungeonRoom::DungeonRoom(GameObject *parent) : GameObject("DungeonRoom", parent)
 	    ->SetActive(false);
 	((ColliderGameObject *)colliders->AddChild(new RectColliderGameObject("DoorRight", false, {44.0f, 0.0f, 0.0f}, {2.0f, 10.0f})))
 	    ->SetOnCollision([this](ColliderGameObject *other, ColliderGameObject::CollisionType type) {
-		    if (mEnemyCount > 0) return;
+		    if (GetEnemyCount() > 0) return;
 		    if (type == ColliderGameObject::CollisionType::OVERLAP && other->GetName() == "Player") {
 			    ((RoomTransition *)Game::GetInstance().GetActiveScene()->GetChild("Transition"))->Transition([this]() {
 				    Dungeon *dungeon = (Dungeon *)this->GetParent();
@@ -84,7 +87,6 @@ DungeonRoom::DungeonRoom(GameObject *parent) : GameObject("DungeonRoom", parent)
 void DungeonRoom::SetRoom(int x, int y) {
 	Dungeon *dungeon = (Dungeon *)this->GetParent();
 	mType = dungeon->GetRoomData(x, y).type;
-	mEnemyCount = 0;
 
 	GameObject *tiles = GetChild("Tiles");
 	for (int i = 0; i < n; i++) {
@@ -121,10 +123,11 @@ void DungeonRoom::SetRoom(int x, int y) {
 	GetChild("Colliders")->GetChild("DoorRight")->SetActive(false);
 	GetChild("Colliders")->GetChild("DoorLeft")->SetActive(false);
 
-	float roomX = dungeon->GetRoomPosition().x;
-	float roomY = dungeon->GetRoomPosition().y;
+	float roomX = x;
+	float roomY = y;
 	for (int i = 0; i < 4; i++) {
 		if (dungeon->GetRoomData(roomX + Dungeon::directions[i][0], roomY + Dungeon::directions[i][1]).type != Type::NOT_SET) {
+            std::cout << "Door" << i << std::endl;
 			if (i == 0) {
 				GetChild("Colliders")->GetChild("DoorUp")->SetActive(true);
 				((SpriteSheetGameObject *)tiles->GetChild("Tile" + std::to_string(n / 2) + "_" + std::to_string(m - 1)))->SetSpriteSheetFrame(3, 6)->SetScaleX(-8);
@@ -156,6 +159,28 @@ void DungeonRoom::SetRoom(int x, int y) {
 	}
 }
 
+void DungeonRoom::EntitysFromSaveData(std::vector<Entity::SaveData> &entityData) {
+	delete GetChild("Entities");
+	GameObject *entities = AddChild(new GameObject("Entities"))->SetZIndex(900);
+	int idx = 0;
+	for (auto &data : entityData) {
+		EntityFactory::CreateEntity(data.type, std::to_string(idx), entities, glm::make_vec3(data.position))->SetPosition(data.position);
+		idx++;
+	}
+
+    Player *player = (Player *)Game::GetInstance().GetActiveScene()->GetChild("Player");
+    player->SetPosition(Saver::mPlayerSaveData.position);
+    player->SetHealth(Saver::mPlayerSaveData.health);
+}
+
+void DungeonRoom::Update(float deltaTime) {
+	GameObject::Update(deltaTime);
+	if (GetEnemyCount() == 0) {
+		Dungeon *dungeon = (Dungeon *)GetParent();
+		dungeon->SetRoomState(dungeon->GetRoomPosition().x, dungeon->GetRoomPosition().y, DungeonRoom::State::CLEARED);
+	}
+}
+
 void DungeonRoom::SetType(Type type) {
 	mType = type;
 }
@@ -164,10 +189,6 @@ DungeonRoom::Type DungeonRoom::GetType() {
 	return mType;
 }
 
-void DungeonRoom::SetEnemyCount(int count) {
-	mEnemyCount = count;
-}
-
 int DungeonRoom::GetEnemyCount() {
-	return mEnemyCount;
+	return GetChild("Entities")->GetChildren()->size();
 }

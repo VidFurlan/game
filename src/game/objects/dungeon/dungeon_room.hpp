@@ -22,20 +22,19 @@ class DungeonRoom : public GameObject {
 
 	DungeonRoom(GameObject *parent);
 	using GameObject::Render;
-	using GameObject::Update;
+    virtual void Update(float deltaTime) override;
+
+    void EntitysFromSaveData(std::vector<Entity::SaveData> &entityData);
 
     void SetRoom(int x, int y);
 
 	void SetType(Type type);
 	Type GetType();
 
-    void SetEnemyCount(int count);
     int GetEnemyCount();
 
    private:
 	const int n = 13, m = 13;
-    int mEnemyCount = 0;
 	Type mType;
 	State mState;
-    std::vector<Entity *> mEntities;
 };

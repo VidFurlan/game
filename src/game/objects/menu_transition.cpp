@@ -11,25 +11,15 @@ MenuTransition::MenuTransition(std::string name, GameObject *parent) : SpriteGam
 	SetScale({Game::GetInstance().GetWindow()->GetWidth(), Game::GetInstance().GetWindow()->GetHeight()});
 	SetVisible(false);
 	SetZIndex(100);
+    SetVisible(false);
+    mColor.a = 0.5f;
 }
 
 void MenuTransition::Update(float deltaTime) {
-	if (mTransitioning) {
-		mTransitionTimeElapsed += deltaTime;
-        mColor.a = mTransitionTimeElapsed / mTransitionTime * 0.5f;
-
-		if (mTransitionTimeElapsed > mTransitionTime) {
-			mTransitioning = false;
-            if (mCallback) {
-                mCallback();
-            }
-		}
-	}
+    
 }
 
 void MenuTransition::Transition(std::function<void()> callback) {
-	mTransitioning = true;
 	SetVisible(true);
-	mColor.a = 0.0f;
-    mCallback = callback;
+    callback();
 }

@@ -18,6 +18,7 @@ void Dungeon::Generate(int targetRoomCount, unsigned long long seed) {
 	q.push({0, 0});
 	int roomCount = 0;
 
+    bool treasureRoom = false;
 	std::vector<int> dirs = {0, 1, 2, 3};
 	while (roomCount < mRoomCount) {
 		if (roomCount != mRoomCount && q.empty()) {
@@ -35,7 +36,7 @@ void Dungeon::Generate(int targetRoomCount, unsigned long long seed) {
 
 		if (GetRoomData(x, y).type == DungeonRoom::Type::NOT_SET) {
 			int roomType = mDist(mRng);
-			if (roomType < 5) {
+			if (roomType < 5 && !treasureRoom || (roomCount == mRoomCount - 1 && !treasureRoom)) {
 				SetRoomType(x, y, DungeonRoom::Type::TREASURE);
 			} else if (roomType < 15) {
 				SetRoomType(x, y, DungeonRoom::Type::EMPTY);

@@ -22,9 +22,11 @@
 
 enum GameState {
 	GAME_ACTIVE,
+    GAME_PAUSED,
 	GAME_MENU,
 	GAME_TRANSITION,
-	GAME_OVER
+	GAME_OVER,
+    GAME_REPLAY,
 };
 
 class Game : public Singleton {

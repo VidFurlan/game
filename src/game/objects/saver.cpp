@@ -8,12 +8,14 @@
 #include "game_object.hpp"
 #include "objects/dungeon/dungeon.hpp"
 #include "objects/entities/entity.hpp"
+#include "objects/player.hpp"
 
 bool Saver::mShouldLoad = false;
 bool Saver::mReadyToLoad = false;
 std::vector<Entity::SaveData> Saver::mEntitySaveData;
 std::vector<std::vector<Dungeon::RoomData>> Saver::mRoomSaveData;
 Dungeon::SaveData Saver::mDungeonSaveData;
+Entity::SaveData Saver::mPlayerSaveData;
 
 Saver::Saver(const std::string &name, GameObject *parent)
     : GameObject(name, parent) {
@@ -48,6 +50,15 @@ void Saver::Save() {
 		}
 	}
 
+    // Player save data
+    Entity::SaveData playerSaveData;
+    playerSaveData.type = EntityType::PLAYER;
+    playerSaveData.position = scene->GetChild("Player")->GetPosition();
+    playerSaveData.health = ((Entity *)scene->GetChild("Player"))->GetHealth();
+    saveFile.write(reinterpret_cast<char *>(&playerSaveData), sizeof(Entity::SaveData));
+    saveFile.write(reinterpret_cast<char *>(&Player::mCatCount), sizeof(int));
+    saveFile.write(reinterpret_cast<char *>(&Player::mKillCount), sizeof(int));
+
 	// Entity save data
 	GameObject *entities = dungeon->GetChild("DungeonRoom")->GetChild("Entities");
 	for (auto [name, child] : *entities->GetChildren()) {
@@ -67,10 +78,9 @@ void Saver::Load() {
 
 	GameObject *scene = Game::GetInstance().GetActiveScene();
 
-	std::cerr << "Loading save file..." << std::endl;
-
 	// Dungeon load data
 	saveFile.read(reinterpret_cast<char *>(&mDungeonSaveData), sizeof(Dungeon::SaveData));
+    mRoomSaveData.clear();
     mRoomSaveData.resize(mDungeonSaveData.roomCount * 2, std::vector<Dungeon::RoomData>(mDungeonSaveData.roomCount * 2));
 	for (int i = -mDungeonSaveData.roomCount; i < mDungeonSaveData.roomCount; i++) {
 		for (int j = -mDungeonSaveData.roomCount; j < mDungeonSaveData.roomCount; j++) {
@@ -80,16 +90,17 @@ void Saver::Load() {
 		}
 	}
 
-	std::cerr << "Loading save file..." << std::endl;
+    // Player load data
+    saveFile.read(reinterpret_cast<char *>(&mPlayerSaveData), sizeof(Entity::SaveData));
+    saveFile.read(reinterpret_cast<char *>(&Player::mCatCount), sizeof(int));
+    saveFile.read(reinterpret_cast<char *>(&Player::mKillCount), sizeof(int));
 
 	// Entity load data
-	while (saveFile.peek() != EOF) {
-		Entity::SaveData entitySaveData;
-		saveFile.read(reinterpret_cast<char *>(&entitySaveData), sizeof(Entity::SaveData));
+    mEntitySaveData.clear();
+    Entity::SaveData entitySaveData;
+	while (saveFile.read(reinterpret_cast<char *>(&entitySaveData), sizeof(Entity::SaveData))) {
 		mEntitySaveData.push_back(entitySaveData);
 	}
-
-	std::cerr << "Loading save file..." << std::endl;
 
 	saveFile.close();
 
