@@ -10,6 +10,7 @@
 #include "glm/ext/vector_float2.hpp"
 #include "glm/ext/vector_float3.hpp"
 #include "glm/gtc/type_ptr.hpp"
+#include "menu_scene.hpp"
 #include "objects/entities/entity.hpp"
 #include "objects/menu_transition.hpp"
 #include "objects/saver.hpp"
@@ -38,9 +39,6 @@ Player::Player(std::string name, GameObject *parent, glm::vec3 position) : Entit
                                                                                                  {hitboxSize - hitboxCorner, -hitboxSize}}),
                                                                                   position,
                                                                                   {1.0f, 1.0f}) {
-	mKillCount = 0;
-	mCatCount = 0;
-
 	mMaxHealth = 6;
 	mHealth = mMaxHealth;
 	mImmunityTime = 1.0f;
@@ -230,9 +228,7 @@ void Player::LateUpdate(float deltaTime) {
 
 void Player::Death() {
     mLevelCleared = false;
-    ((Saver *)Game::GetInstance().GetActiveScene()->GetChild("Saver"))->SaveHighscore(mKillCount + mCatCount * 5);
-    mKillCount = 0;
-    mCatCount = 0;
+    ((Saver *)Game::GetInstance().GetActiveScene()->GetChild("Saver"))->SaveHighscore(mKillCount + mCatCount * 5, MenuScene::mPlayerName);
     ((MenuTransition *)Game::GetInstance().GetActiveScene()->GetChild("MenuTransition"))->Transition([]() {
         Game::GetInstance().GetActiveScene()->GetChild("UI")->SetActive(true)->SetVisible(true);
     });

@@ -20,7 +20,6 @@ class ReplayManager : public GameObject {
 		int entityCount;
 	};
 
-    static GameState mOldState;
     bool mReplayStarted = false;
 
    private:

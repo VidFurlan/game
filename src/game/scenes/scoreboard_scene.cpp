@@ -54,14 +54,6 @@ void ScoreboardScene::Init() {
 	ui->AddChild(new TextGameObject("Text", "LEADERBOARD", TextGameObject::TextProperties("default", 300.0f, true), {0.0f, -30.0f, 0.0f}, {20.0f, 20.0f}))->SetZIndex(0);
 
     auto highscoreData = Saver::LoadHighscore();
-    std::cout << "Highscore data size: " << highscoreData.size() << std::endl;
- //   std::vector<std::pair<int, std::string>> highscoreData = {
- //       {100, "Player1"},
- //       {90, "Player2"},
- //       {80, "Player3"},
- //       {70, "Player4"},
- //       {60, "Player5"},
- //   };
     int idx = 0;
     for (auto &[score, name] : highscoreData) {
         name.resize(10, ' ');

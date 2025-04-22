@@ -55,14 +55,14 @@ void Saver::Save() {
 		}
 	}
 
-    // Player save data
-    Entity::SaveData playerSaveData;
-    playerSaveData.type = EntityType::PLAYER;
-    playerSaveData.position = scene->GetChild("Player")->GetPosition();
-    playerSaveData.health = ((Entity *)scene->GetChild("Player"))->GetHealth();
-    saveFile.write(reinterpret_cast<char *>(&playerSaveData), sizeof(Entity::SaveData));
-    saveFile.write(reinterpret_cast<char *>(&Player::mCatCount), sizeof(int));
-    saveFile.write(reinterpret_cast<char *>(&Player::mKillCount), sizeof(int));
+	// Player save data
+	Entity::SaveData playerSaveData;
+	playerSaveData.type = EntityType::PLAYER;
+	playerSaveData.position = scene->GetChild("Player")->GetPosition();
+	playerSaveData.health = ((Entity *)scene->GetChild("Player"))->GetHealth();
+	saveFile.write(reinterpret_cast<char *>(&playerSaveData), sizeof(Entity::SaveData));
+	saveFile.write(reinterpret_cast<char *>(&Player::mCatCount), sizeof(int));
+	saveFile.write(reinterpret_cast<char *>(&Player::mKillCount), sizeof(int));
 
 	// Entity save data
 	GameObject *entities = dungeon->GetChild("DungeonRoom")->GetChild("Entities");
@@ -76,50 +76,44 @@ void Saver::Save() {
 }
 
 void Saver::SaveHighscore(int score, std::string user) {
-    std::ifstream saveFile(mSaveFilePath + "highscore", std::ios::binary);
-    std::vector<std::pair<int, std::string>> highscoreData;
-    if (saveFile.is_open()) {
-        int cnt;
-        saveFile.read(reinterpret_cast<char *>(&cnt), sizeof(int));
-        highscoreData.resize(cnt);
-        for (int i = 0; i < cnt; i++) {
-            saveFile.read(reinterpret_cast<char *>(&highscoreData[i].first), sizeof(int));
-            char name[20];
-            saveFile.read(name, sizeof(name));
-            highscoreData[i].second = std::string(name);
-        }
-    }
-    saveFile.close();
-    highscoreData.push_back({score, user});
-    std::sort(highscoreData.rbegin(), highscoreData.rend());
-    highscoreData.resize(std::min((int)highscoreData.size(), 5));
-    std::ofstream saveFileOut(mSaveFilePath + "highscore", std::ios::binary);
-    if (saveFileOut.is_open()) {
-        int cnt = highscoreData.size();
-        saveFileOut.write(reinterpret_cast<const char *>(&cnt), sizeof(int));
-        for (const auto &data : highscoreData) {
-            saveFileOut.write(reinterpret_cast<const char *>(&data), sizeof(std::pair<int, std::string>));
-        }
-    }
-    saveFileOut.close();
+	std::ifstream saveFile(mSaveFilePath + "highscore");
+	std::vector<std::pair<int, std::string>> highscoreData;
+	if (saveFile.is_open()) {
+		while (!saveFile.eof()) {
+			std::pair<int, std::string> data;
+			saveFile >> data.first >> data.second;
+			highscoreData.push_back(data);
+		}
+	}
+	saveFile.close();
+
+	highscoreData.push_back({score, user});
+	std::sort(highscoreData.rbegin(), highscoreData.rend());
+	highscoreData.reserve(std::min((int)highscoreData.size(), 10));
+
+	std::ofstream saveFileOut(mSaveFilePath + "highscore");
+	if (saveFileOut.is_open()) {
+		int n = highscoreData.size();
+		for (int i = 0; i < n; i++) {
+			saveFileOut << highscoreData[i].first << " " << highscoreData[i].second;
+			if (i != n - 1) saveFileOut << "\n";
+		}
+	}
+	saveFileOut.close();
 }
 
 std::vector<std::pair<int, std::string>> Saver::LoadHighscore() {
-    std::ifstream saveFile(mSaveFilePath + "highscore", std::ios::binary);
-    std::vector<std::pair<int, std::string>> highscoreData;
-    if (saveFile.is_open()) {
-        int cnt;
-        saveFile.read(reinterpret_cast<char *>(&cnt), sizeof(int));
-        highscoreData.resize(cnt);
-        for (int i = 0; i < cnt; i++) {
-            saveFile.read(reinterpret_cast<char *>(&highscoreData[i].first), sizeof(int));
-            char name[20];
-            saveFile.read(name, sizeof(name));
-            highscoreData[i].second = std::string(name);
-        }
-    }
-    saveFile.close();
-    return highscoreData;
+	std::ifstream saveFile(mSaveFilePath + "highscore");
+	std::vector<std::pair<int, std::string>> highscoreData;
+	if (saveFile.is_open()) {
+		while (!saveFile.eof()) {
+			std::pair<int, std::string> data;
+			saveFile >> data.first >> data.second;
+			highscoreData.push_back(data);
+		}
+	}
+	saveFile.close();
+	return highscoreData;
 }
 
 void Saver::Load() {
@@ -132,8 +126,8 @@ void Saver::Load() {
 
 	// Dungeon load data
 	saveFile.read(reinterpret_cast<char *>(&mDungeonSaveData), sizeof(Dungeon::SaveData));
-    mRoomSaveData.clear();
-    mRoomSaveData.resize(mDungeonSaveData.roomCount * 2, std::vector<Dungeon::RoomData>(mDungeonSaveData.roomCount * 2));
+	mRoomSaveData.clear();
+	mRoomSaveData.resize(mDungeonSaveData.roomCount * 2, std::vector<Dungeon::RoomData>(mDungeonSaveData.roomCount * 2));
 	for (int i = -mDungeonSaveData.roomCount; i < mDungeonSaveData.roomCount; i++) {
 		for (int j = -mDungeonSaveData.roomCount; j < mDungeonSaveData.roomCount; j++) {
 			Dungeon::RoomData roomData;
@@ -142,14 +136,14 @@ void Saver::Load() {
 		}
 	}
 
-    // Player load data
-    saveFile.read(reinterpret_cast<char *>(&mPlayerSaveData), sizeof(Entity::SaveData));
-    saveFile.read(reinterpret_cast<char *>(&Player::mCatCount), sizeof(int));
-    saveFile.read(reinterpret_cast<char *>(&Player::mKillCount), sizeof(int));
+	// Player load data
+	saveFile.read(reinterpret_cast<char *>(&mPlayerSaveData), sizeof(Entity::SaveData));
+	saveFile.read(reinterpret_cast<char *>(&Player::mCatCount), sizeof(int));
+	saveFile.read(reinterpret_cast<char *>(&Player::mKillCount), sizeof(int));
 
 	// Entity load data
-    mEntitySaveData.clear();
-    Entity::SaveData entitySaveData;
+	mEntitySaveData.clear();
+	Entity::SaveData entitySaveData;
 	while (saveFile.read(reinterpret_cast<char *>(&entitySaveData), sizeof(Entity::SaveData))) {
 		mEntitySaveData.push_back(entitySaveData);
 	}
@@ -161,9 +155,9 @@ void Saver::Load() {
 }
 
 void Saver::DeleteSave() {
-    std::filesystem::remove(mSaveFilePath + mSaveFileName);
-    mShouldLoad = false;
-    mReadyToLoad = false;
-    mEntitySaveData.clear();
-    mRoomSaveData.clear();
+	std::filesystem::remove(mSaveFilePath + mSaveFileName);
+	mShouldLoad = false;
+	mReadyToLoad = false;
+	mEntitySaveData.clear();
+	mRoomSaveData.clear();
 }

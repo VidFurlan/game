@@ -10,5 +10,5 @@ class MenuScene : public SceneGameObject {
 	virtual void Update(float deltaTime) override;
 	virtual void Render() override;
     
-	std::string name = "XXX";
+	static std::string mPlayerName;
 };

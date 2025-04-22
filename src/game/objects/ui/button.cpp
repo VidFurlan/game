@@ -52,3 +52,7 @@ void Button::LateUpdate(float deltaTime) {
 	mClicked = false;
 	GameObject::LateUpdate(deltaTime);
 }
+
+void Button::SetOnClick(std::function<void()> onClick) {
+    mOnClick = onClick;
+}

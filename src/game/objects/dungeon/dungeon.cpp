@@ -6,6 +6,7 @@
 #include <stdexcept>
 
 void Dungeon::Generate(int targetRoomCount, unsigned long long seed) {
+    mSeed = seed;
 	mRoomCount = targetRoomCount;
 	mRng.seed(seed);
 	mRooms = std::vector<std::vector<RoomData>>(2 * mRoomCount + 1, std::vector<RoomData>(2 * mRoomCount + 1));
@@ -129,7 +130,7 @@ void Dungeon::SetRoomState(int x, int y, DungeonRoom::State state) {
 Dungeon::SaveData Dungeon::GetSaveData() const {
 	SaveData data;
 	data.roomCount = mRoomCount;
-	data.seed = mRng.default_seed;
+	data.seed = mSeed;
 	data.curX = mCurX;
 	data.curY = mCurY;
 	return data;

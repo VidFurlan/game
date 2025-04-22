@@ -1,5 +1,6 @@
 #pragma once
 
+#include <functional>
 #include "abstract_image_game_object.hpp"
 #include "game_object.hpp"
 #include "rect_collider_game_object.hpp"
@@ -10,6 +11,8 @@ class Button : public GameObject {
     ~Button() override;
     virtual void Update(float deltaTime) override;
     virtual void LateUpdate(float deltaTime) override;
+
+    void SetOnClick(std::function<void()> onClick);
 
     void RegisterClick();
 

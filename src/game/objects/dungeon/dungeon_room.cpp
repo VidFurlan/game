@@ -127,7 +127,6 @@ void DungeonRoom::SetRoom(int x, int y) {
 	float roomY = y;
 	for (int i = 0; i < 4; i++) {
 		if (dungeon->GetRoomData(roomX + Dungeon::directions[i][0], roomY + Dungeon::directions[i][1]).type != Type::NOT_SET) {
-            std::cout << "Door" << i << std::endl;
 			if (i == 0) {
 				GetChild("Colliders")->GetChild("DoorUp")->SetActive(true);
 				((SpriteSheetGameObject *)tiles->GetChild("Tile" + std::to_string(n / 2) + "_" + std::to_string(m - 1)))->SetSpriteSheetFrame(3, 6)->SetScaleX(-8);

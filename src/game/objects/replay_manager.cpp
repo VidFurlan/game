@@ -14,8 +14,6 @@
 #include "objects/entities/entity_factory.hpp"
 #include "objects/player.hpp"
 
-GameState ReplayManager::mOldState = GameState::GAME_ACTIVE;
-
 ReplayManager::ReplayManager(std::string name, GameObject *parent)
     : GameObject(name, parent) {
     Init();
@@ -96,11 +94,6 @@ void ReplayManager::LateUpdate(float deltaTime) {
 		}
 
         GetChild("PlayerDummy")->SetPosition(glm::make_vec3(header.playerData.position));
-
-		//std::cout << "Replay: " << header.time << std::endl;
-		//std::cout << "Room: " << header.roomX << ", " << header.roomY << std::endl;
-		//std::cout << "Player: " << header.playerData.position.x << ", " << header.playerData.position.y << std::endl;
-		//std::cout << "------------------------" << std::endl;
 
 		Dungeon *dungeon = (Dungeon *)Game::GetInstance().GetActiveScene()->GetChild("Dungeon");
 		if (header.roomX != mRoomX || header.roomY != mRoomY) { 

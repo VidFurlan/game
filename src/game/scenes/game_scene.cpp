@@ -91,7 +91,6 @@ void GameScene::Init() {
 			}
 		}
 		dungeon->EnterRoom(Saver::mDungeonSaveData.curX, Saver::mDungeonSaveData.curY);
-		std::cout << Saver::mEntitySaveData.size() << std::endl;
 		((DungeonRoom *)dungeon->GetChild("DungeonRoom"))->EntitysFromSaveData(Saver::mEntitySaveData);
 	} else {
 		srand(time(0));
@@ -114,9 +113,13 @@ void GameScene::Init() {
             if (Game::GetInstance().GetState() != GameState::GAME_PAUSED) return;
             if (Player::mLevelCleared) {
                 Dungeon *dungeon = (Dungeon *)Game::GetInstance().GetActiveScene()->GetChild("Dungeon");
+                delete dungeon;
+                dungeon = new Dungeon("Dungeon", Game::GetInstance().GetActiveScene());
                 srand(time(0));
                 dungeon->Generate(10, rand());
                 Player::mLevelCleared = false;
+                delete Game::GetInstance().GetActiveScene()->GetChild("ReplayManager");
+                new ReplayManager("ReplayManager", Game::GetInstance().GetActiveScene());
                 Game::GetInstance().GetActiveScene()->GetChild("Player")->SetPosition({0.0f, 0.0f, 0.0f});
                 ((ReplayManager*)Game::GetInstance().GetActiveScene()->GetChild("ReplayManager"))->Init();
             }
@@ -145,7 +148,6 @@ void GameScene::Init() {
             Game::GetInstance().GetActiveScene()->GetChild("MenuTransition")->SetVisible(false);
             Game::GetInstance().GetActiveScene()->GetChild("UI")->SetActive(false)->SetVisible(false);
             Game::GetInstance().SetState(GameState::GAME_REPLAY); 
-            ReplayManager::mOldState = Game::GetInstance().GetState();
             }, new SpriteGameObject("Image", this, "banner", {0.0f, 0.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}));
 	replayButton->SetPosition({0.0f, 40.0f, 0.0f});
 	replayButton->AddChild(new TextGameObject("Text", "REPLAY", TextGameObject::TextProperties("default", 190.0f, true), {0.0f, 0.6f, 0.0f}, {20.0f, 20.0f}))->SetZIndex(100);
@@ -168,7 +170,8 @@ void GameScene::Render() {
 		title->SetText("PAUSE MENU");
 	}
 
-    GetChild("UI")->GetChild("ContinueButton")->SetActive(Player::mLevelCleared)->SetVisible(Player::mLevelCleared);
+    bool showContinueButton = Game::GetInstance().GetState() != GameState::GAME_REPLAY && Game::GetInstance().GetState() != GameState::GAME_OVER;
+    GetChild("UI")->GetChild("ContinueButton")->SetActive(showContinueButton)->SetVisible(showContinueButton);
     bool showReplayButton = Player::mLevelCleared && Game::GetInstance().GetState() != GameState::GAME_OVER && !((ReplayManager *)GetChild("ReplayManager"))->mReplayStarted;
     GetChild("UI")->GetChild("ReplayButton")->SetActive(showReplayButton)->SetVisible(showReplayButton);
 

@@ -51,6 +51,7 @@ class Dungeon : public GameObject {
 
 	std::mt19937_64 mRng;
 	std::uniform_int_distribution<int> mDist;
+    unsigned long long mSeed;
 
    public:
 	struct EntityData {
