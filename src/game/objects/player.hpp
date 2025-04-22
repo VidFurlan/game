@@ -13,7 +13,7 @@ class Player : public Entity {
 	virtual void Update(float deltaTime) override;
     virtual void LateUpdate(float deltaTime) override;
 
-    virtual void Death() override {};
+    virtual void Death() override;
 
     static bool mLevelCleared;
     static int mKillCount;

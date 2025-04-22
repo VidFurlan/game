@@ -227,3 +227,13 @@ void Player::LateUpdate(float deltaTime) {
 
 	ColliderGameObject::LateUpdate(deltaTime);
 }
+
+void Player::Death() {
+    mLevelCleared = false;
+    ((Saver *)Game::GetInstance().GetActiveScene()->GetChild("Saver"))->SaveHighscore(mKillCount + mCatCount * 5);
+    mKillCount = 0;
+    mCatCount = 0;
+    ((MenuTransition *)Game::GetInstance().GetActiveScene()->GetChild("MenuTransition"))->Transition([]() {
+        Game::GetInstance().GetActiveScene()->GetChild("UI")->SetActive(true)->SetVisible(true);
+    });
+}

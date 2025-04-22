@@ -63,19 +63,39 @@ void MenuScene::Init() {
 
 	ui->AddChild(new TextGameObject("Text", "KUL IGRICA", TextGameObject::TextProperties("default", 300.0f, true), {0.0f, -30.0f, 0.0f}, {20.0f, 20.0f}))->SetZIndex(0);
 
+	for (int i = -1; i < 2; i++) {
+		Button *charButton = new Button("Name" + std::to_string(i + 1), ui, {i * 6.0f, -10.0f, 0.0f}, {5.0f, 5.0f}, [&]() {
+                name[i+1]++;
+                if (name[i+1] > 'Z') {
+                    name[i+1] = 'A';
+                }
+                std::cout << name << std::endl;
+                for (int j = 0; j < 3; j++) {
+                    std::cout << "Name" + std::to_string(j) << " " << name[j] << std::endl;
+                    ((TextGameObject *)GetChild("Name" + std::to_string(j))->GetChild("Text"))->SetText(std::string(1, name[j]));
+                }
+                }, new SpriteGameObject("Image", this, "banner", {0.0f, 0.0f, 0.0f}, {192.0f / 2.0, 192.0f / 2.0}));
+		charButton->GetChild("Image")->SetVisible(false);
+		charButton->AddChild(new TextGameObject("Text", charButton, std::string(1, name[i + 1]), TextGameObject::TextProperties("default", 190.0f, true), {1.0f, 0.0f, 0.0f}, {20.0f, 20.0f}))->SetZIndex(100);
+	}
+
 	if (saver->mReadyToLoad) {
 		Button *loadButton = new Button("LoadButton", ui, {0.0f, 0.0f, 0.0f}, {192.0f / 2.5, 32.0f / 2.5}, []() { Saver::mShouldLoad = 1; Game::GetInstance().RequestLoadScene("Game"); }, new SpriteGameObject("Image", this, "banner", {0.0f, 00.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}));
-		loadButton->SetPosition({0.0f, -5.0f, 0.0f});
+		loadButton->SetPosition({0.0f, 5.0f, 0.0f});
 		loadButton->AddChild(new TextGameObject("Text", "LOAD", TextGameObject::TextProperties("default", 190.0f, true), {0.0f, 0.6f, 0.0f}, {20.0f, 20.0f}))->SetZIndex(100);
 	}
 
 	Button *playButton = new Button("PlayButton", ui, {0.0f, 0.0f, 0.0f}, {192.0f / 2.5, 32.0f / 2.5}, []() { Game::GetInstance().RequestLoadScene("Game"); }, new SpriteGameObject("Image", this, "banner", {0.0f, 0.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}));
-	playButton->SetPosition({0.0f, 10.0f, 0.0f});
+	playButton->SetPosition({0.0f, 20.0f, 0.0f});
 	playButton->AddChild(new TextGameObject("Text", "PLAY", TextGameObject::TextProperties("default", 190.0f, true), {0.0f, 0.6f, 0.0f}, {20.0f, 20.0f}))->SetZIndex(100);
 
 	Button *exitButton = new Button("ExitButton", ui, {0.0f, 0.0f, 0.0f}, {192.0f / 2.5, 32.0f / 2.5}, []() { Game::GetInstance().Quit(); }, new SpriteGameObject("Image", this, "banner", {0.0f, 0.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}));
-	exitButton->SetPosition({0.0f, 25.0f, 0.0f});
+	exitButton->SetPosition({0.0f, 35.0f, 0.0f});
 	exitButton->AddChild(new TextGameObject("Text", "EXIT", TextGameObject::TextProperties("default", 190.0f, true), {0.0f, 0.6f, 0.0f}, {20.0f, 20.0f}))->SetZIndex(100);
+
+	Button *leaderboardButton = new Button("LeaderboardButton", ui, {0.0f, 0.0f, 0.0f}, {192.0f / 2.5, 32.0f / 2.5}, []() { Game::GetInstance().RequestLoadScene("Scoreboard"); }, new SpriteGameObject("Image", this, "banner", {0.0f, 0.0f, 0.0f}, {192.0f / 2.0, 32.0f / 2.0}));
+	leaderboardButton->SetPosition({0.0f, 50.0f, 0.0f});
+	leaderboardButton->AddChild(new TextGameObject("Text", "LEADERBOARD", TextGameObject::TextProperties("default", 190.0f, true), {0.0f, 0.6f, 0.0f}, {20.0f, 20.0f}))->SetZIndex(100);
 }
 
 void MenuScene::Update(float deltaTime) {

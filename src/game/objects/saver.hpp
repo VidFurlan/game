@@ -15,6 +15,11 @@ class Saver : public GameObject {
 	void Save();
 	void Load();
     void DeleteSave();
+    static void SaveHighscore(int score, std::string user = "Player");
+    static std::vector<std::pair<int, std::string>> LoadHighscore();
+
+	static std::string mSaveFilePath;
+	static std::string mSaveFileName;
 
 	static bool mShouldLoad;
 	static bool mReadyToLoad;
@@ -22,8 +27,4 @@ class Saver : public GameObject {
 	static std::vector<std::vector<Dungeon::RoomData>> mRoomSaveData;
 	static Dungeon::SaveData mDungeonSaveData;
     static Entity::SaveData mPlayerSaveData;
-
-   private:
-	const std::string mSaveFilePath = "saves/";
-	const std::string mSaveFileName = "save";
 };

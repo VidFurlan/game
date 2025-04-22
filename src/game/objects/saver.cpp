@@ -1,8 +1,11 @@
 #include "saver.hpp"
 
+#include <algorithm>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <string>
+#include <vector>
 
 #include "game.hpp"
 #include "game_object.hpp"
@@ -10,6 +13,8 @@
 #include "objects/entities/entity.hpp"
 #include "objects/player.hpp"
 
+std::string Saver::mSaveFilePath = "saves/";
+std::string Saver::mSaveFileName = "save";
 bool Saver::mShouldLoad = false;
 bool Saver::mReadyToLoad = false;
 std::vector<Entity::SaveData> Saver::mEntitySaveData;
@@ -68,6 +73,53 @@ void Saver::Save() {
 	}
 
 	saveFile.close();
+}
+
+void Saver::SaveHighscore(int score, std::string user) {
+    std::ifstream saveFile(mSaveFilePath + "highscore", std::ios::binary);
+    std::vector<std::pair<int, std::string>> highscoreData;
+    if (saveFile.is_open()) {
+        int cnt;
+        saveFile.read(reinterpret_cast<char *>(&cnt), sizeof(int));
+        highscoreData.resize(cnt);
+        for (int i = 0; i < cnt; i++) {
+            saveFile.read(reinterpret_cast<char *>(&highscoreData[i].first), sizeof(int));
+            char name[20];
+            saveFile.read(name, sizeof(name));
+            highscoreData[i].second = std::string(name);
+        }
+    }
+    saveFile.close();
+    highscoreData.push_back({score, user});
+    std::sort(highscoreData.rbegin(), highscoreData.rend());
+    highscoreData.resize(std::min((int)highscoreData.size(), 5));
+    std::ofstream saveFileOut(mSaveFilePath + "highscore", std::ios::binary);
+    if (saveFileOut.is_open()) {
+        int cnt = highscoreData.size();
+        saveFileOut.write(reinterpret_cast<const char *>(&cnt), sizeof(int));
+        for (const auto &data : highscoreData) {
+            saveFileOut.write(reinterpret_cast<const char *>(&data), sizeof(std::pair<int, std::string>));
+        }
+    }
+    saveFileOut.close();
+}
+
+std::vector<std::pair<int, std::string>> Saver::LoadHighscore() {
+    std::ifstream saveFile(mSaveFilePath + "highscore", std::ios::binary);
+    std::vector<std::pair<int, std::string>> highscoreData;
+    if (saveFile.is_open()) {
+        int cnt;
+        saveFile.read(reinterpret_cast<char *>(&cnt), sizeof(int));
+        highscoreData.resize(cnt);
+        for (int i = 0; i < cnt; i++) {
+            saveFile.read(reinterpret_cast<char *>(&highscoreData[i].first), sizeof(int));
+            char name[20];
+            saveFile.read(name, sizeof(name));
+            highscoreData[i].second = std::string(name);
+        }
+    }
+    saveFile.close();
+    return highscoreData;
 }
 
 void Saver::Load() {

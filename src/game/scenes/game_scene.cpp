@@ -168,8 +168,6 @@ void GameScene::Render() {
 		title->SetText("PAUSE MENU");
 	}
 
-    std::cout << "Cleared: " << Player::mLevelCleared << std::endl;
-
     GetChild("UI")->GetChild("ContinueButton")->SetActive(Player::mLevelCleared)->SetVisible(Player::mLevelCleared);
     bool showReplayButton = Player::mLevelCleared && Game::GetInstance().GetState() != GameState::GAME_OVER && !((ReplayManager *)GetChild("ReplayManager"))->mReplayStarted;
     GetChild("UI")->GetChild("ReplayButton")->SetActive(showReplayButton)->SetVisible(showReplayButton);
