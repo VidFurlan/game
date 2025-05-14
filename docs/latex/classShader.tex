@@ -1,0 +1,202 @@
+\doxysection{Shader Class Reference}
+\hypertarget{classShader}{}\label{classShader}\index{Shader@{Shader}}
+
+
+{\ttfamily \#include $<$shader.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classShader_a0d654ebaca4e0555197c0724c6d30610}{Shader}} ()
+\item 
+\mbox{\hyperlink{classShader}{Shader}} \& \mbox{\hyperlink{classShader_a02292f4fdae284b29169db5da29e519a}{Use}} ()
+\item 
+void \mbox{\hyperlink{classShader_ace30758935fc09126ec99f5b602cb18f}{Compile}} (const char \texorpdfstring{$\ast$}{*}vertex\+Source, const char \texorpdfstring{$\ast$}{*}fragment\+Source, const char \texorpdfstring{$\ast$}{*}geometry\+Source=nullptr)
+\item 
+void \mbox{\hyperlink{classShader_a7f72014e0abec5ed85e29cb506af9ec6}{Set\+Bool}} (const char \texorpdfstring{$\ast$}{*}name, bool value, bool use\+Shader=false)
+\item 
+void \mbox{\hyperlink{classShader_a90a74282cd77e51812cd2c0ed0eb5cad}{Set\+Float}} (const char \texorpdfstring{$\ast$}{*}name, float value, bool use\+Shader=false)
+\item 
+void \mbox{\hyperlink{classShader_aac20695848a1a8a283e23d36b0557c20}{Set\+Integer}} (const char \texorpdfstring{$\ast$}{*}name, int value, bool use\+Shader=false)
+\item 
+void \mbox{\hyperlink{classShader_ae5994e58f1eec3278b61655ef2a23b4f}{Set\+Vector2f}} (const char \texorpdfstring{$\ast$}{*}name, float x, float y, bool use\+Shader=false)
+\item 
+void \mbox{\hyperlink{classShader_adf66248417fdee81d48fdd63bbee6805}{Set\+Vector2f}} (const char \texorpdfstring{$\ast$}{*}name, const glm\+::vec2 \&value, bool use\+Shader=false)
+\item 
+void \mbox{\hyperlink{classShader_ac1dbbe3e0134b04c9decf1974252f07b}{Set\+Vector3f}} (const char \texorpdfstring{$\ast$}{*}name, float x, float y, float z, bool use\+Shader=false)
+\item 
+void \mbox{\hyperlink{classShader_a996865767a7485cb63bbd979bb1bc252}{Set\+Vector3f}} (const char \texorpdfstring{$\ast$}{*}name, const glm\+::vec3 \&value, bool use\+Shader=false)
+\item 
+void \mbox{\hyperlink{classShader_a9fd94ef003bab74c968ebde2c9c542b4}{Set\+Vector4f}} (const char \texorpdfstring{$\ast$}{*}name, float x, float y, float z, float w, bool use\+Shader=false)
+\item 
+void \mbox{\hyperlink{classShader_a6bd077475ad23d4eccaf0d4c695c668a}{Set\+Vector4f}} (const char \texorpdfstring{$\ast$}{*}name, const glm\+::vec4 \&value, bool use\+Shader=false)
+\item 
+void \mbox{\hyperlink{classShader_a8bfcef4683f9cba1cfc955b869ee258a}{Set\+Matrix4}} (const char \texorpdfstring{$\ast$}{*}name, const glm\+::mat4 \&matrix, bool use\+Shader=false)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{classShader_a142a08b6fbdfc982d82ca10ee0b0f38d}{ID}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{shader_8hpp_source_l00006}{6}} of file \mbox{\hyperlink{shader_8hpp_source}{shader.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classShader_a0d654ebaca4e0555197c0724c6d30610}\index{Shader@{Shader}!Shader@{Shader}}
+\index{Shader@{Shader}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{Shader()}{Shader()}}
+{\footnotesize\ttfamily \label{classShader_a0d654ebaca4e0555197c0724c6d30610} 
+Shader\+::\+Shader (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{shader_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{shader_8cpp_source}{shader.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classShader_ace30758935fc09126ec99f5b602cb18f}\index{Shader@{Shader}!Compile@{Compile}}
+\index{Compile@{Compile}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{Compile()}{Compile()}}
+{\footnotesize\ttfamily \label{classShader_ace30758935fc09126ec99f5b602cb18f} 
+void Shader\+::\+Compile (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{vertex\+Source}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{fragment\+Source}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{geometry\+Source}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{shader_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{shader_8cpp_source}{shader.\+cpp}}.
+
+\Hypertarget{classShader_a7f72014e0abec5ed85e29cb506af9ec6}\index{Shader@{Shader}!SetBool@{SetBool}}
+\index{SetBool@{SetBool}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{SetBool()}{SetBool()}}
+{\footnotesize\ttfamily \label{classShader_a7f72014e0abec5ed85e29cb506af9ec6} 
+void Shader\+::\+Set\+Bool (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{bool}]{value}{, }\item[{bool}]{use\+Shader}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{shader_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{shader_8cpp_source}{shader.\+cpp}}.
+
+\Hypertarget{classShader_a90a74282cd77e51812cd2c0ed0eb5cad}\index{Shader@{Shader}!SetFloat@{SetFloat}}
+\index{SetFloat@{SetFloat}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{SetFloat()}{SetFloat()}}
+{\footnotesize\ttfamily \label{classShader_a90a74282cd77e51812cd2c0ed0eb5cad} 
+void Shader\+::\+Set\+Float (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{float}]{value}{, }\item[{bool}]{use\+Shader}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{shader_8cpp_source_l00059}{59}} of file \mbox{\hyperlink{shader_8cpp_source}{shader.\+cpp}}.
+
+\Hypertarget{classShader_aac20695848a1a8a283e23d36b0557c20}\index{Shader@{Shader}!SetInteger@{SetInteger}}
+\index{SetInteger@{SetInteger}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{SetInteger()}{SetInteger()}}
+{\footnotesize\ttfamily \label{classShader_aac20695848a1a8a283e23d36b0557c20} 
+void Shader\+::\+Set\+Integer (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{int}]{value}{, }\item[{bool}]{use\+Shader}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{shader_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{shader_8cpp_source}{shader.\+cpp}}.
+
+\Hypertarget{classShader_a8bfcef4683f9cba1cfc955b869ee258a}\index{Shader@{Shader}!SetMatrix4@{SetMatrix4}}
+\index{SetMatrix4@{SetMatrix4}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{SetMatrix4()}{SetMatrix4()}}
+{\footnotesize\ttfamily \label{classShader_a8bfcef4683f9cba1cfc955b869ee258a} 
+void Shader\+::\+Set\+Matrix4 (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{const glm\+::mat4 \&}]{matrix}{, }\item[{bool}]{use\+Shader}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{shader_8cpp_source_l00099}{99}} of file \mbox{\hyperlink{shader_8cpp_source}{shader.\+cpp}}.
+
+\Hypertarget{classShader_adf66248417fdee81d48fdd63bbee6805}\index{Shader@{Shader}!SetVector2f@{SetVector2f}}
+\index{SetVector2f@{SetVector2f}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{SetVector2f()}{SetVector2f()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classShader_adf66248417fdee81d48fdd63bbee6805} 
+void Shader\+::\+Set\+Vector2f (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{const glm\+::vec2 \&}]{value}{, }\item[{bool}]{use\+Shader}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{shader_8cpp_source_l00074}{74}} of file \mbox{\hyperlink{shader_8cpp_source}{shader.\+cpp}}.
+
+\Hypertarget{classShader_ae5994e58f1eec3278b61655ef2a23b4f}\index{Shader@{Shader}!SetVector2f@{SetVector2f}}
+\index{SetVector2f@{SetVector2f}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{SetVector2f()}{SetVector2f()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classShader_ae5994e58f1eec3278b61655ef2a23b4f} 
+void Shader\+::\+Set\+Vector2f (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{float}]{x}{, }\item[{float}]{y}{, }\item[{bool}]{use\+Shader}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{shader_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{shader_8cpp_source}{shader.\+cpp}}.
+
+\Hypertarget{classShader_a996865767a7485cb63bbd979bb1bc252}\index{Shader@{Shader}!SetVector3f@{SetVector3f}}
+\index{SetVector3f@{SetVector3f}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{SetVector3f()}{SetVector3f()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classShader_a996865767a7485cb63bbd979bb1bc252} 
+void Shader\+::\+Set\+Vector3f (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{const glm\+::vec3 \&}]{value}{, }\item[{bool}]{use\+Shader}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{shader_8cpp_source_l00084}{84}} of file \mbox{\hyperlink{shader_8cpp_source}{shader.\+cpp}}.
+
+\Hypertarget{classShader_ac1dbbe3e0134b04c9decf1974252f07b}\index{Shader@{Shader}!SetVector3f@{SetVector3f}}
+\index{SetVector3f@{SetVector3f}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{SetVector3f()}{SetVector3f()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classShader_ac1dbbe3e0134b04c9decf1974252f07b} 
+void Shader\+::\+Set\+Vector3f (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{float}]{x}{, }\item[{float}]{y}{, }\item[{float}]{z}{, }\item[{bool}]{use\+Shader}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{shader_8cpp_source_l00079}{79}} of file \mbox{\hyperlink{shader_8cpp_source}{shader.\+cpp}}.
+
+\Hypertarget{classShader_a6bd077475ad23d4eccaf0d4c695c668a}\index{Shader@{Shader}!SetVector4f@{SetVector4f}}
+\index{SetVector4f@{SetVector4f}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{SetVector4f()}{SetVector4f()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classShader_a6bd077475ad23d4eccaf0d4c695c668a} 
+void Shader\+::\+Set\+Vector4f (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{const glm\+::vec4 \&}]{value}{, }\item[{bool}]{use\+Shader}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{shader_8cpp_source_l00094}{94}} of file \mbox{\hyperlink{shader_8cpp_source}{shader.\+cpp}}.
+
+\Hypertarget{classShader_a9fd94ef003bab74c968ebde2c9c542b4}\index{Shader@{Shader}!SetVector4f@{SetVector4f}}
+\index{SetVector4f@{SetVector4f}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{SetVector4f()}{SetVector4f()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classShader_a9fd94ef003bab74c968ebde2c9c542b4} 
+void Shader\+::\+Set\+Vector4f (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{float}]{x}{, }\item[{float}]{y}{, }\item[{float}]{z}{, }\item[{float}]{w}{, }\item[{bool}]{use\+Shader}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{shader_8cpp_source_l00089}{89}} of file \mbox{\hyperlink{shader_8cpp_source}{shader.\+cpp}}.
+
+\Hypertarget{classShader_a02292f4fdae284b29169db5da29e519a}\index{Shader@{Shader}!Use@{Use}}
+\index{Use@{Use}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{Use()}{Use()}}
+{\footnotesize\ttfamily \label{classShader_a02292f4fdae284b29169db5da29e519a} 
+\mbox{\hyperlink{classShader}{Shader}} \& Shader\+::\+Use (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{shader_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{shader_8cpp_source}{shader.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classShader_a142a08b6fbdfc982d82ca10ee0b0f38d}\index{Shader@{Shader}!ID@{ID}}
+\index{ID@{ID}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{ID}{ID}}
+{\footnotesize\ttfamily \label{classShader_a142a08b6fbdfc982d82ca10ee0b0f38d} 
+unsigned int Shader\+::\+ID}
+
+
+
+Definition at line \mbox{\hyperlink{shader_8hpp_source_l00008}{8}} of file \mbox{\hyperlink{shader_8hpp_source}{shader.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/vid/\+Dev/personal/game/src/engine/renderer/\mbox{\hyperlink{shader_8hpp}{shader.\+hpp}}\item 
+/home/vid/\+Dev/personal/game/src/engine/renderer/\mbox{\hyperlink{shader_8cpp}{shader.\+cpp}}\end{DoxyCompactItemize}

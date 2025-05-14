@@ -1,0 +1,146 @@
+\doxysection{Shape2D Class Reference}
+\hypertarget{classShape2D}{}\label{classShape2D}\index{Shape2D@{Shape2D}}
+
+
+{\ttfamily \#include $<$shape2d.\+hpp$>$}
+
+Inheritance diagram for Shape2D\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classShape2D}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classShape2D_aa01ec0fa01c8c0709d54b396301d1698}{Shape2D}} (glm\+::vec2 \mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}}=glm\+::vec2(0.\+0f), glm\+::vec4 \mbox{\hyperlink{classShape2D_a2f3ae03dbb52953f43b9003aeb5835da}{color}}=glm\+::vec4(0.\+0f, 1.\+0f, 0.\+0f, 1.\+0f))
+\item 
+virtual \mbox{\hyperlink{classShape2D_a06d1d12e3009473d292111db1c081242}{\texorpdfstring{$\sim$}{\string~}\+Shape2D}} ()=default
+\item 
+virtual void \mbox{\hyperlink{classShape2D_ad59e5656abd1881e342f889f18478aac}{Draw\+Debug}} (glm\+::vec2 offset=glm\+::vec2(0.\+0f), float rot=0.\+0f, glm\+::vec2 \mbox{\hyperlink{classShape2D_a7772a37f10ee85cf0c1e7be590aa6f45}{scale}}=glm\+::vec2(1.\+0f)) const =0
+\item 
+virtual std\+::vector$<$ glm\+::vec2 $>$ \mbox{\hyperlink{classShape2D_a37a7f438ee8e3796e3023ac07a58ffea}{Get\+Edges}} (glm\+::vec3 \mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}}=glm\+::vec3(0.\+0f)) const =0
+\item 
+virtual std\+::vector$<$ glm\+::vec2 $>$ \mbox{\hyperlink{classShape2D_ad68185cf0a1c47a08ab95af05d01ad66}{Get\+Vertices}} (glm\+::vec3 \mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}}=glm\+::vec3(0.\+0f)) const =0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::vec4 \mbox{\hyperlink{classShape2D_a2f3ae03dbb52953f43b9003aeb5835da}{color}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{classShape2D_a7772a37f10ee85cf0c1e7be590aa6f45}{scale}} = glm\+::vec2(1.\+0f)
+\item 
+glm\+::vec2 \mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ glm\+::vec2 $>$ \mbox{\hyperlink{classShape2D_ae996fba89e9a520924a9a6f4ba233fb0}{vertices}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{shape2d_8hpp_source_l00013}{13}} of file \mbox{\hyperlink{shape2d_8hpp_source}{shape2d.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classShape2D_aa01ec0fa01c8c0709d54b396301d1698}\index{Shape2D@{Shape2D}!Shape2D@{Shape2D}}
+\index{Shape2D@{Shape2D}!Shape2D@{Shape2D}}
+\doxysubsubsection{\texorpdfstring{Shape2D()}{Shape2D()}}
+{\footnotesize\ttfamily \label{classShape2D_aa01ec0fa01c8c0709d54b396301d1698} 
+Shape2\+D\+::\+Shape2D (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{pos}{ = {\ttfamily glm\+:\+:vec2(0.0f)}, }\item[{glm\+::vec4}]{color}{ = {\ttfamily glm\+:\+:vec4(0.0f,~1.0f,~0.0f,~1.0f)}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{shape2d_8hpp_source_l00015}{15}} of file \mbox{\hyperlink{shape2d_8hpp_source}{shape2d.\+hpp}}.
+
+\Hypertarget{classShape2D_a06d1d12e3009473d292111db1c081242}\index{Shape2D@{Shape2D}!````~Shape2D@{\texorpdfstring{$\sim$}{\string~}Shape2D}}
+\index{````~Shape2D@{\texorpdfstring{$\sim$}{\string~}Shape2D}!Shape2D@{Shape2D}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Shape2D()}{\string~Shape2D()}}
+{\footnotesize\ttfamily \label{classShape2D_a06d1d12e3009473d292111db1c081242} 
+virtual Shape2\+D\+::\texorpdfstring{$\sim$}{\string~}\+Shape2D (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classShape2D_ad59e5656abd1881e342f889f18478aac}\index{Shape2D@{Shape2D}!DrawDebug@{DrawDebug}}
+\index{DrawDebug@{DrawDebug}!Shape2D@{Shape2D}}
+\doxysubsubsection{\texorpdfstring{DrawDebug()}{DrawDebug()}}
+{\footnotesize\ttfamily \label{classShape2D_ad59e5656abd1881e342f889f18478aac} 
+virtual void Shape2\+D\+::\+Draw\+Debug (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{offset}{ = {\ttfamily glm\+:\+:vec2(0.0f)}, }\item[{float}]{rot}{ = {\ttfamily 0.0f}, }\item[{glm\+::vec2}]{scale}{ = {\ttfamily glm\+:\+:vec2(1.0f)}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classPolygon2D_a8355b78b5461188004f4f74a865aefbb}{Polygon2D}}.
+
+\Hypertarget{classShape2D_a37a7f438ee8e3796e3023ac07a58ffea}\index{Shape2D@{Shape2D}!GetEdges@{GetEdges}}
+\index{GetEdges@{GetEdges}!Shape2D@{Shape2D}}
+\doxysubsubsection{\texorpdfstring{GetEdges()}{GetEdges()}}
+{\footnotesize\ttfamily \label{classShape2D_a37a7f438ee8e3796e3023ac07a58ffea} 
+virtual std\+::vector$<$ glm\+::vec2 $>$ Shape2\+D\+::\+Get\+Edges (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{pos}{ = {\ttfamily glm\+:\+:vec3(0.0f)}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classPolygon2D_aaee32018f2223baea249a6e3a69a6878}{Polygon2D}}.
+
+\Hypertarget{classShape2D_ad68185cf0a1c47a08ab95af05d01ad66}\index{Shape2D@{Shape2D}!GetVertices@{GetVertices}}
+\index{GetVertices@{GetVertices}!Shape2D@{Shape2D}}
+\doxysubsubsection{\texorpdfstring{GetVertices()}{GetVertices()}}
+{\footnotesize\ttfamily \label{classShape2D_ad68185cf0a1c47a08ab95af05d01ad66} 
+virtual std\+::vector$<$ glm\+::vec2 $>$ Shape2\+D\+::\+Get\+Vertices (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{pos}{ = {\ttfamily glm\+:\+:vec3(0.0f)}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classPolygon2D_aec3904c904757af2fc393f2ec4ea9001}{Polygon2D}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classShape2D_a2f3ae03dbb52953f43b9003aeb5835da}\index{Shape2D@{Shape2D}!color@{color}}
+\index{color@{color}!Shape2D@{Shape2D}}
+\doxysubsubsection{\texorpdfstring{color}{color}}
+{\footnotesize\ttfamily \label{classShape2D_a2f3ae03dbb52953f43b9003aeb5835da} 
+glm\+::vec4 Shape2\+D\+::color}
+
+
+
+Definition at line \mbox{\hyperlink{shape2d_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{shape2d_8hpp_source}{shape2d.\+hpp}}.
+
+\Hypertarget{classShape2D_a3cf535f39ea76d1232dc396761eea87a}\index{Shape2D@{Shape2D}!pos@{pos}}
+\index{pos@{pos}!Shape2D@{Shape2D}}
+\doxysubsubsection{\texorpdfstring{pos}{pos}}
+{\footnotesize\ttfamily \label{classShape2D_a3cf535f39ea76d1232dc396761eea87a} 
+glm\+::vec2 Shape2\+D\+::pos}
+
+
+
+Definition at line \mbox{\hyperlink{shape2d_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{shape2d_8hpp_source}{shape2d.\+hpp}}.
+
+\Hypertarget{classShape2D_a7772a37f10ee85cf0c1e7be590aa6f45}\index{Shape2D@{Shape2D}!scale@{scale}}
+\index{scale@{scale}!Shape2D@{Shape2D}}
+\doxysubsubsection{\texorpdfstring{scale}{scale}}
+{\footnotesize\ttfamily \label{classShape2D_a7772a37f10ee85cf0c1e7be590aa6f45} 
+glm\+::vec2 Shape2\+D\+::scale = glm\+::vec2(1.\+0f)}
+
+
+
+Definition at line \mbox{\hyperlink{shape2d_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{shape2d_8hpp_source}{shape2d.\+hpp}}.
+
+\Hypertarget{classShape2D_ae996fba89e9a520924a9a6f4ba233fb0}\index{Shape2D@{Shape2D}!vertices@{vertices}}
+\index{vertices@{vertices}!Shape2D@{Shape2D}}
+\doxysubsubsection{\texorpdfstring{vertices}{vertices}}
+{\footnotesize\ttfamily \label{classShape2D_ae996fba89e9a520924a9a6f4ba233fb0} 
+std\+::vector$<$glm\+::vec2$>$ Shape2\+D\+::vertices\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{shape2d_8hpp_source_l00028}{28}} of file \mbox{\hyperlink{shape2d_8hpp_source}{shape2d.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/vid/\+Dev/personal/game/src/engine/shapes/\mbox{\hyperlink{shape2d_8hpp}{shape2d.\+hpp}}\end{DoxyCompactItemize}

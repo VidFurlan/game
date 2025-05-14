@@ -1,0 +1,169 @@
+\doxysection{game\+\_\+window.\+cpp}
+\hypertarget{game__window_8cpp_source}{}\label{game__window_8cpp_source}\index{/home/vid/Dev/personal/game/src/engine/renderer/game\_window.cpp@{/home/vid/Dev/personal/game/src/engine/renderer/game\_window.cpp}}
+\mbox{\hyperlink{game__window_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__window_8hpp}{game\_window.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <GL/glew.h>}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <GL/glu.h>}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}GLFW/glfw3.h"{}}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game_8hpp}{game.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}glm/ext/matrix\_clip\_space.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}glm/ext/matrix\_float4x4.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}imgui.h"{}}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}imgui\_impl\_glfw.h"{}}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{resource__manager_8hpp}{resource\_manager.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00016}00016\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__window_8cpp_a5180f7bf2b71421af837035824a8c8ac}{framebuffer\_size\_callback}}(GLFWwindow*\ window,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00017}00017\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__window_8cpp_aa48aaf412b9e33386433680c25b3883c}{key\_callback}}(GLFWwindow*\ window,\ \textcolor{keywordtype}{int}\ key,\ \textcolor{keywordtype}{int}\ scancode,\ \textcolor{keywordtype}{int}\ action,\ \textcolor{keywordtype}{int}\ mode);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00018}00018\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__window_8cpp_af4ca2891044ac10a664b8d83ce590f1f}{mouse\_callback}}(GLFWwindow*\ window,\ \textcolor{keywordtype}{double}\ xpos,\ \textcolor{keywordtype}{double}\ ypos);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00019}00019\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__window_8cpp_a5515d805e76ce6728de3c0dc5e187c86}{mouse\_button\_callback}}(GLFWwindow*\ window,\ \textcolor{keywordtype}{int}\ button,\ \textcolor{keywordtype}{int}\ action,\ \textcolor{keywordtype}{int}\ mods);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00021}\mbox{\hyperlink{classGameWindow_a86788e1bc9021d7b409c7c776b2c420b}{00021}}\ \mbox{\hyperlink{classGameWindow_a86788e1bc9021d7b409c7c776b2c420b}{GameWindow::GameWindow}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ title)\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{if}\ (!glfwInit())\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}GLFW\ Initialization\ Failed"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00027}00027\ \ \ \ \ glfwWindowHint(GLFW\_CONTEXT\_VERSION\_MAJOR,\ 3);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00028}00028\ \ \ \ \ glfwWindowHint(GLFW\_CONTEXT\_VERSION\_MINOR,\ 3);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00029}00029\ \ \ \ \ glfwWindowHint(GLFW\_OPENGL\_PROFILE,\ GLFW\_OPENGL\_CORE\_PROFILE);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00030}00030\ \ \ \ \ glfwWindowHint(GLFW\_OPENGL\_FORWARD\_COMPAT,\ GL\_TRUE);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#ifdef\ \_\_APPLE\_\_}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00033}00033\ \ \ \ \ glfwWindowHint(GLFW\_OPENGL\_FORWARD\_COMPAT,\ GL\_TRUE);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00035}00035\ \ \ \ \ glfwWindowHint(GLFW\_RESIZABLE,\ GL\_TRUE);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00037}00037\ \ \ \ \ window\ =\ glfwCreateWindow(width,\ height,\ title,\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (window\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ create\ GLFW\ window"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ glfwTerminate();}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00043}00043\ \ \ \ \ glfwMakeContextCurrent(window);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (glewInit()\ !=\ GLEW\_OK)\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ initialize\ GLEW"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00050}00050\ \ \ \ \ glfwSetKeyCallback(window,\ \mbox{\hyperlink{game__window_8cpp_aa48aaf412b9e33386433680c25b3883c}{key\_callback}});}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00051}00051\ \ \ \ \ glfwSetCursorPosCallback(window,\ \mbox{\hyperlink{game__window_8cpp_af4ca2891044ac10a664b8d83ce590f1f}{mouse\_callback}});}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00052}00052\ \ \ \ \ glfwSetMouseButtonCallback(window,\ \mbox{\hyperlink{game__window_8cpp_a5515d805e76ce6728de3c0dc5e187c86}{mouse\_button\_callback}});}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00053}00053\ \ \ \ \ glfwSetFramebufferSizeCallback(window,\ \mbox{\hyperlink{game__window_8cpp_a5180f7bf2b71421af837035824a8c8ac}{framebuffer\_size\_callback}});}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00055}00055\ \ \ \ \ glViewport(0,\ 0,\ width,\ height);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00056}00056\ \ \ \ \ glEnable(GL\_BLEND);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00057}00057\ \ \ \ \ glBlendFunc(GL\_SRC\_ALPHA,\ GL\_ONE\_MINUS\_SRC\_ALPHA);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00059}00059\ \ \ \ \ glEnable(GL\_STENCIL\_TEST);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00060}00060\ \ \ \ \ glClear(GL\_COLOR\_BUFFER\_BIT\ |\ GL\_DEPTH\_BUFFER\_BIT\ |\ GL\_STENCIL\_BUFFER\_BIT);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00061}00061\ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00063}\mbox{\hyperlink{classGameWindow_a55b071c0390e45c064a160c1e6baaa08}{00063}}\ \mbox{\hyperlink{classGameWindow_a55b071c0390e45c064a160c1e6baaa08}{GameWindow::\string~GameWindow}}()\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00064}00064\ \ \ \ \ \mbox{\hyperlink{classResourceManager_acb3f8ecc7b3de8c1c7ac956ce5114d47}{ResourceManager::GetInstance}}().\mbox{\hyperlink{classResourceManager_aecd08b92634fad3316442c267a04e8c4}{Clear}}();}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00065}00065\ \ \ \ \ glfwTerminate();}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00066}00066\ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00068}\mbox{\hyperlink{classGameWindow_a38f835585eb249e1577b4ac059ed6829}{00068}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_a38f835585eb249e1577b4ac059ed6829}{GameWindow::Close}}()\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00069}00069\ \ \ \ \ glfwDestroyWindow(window);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00070}00070\ \ \ \ \ glfwTerminate();}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00071}00071\ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00073}\mbox{\hyperlink{classGameWindow_a9763c7ea0821d1a7a5e2e087a9378ead}{00073}}\ GLFWwindow*\ \mbox{\hyperlink{classGameWindow_a9763c7ea0821d1a7a5e2e087a9378ead}{GameWindow::GetWindow}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{return}\ window;}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00077}\mbox{\hyperlink{classGameWindow_a0dfcec214e2e853c31da1dd0f953c551}{00077}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGameWindow_a0dfcec214e2e853c31da1dd0f953c551}{GameWindow::GetWidth}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{keywordtype}{int}\ width,\ height;}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00079}00079\ \ \ \ \ glfwGetWindowSize(window,\ \&width,\ \&height);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00080}00080\ \ \ \ \ \textcolor{keywordflow}{return}\ width;}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00081}00081\ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00083}\mbox{\hyperlink{classGameWindow_a1484d00ba94e9881973abac50f3ff7d7}{00083}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGameWindow_a1484d00ba94e9881973abac50f3ff7d7}{GameWindow::GetHeight}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{int}\ width,\ height;}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00085}00085\ \ \ \ \ glfwGetWindowSize(window,\ \&width,\ \&height);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{return}\ height;}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00087}00087\ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00089}\mbox{\hyperlink{classGameWindow_a951996d3a50829805e0d25b4384cec4c}{00089}}\ glm::mat4\ \mbox{\hyperlink{classGameWindow_a951996d3a50829805e0d25b4384cec4c}{GameWindow::GetMVP}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00090}00090\ \ \ \ \ \textcolor{keywordflow}{return}\ mMvp;}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00091}00091\ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00093}\mbox{\hyperlink{classGameWindow_af2904aa5757834cf09a3051da285ea26}{00093}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_af2904aa5757834cf09a3051da285ea26}{GameWindow::Resize}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00094}00094\ \ \ \ \ \textcolor{comment}{/*\ Resizing\ of\ viewport\ using\ black\ bars}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00095}00095\ \textcolor{comment}{\ \ \ \ float\ desiredAspectRatio\ =\ Game::GetInstance().GetActiveScene()-\/>GetActiveCamera()-\/>GetWidth()\ /}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00096}00096\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ static\_cast<float>(Game::GetInstance().GetActiveScene()-\/>GetActiveCamera()-\/>GetHeight());}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00097}00097\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00098}00098\ \textcolor{comment}{\ \ \ \ int\ viewportWidth,\ viewportHeight;}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00099}00099\ \textcolor{comment}{\ \ \ \ int\ viewportX\ =\ 0,\ viewportY\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00100}00100\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00101}00101\ \textcolor{comment}{\ \ \ \ float\ windowAspectRatio\ =\ width\ /\ static\_cast<float>(height);}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00102}00102\ \textcolor{comment}{\ \ \ \ if\ (windowAspectRatio\ >\ desiredAspectRatio)\ \{}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00103}00103\ \textcolor{comment}{\ \ \ \ \ \ \ \ viewportHeight\ =\ height;}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00104}00104\ \textcolor{comment}{\ \ \ \ \ \ \ \ viewportWidth\ =\ static\_cast<int>(height\ *\ desiredAspectRatio);}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00105}00105\ \textcolor{comment}{\ \ \ \ \ \ \ \ viewportX\ =\ (width\ -\/\ viewportWidth)\ /\ 2;}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00106}00106\ \textcolor{comment}{\ \ \ \ \}\ else\ \{}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00107}00107\ \textcolor{comment}{\ \ \ \ \ \ \ \ viewportWidth\ =\ width;}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00108}00108\ \textcolor{comment}{\ \ \ \ \ \ \ \ viewportHeight\ =\ static\_cast<int>(width\ /\ desiredAspectRatio);}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00109}00109\ \textcolor{comment}{\ \ \ \ \ \ \ \ viewportY\ =\ (height\ -\/\ viewportHeight)\ /\ 2;}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00110}00110\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00111}00111\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00112}00112\ \textcolor{comment}{\ \ \ \ glViewport(viewportX,\ viewportY,\ viewportWidth,\ viewportHeight);}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00113}00113\ \textcolor{comment}{\ \ \ \ glScissor(viewportX,\ viewportY,\ viewportWidth,\ viewportHeight);}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00114}00114\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00115}00115\ \textcolor{comment}{\ \ \ \ Game::GetInstance().GetPostProcessor()-\/>Resize(viewportWidth,\ viewportHeight);}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00116}00116\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00117}00117\ \textcolor{comment}{\ \ \ \ glm::mat4\ projection\ =\ glm::ortho(0.0f,\ static\_cast<float>(viewportWidth),}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00118}00118\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ static\_cast<float>(viewportHeight),\ 0.0f,\ -\/1.0f,\ 1.0f);}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00119}00119\ \textcolor{comment}{\ \ \ \ ResourceManager::GetInstance().GetShader("{}sprite"{}).Use().SetInteger("{}image"{},\ 0);}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00120}00120\ \textcolor{comment}{\ \ \ \ ResourceManager::GetInstance().GetShader("{}sprite"{}).SetMatrix4("{}projection"{},\ projection);}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00121}00121\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00122}00122\ \ \ \ \ glViewport(0,\ 0,\ width,\ height);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00123}00123\ \ \ \ \ mMvp\ =\ glm::ortho(0.0f,\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{classGameWindow_a0dfcec214e2e853c31da1dd0f953c551}{GetWidth}}()),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{classGameWindow_a1484d00ba94e9881973abac50f3ff7d7}{GetHeight}}()),\ 0.0f,\ -\/1.0f,\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00124}00124\ \ \ \ \ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_a0bae2006ff77458645bab8a220b53ea9}{GetPostProcessor}}()-\/>\mbox{\hyperlink{classPostProcessor_a8d002ff9c2fec8b4fbade21c54a4841f}{Resize}}(width,\ height);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00126}00126\ \ \ \ \ glm::mat4\ projection\ =\ glm::ortho(0.0f,\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{classGameWindow_a0dfcec214e2e853c31da1dd0f953c551}{GetWidth}}()),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{classGameWindow_a1484d00ba94e9881973abac50f3ff7d7}{GetHeight}}()),\ 0.0f,\ -\/1.0f,\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00127}00127\ \ \ \ \ \mbox{\hyperlink{classResourceManager_acb3f8ecc7b3de8c1c7ac956ce5114d47}{ResourceManager::GetInstance}}().\mbox{\hyperlink{classResourceManager_a7271dc68134357c6faafb3458bfc713e}{GetShader}}(\textcolor{stringliteral}{"{}sprite"{}}).\mbox{\hyperlink{classShader_a02292f4fdae284b29169db5da29e519a}{Use}}().\mbox{\hyperlink{classShader_aac20695848a1a8a283e23d36b0557c20}{SetInteger}}(\textcolor{stringliteral}{"{}image"{}},\ 0);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00128}00128\ \ \ \ \ \mbox{\hyperlink{classResourceManager_acb3f8ecc7b3de8c1c7ac956ce5114d47}{ResourceManager::GetInstance}}().\mbox{\hyperlink{classResourceManager_a7271dc68134357c6faafb3458bfc713e}{GetShader}}(\textcolor{stringliteral}{"{}sprite"{}}).\mbox{\hyperlink{classShader_a8bfcef4683f9cba1cfc955b869ee258a}{SetMatrix4}}(\textcolor{stringliteral}{"{}projection"{}},\ projection);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00129}00129\ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00131}\mbox{\hyperlink{classGame_aa48aaf412b9e33386433680c25b3883c}{00131}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__window_8cpp_aa48aaf412b9e33386433680c25b3883c}{key\_callback}}(GLFWwindow*\ window,\ \textcolor{keywordtype}{int}\ key,\ \textcolor{keywordtype}{int}\ scancode,\ \textcolor{keywordtype}{int}\ action,\ \textcolor{keywordtype}{int}\ mode)\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{if}\ (key\ >=\ 0\ \&\&\ key\ <\ 1024)\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (action\ ==\ GLFW\_PRESS)\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_aca4ac8e45f943f85f00c77beaa34b670}{Keys}}[key]\ ==\ \textcolor{keyword}{false}\ \&\&\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().mOnPressKeyCallbacks[key].size())\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ [\textcolor{keywordtype}{id},\ callback]\ :\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().mOnPressKeyCallbacks[key])\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ callback();}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_aca4ac8e45f943f85f00c77beaa34b670}{Keys}}[key]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (action\ ==\ GLFW\_RELEASE)\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_aca4ac8e45f943f85f00c77beaa34b670}{Keys}}[key]\ ==\ \textcolor{keyword}{true}\ \&\&\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().mOnReleaseKeyCallbacks[key].size())\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ [\textcolor{keywordtype}{id},\ callback]\ :\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().mOnReleaseKeyCallbacks[key])\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ callback();}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_aca4ac8e45f943f85f00c77beaa34b670}{Keys}}[key]\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00148}00148\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00149}00149\ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00151}\mbox{\hyperlink{game__window_8cpp_af4ca2891044ac10a664b8d83ce590f1f}{00151}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__window_8cpp_af4ca2891044ac10a664b8d83ce590f1f}{mouse\_callback}}(GLFWwindow*\ window,\ \textcolor{keywordtype}{double}\ xpos,\ \textcolor{keywordtype}{double}\ ypos)\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00152}00152\ \ \ \ \ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_a7c782d92e8faa5bb10f8a408a908e34b}{MousePosition}}\ =\ \{xpos,\ ypos\};}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00153}00153\ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00155}\mbox{\hyperlink{game__window_8cpp_a5180f7bf2b71421af837035824a8c8ac}{00155}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__window_8cpp_a5180f7bf2b71421af837035824a8c8ac}{framebuffer\_size\_callback}}(GLFWwindow*\ window,}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ widthOfFramebuffer,}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ heightOfFramebuffer)\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00158}00158\ \ \ \ \ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_a0e3e1d9988be2c785ea2b90da12940f1}{GetWindow}}()-\/>\mbox{\hyperlink{classGameWindow_af2904aa5757834cf09a3051da285ea26}{Resize}}(widthOfFramebuffer,\ heightOfFramebuffer);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00159}00159\ \}}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00161}\mbox{\hyperlink{game__window_8cpp_a5515d805e76ce6728de3c0dc5e187c86}{00161}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{game__window_8cpp_a5515d805e76ce6728de3c0dc5e187c86}{mouse\_button\_callback}}(GLFWwindow*\ window,\ \textcolor{keywordtype}{int}\ button,\ \textcolor{keywordtype}{int}\ action,\ \textcolor{keywordtype}{int}\ mods)\ \{}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00162}00162\ \ \ \ \ \mbox{\hyperlink{game__window_8cpp_aa48aaf412b9e33386433680c25b3883c}{key\_callback}}(window,\ button,\ 0,\ action,\ mods);}
+\DoxyCodeLine{\Hypertarget{game__window_8cpp_source_l00163}00163\ \}}
+
+\end{DoxyCode}

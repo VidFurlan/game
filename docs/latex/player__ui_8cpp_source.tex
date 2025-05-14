@@ -1,0 +1,69 @@
+\doxysection{player\+\_\+ui.\+cpp}
+\hypertarget{player__ui_8cpp_source}{}\label{player__ui_8cpp_source}\index{/home/vid/Dev/personal/game/src/game/objects/ui/player\_ui.cpp@{/home/vid/Dev/personal/game/src/game/objects/ui/player\_ui.cpp}}
+\mbox{\hyperlink{player__ui_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player__ui_8hpp}{player\_ui.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{drawable__game__object_8hpp}{drawable\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{spritesheet__game__object_8hpp}{spritesheet\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{text__game__object_8hpp}{text\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00009}\mbox{\hyperlink{classPlayerUI_abd8a3b1205203bbf8309c942295adeaf}{00009}}\ \mbox{\hyperlink{classPlayerUI_abd8a3b1205203bbf8309c942295adeaf}{PlayerUI::PlayerUI}}(\mbox{\hyperlink{classPlayer}{Player}}\ *player)}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00010}00010\ \ \ \ \ :\ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}(\textcolor{stringliteral}{"{}PlayerUI"{}}),\ mPlayer(player)\ \{}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00011}00011\ \ \ \ \ \mbox{\hyperlink{classGameObject_a407f5d1d8117bc7ce210b64d58c04662}{SetZIndex}}(0);}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{classGameObject_a31ab3f560b5d6880141f42ae9904478b}{AddChild}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}(\textcolor{stringliteral}{"{}Hearts"{}}));}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00014}00014\ \ \ \ \ \mbox{\hyperlink{classPlayerUI_a00a4c1725ef2d3432eabcbdb58000dcc}{UpdateHealth}}();}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00016}00016\ \ \ \ \ (\textcolor{keyword}{new}\ \mbox{\hyperlink{classSpriteSheetGameObject}{SpriteSheetGameObject}}(\textcolor{stringliteral}{"{}Cat"{}},\ \textcolor{keyword}{this},\ \textcolor{stringliteral}{"{}cat"{}},\ \{8,\ 8\},\ \{5.0f,\ 10.0f,\ 0.0f\},\ \{10.0f,\ 10.0f\}))}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ -\/>SetSpriteSheetFrame(\{0,\ 6\})}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ -\/>SetScreenAnchor(\mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa747385047b85ae751f83adb36435a3c1}{ScreenAnchor::TOP\_LEFT}})}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ -\/>SetZIndex(1100);}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00020}00020\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00021}00021\ \ \ \ \ (\textcolor{keyword}{new}\ \mbox{\hyperlink{classTextGameObject}{TextGameObject}}(\textcolor{stringliteral}{"{}CatsCnt"{}},\ \textcolor{keyword}{this},\ std::to\_string(\mbox{\hyperlink{classPlayer_ad6ad26f8a90ce069ed3d04bf1ce80eda}{Player::mKillCount}}),\ \mbox{\hyperlink{structTextGameObject_1_1TextProperties}{TextGameObject::TextProperties}}(\textcolor{stringliteral}{"{}default"{}},\ 200.0f),\ \{11.0f,\ 13.0f,\ 0.0f\},\ \{20.0f,\ 20.0f\}))}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ -\/>SetScreenAnchor(\mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa747385047b85ae751f83adb36435a3c1}{ScreenAnchor::TOP\_LEFT}})}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ -\/>SetZIndex(0);}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00025}00025\ \ \ \ \ (\textcolor{keyword}{new}\ \mbox{\hyperlink{classTextGameObject}{TextGameObject}}(\textcolor{stringliteral}{"{}Score"{}},\ \textcolor{keyword}{this},\ std::to\_string(\mbox{\hyperlink{classPlayer_ad6ad26f8a90ce069ed3d04bf1ce80eda}{Player::mKillCount}}),\ \mbox{\hyperlink{structTextGameObject_1_1TextProperties}{TextGameObject::TextProperties}}(\textcolor{stringliteral}{"{}default"{}},\ 200.0f),\ \{4.0f,\ 20.0f,\ 0.0f\},\ \{20.0f,\ 20.0f\}))}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ -\/>SetScreenAnchor(\mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa747385047b85ae751f83adb36435a3c1}{ScreenAnchor::TOP\_LEFT}})}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ -\/>SetZIndex(0);}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00030}\mbox{\hyperlink{classPlayerUI_afd9a4e6e5e5d65d36ab8c739f8e48e4c}{00030}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPlayerUI_afd9a4e6e5e5d65d36ab8c739f8e48e4c}{PlayerUI::Update}}(\textcolor{keywordtype}{float}\ deltaTime)\ \{}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGameObject_a5101d9de8eb4e44410d875ccb6bade8b}{mActive}}\ ==\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00035}00035\ \ \ \ \ ((\mbox{\hyperlink{classTextGameObject}{TextGameObject}}\ *)\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}CatsCnt"{}}))-\/>SetText(\textcolor{stringliteral}{"{}x"{}}\ +\ std::to\_string(\mbox{\hyperlink{classPlayer_ae733a39dd7d8456b764520bf19278353}{Player::mCatCount}}));}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00036}00036\ \ \ \ \ ((\mbox{\hyperlink{classTextGameObject}{TextGameObject}}\ *)\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}Score"{}}))-\/>SetText(std::to\_string(\mbox{\hyperlink{classPlayer_ad6ad26f8a90ce069ed3d04bf1ce80eda}{Player::mKillCount}}\ +\ \mbox{\hyperlink{classPlayer_ae733a39dd7d8456b764520bf19278353}{Player::mCatCount}}\ *\ 5));}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (mDisplayedHealth\ !=\ mPlayer-\/>mHealth)\ \{}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPlayerUI_a00a4c1725ef2d3432eabcbdb58000dcc}{UpdateHealth}}();}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00042}00042\ \ \ \ \ \mbox{\hyperlink{classGameObject_a9e6d53f4ebbaf13a26353f1888584a26}{GameObject::Update}}(deltaTime);}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00045}\mbox{\hyperlink{classPlayerUI_a00a4c1725ef2d3432eabcbdb58000dcc}{00045}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPlayerUI_a00a4c1725ef2d3432eabcbdb58000dcc}{PlayerUI::UpdateHealth}}()\ \{}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00046}00046\ \ \ \ \ mDisplayedHealth\ =\ mPlayer-\/>mHealth;}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ mPlayer-\/>mMaxHealth\ /\ 2.0;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSpriteSheetGameObject}{SpriteSheetGameObject}}\ *heart\ =\ (\mbox{\hyperlink{classSpriteSheetGameObject}{SpriteSheetGameObject}}\ *)\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}Hearts"{}})-\/>\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}Heart"{}}\ +\ std::to\_string(i));}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (heart\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ heart\ =\ (\mbox{\hyperlink{classSpriteSheetGameObject}{SpriteSheetGameObject}}\ *)((\textcolor{keyword}{new}\ \mbox{\hyperlink{classSpriteSheetGameObject}{SpriteSheetGameObject}}(\textcolor{stringliteral}{"{}Heart"{}}\ +\ std::to\_string(i),\ \mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}Hearts"{}}),\ \textcolor{stringliteral}{"{}hearts"{}},\ \{20,\ 13\},\ \{10.0f,\ 10.0f\ +\ i\ *\ 10.0f,\ 0.0f\},\ \{8,\ 8\}))}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/>SetScreenAnchor(\mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa747385047b85ae751f83adb36435a3c1}{ScreenAnchor::TOP\_LEFT}})}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/>\mbox{\hyperlink{classGameObject_a404b760fb13e77e57c6512db9d11da81}{SetPosition}}(\{4.0f\ +\ i\ *\ 8.0f,\ 4.0f,\ 0.0f\})}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/>\mbox{\hyperlink{classGameObject_a407f5d1d8117bc7ce210b64d58c04662}{SetZIndex}}(0));}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mDisplayedHealth\ >\ i\ *\ 2\ +\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ heart-\/>\mbox{\hyperlink{classSpriteSheetGameObject_aa645f50f6653ad3643e6f3cc4df398e3}{SetSpriteSheetFrame}}(\{3,\ 0\});}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (mDisplayedHealth\ >\ i\ *\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ heart-\/>\mbox{\hyperlink{classSpriteSheetGameObject_aa645f50f6653ad3643e6f3cc4df398e3}{SetSpriteSheetFrame}}(\{4,\ 0\});}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ heart-\/>\mbox{\hyperlink{classSpriteSheetGameObject_aa645f50f6653ad3643e6f3cc4df398e3}{SetSpriteSheetFrame}}(\{0,\ 0\});}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{player__ui_8cpp_source_l00063}00063\ \}}
+
+\end{DoxyCode}

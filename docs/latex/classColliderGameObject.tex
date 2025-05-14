@@ -1,0 +1,420 @@
+\doxysection{Collider\+Game\+Object Class Reference}
+\hypertarget{classColliderGameObject}{}\label{classColliderGameObject}\index{ColliderGameObject@{ColliderGameObject}}
+
+
+{\ttfamily \#include $<$collider\+\_\+game\+\_\+object.\+hpp$>$}
+
+Inheritance diagram for Collider\+Game\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classColliderGameObject}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collision\+Type}} \{ \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cba8c009c8dd4d4f9dde7515c00d5cd4661}{OVERLAP}}
+, \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cba2b40a1ea27beb450618885ec87f0ee15}{TOUCH}}
+, \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cbab50339a10e1de285ac99d4c3990b8693}{NONE}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classColliderGameObject_ad970d36ae048ed6b13f6bbf931926bce}{Collider\+Game\+Object}} (std\+::string name, \mbox{\hyperlink{classShape2D}{Shape2D}} \texorpdfstring{$\ast$}{*}shape, bool fixed, glm\+::vec3 pos=glm\+::vec3(0.\+0f), glm\+::vec2 scale=glm\+::vec2(1.\+0f))
+\item 
+\mbox{\hyperlink{classColliderGameObject_a24e112ec0c553fd28694dd6fa66bbd30}{Collider\+Game\+Object}} (std\+::string name, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}parent, \mbox{\hyperlink{classShape2D}{Shape2D}} \texorpdfstring{$\ast$}{*}shape, bool fixed, glm\+::vec3 pos=glm\+::vec3(0.\+0f), glm\+::vec2 scale=glm\+::vec2(1.\+0f))
+\item 
+virtual \mbox{\hyperlink{classColliderGameObject_abdc16e2cc3c84244c0d84b524556a858}{\texorpdfstring{$\sim$}{\string~}\+Collider\+Game\+Object}} () override
+\item 
+virtual void \mbox{\hyperlink{classColliderGameObject_a7c02f9c07f4f418b3dcab1f11cb3ccaa}{Update}} (float delta\+Time) override
+\item 
+virtual void \mbox{\hyperlink{classColliderGameObject_afbfde58388fdcaf27e5013e25964736a}{Render}} () override
+\item 
+virtual void \mbox{\hyperlink{classColliderGameObject_a9c1df1acc222830d2c4d949d989b0de5}{On\+Collision}} (\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}other, \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collision\+Type}} type=\mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cba8c009c8dd4d4f9dde7515c00d5cd4661}{Collision\+Type\+::\+OVERLAP}})
+\item 
+void \mbox{\hyperlink{classColliderGameObject_a0a71719a2f1b6eb63897f2865a225d52}{Resolve\+Collision}} (float overlap, glm\+::vec2 min\+Axis)
+\item 
+\mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collision\+Type}} \mbox{\hyperlink{classColliderGameObject_ae1d13db40710c4af4bc780a471fdf7fe}{Check\+Collision}} (\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}other) const
+\item 
+\mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collision\+Type}} \mbox{\hyperlink{classColliderGameObject_a41cf3367599703ffd9be44c1f2f5ed97}{Check\+Collision\+And\+Resolve}} (\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}other)
+\begin{DoxyCompactList}\small\item\em Resolve collision between two objects (moves the object that is calling this) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collision\+Type}} \mbox{\hyperlink{classColliderGameObject_a8b2e56f305c407f2646ea5a3cc84bd4f}{Check\+Point\+Collision}} (glm\+::vec2 point) const
+\item 
+bool \mbox{\hyperlink{classColliderGameObject_af4bec93e1147938c92dd287943e17e7b}{Is\+Solid}} () const
+\item 
+bool \mbox{\hyperlink{classColliderGameObject_a5fa9ff0d3933cb14536b0bcab0d75d52}{Is\+Fixed}} () const
+\item 
+std\+::string \mbox{\hyperlink{classColliderGameObject_a8945a6be154b5e3bd610d8643b0e67fb}{Get\+Tag}} () const
+\item 
+\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classColliderGameObject_a9c2a62d474aee06522a50d38f5b668cb}{Set\+Solid}} (bool solid)
+\item 
+\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classColliderGameObject_abf66e625cc5c761bcd78dd73eeef038e}{Set\+Fixed}} (bool fixed)
+\item 
+\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classColliderGameObject_a06e34bf66632368b5f717f339632770c}{Set\+Tag}} (std\+::string tag)
+\item 
+\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classColliderGameObject_ad82f2459cd0961d953b011b480dfea9c}{Set\+On\+Collision}} (std\+::function$<$ void(\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collision\+Type}})$>$ callback)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classGameObject}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{Game\+Object}} (std\+::string name, glm\+::vec3 pos=glm\+::vec3(0.\+0f), glm\+::vec2 scale=glm\+::vec2(1.\+0f))
+\item 
+\mbox{\hyperlink{classGameObject_a76a02ab352553240743add593efeb0cd}{Game\+Object}} (std\+::string name, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}parent, glm\+::vec3 pos=glm\+::vec3(0.\+0f), glm\+::vec2 scale=glm\+::vec2(1.\+0f))
+\item 
+virtual \mbox{\hyperlink{classGameObject_ab82dfdb656f9051c0587e6593b2dda97}{\texorpdfstring{$\sim$}{\string~}\+Game\+Object}} ()
+\item 
+virtual void \mbox{\hyperlink{classGameObject_a7cb32aba9790897365708d74ac10c7e1}{Late\+Update}} (float delta\+Time=0.\+0f)
+\item 
+std\+::string \mbox{\hyperlink{classGameObject_a986731c4dfb08336dbf0731e6514bad9}{Get\+Name}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a8b78cd9270733086927a4f8a4f07398e}{Set\+Active}} (bool active)
+\item 
+bool \mbox{\hyperlink{classGameObject_aeacebf64d0153edf9e02a43defc0d26f}{Get\+Active}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_ae6411c30a8a2c258b52288f6aecb220e}{Set\+Visible}} (bool visible)
+\item 
+bool \mbox{\hyperlink{classGameObject_a821630aa6f0c19413a22475cac54c7b4}{Get\+Visible}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a404b760fb13e77e57c6512db9d11da81}{Set\+Position}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a453acd691b437cb3b5c91946c11db064}{Set\+Position}} (glm\+::vec3 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_aae995b3b06e73711a1163ae0b0a7f1fd}{Set\+Rotation}} (float rot)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_ad236d752fd3d90424af28bd8cb60a575}{Set\+Rotation}} (glm\+::vec3 rot)
+\item 
+glm\+::vec3 \mbox{\hyperlink{classGameObject_a977d4bbb9ebe2266bae702b59508303b}{Get\+Position}} () const
+\item 
+glm\+::vec3 \mbox{\hyperlink{classGameObject_adc256761dbcea9050030f4017ad41ad1}{Get\+Global\+Position}} () const
+\item 
+float \mbox{\hyperlink{classGameObject_a53875b706c5c9ebc0cdd8600a423ed20}{Get\+Rotation}} () const
+\item 
+float \mbox{\hyperlink{classGameObject_a213cb8316ac2eac26032e33805e3710f}{Get\+Global\+Rotation}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a407f5d1d8117bc7ce210b64d58c04662}{Set\+ZIndex}} (int z\+Index)
+\item 
+int \mbox{\hyperlink{classGameObject_a8604b8941849f9000abb3eb582f66176}{Get\+ZIndex}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a7eec3f82ecf749dd495cf6e3cacd264a}{Get\+Parent}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{Get\+Child}} (std\+::string name) const
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a9c38119383137784bcbaeef5147be51d}{Get\+Children}} () const
+\item 
+unsigned int \mbox{\hyperlink{classGameObject_a4d1b2597afd1207e05082ea3263b4409}{Get\+Children\+Count}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a31ab3f560b5d6880141f42ae9904478b}{Add\+Child}} (\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}child)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_ae606e30f9db273a9d360849d5632bfe6}{Add\+Child\+To\+Local\+Pos}} (\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}child)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a0acf0dc8a35cf32076ffe3a77bc8bd59}{Remove\+Child}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Remove a child from the game object but do not delete it! If memory is leaking check here! \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGameObject_aa6a1e2ef75a4913addc5b2d21c9126c3}{Safe\+Delete}} ()
+\item 
+void \mbox{\hyperlink{classGameObject_a9bda3668364eebde8670fe4435963c01}{Delete\+Child}} (std\+::string name)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a7abb447984e2d10efe0cbe71b22a9179}{operator+=}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_aa6c5abb1c90b176b0908fabc666838f1}{operator-\/=}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a6b1d674ce2b0d9b18dfe2b392963684e}{operator\texorpdfstring{$\ast$}{*}=}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_aad0532b9af49e6016e3e55e4b6644385}{operator/=}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_af774be813ecbf7bed6f43ecfcff2de58}{operator+=}} (glm\+::vec3 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a10f5ccb22aa853701287815f08624470}{operator-\/=}} (glm\+::vec3 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a77ee0c0f255f2fa39ee02b976fa55289}{operator\texorpdfstring{$\ast$}{*}=}} (glm\+::vec3 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a9fda54e55885533d12b0456fdc6a2a8a}{operator/=}} (glm\+::vec3 pos)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::pair$<$ \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collider\+Game\+Object\+::\+Collision\+Type}}, std\+::pair$<$ float, glm\+::vec2 $>$ $>$ \mbox{\hyperlink{classColliderGameObject_a4f6cd4c3554d94642a00f2be69be73bf}{Check\+Shape\+Overlap}} (\mbox{\hyperlink{classShape2D}{Shape2D}} \texorpdfstring{$\ast$}{*}shape1, \mbox{\hyperlink{classShape2D}{Shape2D}} \texorpdfstring{$\ast$}{*}shape2, glm\+::vec3 pos1, glm\+::vec3 pos2)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classGameObject}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr float \mbox{\hyperlink{classGameObject_a2c7b29001627e8378982097be132c746}{GAME\+\_\+\+SCALE\+\_\+\+FACTOR}} = 10.\+0f
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classGameObject}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::string \mbox{\hyperlink{classGameObject_a0c88acca9ecfc4990c50d9e371e963a7}{m\+Name}}
+\item 
+bool \mbox{\hyperlink{classGameObject_a5101d9de8eb4e44410d875ccb6bade8b}{m\+Active}}
+\item 
+bool \mbox{\hyperlink{classGameObject_afa97a45840ebad6ba7bc14eb7f7f9041}{m\+Visible}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{classGameObject_aa6ee0f1d35fc6959859a98f9998b197b}{m\+Pos}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{classGameObject_aa769e9608e85e0a5b35b12dd2ced5f01}{m\+Scale}}
+\item 
+int \mbox{\hyperlink{classGameObject_ae54f9fed22969f992d4bd2c55999967d}{m\+ZIndex}} = 1000
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a544c86d162dd917b26ad77deed2ce9e6}{p\+Parent}} = nullptr
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGameObject_af80e9ee891dd30e6d390dd680e3c83f4}{children}}
+\item 
+std\+::map$<$ int, std\+::set$<$ \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$, std\+::greater$<$ int $>$ $>$ \mbox{\hyperlink{classGameObject_a91498e29040e119a948105b5ea4a9883}{m\+Children\+By\+ZIndex}}
+\item 
+std\+::list$<$ \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGameObject_aa036de331741bef1ed8c312a5d5c465e}{m\+Children\+To\+Remove}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8hpp_source_l00009}{9}} of file \mbox{\hyperlink{collider__game__object_8hpp_source}{collider\+\_\+game\+\_\+object.\+hpp}}.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}\index{ColliderGameObject@{ColliderGameObject}!CollisionType@{CollisionType}}
+\index{CollisionType@{CollisionType}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{CollisionType}{CollisionType}}
+{\footnotesize\ttfamily \label{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb} 
+enum class \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collider\+Game\+Object\+::\+Collision\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OVERLAP@{OVERLAP}!ColliderGameObject@{ColliderGameObject}}\index{ColliderGameObject@{ColliderGameObject}!OVERLAP@{OVERLAP}}}\Hypertarget{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cba8c009c8dd4d4f9dde7515c00d5cd4661}\label{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cba8c009c8dd4d4f9dde7515c00d5cd4661} 
+OVERLAP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TOUCH@{TOUCH}!ColliderGameObject@{ColliderGameObject}}\index{ColliderGameObject@{ColliderGameObject}!TOUCH@{TOUCH}}}\Hypertarget{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cba2b40a1ea27beb450618885ec87f0ee15}\label{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cba2b40a1ea27beb450618885ec87f0ee15} 
+TOUCH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NONE@{NONE}!ColliderGameObject@{ColliderGameObject}}\index{ColliderGameObject@{ColliderGameObject}!NONE@{NONE}}}\Hypertarget{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cbab50339a10e1de285ac99d4c3990b8693}\label{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cbab50339a10e1de285ac99d4c3990b8693} 
+NONE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8hpp_source_l00011}{11}} of file \mbox{\hyperlink{collider__game__object_8hpp_source}{collider\+\_\+game\+\_\+object.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classColliderGameObject_ad970d36ae048ed6b13f6bbf931926bce}\index{ColliderGameObject@{ColliderGameObject}!ColliderGameObject@{ColliderGameObject}}
+\index{ColliderGameObject@{ColliderGameObject}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{ColliderGameObject()}{ColliderGameObject()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classColliderGameObject_ad970d36ae048ed6b13f6bbf931926bce} 
+Collider\+Game\+Object\+::\+Collider\+Game\+Object (\begin{DoxyParamCaption}\item[{std\+::string}]{name}{, }\item[{\mbox{\hyperlink{classShape2D}{Shape2D}} \texorpdfstring{$\ast$}{*}}]{shape}{, }\item[{bool}]{fixed}{, }\item[{glm\+::vec3}]{pos}{ = {\ttfamily glm\+:\+:vec3(0.0f)}, }\item[{glm\+::vec2}]{scale}{ = {\ttfamily glm\+:\+:vec2(1.0f)}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+\Hypertarget{classColliderGameObject_a24e112ec0c553fd28694dd6fa66bbd30}\index{ColliderGameObject@{ColliderGameObject}!ColliderGameObject@{ColliderGameObject}}
+\index{ColliderGameObject@{ColliderGameObject}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{ColliderGameObject()}{ColliderGameObject()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classColliderGameObject_a24e112ec0c553fd28694dd6fa66bbd30} 
+Collider\+Game\+Object\+::\+Collider\+Game\+Object (\begin{DoxyParamCaption}\item[{std\+::string}]{name}{, }\item[{\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{\mbox{\hyperlink{classShape2D}{Shape2D}} \texorpdfstring{$\ast$}{*}}]{shape}{, }\item[{bool}]{fixed}{, }\item[{glm\+::vec3}]{pos}{ = {\ttfamily glm\+:\+:vec3(0.0f)}, }\item[{glm\+::vec2}]{scale}{ = {\ttfamily glm\+:\+:vec2(1.0f)}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+\Hypertarget{classColliderGameObject_abdc16e2cc3c84244c0d84b524556a858}\index{ColliderGameObject@{ColliderGameObject}!````~ColliderGameObject@{\texorpdfstring{$\sim$}{\string~}ColliderGameObject}}
+\index{````~ColliderGameObject@{\texorpdfstring{$\sim$}{\string~}ColliderGameObject}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ColliderGameObject()}{\string~ColliderGameObject()}}
+{\footnotesize\ttfamily \label{classColliderGameObject_abdc16e2cc3c84244c0d84b524556a858} 
+Collider\+Game\+Object\+::\texorpdfstring{$\sim$}{\string~}\+Collider\+Game\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classColliderGameObject_ae1d13db40710c4af4bc780a471fdf7fe}\index{ColliderGameObject@{ColliderGameObject}!CheckCollision@{CheckCollision}}
+\index{CheckCollision@{CheckCollision}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{CheckCollision()}{CheckCollision()}}
+{\footnotesize\ttfamily \label{classColliderGameObject_ae1d13db40710c4af4bc780a471fdf7fe} 
+\mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collider\+Game\+Object\+::\+Collision\+Type}} Collider\+Game\+Object\+::\+Check\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}}]{other}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+\Hypertarget{classColliderGameObject_a41cf3367599703ffd9be44c1f2f5ed97}\index{ColliderGameObject@{ColliderGameObject}!CheckCollisionAndResolve@{CheckCollisionAndResolve}}
+\index{CheckCollisionAndResolve@{CheckCollisionAndResolve}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{CheckCollisionAndResolve()}{CheckCollisionAndResolve()}}
+{\footnotesize\ttfamily \label{classColliderGameObject_a41cf3367599703ffd9be44c1f2f5ed97} 
+\mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collider\+Game\+Object\+::\+Collision\+Type}} Collider\+Game\+Object\+::\+Check\+Collision\+And\+Resolve (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Resolve collision between two objects (moves the object that is calling this) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00075}{75}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+\Hypertarget{classColliderGameObject_a8b2e56f305c407f2646ea5a3cc84bd4f}\index{ColliderGameObject@{ColliderGameObject}!CheckPointCollision@{CheckPointCollision}}
+\index{CheckPointCollision@{CheckPointCollision}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{CheckPointCollision()}{CheckPointCollision()}}
+{\footnotesize\ttfamily \label{classColliderGameObject_a8b2e56f305c407f2646ea5a3cc84bd4f} 
+\mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collider\+Game\+Object\+::\+Collision\+Type}} Collider\+Game\+Object\+::\+Check\+Point\+Collision (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{point}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00100}{100}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+\Hypertarget{classColliderGameObject_a4f6cd4c3554d94642a00f2be69be73bf}\index{ColliderGameObject@{ColliderGameObject}!CheckShapeOverlap@{CheckShapeOverlap}}
+\index{CheckShapeOverlap@{CheckShapeOverlap}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{CheckShapeOverlap()}{CheckShapeOverlap()}}
+{\footnotesize\ttfamily \label{classColliderGameObject_a4f6cd4c3554d94642a00f2be69be73bf} 
+std\+::pair$<$ \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collider\+Game\+Object\+::\+Collision\+Type}}, std\+::pair$<$ float, glm\+::vec2 $>$ $>$ Collider\+Game\+Object\+::\+Check\+Shape\+Overlap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classShape2D}{Shape2D}} \texorpdfstring{$\ast$}{*}}]{shape1}{, }\item[{\mbox{\hyperlink{classShape2D}{Shape2D}} \texorpdfstring{$\ast$}{*}}]{shape2}{, }\item[{glm\+::vec3}]{pos1}{, }\item[{glm\+::vec3}]{pos2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00124}{124}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+\Hypertarget{classColliderGameObject_a8945a6be154b5e3bd610d8643b0e67fb}\index{ColliderGameObject@{ColliderGameObject}!GetTag@{GetTag}}
+\index{GetTag@{GetTag}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{GetTag()}{GetTag()}}
+{\footnotesize\ttfamily \label{classColliderGameObject_a8945a6be154b5e3bd610d8643b0e67fb} 
+std\+::string Collider\+Game\+Object\+::\+Get\+Tag (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00188}{188}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+\Hypertarget{classColliderGameObject_a5fa9ff0d3933cb14536b0bcab0d75d52}\index{ColliderGameObject@{ColliderGameObject}!IsFixed@{IsFixed}}
+\index{IsFixed@{IsFixed}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{IsFixed()}{IsFixed()}}
+{\footnotesize\ttfamily \label{classColliderGameObject_a5fa9ff0d3933cb14536b0bcab0d75d52} 
+bool Collider\+Game\+Object\+::\+Is\+Fixed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00184}{184}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+\Hypertarget{classColliderGameObject_af4bec93e1147938c92dd287943e17e7b}\index{ColliderGameObject@{ColliderGameObject}!IsSolid@{IsSolid}}
+\index{IsSolid@{IsSolid}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{IsSolid()}{IsSolid()}}
+{\footnotesize\ttfamily \label{classColliderGameObject_af4bec93e1147938c92dd287943e17e7b} 
+bool Collider\+Game\+Object\+::\+Is\+Solid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00180}{180}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+\Hypertarget{classColliderGameObject_a9c1df1acc222830d2c4d949d989b0de5}\index{ColliderGameObject@{ColliderGameObject}!OnCollision@{OnCollision}}
+\index{OnCollision@{OnCollision}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{OnCollision()}{OnCollision()}}
+{\footnotesize\ttfamily \label{classColliderGameObject_a9c1df1acc222830d2c4d949d989b0de5} 
+void Collider\+Game\+Object\+::\+On\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}}]{other}{, }\item[{\mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collision\+Type}}}]{type}{ = {\ttfamily \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cba8c009c8dd4d4f9dde7515c00d5cd4661}{Collision\+Type\+::\+OVERLAP}}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+\Hypertarget{classColliderGameObject_afbfde58388fdcaf27e5013e25964736a}\index{ColliderGameObject@{ColliderGameObject}!Render@{Render}}
+\index{Render@{Render}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily \label{classColliderGameObject_afbfde58388fdcaf27e5013e25964736a} 
+void Collider\+Game\+Object\+::\+Render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classGameObject_a554078170496d6fc31af134e76e1e1bd}{Game\+Object}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classRectColliderGameObject_afbfde58388fdcaf27e5013e25964736a}{Rect\+Collider\+Game\+Object}}.
+
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00044}{44}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+\Hypertarget{classColliderGameObject_a0a71719a2f1b6eb63897f2865a225d52}\index{ColliderGameObject@{ColliderGameObject}!ResolveCollision@{ResolveCollision}}
+\index{ResolveCollision@{ResolveCollision}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{ResolveCollision()}{ResolveCollision()}}
+{\footnotesize\ttfamily \label{classColliderGameObject_a0a71719a2f1b6eb63897f2865a225d52} 
+void Collider\+Game\+Object\+::\+Resolve\+Collision (\begin{DoxyParamCaption}\item[{float}]{overlap}{, }\item[{glm\+::vec2}]{min\+Axis}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00095}{95}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+\Hypertarget{classColliderGameObject_abf66e625cc5c761bcd78dd73eeef038e}\index{ColliderGameObject@{ColliderGameObject}!SetFixed@{SetFixed}}
+\index{SetFixed@{SetFixed}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{SetFixed()}{SetFixed()}}
+{\footnotesize\ttfamily \label{classColliderGameObject_abf66e625cc5c761bcd78dd73eeef038e} 
+\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*} Collider\+Game\+Object\+::\+Set\+Fixed (\begin{DoxyParamCaption}\item[{bool}]{fixed}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00197}{197}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+\Hypertarget{classColliderGameObject_ad82f2459cd0961d953b011b480dfea9c}\index{ColliderGameObject@{ColliderGameObject}!SetOnCollision@{SetOnCollision}}
+\index{SetOnCollision@{SetOnCollision}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{SetOnCollision()}{SetOnCollision()}}
+{\footnotesize\ttfamily \label{classColliderGameObject_ad82f2459cd0961d953b011b480dfea9c} 
+\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*} Collider\+Game\+Object\+::\+Set\+On\+Collision (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collision\+Type}})$>$}]{callback}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00209}{209}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+\Hypertarget{classColliderGameObject_a9c2a62d474aee06522a50d38f5b668cb}\index{ColliderGameObject@{ColliderGameObject}!SetSolid@{SetSolid}}
+\index{SetSolid@{SetSolid}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{SetSolid()}{SetSolid()}}
+{\footnotesize\ttfamily \label{classColliderGameObject_a9c2a62d474aee06522a50d38f5b668cb} 
+\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*} Collider\+Game\+Object\+::\+Set\+Solid (\begin{DoxyParamCaption}\item[{bool}]{solid}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00192}{192}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+\Hypertarget{classColliderGameObject_a06e34bf66632368b5f717f339632770c}\index{ColliderGameObject@{ColliderGameObject}!SetTag@{SetTag}}
+\index{SetTag@{SetTag}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{SetTag()}{SetTag()}}
+{\footnotesize\ttfamily \label{classColliderGameObject_a06e34bf66632368b5f717f339632770c} 
+\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*} Collider\+Game\+Object\+::\+Set\+Tag (\begin{DoxyParamCaption}\item[{std\+::string}]{tag}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00202}{202}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+\Hypertarget{classColliderGameObject_a7c02f9c07f4f418b3dcab1f11cb3ccaa}\index{ColliderGameObject@{ColliderGameObject}!Update@{Update}}
+\index{Update@{Update}!ColliderGameObject@{ColliderGameObject}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{classColliderGameObject_a7c02f9c07f4f418b3dcab1f11cb3ccaa} 
+void Collider\+Game\+Object\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classGameObject_a9e6d53f4ebbaf13a26353f1888584a26}{Game\+Object}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classChest_a2fe3246e39c5ffbfb2f8fe3119173c82}{Chest}}, \mbox{\hyperlink{classEnemy_a723b79407b55383b2c327f674e3ab3bc}{Enemy}}, \mbox{\hyperlink{classEntity_a00da26ec82bc1681a2ec9967c38f36b0}{Entity}}, \mbox{\hyperlink{classPlayer_a20bfb1cb738f6b00f589207ce460491e}{Player}}, and \mbox{\hyperlink{classRectColliderGameObject_a7c02f9c07f4f418b3dcab1f11cb3ccaa}{Rect\+Collider\+Game\+Object}}.
+
+
+
+Definition at line \mbox{\hyperlink{collider__game__object_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{collider__game__object_8cpp_source}{collider\+\_\+game\+\_\+object.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/vid/\+Dev/personal/game/src/engine/game\+\_\+objects/colliders/\mbox{\hyperlink{collider__game__object_8hpp}{collider\+\_\+game\+\_\+object.\+hpp}}\item 
+/home/vid/\+Dev/personal/game/src/engine/game\+\_\+objects/colliders/\mbox{\hyperlink{collider__game__object_8cpp}{collider\+\_\+game\+\_\+object.\+cpp}}\end{DoxyCompactItemize}

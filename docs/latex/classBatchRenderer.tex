@@ -1,0 +1,135 @@
+\doxysection{Batch\+Renderer Class Reference}
+\hypertarget{classBatchRenderer}{}\label{classBatchRenderer}\index{BatchRenderer@{BatchRenderer}}
+
+
+{\ttfamily \#include $<$batch\+\_\+renderer.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structBatchRenderer_1_1Vertex}{Vertex}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBatchRenderer_a5778b04e1530a8862168f911d1cc8d38}{Batch\+Renderer}} (int max\+Capacity)
+\item 
+\mbox{\hyperlink{classBatchRenderer_a2ea1d24ccca0940a6ae94ec218db2d75}{\texorpdfstring{$\sim$}{\string~}\+Batch\+Renderer}} ()
+\item 
+void \mbox{\hyperlink{classBatchRenderer_a17666823c9c88468698966c0426e4487}{push\+Object}} (unsigned int texture\+ID, glm\+::vec3 position=glm\+::vec3(0.\+0f), glm\+::vec4 uv=\{0.\+0f, 0.\+0f, 1.\+0f, 1.\+0f\}, glm\+::vec2 size=glm\+::vec2(1.\+0f), glm\+::vec4 color=glm\+::vec4(1.\+0f), std\+::string shader\+Name="{}default\+\_\+sprite"{})
+\item 
+void \mbox{\hyperlink{classBatchRenderer_a6233a38d857a66d80c86a6210f335bc9}{push\+Object}} (\mbox{\hyperlink{classTexture}{Texture}} \&texture, glm\+::vec3 position=glm\+::vec3(0.\+0f), glm\+::vec4 uv=\{0.\+0f, 0.\+0f, 1.\+0f, 1.\+0f\}, glm\+::vec2 size=glm\+::vec2(1.\+0f), glm\+::vec4 color=glm\+::vec4(1.\+0f), std\+::string shader\+Name="{}default\+\_\+sprite"{})
+\item 
+void \mbox{\hyperlink{classBatchRenderer_a290fee60ff58b16db1a3ddeee965337c}{push\+Vertex}} (unsigned int texture\+ID, \mbox{\hyperlink{structBatchRenderer_1_1Vertex}{Vertex}} vertex)
+\item 
+void \mbox{\hyperlink{classBatchRenderer_af8ac52e8c0fd0d95d597dd0a03f82c50}{push\+Vertex}} (\mbox{\hyperlink{classTexture}{Texture}} \&texture, \mbox{\hyperlink{structBatchRenderer_1_1Vertex}{Vertex}} vertex)
+\item 
+void \mbox{\hyperlink{classBatchRenderer_a0127107c6781f58934c4805484c63fca}{flush}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classBatchRenderer_aafe0385e74e82d1f3bb10750a32d626f}{m\+Mvp}} \mbox{[}4\mbox{]}\mbox{[}4\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{batch__renderer_8hpp_source_l00013}{13}} of file \mbox{\hyperlink{batch__renderer_8hpp_source}{batch\+\_\+renderer.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classBatchRenderer_a5778b04e1530a8862168f911d1cc8d38}\index{BatchRenderer@{BatchRenderer}!BatchRenderer@{BatchRenderer}}
+\index{BatchRenderer@{BatchRenderer}!BatchRenderer@{BatchRenderer}}
+\doxysubsubsection{\texorpdfstring{BatchRenderer()}{BatchRenderer()}}
+{\footnotesize\ttfamily \label{classBatchRenderer_a5778b04e1530a8862168f911d1cc8d38} 
+Batch\+Renderer\+::\+Batch\+Renderer (\begin{DoxyParamCaption}\item[{int}]{max\+Capacity}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{batch__renderer_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{batch__renderer_8cpp_source}{batch\+\_\+renderer.\+cpp}}.
+
+\Hypertarget{classBatchRenderer_a2ea1d24ccca0940a6ae94ec218db2d75}\index{BatchRenderer@{BatchRenderer}!````~BatchRenderer@{\texorpdfstring{$\sim$}{\string~}BatchRenderer}}
+\index{````~BatchRenderer@{\texorpdfstring{$\sim$}{\string~}BatchRenderer}!BatchRenderer@{BatchRenderer}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}BatchRenderer()}{\string~BatchRenderer()}}
+{\footnotesize\ttfamily \label{classBatchRenderer_a2ea1d24ccca0940a6ae94ec218db2d75} 
+Batch\+Renderer\+::\texorpdfstring{$\sim$}{\string~}\+Batch\+Renderer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{batch__renderer_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{batch__renderer_8cpp_source}{batch\+\_\+renderer.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBatchRenderer_a0127107c6781f58934c4805484c63fca}\index{BatchRenderer@{BatchRenderer}!flush@{flush}}
+\index{flush@{flush}!BatchRenderer@{BatchRenderer}}
+\doxysubsubsection{\texorpdfstring{flush()}{flush()}}
+{\footnotesize\ttfamily \label{classBatchRenderer_a0127107c6781f58934c4805484c63fca} 
+void Batch\+Renderer\+::flush (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{batch__renderer_8cpp_source_l00114}{114}} of file \mbox{\hyperlink{batch__renderer_8cpp_source}{batch\+\_\+renderer.\+cpp}}.
+
+\Hypertarget{classBatchRenderer_a6233a38d857a66d80c86a6210f335bc9}\index{BatchRenderer@{BatchRenderer}!pushObject@{pushObject}}
+\index{pushObject@{pushObject}!BatchRenderer@{BatchRenderer}}
+\doxysubsubsection{\texorpdfstring{pushObject()}{pushObject()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classBatchRenderer_a6233a38d857a66d80c86a6210f335bc9} 
+void Batch\+Renderer\+::push\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTexture}{Texture}} \&}]{texture}{, }\item[{glm\+::vec3}]{position}{ = {\ttfamily glm\+:\+:vec3(0.0f)}, }\item[{glm\+::vec4}]{uv}{ = {\ttfamily \{0.0f,~0.0f,~1.0f,~1.0f\}}, }\item[{glm\+::vec2}]{size}{ = {\ttfamily glm\+:\+:vec2(1.0f)}, }\item[{glm\+::vec4}]{color}{ = {\ttfamily glm\+:\+:vec4(1.0f)}, }\item[{std\+::string}]{shader\+Name}{ = {\ttfamily "{}default\+\_\+sprite"{}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{batch__renderer_8cpp_source_l00092}{92}} of file \mbox{\hyperlink{batch__renderer_8cpp_source}{batch\+\_\+renderer.\+cpp}}.
+
+\Hypertarget{classBatchRenderer_a17666823c9c88468698966c0426e4487}\index{BatchRenderer@{BatchRenderer}!pushObject@{pushObject}}
+\index{pushObject@{pushObject}!BatchRenderer@{BatchRenderer}}
+\doxysubsubsection{\texorpdfstring{pushObject()}{pushObject()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classBatchRenderer_a17666823c9c88468698966c0426e4487} 
+void Batch\+Renderer\+::push\+Object (\begin{DoxyParamCaption}\item[{unsigned int}]{texture\+ID}{, }\item[{glm\+::vec3}]{position}{ = {\ttfamily glm\+:\+:vec3(0.0f)}, }\item[{glm\+::vec4}]{uv}{ = {\ttfamily \{0.0f,~0.0f,~1.0f,~1.0f\}}, }\item[{glm\+::vec2}]{size}{ = {\ttfamily glm\+:\+:vec2(1.0f)}, }\item[{glm\+::vec4}]{color}{ = {\ttfamily glm\+:\+:vec4(1.0f)}, }\item[{std\+::string}]{shader\+Name}{ = {\ttfamily "{}default\+\_\+sprite"{}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{batch__renderer_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{batch__renderer_8cpp_source}{batch\+\_\+renderer.\+cpp}}.
+
+\Hypertarget{classBatchRenderer_af8ac52e8c0fd0d95d597dd0a03f82c50}\index{BatchRenderer@{BatchRenderer}!pushVertex@{pushVertex}}
+\index{pushVertex@{pushVertex}!BatchRenderer@{BatchRenderer}}
+\doxysubsubsection{\texorpdfstring{pushVertex()}{pushVertex()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classBatchRenderer_af8ac52e8c0fd0d95d597dd0a03f82c50} 
+void Batch\+Renderer\+::push\+Vertex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTexture}{Texture}} \&}]{texture}{, }\item[{\mbox{\hyperlink{structBatchRenderer_1_1Vertex}{Vertex}}}]{vertex}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{batch__renderer_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{batch__renderer_8cpp_source}{batch\+\_\+renderer.\+cpp}}.
+
+\Hypertarget{classBatchRenderer_a290fee60ff58b16db1a3ddeee965337c}\index{BatchRenderer@{BatchRenderer}!pushVertex@{pushVertex}}
+\index{pushVertex@{pushVertex}!BatchRenderer@{BatchRenderer}}
+\doxysubsubsection{\texorpdfstring{pushVertex()}{pushVertex()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classBatchRenderer_a290fee60ff58b16db1a3ddeee965337c} 
+void Batch\+Renderer\+::push\+Vertex (\begin{DoxyParamCaption}\item[{unsigned int}]{texture\+ID}{, }\item[{\mbox{\hyperlink{structBatchRenderer_1_1Vertex}{Vertex}}}]{vertex}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{batch__renderer_8cpp_source_l00096}{96}} of file \mbox{\hyperlink{batch__renderer_8cpp_source}{batch\+\_\+renderer.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classBatchRenderer_aafe0385e74e82d1f3bb10750a32d626f}\index{BatchRenderer@{BatchRenderer}!mMvp@{mMvp}}
+\index{mMvp@{mMvp}!BatchRenderer@{BatchRenderer}}
+\doxysubsubsection{\texorpdfstring{mMvp}{mMvp}}
+{\footnotesize\ttfamily \label{classBatchRenderer_aafe0385e74e82d1f3bb10750a32d626f} 
+float Batch\+Renderer\+::m\+Mvp\mbox{[}4\mbox{]}\mbox{[}4\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{batch__renderer_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{batch__renderer_8hpp_source}{batch\+\_\+renderer.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/vid/\+Dev/personal/game/src/engine/renderer/\mbox{\hyperlink{batch__renderer_8hpp}{batch\+\_\+renderer.\+hpp}}\item 
+/home/vid/\+Dev/personal/game/src/engine/renderer/\mbox{\hyperlink{batch__renderer_8cpp}{batch\+\_\+renderer.\+cpp}}\end{DoxyCompactItemize}

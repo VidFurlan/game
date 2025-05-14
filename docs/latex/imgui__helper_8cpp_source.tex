@@ -1,0 +1,279 @@
+\doxysection{imgui\+\_\+helper.\+cpp}
+\hypertarget{imgui__helper_8cpp_source}{}\label{imgui__helper_8cpp_source}\index{/home/vid/Dev/personal/game/src/engine/debug/imgui\_helper.cpp@{/home/vid/Dev/personal/game/src/engine/debug/imgui\_helper.cpp}}
+\mbox{\hyperlink{imgui__helper_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{imgui__helper_8hpp}{imgui\_helper.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <imgui.h>}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <imgui\_impl\_glfw.h>}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <imgui\_impl\_opengl3.h>}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <type\_traits>}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__image__game__object_8hpp}{abstract\_image\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{camera__game__object_8hpp}{camera\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game_8hpp}{game.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{entity_8hpp}{objects/entities/entity.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8hpp}{objects/player.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{room__transition_8hpp}{objects/room\_transition.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{scene__game__object_8hpp}{scene\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00019}00019\ \textcolor{keywordtype}{bool}\ ImGuiHelper::mShowSceneDebugMenu\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00020}00020\ \mbox{\hyperlink{classGameObject}{GameObject}}\ *ImGuiHelper::mSelectedGameObject\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00021}00021\ std::list<std::string>\ ImGuiHelper::mPathToSelectedGameObject;}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00023}\mbox{\hyperlink{classImGuiHelper_a25b6abafc5b10e7ffaa256d0b078a8b9}{00023}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImGuiHelper_a25b6abafc5b10e7ffaa256d0b078a8b9}{ImGuiHelper::Init}}()\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00024}00024\ \ \ \ \ IMGUI\_CHECKVERSION();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00025}00025\ \ \ \ \ ImGui::CreateContext();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00026}00026\ \ \ \ \ ImGuiIO\ \&io\ =\ ImGui::GetIO();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00027}00027\ \ \ \ \ io.ConfigFlags\ |=\ ImGuiConfigFlags\_NavEnableKeyboard;}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00028}00028\ \ \ \ \ io.ConfigFlags\ |=\ ImGuiConfigFlags\_NavEnableGamepad;}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00029}00029\ \ \ \ \ io.ConfigFlags\ |=\ ImGuiConfigFlags\_DockingEnable;}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//\ io.ConfigFlags\ |=\ ImGuiConfigFlags\_ViewportsEnable;}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00032}00032\ \ \ \ \ ImGui\_ImplGlfw\_InitForOpenGL(\mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().GetWindow()-\/>GetWindow(),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00033}00033\ \ \ \ \ ImGui\_ImplOpenGL3\_Init();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00035}00035\ \ \ \ \ ImGui::StyleColorsDark();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00038}\mbox{\hyperlink{classImGuiHelper_aab6c7851924041ab2a2c3735f343b011}{00038}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImGuiHelper_aab6c7851924041ab2a2c3735f343b011}{ImGuiHelper::NewFrame}}()\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00039}00039\ \ \ \ \ ImGui\_ImplOpenGL3\_NewFrame();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00040}00040\ \ \ \ \ ImGui\_ImplGlfw\_NewFrame();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00041}00041\ \ \ \ \ ImGui::NewFrame();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00042}00042\ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00044}\mbox{\hyperlink{classImGuiHelper_af9f6aae3cc3f2c061e125a36ae869506}{00044}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImGuiHelper_af9f6aae3cc3f2c061e125a36ae869506}{ImGuiHelper::Render}}()\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00045}00045\ \ \ \ \ ImGui::Render();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00046}00046\ \ \ \ \ ImGui\_ImplOpenGL3\_RenderDrawData(ImGui::GetDrawData());}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{comment}{//\ ImGuiIO\ \&io\ =\ ImGui::GetIO();}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ if\ (io.ConfigFlags\ \&\ ImGuiConfigFlags\_ViewportsEnable)\ \{}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{comment}{//\ \ ImGui::UpdatePlatformWindows();}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ \ ImGui::RenderPlatformWindowsDefault();}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00054}00054\ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00056}\mbox{\hyperlink{classImGuiHelper_a6464027213c5d0c40157d7923de3408f}{00056}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImGuiHelper_a6464027213c5d0c40157d7923de3408f}{ImGuiHelper::Shutdown}}()\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00057}00057\ \ \ \ \ ImGui\_ImplOpenGL3\_Shutdown();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00058}00058\ \ \ \ \ ImGui\_ImplGlfw\_Shutdown();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00059}00059\ \ \ \ \ ImGui::DestroyContext();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00060}00060\ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00062}\mbox{\hyperlink{classImGuiHelper_a1965c9892380bd401a1c897d641b1d2b}{00062}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImGuiHelper_a1965c9892380bd401a1c897d641b1d2b}{ImGuiHelper::ImGuiDebugMenu}}()\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00063}00063\ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Game\ Debug\ Info"{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00065}00065\ \ \ \ \ ImGuiIO\ \&io\ =\ ImGui::GetIO();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00066}00066\ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Application\ average\ \%.3f\ ms/frame\ (\%.1f\ FPS)"{}},\ 1000.0f\ /\ io.Framerate,\ io.Framerate);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00067}00067\ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Active\ scene:\ \%s"{}},\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().GetActiveScene()-\/>GetName().c\_str());}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordtype}{bool}\ disablePostProcessing\ =\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_adff214770dbf979c4961185fcb22134f}{IsPostProcessingDisabled}}();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00070}00070\ \ \ \ \ ImGui::Checkbox(\textcolor{stringliteral}{"{}Disable\ post\ processing"{}},\ \&disablePostProcessing);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00071}00071\ \ \ \ \ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_acd78ce70eb9c4819f3c9c8d23b6e0081}{SetPostProcessingDisabled}}(disablePostProcessing);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{keywordtype}{bool}\ debugMode\ =\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_a2e5b53fa9be834cf1c9e04f7f6b68766}{IsDebugMode}}();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00074}00074\ \ \ \ \ ImGui::Checkbox(\textcolor{stringliteral}{"{}Debug\ mode"{}},\ \&debugMode);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00075}00075\ \ \ \ \ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_a1f9aa7187bf9966dd9c57b2e5a6f04ef}{SetDebugMode}}(debugMode);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00077}00077\ \ \ \ \ ImGui::Checkbox(\textcolor{stringliteral}{"{}Show\ scene\ debug"{}},\ \&mShowSceneDebugMenu);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00079}00079\ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{if}\ (mShowSceneDebugMenu)\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ General\ scene\ debug\ menu}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSceneGameObject}{SceneGameObject}}\ *scene\ =\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_ac99318a82ddc53292a7434d7d16a7236}{GetActiveScene}}();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Scene\ Debug\ Menu"{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Scene\ name:\ \%s"{}},\ scene-\/>\mbox{\hyperlink{classGameObject_a986731c4dfb08336dbf0731e6514bad9}{GetName}}().c\_str());}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Active\ Game\ Objects:\ \%d"{}},\ (\textcolor{keywordtype}{int})(scene-\/>\mbox{\hyperlink{classGameObject_a4d1b2597afd1207e05082ea3263b4409}{GetChildrenCount}}()));}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (scene-\/>\mbox{\hyperlink{classSceneGameObject_a4fc91f3f54c2d8049c81fc97e3abf106}{GetActiveCamera}}()\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}No\ active\ camera\ set"{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Active\ camera:\ \%s"{}},\ scene-\/>\mbox{\hyperlink{classSceneGameObject_a4fc91f3f54c2d8049c81fc97e3abf106}{GetActiveCamera}}()-\/>\mbox{\hyperlink{classGameObject_a986731c4dfb08336dbf0731e6514bad9}{GetName}}().c\_str());}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Camera\ position:\ (\%.2f,\ \%.2f)"{}},\ scene-\/>\mbox{\hyperlink{classSceneGameObject_a4fc91f3f54c2d8049c81fc97e3abf106}{GetActiveCamera}}()-\/>\mbox{\hyperlink{classGameObject_a977d4bbb9ebe2266bae702b59508303b}{GetPosition}}().x,\ scene-\/>\mbox{\hyperlink{classSceneGameObject_a4fc91f3f54c2d8049c81fc97e3abf106}{GetActiveCamera}}()-\/>\mbox{\hyperlink{classGameObject_a977d4bbb9ebe2266bae702b59508303b}{GetPosition}}().y);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ ImGui::Separator();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}\(\backslash\)t\(\backslash\)tA\ |\ V\ \(\backslash\)tName\ [AV]"{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ std::list<std::string>\ pathToSelectedGameObject;}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Hierarchical\ game\ object\ debug\ menu}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ dfsHierarchy\ =\ [\&](\mbox{\hyperlink{classGameObject}{GameObject}}\ *gameObject,\ \textcolor{keywordtype}{int}\ level,\ \textcolor{keywordtype}{bool}\ active,\ \textcolor{keywordtype}{bool}\ visible,\ std::string\ tagName,\ \textcolor{keyword}{auto}\ dfsHierarchy)\ -\/>\ \textcolor{keywordtype}{bool}\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ tagName\ +=\ gameObject-\/>\mbox{\hyperlink{classGameObject_a986731c4dfb08336dbf0731e6514bad9}{GetName}}()\ +\ \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ pathToSelectedGameObject.push\_back(gameObject-\/>\mbox{\hyperlink{classGameObject_a986731c4dfb08336dbf0731e6514bad9}{GetName}}());}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button((std::string(\textcolor{stringliteral}{"{}Debug\#\#Debug"{}})\ +\ tagName).c\_str()))\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGuiHelper::mSelectedGameObject\ ==\ gameObject)\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGuiHelper::mSelectedGameObject\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGuiHelper::mSelectedGameObject\ =\ gameObject;}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGuiHelper::mPathToSelectedGameObject\ =\ pathToSelectedGameObject;}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::SameLine();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isActive\ =\ gameObject-\/>\mbox{\hyperlink{classGameObject_aeacebf64d0153edf9e02a43defc0d26f}{GetActive}}();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Checkbox((std::string(\textcolor{stringliteral}{"{}\#\#Active"{}})\ +\ tagName).c\_str(),\ \&isActive);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::SameLine();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isActive\ !=\ gameObject-\/>\mbox{\hyperlink{classGameObject_aeacebf64d0153edf9e02a43defc0d26f}{GetActive}}())\ gameObject-\/>\mbox{\hyperlink{classGameObject_a8b78cd9270733086927a4f8a4f07398e}{SetActive}}(isActive);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ active\ =\ active\ \&\&\ isActive;}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isVisible\ =\ gameObject-\/>\mbox{\hyperlink{classGameObject_a821630aa6f0c19413a22475cac54c7b4}{GetVisible}}();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Checkbox((std::string(\textcolor{stringliteral}{"{}\#\#Visible"{}})\ +\ tagName).c\_str(),\ \&isVisible);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::SameLine();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isVisible\ !=\ gameObject-\/>\mbox{\hyperlink{classGameObject_a821630aa6f0c19413a22475cac54c7b4}{GetVisible}}())\ gameObject-\/>\mbox{\hyperlink{classGameObject_ae6411c30a8a2c258b52288f6aecb220e}{SetVisible}}(isVisible);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ visible\ =\ visible\ \&\&\ isVisible;}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ ImGuiTreeNodeFlags\ flags\ =\ ImGuiTreeNodeFlags\_OpenOnArrow\ |\ ImGuiTreeNodeFlags\_OpenOnDoubleClick;}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gameObject-\/>\mbox{\hyperlink{classGameObject_a9c38119383137784bcbaeef5147be51d}{GetChildren}}()-\/>empty())\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flags\ |=\ ImGuiTreeNodeFlags\_Leaf;}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGuiHelper::mSelectedGameObject\ ==\ gameObject)\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flags\ |=\ ImGuiTreeNodeFlags\_Selected;}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ showChildren\ =\ ImGui::TreeNodeEx((std::string(\textcolor{stringliteral}{"{}\#\#"{}})\ +\ tagName).c\_str(),\ flags,\ \textcolor{stringliteral}{"{}\%s\ [\%s\%s]"{}},\ gameObject-\/>\mbox{\hyperlink{classGameObject_a986731c4dfb08336dbf0731e6514bad9}{GetName}}().c\_str(),\ active\ ?\ \textcolor{stringliteral}{"{}A"{}}\ :\ \textcolor{stringliteral}{"{}-\/"{}},\ visible\ ?\ \textcolor{stringliteral}{"{}V"{}}\ :\ \textcolor{stringliteral}{"{}-\/"{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ret\ =\ mSelectedGameObject\ ==\ gameObject;}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (showChildren)\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ [name,\ child]\ :\ *gameObject-\/>\mbox{\hyperlink{classGameObject_a9c38119383137784bcbaeef5147be51d}{GetChildren}}())\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ret\ |=\ dfsHierarchy(child,\ level\ +\ 1,\ active,\ visible,\ tagName,\ dfsHierarchy);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::TreePop();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ pathToSelectedGameObject.pop\_back();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ [name,\ gameObject]\ :\ *scene-\/>\mbox{\hyperlink{classGameObject_a9c38119383137784bcbaeef5147be51d}{GetChildren}}())\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ dfsHierarchy(gameObject,\ 0,\ \textcolor{keyword}{true},\ \textcolor{keyword}{true},\ \textcolor{stringliteral}{"{}"{}},\ dfsHierarchy);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameObject}{GameObject}}\ *parent\ =\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_ac99318a82ddc53292a7434d7d16a7236}{GetActiveScene}}();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ mPathToSelectedGameObject.begin();\ it\ !=\ mPathToSelectedGameObject.end();\ it++)\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (parent-\/>\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(*it)\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGuiHelper::mSelectedGameObject\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ parent\ =\ parent-\/>\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(*it);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Selected\ game\ object\ debug\ menu}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGuiHelper::mSelectedGameObject\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Separator();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameObject}{GameObject}}\ *gameObject\ =\ ImGuiHelper::mSelectedGameObject;}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Game\ object:\ "{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::SameLine();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classImGuiHelper_a17cdbc8b6d6a06b704d287933dd8089b}{SnapToRight}}(gameObject-\/>\mbox{\hyperlink{classGameObject_a986731c4dfb08336dbf0731e6514bad9}{GetName}}());}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Parent:\ "{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::SameLine();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gameObject-\/>\mbox{\hyperlink{classGameObject_a7eec3f82ecf749dd495cf6e3cacd264a}{GetParent}}()\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classImGuiHelper_a17cdbc8b6d6a06b704d287933dd8089b}{SnapToRight}}(gameObject-\/>\mbox{\hyperlink{classGameObject_a7eec3f82ecf749dd495cf6e3cacd264a}{GetParent}}()-\/>\mbox{\hyperlink{classGameObject_a986731c4dfb08336dbf0731e6514bad9}{GetName}}());}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classImGuiHelper_a17cdbc8b6d6a06b704d287933dd8089b}{SnapToRight}}(\textcolor{stringliteral}{"{}None"{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Type:\ "{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::SameLine();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classImGuiHelper_a17cdbc8b6d6a06b704d287933dd8089b}{SnapToRight}}(\textcolor{keyword}{typeid}(*gameObject).name());}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Separator();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ active\ =\ gameObject-\/>\mbox{\hyperlink{classGameObject_aeacebf64d0153edf9e02a43defc0d26f}{GetActive}}();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Checkbox(\textcolor{stringliteral}{"{}Active"{}},\ \&active);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ gameObject-\/>\mbox{\hyperlink{classGameObject_a8b78cd9270733086927a4f8a4f07398e}{SetActive}}(active);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ visible\ =\ gameObject-\/>\mbox{\hyperlink{classGameObject_a821630aa6f0c19413a22475cac54c7b4}{GetVisible}}();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Checkbox(\textcolor{stringliteral}{"{}Visible"{}},\ \&visible);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ gameObject-\/>\mbox{\hyperlink{classGameObject_ae6411c30a8a2c258b52288f6aecb220e}{SetVisible}}(visible);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Z\ Index:"{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ layer\ =\ gameObject-\/>\mbox{\hyperlink{classGameObject_a8604b8941849f9000abb3eb582f66176}{GetZIndex}}();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::InputInt(\textcolor{stringliteral}{"{}\#\#Layer"{}},\ \&layer);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ gameObject-\/>\mbox{\hyperlink{classGameObject_a407f5d1d8117bc7ce210b64d58c04662}{SetZIndex}}(layer);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Position:"{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ pos\ =\ gameObject-\/>\mbox{\hyperlink{classGameObject_a977d4bbb9ebe2266bae702b59508303b}{GetPosition}}();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::InputFloat(\textcolor{stringliteral}{"{}X\#\#Pos"{}},\ \&pos.x,\ 1.0f,\ 1.0f,\ \textcolor{stringliteral}{"{}\%.4f"{}},\ ImGuiInputTextFlags\_CharsDecimal);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::InputFloat(\textcolor{stringliteral}{"{}Y\#\#Pos"{}},\ \&pos.y,\ 1.0f,\ 1.0f,\ \textcolor{stringliteral}{"{}\%.4f"{}},\ ImGuiInputTextFlags\_CharsDecimal);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ gameObject-\/>\mbox{\hyperlink{classGameObject_a404b760fb13e77e57c6512db9d11da81}{SetPosition}}(pos);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Rotation:"{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ rot\ =\ gameObject-\/>\mbox{\hyperlink{classGameObject_a53875b706c5c9ebc0cdd8600a423ed20}{GetRotation}}();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::InputFloat(\textcolor{stringliteral}{"{}\#\#Rot"{}},\ \&rot,\ 1.0f,\ 1.0f,\ \textcolor{stringliteral}{"{}\%.2f"{}},\ ImGuiInputTextFlags\_CharsDecimal);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ gameObject-\/>\mbox{\hyperlink{classGameObject_aae995b3b06e73711a1163ae0b0a7f1fd}{SetRotation}}(rot);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{dynamic\_cast<}\mbox{\hyperlink{classAbstractImageGameObject}{AbstractImageGameObject}}\ *\textcolor{keyword}{>}(gameObject))\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAbstractImageGameObject}{AbstractImageGameObject}}\ *imageGameObject\ =\ \textcolor{keyword}{dynamic\_cast<}\mbox{\hyperlink{classAbstractImageGameObject}{AbstractImageGameObject}}\ *\textcolor{keyword}{>}(gameObject);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ size\ =\ imageGameObject-\/>\mbox{\hyperlink{classAbstractImageGameObject_ac6ad57e75ba339ba4985d7d7b0187c1f}{GetScale}}();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Size:"{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::InputFloat(\textcolor{stringliteral}{"{}Width\#\#Size"{}},\ \&size.x,\ 0.01f,\ 0.01f,\ \textcolor{stringliteral}{"{}\%.4f"{}},\ ImGuiInputTextFlags\_CharsDecimal);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::InputFloat(\textcolor{stringliteral}{"{}Height\#\#Size"{}},\ \&size.y,\ 0.01f,\ 0.01f,\ \textcolor{stringliteral}{"{}\%.4f"{}},\ ImGuiInputTextFlags\_CharsDecimal);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ imageGameObject-\/>\mbox{\hyperlink{classAbstractImageGameObject_a9854b52551c4c2d19898a3d6e11023fa}{SetScale}}(size);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec4\ color\ =\ imageGameObject-\/>\mbox{\hyperlink{classAbstractImageGameObject_a0004e19ef2603f6f8d8b60cb32594b45}{GetColor}}();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::ColorEdit4(\textcolor{stringliteral}{"{}Color"{}},\ \&color.x);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ imageGameObject-\/>\mbox{\hyperlink{classAbstractImageGameObject_a49c84676a9a1a428793b0f523aca76b3}{SetColor}}(color);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{dynamic\_cast<}\mbox{\hyperlink{classCameraGameObject}{CameraGameObject}}\ *\textcolor{keyword}{>}(gameObject))\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCameraGameObject}{CameraGameObject}}\ *cameraGameObject\ =\ \textcolor{keyword}{dynamic\_cast<}\mbox{\hyperlink{classCameraGameObject}{CameraGameObject}}\ *\textcolor{keyword}{>}(gameObject);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ zoom\ =\ cameraGameObject-\/>\mbox{\hyperlink{classCameraGameObject_aa21540eb548bbc0b30a8a221368df414}{GetZoom}}();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Zoom:"{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::InputFloat(\textcolor{stringliteral}{"{}\#\#Zoom"{}},\ \&zoom,\ 0.1f,\ 1.0f,\ \textcolor{stringliteral}{"{}\%.4f"{}},\ ImGuiInputTextFlags\_CharsDecimal);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cameraGameObject-\/>\mbox{\hyperlink{classCameraGameObject_a615018d5e0145b64d7fe045059e0ba6c}{SetZoom}}(zoom);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::Button(\textcolor{stringliteral}{"{}Use\ Camera"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cameraGameObject-\/>\mbox{\hyperlink{classCameraGameObject_ad9434acc58b3ddc0de6666d162365480}{Use}}();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{dynamic\_cast<}\mbox{\hyperlink{classEntity}{Entity}}\ *\textcolor{keyword}{>}(gameObject))\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEntity}{Entity}}\ *entity\ =\ \textcolor{keyword}{dynamic\_cast<}\mbox{\hyperlink{classEntity}{Entity}}\ *\textcolor{keyword}{>}(gameObject);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Health:\ \%d"{}},\ entity-\/>\mbox{\hyperlink{classEntity_af42f153d41d77b5a11471fa7dae5b64b}{GetHealth}}());}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Damage"{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Button(\textcolor{stringliteral}{"{}Damage\#\#Damage"{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::IsItemClicked())\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ entity-\/>\mbox{\hyperlink{classEntity_a8fa1dd101d54e1675fc396019e077172}{Damage}}(1);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}Heal"{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Button(\textcolor{stringliteral}{"{}Heal\#\#Heal"{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::IsItemClicked())\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ entity-\/>\mbox{\hyperlink{classEntity_a8fa1dd101d54e1675fc396019e077172}{Damage}}(-\/1);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{dynamic\_cast<}\mbox{\hyperlink{classRoomTransition}{RoomTransition}}\ *\textcolor{keyword}{>}(gameObject))\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRoomTransition}{RoomTransition}}\ *roomTransition\ =\ \textcolor{keyword}{dynamic\_cast<}\mbox{\hyperlink{classRoomTransition}{RoomTransition}}\ *\textcolor{keyword}{>}(gameObject);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::Button(\textcolor{stringliteral}{"{}Transition\#\#Transition"{}});}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ImGui::IsItemClicked())\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ roomTransition-\/>\mbox{\hyperlink{classRoomTransition_a9456079bd6ab7f3057e5f4c78bd98b2e}{Transition}}();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00265}00265\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00266}00266\ \}}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00268}\mbox{\hyperlink{classImGuiHelper_a17cdbc8b6d6a06b704d287933dd8089b}{00268}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImGuiHelper_a17cdbc8b6d6a06b704d287933dd8089b}{ImGuiHelper::SnapToRight}}(std::string\ text)\ \{}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00269}00269\ \ \ \ \ \textcolor{keyword}{auto}\ posX\ =\ (ImGui::GetCursorPosX()\ +\ ImGui::GetColumnWidth()\ -\/\ ImGui::CalcTextSize(text.c\_str()).x\ -\/\ ImGui::GetScrollX()\ -\/\ 2\ *\ ImGui::GetStyle().ItemSpacing.x);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00270}00270\ \ \ \ \ \textcolor{keywordflow}{if}\ (posX\ >\ ImGui::GetCursorPosX())}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ ImGui::SetCursorPosX(posX);}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00272}00272\ \ \ \ \ ImGui::Text(\textcolor{stringliteral}{"{}\%s"{}},\ text.c\_str());}
+\DoxyCodeLine{\Hypertarget{imgui__helper_8cpp_source_l00273}00273\ \}}
+
+\end{DoxyCode}

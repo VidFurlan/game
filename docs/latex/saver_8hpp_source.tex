@@ -1,0 +1,36 @@
+\doxysection{saver.\+hpp}
+\hypertarget{saver_8hpp_source}{}\label{saver_8hpp_source}\index{/home/vid/Dev/personal/game/src/game/objects/saver.hpp@{/home/vid/Dev/personal/game/src/game/objects/saver.hpp}}
+\mbox{\hyperlink{saver_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__object_8hpp}{game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{dungeon_8hpp}{objects/dungeon/dungeon.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{dungeon__room_8hpp}{objects/dungeon/dungeon\_room.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{entity_8hpp}{objects/entities/entity.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00011}\mbox{\hyperlink{classSaver}{00011}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSaver_a3659ea3f52aead3567968bf00047fd3c}{Saver}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00012}00012\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{classSaver_a3659ea3f52aead3567968bf00047fd3c}{Saver}}(\textcolor{keyword}{const}\ std::string\ \&name,\ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSaver_a713f197a0aac1eae88bb970fd55bf610}{Update}}(\textcolor{keywordtype}{float}\ deltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSaver_ac052342a699ee8aa7045263def560f93}{Save}}();}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00016}00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSaver_ae6a67352d7c04328247757585169111b}{Load}}();}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSaver_a5c4f9e59a3b0a3aefae943bdae1b894d}{DeleteSave}}();}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSaver_a5b30841cb5da82c7a4fc8a88ec7d96ab}{SaveHighscore}}(\textcolor{keywordtype}{int}\ score,\ std::string\ user\ =\ \textcolor{stringliteral}{"{}Player"{}});}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<std::pair<int,\ std::string>>\ \mbox{\hyperlink{classSaver_abb8fa13e408265d86c50438cee79efbd}{LoadHighscore}}();}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00021}\mbox{\hyperlink{classSaver_ab387902d97342d53c54e0798a4179f0e}{00021}}\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classSaver_ab387902d97342d53c54e0798a4179f0e}{mSaveFilePath}};}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00022}\mbox{\hyperlink{classSaver_ae918a17af7e7cd65352440e97b9b015d}{00022}}\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classSaver_ae918a17af7e7cd65352440e97b9b015d}{mSaveFileName}};}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00024}\mbox{\hyperlink{classSaver_a235e9ea10824101370f087de904fc98d}{00024}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSaver_a235e9ea10824101370f087de904fc98d}{mShouldLoad}};}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00025}\mbox{\hyperlink{classSaver_a8b816fd722d96754627d8d0ac3b1a6c1}{00025}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSaver_a8b816fd722d96754627d8d0ac3b1a6c1}{mReadyToLoad}};}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00026}\mbox{\hyperlink{classSaver_a8e58d803d843035ececbb893ea1ae679}{00026}}\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<Entity::SaveData>\ \mbox{\hyperlink{classSaver_a8e58d803d843035ececbb893ea1ae679}{mEntitySaveData}};}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00027}\mbox{\hyperlink{classSaver_a1beb509f7d02669c1832863d9b30c0b1}{00027}}\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<std::vector<Dungeon::RoomData>>\ \mbox{\hyperlink{classSaver_a1beb509f7d02669c1832863d9b30c0b1}{mRoomSaveData}};}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00028}\mbox{\hyperlink{classSaver_a956996413f98459b596d65d842694243}{00028}}\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structDungeon_1_1SaveData}{Dungeon::SaveData}}\ \mbox{\hyperlink{classSaver_a956996413f98459b596d65d842694243}{mDungeonSaveData}};}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00029}\mbox{\hyperlink{classSaver_a5e64d291cbc147d778f057530f29ff2b}{00029}}\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structEntity_1_1SaveData}{Entity::SaveData}}\ \mbox{\hyperlink{classSaver_a5e64d291cbc147d778f057530f29ff2b}{mPlayerSaveData}};}
+\DoxyCodeLine{\Hypertarget{saver_8hpp_source_l00030}00030\ \};}
+
+\end{DoxyCode}

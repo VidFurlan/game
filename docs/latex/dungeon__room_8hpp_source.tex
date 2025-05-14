@@ -1,0 +1,46 @@
+\doxysection{dungeon\+\_\+room.\+hpp}
+\hypertarget{dungeon__room_8hpp_source}{}\label{dungeon__room_8hpp_source}\index{/home/vid/Dev/personal/game/src/game/objects/dungeon/dungeon\_room.hpp@{/home/vid/Dev/personal/game/src/game/objects/dungeon/dungeon\_room.hpp}}
+\mbox{\hyperlink{dungeon__room_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__object_8hpp}{game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{entity_8hpp}{objects/entities/entity.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00006}\mbox{\hyperlink{classDungeonRoom}{00006}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDungeonRoom_a2c79ec439620001b41e3e0846e0759a3}{DungeonRoom}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00007}00007\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00008}\mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665}{00008}}\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665}{Type}}\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00009}\mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665a1c250a21210b7b88a14db9a0cbe71162}{00009}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665a1c250a21210b7b88a14db9a0cbe71162}{NOT\_SET}},}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00010}\mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665ab078ffd28db767c502ac367053f6e0ac}{00010}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665ab078ffd28db767c502ac367053f6e0ac}{START}},}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00011}\mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665aba2b45bdc11e2a4a6e86aab2ac693cbb}{00011}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665aba2b45bdc11e2a4a6e86aab2ac693cbb}{EMPTY}},}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00012}\mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665afdd3a8eb3032c0124c1c43dec883b670}{00012}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665afdd3a8eb3032c0124c1c43dec883b670}{MONSTER}},}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00013}\mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665af2de7bf382e8eaf7b82632f3c91002f5}{00013}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665af2de7bf382e8eaf7b82632f3c91002f5}{TREASURE}},}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00014}\mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665ab1a326c06d88bf042f73d70f50197905}{00014}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665ab1a326c06d88bf042f73d70f50197905}{END}}}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00015}00015\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00017}\mbox{\hyperlink{classDungeonRoom_aa3716751c83a46f268eaf85415925d37}{00017}}\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classDungeonRoom_aa3716751c83a46f268eaf85415925d37}{State}}\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00018}\mbox{\hyperlink{classDungeonRoom_aa3716751c83a46f268eaf85415925d37aee9e011f5ff0df25569625b858eb866a}{00018}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDungeonRoom_aa3716751c83a46f268eaf85415925d37aee9e011f5ff0df25569625b858eb866a}{UNVISITED}},}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00019}\mbox{\hyperlink{classDungeonRoom_aa3716751c83a46f268eaf85415925d37aa6ec08e871b6a4151dc143082d826cd2}{00019}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDungeonRoom_aa3716751c83a46f268eaf85415925d37aa6ec08e871b6a4151dc143082d826cd2}{VISITED}},}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00020}\mbox{\hyperlink{classDungeonRoom_aa3716751c83a46f268eaf85415925d37a62574ee27e6c5f985a6bc1dc344e7438}{00020}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDungeonRoom_aa3716751c83a46f268eaf85415925d37a62574ee27e6c5f985a6bc1dc344e7438}{CLEARED}}}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00021}00021\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{classDungeonRoom_a2c79ec439620001b41e3e0846e0759a3}{DungeonRoom}}(\mbox{\hyperlink{classGameObject}{GameObject}}\ *parent);}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classGameObject_a554078170496d6fc31af134e76e1e1bd}{GameObject::Render}};}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDungeonRoom_ad2e826add78432d7e3df4e1d183f4a11}{Update}}(\textcolor{keywordtype}{float}\ deltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDungeonRoom_ad33688bee891c731f2241f0835589648}{EntitysFromSaveData}}(std::vector<Entity::SaveData>\ \&entityData);}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDungeonRoom_a62af503035b656f3eefc10e65f405f02}{SetRoom}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00031}00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDungeonRoom_add06518f8234173c0f4cc1a0281e2cfe}{SetType}}(\mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665}{Type}}\ type);}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00032}00032\ \ \ \ \ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665}{Type}}\ \mbox{\hyperlink{classDungeonRoom_aa66e70f07b07f4e81ebf2e66b4e539e0}{GetType}}();}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDungeonRoom_af28c26a2dabdbf0f95e5ae8783e92ea2}{GetEnemyCount}}();}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00036}00036\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00037}00037\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ n\ =\ 13,\ m\ =\ 13;}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665}{Type}}\ mType;}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00039}00039\ \ \ \ \ \mbox{\hyperlink{classDungeonRoom_aa3716751c83a46f268eaf85415925d37}{State}}\ mState;}
+\DoxyCodeLine{\Hypertarget{dungeon__room_8hpp_source_l00040}00040\ \};}
+
+\end{DoxyCode}

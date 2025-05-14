@@ -1,0 +1,514 @@
+\doxysection{Game Class Reference}
+\hypertarget{classGame}{}\label{classGame}\index{Game@{Game}}
+
+
+{\ttfamily \#include $<$game.\+hpp$>$}
+
+Inheritance diagram for Game\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classGame}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::function$<$ void()$>$ \mbox{\hyperlink{classGame_a91cc442843be6a89fa1170df0661e109}{Key\+Callback}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classGame_a555a9e4719fd49971765a2ab8b090b5c}{Init}} ()
+\item 
+void \mbox{\hyperlink{classGame_a96341ca5b54d90adc3ecb3bf0bcd2312}{Run}} ()
+\item 
+void \mbox{\hyperlink{classGame_a45eace7265599e48bd23e4cee7bba041}{Process\+Input}} (float delta\+Time)
+\item 
+void \mbox{\hyperlink{classGame_a0ee29f2672f4b4d2ab4279fcd7475dfa}{Update}} (float delta\+Time)
+\item 
+void \mbox{\hyperlink{classGame_ad7730fcd0227d4b1a2f295303a62b278}{Late\+Update}} (float delta\+Time)
+\item 
+void \mbox{\hyperlink{classGame_a0897730fc9fed789f6c0f11d21a0c14a}{Render}} ()
+\item 
+bool \mbox{\hyperlink{classGame_ae5d0ff39df02b193da95377bed5ec340}{Should\+Close}} () const
+\item 
+void \mbox{\hyperlink{classGame_a5866446758a07b6db7ec1a6ac6a63a61}{Add\+Scene}} (const std\+::string \&scene\+Name, std\+::function$<$ \mbox{\hyperlink{classSceneGameObject}{Scene\+Game\+Object}} \texorpdfstring{$\ast$}{*}()$>$ factory)
+\item 
+void \mbox{\hyperlink{classGame_ad6ab1e8f200385101b27b91bbb82d42f}{Request\+Load\+Scene}} (const std\+::string \&scene\+Name,...)
+\item 
+void \mbox{\hyperlink{classGame_acd78ce70eb9c4819f3c9c8d23b6e0081}{Set\+Post\+Processing\+Disabled}} (bool disabled)
+\item 
+bool \mbox{\hyperlink{classGame_adff214770dbf979c4961185fcb22134f}{Is\+Post\+Processing\+Disabled}} () const
+\item 
+void \mbox{\hyperlink{classGame_a1f9aa7187bf9966dd9c57b2e5a6f04ef}{Set\+Debug\+Mode}} (bool debug\+Mode)
+\item 
+bool \mbox{\hyperlink{classGame_a2e5b53fa9be834cf1c9e04f7f6b68766}{Is\+Debug\+Mode}} () const
+\item 
+\mbox{\hyperlink{classGameWindow}{Game\+Window}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGame_a0e3e1d9988be2c785ea2b90da12940f1}{Get\+Window}} () const
+\item 
+\mbox{\hyperlink{classSpriteRenderer}{Sprite\+Renderer}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGame_a5e9a4eb75a357072bba7fbf89a841a10}{Get\+Sprite\+Renderer}} () const
+\item 
+\mbox{\hyperlink{classResourceManager}{Resource\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGame_acdc42cc04e0b10e37cdd75093e56d312}{Get\+Resource\+Manager}} () const
+\item 
+\mbox{\hyperlink{classSceneGameObject}{Scene\+Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGame_ac99318a82ddc53292a7434d7d16a7236}{Get\+Active\+Scene}} () const
+\item 
+\mbox{\hyperlink{classPostProcessor}{Post\+Processor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGame_a0bae2006ff77458645bab8a220b53ea9}{Get\+Post\+Processor}} () const
+\item 
+\mbox{\hyperlink{classBatchRenderer}{Batch\+Renderer}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGame_a35199250e05e722450f97c7f6d3ca921}{Get\+Batch\+Renderer}} () const
+\item 
+void \mbox{\hyperlink{classGame_a3c6ec5ea738e575d55967931f832ee04}{Set\+State}} (\mbox{\hyperlink{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} state)
+\item 
+\mbox{\hyperlink{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} \mbox{\hyperlink{classGame_a1b9f3b58afa5b9d5bdcddc24c16464b6}{Get\+State}} () const
+\item 
+void \mbox{\hyperlink{classGame_a9f16d5d7bc8de8deab708e42d9b3ad28}{Request\+Delete}} (\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}game\+Object)
+\item 
+void \mbox{\hyperlink{classGame_aa68a4e5da21f77c7f77d4211c3fd79cd}{Apply\+Delete\+Requests}} ()
+\item 
+void \mbox{\hyperlink{classGame_a1a0219c5956bdf84127db1767f736932}{Add\+Font}} (std\+::string path, std\+::string id)
+\item 
+\mbox{\hyperlink{classFontRenderer}{Font\+Renderer}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGame_a8ce7282dc33b14771428acd287dd3256}{Get\+Font\+Renderer}} (std\+::string id)
+\item 
+void \mbox{\hyperlink{classGame_a1827c75a4b4ab4a543bf99772a55337c}{Quit}} ()
+\item 
+void \mbox{\hyperlink{classGame_a8086f111de46ef091ed0da2630b1b720}{Add\+On\+Press\+Key\+Callback}} (int key, std\+::string id, \mbox{\hyperlink{classGame_a91cc442843be6a89fa1170df0661e109}{Key\+Callback}} callback)
+\item 
+void \mbox{\hyperlink{classGame_af4af8ec6fa2041edfe80e11c2dab3ce1}{Add\+On\+Release\+Key\+Callback}} (int key, std\+::string id, \mbox{\hyperlink{classGame_a91cc442843be6a89fa1170df0661e109}{Key\+Callback}} callback)
+\item 
+void \mbox{\hyperlink{classGame_a527a2a30dbf6f7f92acb22fb40732c75}{Remove\+On\+Press\+Key\+Callback}} (int key, std\+::string id)
+\item 
+void \mbox{\hyperlink{classGame_aa53f4acd9d8676290443a2d8ae8a75bd}{Remove\+On\+Release\+Key\+Callback}} (int key, std\+::string id)
+\item 
+void \mbox{\hyperlink{classGame_a49ce263abf216ff3e9271d223ba9ed44}{Clear\+On\+Press\+Key\+Callbacks}} (int key)
+\item 
+void \mbox{\hyperlink{classGame_a7b53c2c4710fe5be280e83cb9343a638}{Clear\+On\+Release\+Key\+Callbacks}} (int key)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classSingleton}{Singleton}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSingleton_a84227bd639f8097db70b60e51aae00b8}{Singleton}} (\mbox{\hyperlink{classSingleton}{Singleton}} const \&)=delete
+\item 
+void \mbox{\hyperlink{classSingleton_aa194cf3a430784a890bc0ceba41705e9}{operator=}} (\mbox{\hyperlink{classSingleton}{Singleton}} const \&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classGame}{Game}} \& \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classSingleton}{Singleton}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classSingleton}{Singleton}} \& \mbox{\hyperlink{classSingleton_a4604f975faaf832905d18c2354157c0e}{Get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classGame_aca4ac8e45f943f85f00c77beaa34b670}{Keys}} \mbox{[}1024\mbox{]} = \{false\}
+\item 
+glm\+::vec2 \mbox{\hyperlink{classGame_a7c782d92e8faa5bb10f8a408a908e34b}{Mouse\+Position}} = \{0.\+0f, 0.\+0f\}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classGame_aa48aaf412b9e33386433680c25b3883c}{key\+\_\+callback}} (GLFWwindow \texorpdfstring{$\ast$}{*}window, int key, int scancode, int action, int mode)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classSingleton}{Singleton}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSingleton_a0e21dfc9afab45b0a6a70f6665ce5819}{Singleton}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{game_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{game_8hpp_source}{game.\+hpp}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classGame_a91cc442843be6a89fa1170df0661e109}\index{Game@{Game}!KeyCallback@{KeyCallback}}
+\index{KeyCallback@{KeyCallback}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{KeyCallback}{KeyCallback}}
+{\footnotesize\ttfamily \label{classGame_a91cc442843be6a89fa1170df0661e109} 
+typedef std\+::function$<$void()$>$ \mbox{\hyperlink{classGame_a91cc442843be6a89fa1170df0661e109}{Game\+::\+Key\+Callback}}}
+
+
+
+Definition at line \mbox{\hyperlink{game_8hpp_source_l00076}{76}} of file \mbox{\hyperlink{game_8hpp_source}{game.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGame_a1a0219c5956bdf84127db1767f736932}\index{Game@{Game}!AddFont@{AddFont}}
+\index{AddFont@{AddFont}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{AddFont()}{AddFont()}}
+{\footnotesize\ttfamily \label{classGame_a1a0219c5956bdf84127db1767f736932} 
+void Game\+::\+Add\+Font (\begin{DoxyParamCaption}\item[{std\+::string}]{path}{, }\item[{std\+::string}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00252}{252}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a8086f111de46ef091ed0da2630b1b720}\index{Game@{Game}!AddOnPressKeyCallback@{AddOnPressKeyCallback}}
+\index{AddOnPressKeyCallback@{AddOnPressKeyCallback}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{AddOnPressKeyCallback()}{AddOnPressKeyCallback()}}
+{\footnotesize\ttfamily \label{classGame_a8086f111de46ef091ed0da2630b1b720} 
+void Game\+::\+Add\+On\+Press\+Key\+Callback (\begin{DoxyParamCaption}\item[{int}]{key}{, }\item[{std\+::string}]{id}{, }\item[{\mbox{\hyperlink{classGame_a91cc442843be6a89fa1170df0661e109}{Key\+Callback}}}]{callback}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00216}{216}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_af4af8ec6fa2041edfe80e11c2dab3ce1}\index{Game@{Game}!AddOnReleaseKeyCallback@{AddOnReleaseKeyCallback}}
+\index{AddOnReleaseKeyCallback@{AddOnReleaseKeyCallback}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{AddOnReleaseKeyCallback()}{AddOnReleaseKeyCallback()}}
+{\footnotesize\ttfamily \label{classGame_af4af8ec6fa2041edfe80e11c2dab3ce1} 
+void Game\+::\+Add\+On\+Release\+Key\+Callback (\begin{DoxyParamCaption}\item[{int}]{key}{, }\item[{std\+::string}]{id}{, }\item[{\mbox{\hyperlink{classGame_a91cc442843be6a89fa1170df0661e109}{Key\+Callback}}}]{callback}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00222}{222}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a5866446758a07b6db7ec1a6ac6a63a61}\index{Game@{Game}!AddScene@{AddScene}}
+\index{AddScene@{AddScene}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{AddScene()}{AddScene()}}
+{\footnotesize\ttfamily \label{classGame_a5866446758a07b6db7ec1a6ac6a63a61} 
+void Game\+::\+Add\+Scene (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{scene\+Name}{, }\item[{std\+::function$<$ \mbox{\hyperlink{classSceneGameObject}{Scene\+Game\+Object}} \texorpdfstring{$\ast$}{*}()$>$}]{factory}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00146}{146}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_aa68a4e5da21f77c7f77d4211c3fd79cd}\index{Game@{Game}!ApplyDeleteRequests@{ApplyDeleteRequests}}
+\index{ApplyDeleteRequests@{ApplyDeleteRequests}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{ApplyDeleteRequests()}{ApplyDeleteRequests()}}
+{\footnotesize\ttfamily \label{classGame_aa68a4e5da21f77c7f77d4211c3fd79cd} 
+void Game\+::\+Apply\+Delete\+Requests (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00209}{209}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a49ce263abf216ff3e9271d223ba9ed44}\index{Game@{Game}!ClearOnPressKeyCallbacks@{ClearOnPressKeyCallbacks}}
+\index{ClearOnPressKeyCallbacks@{ClearOnPressKeyCallbacks}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{ClearOnPressKeyCallbacks()}{ClearOnPressKeyCallbacks()}}
+{\footnotesize\ttfamily \label{classGame_a49ce263abf216ff3e9271d223ba9ed44} 
+void Game\+::\+Clear\+On\+Press\+Key\+Callbacks (\begin{DoxyParamCaption}\item[{int}]{key}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00240}{240}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a7b53c2c4710fe5be280e83cb9343a638}\index{Game@{Game}!ClearOnReleaseKeyCallbacks@{ClearOnReleaseKeyCallbacks}}
+\index{ClearOnReleaseKeyCallbacks@{ClearOnReleaseKeyCallbacks}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{ClearOnReleaseKeyCallbacks()}{ClearOnReleaseKeyCallbacks()}}
+{\footnotesize\ttfamily \label{classGame_a7b53c2c4710fe5be280e83cb9343a638} 
+void Game\+::\+Clear\+On\+Release\+Key\+Callbacks (\begin{DoxyParamCaption}\item[{int}]{key}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00246}{246}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_ac99318a82ddc53292a7434d7d16a7236}\index{Game@{Game}!GetActiveScene@{GetActiveScene}}
+\index{GetActiveScene@{GetActiveScene}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{GetActiveScene()}{GetActiveScene()}}
+{\footnotesize\ttfamily \label{classGame_ac99318a82ddc53292a7434d7d16a7236} 
+\mbox{\hyperlink{classSceneGameObject}{Scene\+Game\+Object}} \texorpdfstring{$\ast$}{*} Game\+::\+Get\+Active\+Scene (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00185}{185}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a35199250e05e722450f97c7f6d3ca921}\index{Game@{Game}!GetBatchRenderer@{GetBatchRenderer}}
+\index{GetBatchRenderer@{GetBatchRenderer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{GetBatchRenderer()}{GetBatchRenderer()}}
+{\footnotesize\ttfamily \label{classGame_a35199250e05e722450f97c7f6d3ca921} 
+\mbox{\hyperlink{classBatchRenderer}{Batch\+Renderer}} \texorpdfstring{$\ast$}{*} Game\+::\+Get\+Batch\+Renderer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00193}{193}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a8ce7282dc33b14771428acd287dd3256}\index{Game@{Game}!GetFontRenderer@{GetFontRenderer}}
+\index{GetFontRenderer@{GetFontRenderer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{GetFontRenderer()}{GetFontRenderer()}}
+{\footnotesize\ttfamily \label{classGame_a8ce7282dc33b14771428acd287dd3256} 
+\mbox{\hyperlink{classFontRenderer}{Font\+Renderer}} \texorpdfstring{$\ast$}{*} Game\+::\+Get\+Font\+Renderer (\begin{DoxyParamCaption}\item[{std\+::string}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00260}{260}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a77f163ad12c9ef69ab7b5097e290515b}\index{Game@{Game}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily \label{classGame_a77f163ad12c9ef69ab7b5097e290515b} 
+static \mbox{\hyperlink{classGame}{Game}} \& Game\+::\+Get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{game_8hpp_source_l00036}{36}} of file \mbox{\hyperlink{game_8hpp_source}{game.\+hpp}}.
+
+\Hypertarget{classGame_a0bae2006ff77458645bab8a220b53ea9}\index{Game@{Game}!GetPostProcessor@{GetPostProcessor}}
+\index{GetPostProcessor@{GetPostProcessor}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{GetPostProcessor()}{GetPostProcessor()}}
+{\footnotesize\ttfamily \label{classGame_a0bae2006ff77458645bab8a220b53ea9} 
+\mbox{\hyperlink{classPostProcessor}{Post\+Processor}} \texorpdfstring{$\ast$}{*} Game\+::\+Get\+Post\+Processor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00189}{189}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_acdc42cc04e0b10e37cdd75093e56d312}\index{Game@{Game}!GetResourceManager@{GetResourceManager}}
+\index{GetResourceManager@{GetResourceManager}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{GetResourceManager()}{GetResourceManager()}}
+{\footnotesize\ttfamily \label{classGame_acdc42cc04e0b10e37cdd75093e56d312} 
+\mbox{\hyperlink{classResourceManager}{Resource\+Manager}} \texorpdfstring{$\ast$}{*} Game\+::\+Get\+Resource\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a5e9a4eb75a357072bba7fbf89a841a10}\index{Game@{Game}!GetSpriteRenderer@{GetSpriteRenderer}}
+\index{GetSpriteRenderer@{GetSpriteRenderer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{GetSpriteRenderer()}{GetSpriteRenderer()}}
+{\footnotesize\ttfamily \label{classGame_a5e9a4eb75a357072bba7fbf89a841a10} 
+\mbox{\hyperlink{classSpriteRenderer}{Sprite\+Renderer}} \texorpdfstring{$\ast$}{*} Game\+::\+Get\+Sprite\+Renderer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00134}{134}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a1b9f3b58afa5b9d5bdcddc24c16464b6}\index{Game@{Game}!GetState@{GetState}}
+\index{GetState@{GetState}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{GetState()}{GetState()}}
+{\footnotesize\ttfamily \label{classGame_a1b9f3b58afa5b9d5bdcddc24c16464b6} 
+\mbox{\hyperlink{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} Game\+::\+Get\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00201}{201}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a0e3e1d9988be2c785ea2b90da12940f1}\index{Game@{Game}!GetWindow@{GetWindow}}
+\index{GetWindow@{GetWindow}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{GetWindow()}{GetWindow()}}
+{\footnotesize\ttfamily \label{classGame_a0e3e1d9988be2c785ea2b90da12940f1} 
+\mbox{\hyperlink{classGameWindow}{Game\+Window}} \texorpdfstring{$\ast$}{*} Game\+::\+Get\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00130}{130}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a555a9e4719fd49971765a2ab8b090b5c}\index{Game@{Game}!Init@{Init}}
+\index{Init@{Init}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{classGame_a555a9e4719fd49971765a2ab8b090b5c} 
+void Game\+::\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a2e5b53fa9be834cf1c9e04f7f6b68766}\index{Game@{Game}!IsDebugMode@{IsDebugMode}}
+\index{IsDebugMode@{IsDebugMode}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{IsDebugMode()}{IsDebugMode()}}
+{\footnotesize\ttfamily \label{classGame_a2e5b53fa9be834cf1c9e04f7f6b68766} 
+bool Game\+::\+Is\+Debug\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00181}{181}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_adff214770dbf979c4961185fcb22134f}\index{Game@{Game}!IsPostProcessingDisabled@{IsPostProcessingDisabled}}
+\index{IsPostProcessingDisabled@{IsPostProcessingDisabled}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{IsPostProcessingDisabled()}{IsPostProcessingDisabled()}}
+{\footnotesize\ttfamily \label{classGame_adff214770dbf979c4961185fcb22134f} 
+bool Game\+::\+Is\+Post\+Processing\+Disabled (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00173}{173}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_ad7730fcd0227d4b1a2f295303a62b278}\index{Game@{Game}!LateUpdate@{LateUpdate}}
+\index{LateUpdate@{LateUpdate}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{LateUpdate()}{LateUpdate()}}
+{\footnotesize\ttfamily \label{classGame_ad7730fcd0227d4b1a2f295303a62b278} 
+void Game\+::\+Late\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00106}{106}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a45eace7265599e48bd23e4cee7bba041}\index{Game@{Game}!ProcessInput@{ProcessInput}}
+\index{ProcessInput@{ProcessInput}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{ProcessInput()}{ProcessInput()}}
+{\footnotesize\ttfamily \label{classGame_a45eace7265599e48bd23e4cee7bba041} 
+void Game\+::\+Process\+Input (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00112}{112}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a1827c75a4b4ab4a543bf99772a55337c}\index{Game@{Game}!Quit@{Quit}}
+\index{Quit@{Quit}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Quit()}{Quit()}}
+{\footnotesize\ttfamily \label{classGame_a1827c75a4b4ab4a543bf99772a55337c} 
+void Game\+::\+Quit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00270}{270}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a527a2a30dbf6f7f92acb22fb40732c75}\index{Game@{Game}!RemoveOnPressKeyCallback@{RemoveOnPressKeyCallback}}
+\index{RemoveOnPressKeyCallback@{RemoveOnPressKeyCallback}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{RemoveOnPressKeyCallback()}{RemoveOnPressKeyCallback()}}
+{\footnotesize\ttfamily \label{classGame_a527a2a30dbf6f7f92acb22fb40732c75} 
+void Game\+::\+Remove\+On\+Press\+Key\+Callback (\begin{DoxyParamCaption}\item[{int}]{key}{, }\item[{std\+::string}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00228}{228}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_aa53f4acd9d8676290443a2d8ae8a75bd}\index{Game@{Game}!RemoveOnReleaseKeyCallback@{RemoveOnReleaseKeyCallback}}
+\index{RemoveOnReleaseKeyCallback@{RemoveOnReleaseKeyCallback}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{RemoveOnReleaseKeyCallback()}{RemoveOnReleaseKeyCallback()}}
+{\footnotesize\ttfamily \label{classGame_aa53f4acd9d8676290443a2d8ae8a75bd} 
+void Game\+::\+Remove\+On\+Release\+Key\+Callback (\begin{DoxyParamCaption}\item[{int}]{key}{, }\item[{std\+::string}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00234}{234}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a0897730fc9fed789f6c0f11d21a0c14a}\index{Game@{Game}!Render@{Render}}
+\index{Render@{Render}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily \label{classGame_a0897730fc9fed789f6c0f11d21a0c14a} 
+void Game\+::\+Render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00115}{115}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a9f16d5d7bc8de8deab708e42d9b3ad28}\index{Game@{Game}!RequestDelete@{RequestDelete}}
+\index{RequestDelete@{RequestDelete}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{RequestDelete()}{RequestDelete()}}
+{\footnotesize\ttfamily \label{classGame_a9f16d5d7bc8de8deab708e42d9b3ad28} 
+void Game\+::\+Request\+Delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{game\+Object}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00205}{205}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_ad6ab1e8f200385101b27b91bbb82d42f}\index{Game@{Game}!RequestLoadScene@{RequestLoadScene}}
+\index{RequestLoadScene@{RequestLoadScene}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{RequestLoadScene()}{RequestLoadScene()}}
+{\footnotesize\ttfamily \label{classGame_ad6ab1e8f200385101b27b91bbb82d42f} 
+void Game\+::\+Request\+Load\+Scene (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{scene\+Name}{, }\item[{}]{...}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00150}{150}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a96341ca5b54d90adc3ecb3bf0bcd2312}\index{Game@{Game}!Run@{Run}}
+\index{Run@{Run}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily \label{classGame_a96341ca5b54d90adc3ecb3bf0bcd2312} 
+void Game\+::\+Run (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00042}{42}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a1f9aa7187bf9966dd9c57b2e5a6f04ef}\index{Game@{Game}!SetDebugMode@{SetDebugMode}}
+\index{SetDebugMode@{SetDebugMode}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{SetDebugMode()}{SetDebugMode()}}
+{\footnotesize\ttfamily \label{classGame_a1f9aa7187bf9966dd9c57b2e5a6f04ef} 
+void Game\+::\+Set\+Debug\+Mode (\begin{DoxyParamCaption}\item[{bool}]{debug\+Mode}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00177}{177}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_acd78ce70eb9c4819f3c9c8d23b6e0081}\index{Game@{Game}!SetPostProcessingDisabled@{SetPostProcessingDisabled}}
+\index{SetPostProcessingDisabled@{SetPostProcessingDisabled}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{SetPostProcessingDisabled()}{SetPostProcessingDisabled()}}
+{\footnotesize\ttfamily \label{classGame_acd78ce70eb9c4819f3c9c8d23b6e0081} 
+void Game\+::\+Set\+Post\+Processing\+Disabled (\begin{DoxyParamCaption}\item[{bool}]{disabled}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00169}{169}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a3c6ec5ea738e575d55967931f832ee04}\index{Game@{Game}!SetState@{SetState}}
+\index{SetState@{SetState}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{SetState()}{SetState()}}
+{\footnotesize\ttfamily \label{classGame_a3c6ec5ea738e575d55967931f832ee04} 
+void Game\+::\+Set\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00197}{197}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_ae5d0ff39df02b193da95377bed5ec340}\index{Game@{Game}!ShouldClose@{ShouldClose}}
+\index{ShouldClose@{ShouldClose}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{ShouldClose()}{ShouldClose()}}
+{\footnotesize\ttfamily \label{classGame_ae5d0ff39df02b193da95377bed5ec340} 
+bool Game\+::\+Should\+Close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00142}{142}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+\Hypertarget{classGame_a0ee29f2672f4b4d2ab4279fcd7475dfa}\index{Game@{Game}!Update@{Update}}
+\index{Update@{Update}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{classGame_a0ee29f2672f4b4d2ab4279fcd7475dfa} 
+void Game\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8cpp_source_l00100}{100}} of file \mbox{\hyperlink{game_8cpp_source}{game.\+cpp}}.
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classGame_aa48aaf412b9e33386433680c25b3883c}\index{Game@{Game}!key\_callback@{key\_callback}}
+\index{key\_callback@{key\_callback}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{key\_callback}{key\_callback}}
+{\footnotesize\ttfamily \label{classGame_aa48aaf412b9e33386433680c25b3883c} 
+void key\+\_\+callback (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{int}]{key}{, }\item[{int}]{scancode}{, }\item[{int}]{action}{, }\item[{int}]{mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{game__window_8cpp_source_l00131}{131}} of file \mbox{\hyperlink{game__window_8cpp_source}{game\+\_\+window.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGame_aca4ac8e45f943f85f00c77beaa34b670}\index{Game@{Game}!Keys@{Keys}}
+\index{Keys@{Keys}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Keys}{Keys}}
+{\footnotesize\ttfamily \label{classGame_aca4ac8e45f943f85f00c77beaa34b670} 
+bool Game\+::\+Keys\mbox{[}1024\mbox{]} = \{false\}}
+
+
+
+Definition at line \mbox{\hyperlink{game_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{game_8hpp_source}{game.\+hpp}}.
+
+\Hypertarget{classGame_a7c782d92e8faa5bb10f8a408a908e34b}\index{Game@{Game}!MousePosition@{MousePosition}}
+\index{MousePosition@{MousePosition}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{MousePosition}{MousePosition}}
+{\footnotesize\ttfamily \label{classGame_a7c782d92e8faa5bb10f8a408a908e34b} 
+glm\+::vec2 Game\+::\+Mouse\+Position = \{0.\+0f, 0.\+0f\}}
+
+
+
+Definition at line \mbox{\hyperlink{game_8hpp_source_l00078}{78}} of file \mbox{\hyperlink{game_8hpp_source}{game.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/vid/\+Dev/personal/game/src/engine/\mbox{\hyperlink{game_8hpp}{game.\+hpp}}\item 
+/home/vid/\+Dev/personal/game/src/engine/\mbox{\hyperlink{game_8cpp}{game.\+cpp}}\end{DoxyCompactItemize}

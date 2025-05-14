@@ -1,0 +1,287 @@
+\doxysection{Chest Class Reference}
+\hypertarget{classChest}{}\label{classChest}\index{Chest@{Chest}}
+
+
+{\ttfamily \#include $<$chest.\+hpp$>$}
+
+Inheritance diagram for Chest\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classChest}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classChest_a858150fe1769862a851e7b21a45eddac}{Chest}} (std\+::string name, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}parent, glm\+::vec3 position=glm\+::vec3(0.\+0f))
+\item 
+\mbox{\hyperlink{classChest_a7812197e36be9b1474ec09ca6aaad404}{\texorpdfstring{$\sim$}{\string~}\+Chest}} ()
+\item 
+virtual void \mbox{\hyperlink{classChest_a2fe3246e39c5ffbfb2f8fe3119173c82}{Update}} (float delta\+Time) override
+\item 
+virtual void \mbox{\hyperlink{classChest_a8dce977cf54610fe1a0038340e19cc75}{Death}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classEntity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEntity_ad13c79db161eec726d9882f51934f86d}{Entity}} (std\+::string name, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}parent, \mbox{\hyperlink{entity_8hpp_ad79a57ed3105eb60d991a1aeb4a9dc44}{Entity\+Type}} type, \mbox{\hyperlink{classPolygon2D}{Polygon2D}} \texorpdfstring{$\ast$}{*}polygon, glm\+::vec3 position=glm\+::vec3(0.\+0f), glm\+::vec2 scale=glm\+::vec2(1.\+0f))
+\item 
+virtual void \mbox{\hyperlink{classEntity_a93b6af9c2ecf98a611f69a4b7bb18331}{Late\+Update}} (float delta\+Time) override
+\item 
+void \mbox{\hyperlink{classEntity_a8fa1dd101d54e1675fc396019e077172}{Damage}} (int damage)
+\item 
+\mbox{\hyperlink{classEntity}{Entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classEntity_ac45db399114699a56307791d1400d3fc}{Set\+Health}} (int health)
+\item 
+\mbox{\hyperlink{classEntity}{Entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classEntity_adaf99708cf64ad1db269ddfc873a4512}{Set\+Max\+Health}} (int max\+Health)
+\item 
+int \mbox{\hyperlink{classEntity_af42f153d41d77b5a11471fa7dae5b64b}{Get\+Health}} () const
+\item 
+int \mbox{\hyperlink{classEntity_af04d5ccc15d901c71f4ee45d9135171b}{Get\+Max\+Health}} () const
+\item 
+\mbox{\hyperlink{entity_8hpp_ad79a57ed3105eb60d991a1aeb4a9dc44}{Entity\+Type}} \mbox{\hyperlink{classEntity_a0dc771aa637c16c38e3263f686fd188f}{Get\+Entity\+Type}} () const
+\item 
+\mbox{\hyperlink{structEntity_1_1SaveData}{Save\+Data}} \mbox{\hyperlink{classEntity_a78197a5d3519d5e3c27c4481260d9fc9}{Get\+Save\+Data}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classColliderGameObject_ad970d36ae048ed6b13f6bbf931926bce}{Collider\+Game\+Object}} (std\+::string name, \mbox{\hyperlink{classShape2D}{Shape2D}} \texorpdfstring{$\ast$}{*}shape, bool fixed, glm\+::vec3 pos=glm\+::vec3(0.\+0f), glm\+::vec2 scale=glm\+::vec2(1.\+0f))
+\item 
+\mbox{\hyperlink{classColliderGameObject_a24e112ec0c553fd28694dd6fa66bbd30}{Collider\+Game\+Object}} (std\+::string name, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}parent, \mbox{\hyperlink{classShape2D}{Shape2D}} \texorpdfstring{$\ast$}{*}shape, bool fixed, glm\+::vec3 pos=glm\+::vec3(0.\+0f), glm\+::vec2 scale=glm\+::vec2(1.\+0f))
+\item 
+virtual \mbox{\hyperlink{classColliderGameObject_abdc16e2cc3c84244c0d84b524556a858}{\texorpdfstring{$\sim$}{\string~}\+Collider\+Game\+Object}} () override
+\item 
+virtual void \mbox{\hyperlink{classColliderGameObject_afbfde58388fdcaf27e5013e25964736a}{Render}} () override
+\item 
+virtual void \mbox{\hyperlink{classColliderGameObject_a9c1df1acc222830d2c4d949d989b0de5}{On\+Collision}} (\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}other, \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collision\+Type}} type=\mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cba8c009c8dd4d4f9dde7515c00d5cd4661}{Collision\+Type\+::\+OVERLAP}})
+\item 
+void \mbox{\hyperlink{classColliderGameObject_a0a71719a2f1b6eb63897f2865a225d52}{Resolve\+Collision}} (float overlap, glm\+::vec2 min\+Axis)
+\item 
+\mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collision\+Type}} \mbox{\hyperlink{classColliderGameObject_ae1d13db40710c4af4bc780a471fdf7fe}{Check\+Collision}} (\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}other) const
+\item 
+\mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collision\+Type}} \mbox{\hyperlink{classColliderGameObject_a41cf3367599703ffd9be44c1f2f5ed97}{Check\+Collision\+And\+Resolve}} (\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}other)
+\begin{DoxyCompactList}\small\item\em Resolve collision between two objects (moves the object that is calling this) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collision\+Type}} \mbox{\hyperlink{classColliderGameObject_a8b2e56f305c407f2646ea5a3cc84bd4f}{Check\+Point\+Collision}} (glm\+::vec2 point) const
+\item 
+bool \mbox{\hyperlink{classColliderGameObject_af4bec93e1147938c92dd287943e17e7b}{Is\+Solid}} () const
+\item 
+bool \mbox{\hyperlink{classColliderGameObject_a5fa9ff0d3933cb14536b0bcab0d75d52}{Is\+Fixed}} () const
+\item 
+std\+::string \mbox{\hyperlink{classColliderGameObject_a8945a6be154b5e3bd610d8643b0e67fb}{Get\+Tag}} () const
+\item 
+\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classColliderGameObject_a9c2a62d474aee06522a50d38f5b668cb}{Set\+Solid}} (bool solid)
+\item 
+\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classColliderGameObject_abf66e625cc5c761bcd78dd73eeef038e}{Set\+Fixed}} (bool fixed)
+\item 
+\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classColliderGameObject_a06e34bf66632368b5f717f339632770c}{Set\+Tag}} (std\+::string tag)
+\item 
+\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classColliderGameObject_ad82f2459cd0961d953b011b480dfea9c}{Set\+On\+Collision}} (std\+::function$<$ void(\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collision\+Type}})$>$ callback)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classGameObject}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{Game\+Object}} (std\+::string name, glm\+::vec3 pos=glm\+::vec3(0.\+0f), glm\+::vec2 scale=glm\+::vec2(1.\+0f))
+\item 
+\mbox{\hyperlink{classGameObject_a76a02ab352553240743add593efeb0cd}{Game\+Object}} (std\+::string name, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}parent, glm\+::vec3 pos=glm\+::vec3(0.\+0f), glm\+::vec2 scale=glm\+::vec2(1.\+0f))
+\item 
+virtual \mbox{\hyperlink{classGameObject_ab82dfdb656f9051c0587e6593b2dda97}{\texorpdfstring{$\sim$}{\string~}\+Game\+Object}} ()
+\item 
+std\+::string \mbox{\hyperlink{classGameObject_a986731c4dfb08336dbf0731e6514bad9}{Get\+Name}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a8b78cd9270733086927a4f8a4f07398e}{Set\+Active}} (bool active)
+\item 
+bool \mbox{\hyperlink{classGameObject_aeacebf64d0153edf9e02a43defc0d26f}{Get\+Active}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_ae6411c30a8a2c258b52288f6aecb220e}{Set\+Visible}} (bool visible)
+\item 
+bool \mbox{\hyperlink{classGameObject_a821630aa6f0c19413a22475cac54c7b4}{Get\+Visible}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a404b760fb13e77e57c6512db9d11da81}{Set\+Position}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a453acd691b437cb3b5c91946c11db064}{Set\+Position}} (glm\+::vec3 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_aae995b3b06e73711a1163ae0b0a7f1fd}{Set\+Rotation}} (float rot)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_ad236d752fd3d90424af28bd8cb60a575}{Set\+Rotation}} (glm\+::vec3 rot)
+\item 
+glm\+::vec3 \mbox{\hyperlink{classGameObject_a977d4bbb9ebe2266bae702b59508303b}{Get\+Position}} () const
+\item 
+glm\+::vec3 \mbox{\hyperlink{classGameObject_adc256761dbcea9050030f4017ad41ad1}{Get\+Global\+Position}} () const
+\item 
+float \mbox{\hyperlink{classGameObject_a53875b706c5c9ebc0cdd8600a423ed20}{Get\+Rotation}} () const
+\item 
+float \mbox{\hyperlink{classGameObject_a213cb8316ac2eac26032e33805e3710f}{Get\+Global\+Rotation}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a407f5d1d8117bc7ce210b64d58c04662}{Set\+ZIndex}} (int z\+Index)
+\item 
+int \mbox{\hyperlink{classGameObject_a8604b8941849f9000abb3eb582f66176}{Get\+ZIndex}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a7eec3f82ecf749dd495cf6e3cacd264a}{Get\+Parent}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{Get\+Child}} (std\+::string name) const
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a9c38119383137784bcbaeef5147be51d}{Get\+Children}} () const
+\item 
+unsigned int \mbox{\hyperlink{classGameObject_a4d1b2597afd1207e05082ea3263b4409}{Get\+Children\+Count}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a31ab3f560b5d6880141f42ae9904478b}{Add\+Child}} (\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}child)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_ae606e30f9db273a9d360849d5632bfe6}{Add\+Child\+To\+Local\+Pos}} (\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}child)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a0acf0dc8a35cf32076ffe3a77bc8bd59}{Remove\+Child}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Remove a child from the game object but do not delete it! If memory is leaking check here! \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGameObject_aa6a1e2ef75a4913addc5b2d21c9126c3}{Safe\+Delete}} ()
+\item 
+void \mbox{\hyperlink{classGameObject_a9bda3668364eebde8670fe4435963c01}{Delete\+Child}} (std\+::string name)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a7abb447984e2d10efe0cbe71b22a9179}{operator+=}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_aa6c5abb1c90b176b0908fabc666838f1}{operator-\/=}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a6b1d674ce2b0d9b18dfe2b392963684e}{operator\texorpdfstring{$\ast$}{*}=}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_aad0532b9af49e6016e3e55e4b6644385}{operator/=}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_af774be813ecbf7bed6f43ecfcff2de58}{operator+=}} (glm\+::vec3 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a10f5ccb22aa853701287815f08624470}{operator-\/=}} (glm\+::vec3 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a77ee0c0f255f2fa39ee02b976fa55289}{operator\texorpdfstring{$\ast$}{*}=}} (glm\+::vec3 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a9fda54e55885533d12b0456fdc6a2a8a}{operator/=}} (glm\+::vec3 pos)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collision\+Type}} \{ \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cba8c009c8dd4d4f9dde7515c00d5cd4661}{OVERLAP}}
+, \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cba2b40a1ea27beb450618885ec87f0ee15}{TOUCH}}
+, \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cbab50339a10e1de285ac99d4c3990b8693}{NONE}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::pair$<$ \mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collider\+Game\+Object\+::\+Collision\+Type}}, std\+::pair$<$ float, glm\+::vec2 $>$ $>$ \mbox{\hyperlink{classColliderGameObject_a4f6cd4c3554d94642a00f2be69be73bf}{Check\+Shape\+Overlap}} (\mbox{\hyperlink{classShape2D}{Shape2D}} \texorpdfstring{$\ast$}{*}shape1, \mbox{\hyperlink{classShape2D}{Shape2D}} \texorpdfstring{$\ast$}{*}shape2, glm\+::vec3 pos1, glm\+::vec3 pos2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classGameObject}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr float \mbox{\hyperlink{classGameObject_a2c7b29001627e8378982097be132c746}{GAME\+\_\+\+SCALE\+\_\+\+FACTOR}} = 10.\+0f
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types inherited from \mbox{\hyperlink{classEntity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classEntity_ac6ff3a9435d7dacb378891eadd127034}{Direction}} \{ \mbox{\hyperlink{classEntity_ac6ff3a9435d7dacb378891eadd127034a01779f21ce2c627d5ab0ddbcde0df1e3}{UP}}
+, \mbox{\hyperlink{classEntity_ac6ff3a9435d7dacb378891eadd127034ac96b21ca6021fe5eb771aa4f2ec2f943}{DOWN}}
+, \mbox{\hyperlink{classEntity_ac6ff3a9435d7dacb378891eadd127034ab5f6762fbff3012f3e22e1fde3e61aa8}{LEFT}}
+, \mbox{\hyperlink{classEntity_ac6ff3a9435d7dacb378891eadd127034a8d87fee3e7f22fa69d0e5bb43993ebfe}{RIGHT}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classEntity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{entity_8hpp_ad79a57ed3105eb60d991a1aeb4a9dc44}{Entity\+Type}} \mbox{\hyperlink{classEntity_aa2034030c31967fb863e00997d2efcdb}{m\+Type}}
+\item 
+bool \mbox{\hyperlink{classEntity_ad5eafcfae163170d8ccf7d8e94f7e08a}{m\+Immune}} = false
+\item 
+float \mbox{\hyperlink{classEntity_a88e1bcfa30a46ea35e46d00348bf734e}{m\+Immunity\+Time}} = 0.\+0f
+\item 
+float \mbox{\hyperlink{classEntity_a18f216ad84233976b91280c313ebb61b}{m\+Immunity\+Time\+Elapsed}} = 0.\+0f
+\item 
+int \mbox{\hyperlink{classEntity_af4fef9d34133ab6fdfc6a06a73ce2a15}{m\+Max\+Health}} = 1
+\item 
+int \mbox{\hyperlink{classEntity_a051882b08400e87f01e789b67068e14d}{m\+Health}} = \mbox{\hyperlink{classEntity_af4fef9d34133ab6fdfc6a06a73ce2a15}{m\+Max\+Health}}
+\item 
+float \mbox{\hyperlink{classEntity_a97130bd61d07d7759a892f9a1ab5bbc4}{m\+Move\+Speed}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classGameObject}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::string \mbox{\hyperlink{classGameObject_a0c88acca9ecfc4990c50d9e371e963a7}{m\+Name}}
+\item 
+bool \mbox{\hyperlink{classGameObject_a5101d9de8eb4e44410d875ccb6bade8b}{m\+Active}}
+\item 
+bool \mbox{\hyperlink{classGameObject_afa97a45840ebad6ba7bc14eb7f7f9041}{m\+Visible}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{classGameObject_aa6ee0f1d35fc6959859a98f9998b197b}{m\+Pos}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{classGameObject_aa769e9608e85e0a5b35b12dd2ced5f01}{m\+Scale}}
+\item 
+int \mbox{\hyperlink{classGameObject_ae54f9fed22969f992d4bd2c55999967d}{m\+ZIndex}} = 1000
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a544c86d162dd917b26ad77deed2ce9e6}{p\+Parent}} = nullptr
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGameObject_af80e9ee891dd30e6d390dd680e3c83f4}{children}}
+\item 
+std\+::map$<$ int, std\+::set$<$ \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$, std\+::greater$<$ int $>$ $>$ \mbox{\hyperlink{classGameObject_a91498e29040e119a948105b5ea4a9883}{m\+Children\+By\+ZIndex}}
+\item 
+std\+::list$<$ \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGameObject_aa036de331741bef1ed8c312a5d5c465e}{m\+Children\+To\+Remove}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{chest_8hpp_source_l00005}{5}} of file \mbox{\hyperlink{chest_8hpp_source}{chest.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classChest_a858150fe1769862a851e7b21a45eddac}\index{Chest@{Chest}!Chest@{Chest}}
+\index{Chest@{Chest}!Chest@{Chest}}
+\doxysubsubsection{\texorpdfstring{Chest()}{Chest()}}
+{\footnotesize\ttfamily \label{classChest_a858150fe1769862a851e7b21a45eddac} 
+Chest\+::\+Chest (\begin{DoxyParamCaption}\item[{std\+::string}]{name}{, }\item[{\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{glm\+::vec3}]{position}{ = {\ttfamily glm\+:\+:vec3(0.0f)}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{chest_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{chest_8cpp_source}{chest.\+cpp}}.
+
+\Hypertarget{classChest_a7812197e36be9b1474ec09ca6aaad404}\index{Chest@{Chest}!````~Chest@{\texorpdfstring{$\sim$}{\string~}Chest}}
+\index{````~Chest@{\texorpdfstring{$\sim$}{\string~}Chest}!Chest@{Chest}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Chest()}{\string~Chest()}}
+{\footnotesize\ttfamily \label{classChest_a7812197e36be9b1474ec09ca6aaad404} 
+Chest\+::\texorpdfstring{$\sim$}{\string~}\+Chest (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{chest_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{chest_8cpp_source}{chest.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classChest_a8dce977cf54610fe1a0038340e19cc75}\index{Chest@{Chest}!Death@{Death}}
+\index{Death@{Death}!Chest@{Chest}}
+\doxysubsubsection{\texorpdfstring{Death()}{Death()}}
+{\footnotesize\ttfamily \label{classChest_a8dce977cf54610fe1a0038340e19cc75} 
+void Chest\+::\+Death (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classEntity_adfd0b60ec1d1208b04bac1b59e6cfa43}{Entity}}.
+
+
+
+Definition at line \mbox{\hyperlink{chest_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{chest_8cpp_source}{chest.\+cpp}}.
+
+\Hypertarget{classChest_a2fe3246e39c5ffbfb2f8fe3119173c82}\index{Chest@{Chest}!Update@{Update}}
+\index{Update@{Update}!Chest@{Chest}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{classChest_a2fe3246e39c5ffbfb2f8fe3119173c82} 
+void Chest\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classEntity_a00da26ec82bc1681a2ec9967c38f36b0}{Entity}}.
+
+
+
+Definition at line \mbox{\hyperlink{chest_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{chest_8cpp_source}{chest.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/vid/\+Dev/personal/game/src/game/objects/entities/\mbox{\hyperlink{chest_8hpp}{chest.\+hpp}}\item 
+/home/vid/\+Dev/personal/game/src/game/objects/entities/\mbox{\hyperlink{chest_8cpp}{chest.\+cpp}}\end{DoxyCompactItemize}

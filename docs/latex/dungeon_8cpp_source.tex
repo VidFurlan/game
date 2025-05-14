@@ -1,0 +1,143 @@
+\doxysection{dungeon.\+cpp}
+\hypertarget{dungeon_8cpp_source}{}\label{dungeon_8cpp_source}\index{/home/vid/Dev/personal/game/src/game/objects/dungeon/dungeon.cpp@{/home/vid/Dev/personal/game/src/game/objects/dungeon/dungeon.cpp}}
+\mbox{\hyperlink{dungeon_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{dungeon_8hpp}{dungeon.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00008}\mbox{\hyperlink{classDungeon_ac83e6f6d99d5d385ff1e71f074ebd488}{00008}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDungeon_ac83e6f6d99d5d385ff1e71f074ebd488}{Dungeon::Generate}}(\textcolor{keywordtype}{int}\ targetRoomCount,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ seed)\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00009}00009\ \ \ \ \ mSeed\ =\ seed;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00010}00010\ \ \ \ \ mRoomCount\ =\ targetRoomCount;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00011}00011\ \ \ \ \ mRng.seed(seed);}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00012}00012\ \ \ \ \ mRooms\ =\ std::vector<std::vector<RoomData>>(2\ *\ mRoomCount\ +\ 1,\ std::vector<RoomData>(2\ *\ mRoomCount\ +\ 1));}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00013}00013\ \ \ \ \ mDist\ =\ std::uniform\_int\_distribution<int>(0,\ 100);}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00015}00015\ \ \ \ \ mCurX\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00016}00016\ \ \ \ \ mCurY\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00018}00018\ \ \ \ \ std::queue<std::pair<int,\ int>>\ q;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00019}00019\ \ \ \ \ q.push(\{0,\ 0\});}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordtype}{int}\ roomCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ treasureRoom\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00023}00023\ \ \ \ \ std::vector<int>\ dirs\ =\ \{0,\ 1,\ 2,\ 3\};}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{while}\ (roomCount\ <\ mRoomCount)\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (roomCount\ !=\ mRoomCount\ \&\&\ q.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ -\/mRoomCount;\ i\ <\ mRoomCount;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ -\/mRoomCount;\ j\ <\ mRoomCount;\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classDungeon_a74bfda8ce3e7779a6362d9669fa34321}{GetRoomData}}(i,\ j).type\ !=\ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665a1c250a21210b7b88a14db9a0cbe71162}{DungeonRoom::Type::NOT\_SET}})\ q.push(\{i,\ j\});}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ [x,\ y]\ =\ q.front();}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ q.pop();}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CountAdjacentRooms(x,\ y)\ >=\ 2)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classDungeon_a74bfda8ce3e7779a6362d9669fa34321}{GetRoomData}}(x,\ y).type\ ==\ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665a1c250a21210b7b88a14db9a0cbe71162}{DungeonRoom::Type::NOT\_SET}})\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ roomType\ =\ mDist(mRng);}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (roomType\ <\ 5\ \&\&\ !treasureRoom\ ||\ (roomCount\ ==\ mRoomCount\ -\/\ 1\ \&\&\ !treasureRoom))\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SetRoomType(x,\ y,\ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665af2de7bf382e8eaf7b82632f3c91002f5}{DungeonRoom::Type::TREASURE}});}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (roomType\ <\ 15)\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SetRoomType(x,\ y,\ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665aba2b45bdc11e2a4a6e86aab2ac693cbb}{DungeonRoom::Type::EMPTY}});}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SetRoomType(x,\ y,\ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665afdd3a8eb3032c0124c1c43dec883b670}{DungeonRoom::Type::MONSTER}});}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ roomCount++;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ std::shuffle(dirs.begin(),\ dirs.end(),\ mRng);}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 4;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nx\ =\ x\ +\ \mbox{\hyperlink{classDungeon_ab16942dbcf3a3cc63cac8d1e4694319e}{directions}}[dirs[i]][0];}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ny\ =\ y\ +\ \mbox{\hyperlink{classDungeon_ab16942dbcf3a3cc63cac8d1e4694319e}{directions}}[dirs[i]][1];}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classDungeon_a74bfda8ce3e7779a6362d9669fa34321}{GetRoomData}}(nx,\ ny).type\ ==\ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665a1c250a21210b7b88a14db9a0cbe71162}{DungeonRoom::Type::NOT\_SET}})\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mDist(mRng)\ \&\ 1)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ q.push(\{nx,\ ny\});}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00061}00061\ \ \ \ \ SetRoomType(0,\ 0,\ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665ab078ffd28db767c502ac367053f6e0ac}{DungeonRoom::Type::START}});}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ -\/mRoomCount;\ i\ <\ mRoomCount;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ -\/mRoomCount;\ j\ <\ mRoomCount;\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classDungeon_a74bfda8ce3e7779a6362d9669fa34321}{GetRoomData}}(i,\ j).type\ ==\ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665ab078ffd28db767c502ac367053f6e0ac}{DungeonRoom::Type::START}})}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}S"{}};}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classDungeon_a74bfda8ce3e7779a6362d9669fa34321}{GetRoomData}}(i,\ j).type\ ==\ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665afdd3a8eb3032c0124c1c43dec883b670}{DungeonRoom::Type::MONSTER}})}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}M"{}};}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classDungeon_a74bfda8ce3e7779a6362d9669fa34321}{GetRoomData}}(i,\ j).type\ ==\ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665af2de7bf382e8eaf7b82632f3c91002f5}{DungeonRoom::Type::TREASURE}})}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}T"{}};}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classDungeon_a74bfda8ce3e7779a6362d9669fa34321}{GetRoomData}}(i,\ j).type\ !=\ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665a1c250a21210b7b88a14db9a0cbe71162}{DungeonRoom::Type::NOT\_SET}})}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\#"{}};}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00077}00077\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00079}00079\ \ \ \ \ ((\mbox{\hyperlink{classDungeonRoom}{DungeonRoom}}\ *)\mbox{\hyperlink{classGameObject_a31ab3f560b5d6880141f42ae9904478b}{AddChild}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classDungeonRoom}{DungeonRoom}}(\textcolor{keyword}{this})))-\/>SetRoom(0,\ 0);}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00080}00080\ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00082}\mbox{\hyperlink{classDungeon_a9cdd0eaf223c4575a39204a5fc3c34e4}{00082}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDungeon_a9cdd0eaf223c4575a39204a5fc3c34e4}{Dungeon::EnterRoom}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classDungeon_a74bfda8ce3e7779a6362d9669fa34321}{GetRoomData}}(x,\ y).type\ ==\ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665a1c250a21210b7b88a14db9a0cbe71162}{DungeonRoom::Type::NOT\_SET}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{keywordflow}{if}\ (mCurX\ >=\ -\/mRoomCount\ \&\&\ mCurX\ <\ mRoomCount\ \&\&\ mCurY\ >=\ -\/mRoomCount\ \&\&\ mCurY\ <\ mRoomCount)\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDungeon_a092759d196898289814b14d568555c59}{SetRoomState}}(mCurX,\ mCurY,\ \mbox{\hyperlink{classDungeonRoom_aa3716751c83a46f268eaf85415925d37a62574ee27e6c5f985a6bc1dc344e7438}{DungeonRoom::State::CLEARED}});}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00087}00087\ \ \ \ \ mCurX\ =\ x;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00088}00088\ \ \ \ \ mCurY\ =\ y;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00089}00089\ \ \ \ \ mCurRoom\ =\ (\mbox{\hyperlink{classDungeonRoom}{DungeonRoom}}\ *)\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}DungeonRoom"{}});}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00090}00090\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classDungeon_a74bfda8ce3e7779a6362d9669fa34321}{GetRoomData}}(x,\ y).state\ ==\ \mbox{\hyperlink{classDungeonRoom_aa3716751c83a46f268eaf85415925d37aee9e011f5ff0df25569625b858eb866a}{DungeonRoom::State::UNVISITED}})\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDungeon_a092759d196898289814b14d568555c59}{SetRoomState}}(x,\ y,\ \mbox{\hyperlink{classDungeonRoom_aa3716751c83a46f268eaf85415925d37aa6ec08e871b6a4151dc143082d826cd2}{DungeonRoom::State::VISITED}});}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00093}00093\ \ \ \ \ ((\mbox{\hyperlink{classDungeonRoom}{DungeonRoom}}\ *)\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}DungeonRoom"{}}))-\/>SetRoom(x,\ y);}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00094}00094\ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00096}00096\ \textcolor{keywordtype}{void}\ Dungeon::SetRoomType(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665}{DungeonRoom::Type}}\ type)\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ <\ -\/mRoomCount\ ||\ x\ >=\ mRoomCount\ ||\ y\ <\ -\/mRoomCount\ ||\ y\ >=\ mRoomCount)\ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Invalid\ room\ coordinates"{}});}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00098}00098\ \ \ \ \ mRooms[x\ +\ mRoomCount][y\ +\ mRoomCount].type\ =\ type;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00099}00099\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classDungeon_a341476b413b6d1527860b29647bf35eb}{mRoomConfigs}}.find(type)\ !=\ \mbox{\hyperlink{classDungeon_a341476b413b6d1527860b29647bf35eb}{mRoomConfigs}}.end())}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ mRooms[x\ +\ mRoomCount][y\ +\ mRoomCount].roomContent\ =\ mDist(mRng)\ \%\ \mbox{\hyperlink{classDungeon_a341476b413b6d1527860b29647bf35eb}{mRoomConfigs}}.at(type).size();}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ mRooms[x\ +\ mRoomCount][y\ +\ mRoomCount].roomContent\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00103}00103\ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00105}\mbox{\hyperlink{classDungeon_a74bfda8ce3e7779a6362d9669fa34321}{00105}}\ \mbox{\hyperlink{structDungeon_1_1RoomData}{Dungeon::RoomData}}\ \mbox{\hyperlink{classDungeon_a74bfda8ce3e7779a6362d9669fa34321}{Dungeon::GetRoomData}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00106}00106\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ <\ -\/mRoomCount\ ||\ x\ >=\ mRoomCount\ ||\ y\ <\ -\/mRoomCount\ ||\ y\ >=\ mRoomCount)\ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Invalid\ room\ coordinates"{}});}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00107}00107\ \ \ \ \ \textcolor{keywordflow}{return}\ mRooms[x\ +\ mRoomCount][y\ +\ mRoomCount];}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00108}00108\ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00110}\mbox{\hyperlink{classDungeon_a13c1086c4e7b68540e2bf554167853d3}{00110}}\ glm::vec2\ \mbox{\hyperlink{classDungeon_a13c1086c4e7b68540e2bf554167853d3}{Dungeon::GetRoomPosition}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00111}00111\ \ \ \ \ \textcolor{keywordflow}{return}\ glm::vec2(mCurX,\ mCurY);}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00112}00112\ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00114}00114\ \textcolor{keywordtype}{int}\ Dungeon::CountAdjacentRooms(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00115}00115\ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 4;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nx\ =\ x\ +\ \mbox{\hyperlink{classDungeon_ab16942dbcf3a3cc63cac8d1e4694319e}{directions}}[i][0];}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ny\ =\ y\ +\ \mbox{\hyperlink{classDungeon_ab16942dbcf3a3cc63cac8d1e4694319e}{directions}}[i][1];}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nx\ <\ -\/mRoomCount\ ||\ nx\ >=\ mRoomCount\ ||\ ny\ <\ -\/mRoomCount\ ||\ ny\ >=\ mRoomCount)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classDungeon_a74bfda8ce3e7779a6362d9669fa34321}{GetRoomData}}(nx,\ ny).type\ !=\ \mbox{\hyperlink{classDungeonRoom_aab77606cb375d30efc9b5f293916a665a1c250a21210b7b88a14db9a0cbe71162}{DungeonRoom::Type::NOT\_SET}})\ count++;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00121}00121\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00122}00122\ \ \ \ \ \textcolor{keywordflow}{return}\ count;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00125}\mbox{\hyperlink{classDungeon_a092759d196898289814b14d568555c59}{00125}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDungeon_a092759d196898289814b14d568555c59}{Dungeon::SetRoomState}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{classDungeonRoom_aa3716751c83a46f268eaf85415925d37}{DungeonRoom::State}}\ state)\ \{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00126}00126\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ <\ -\/mRoomCount\ ||\ x\ >=\ mRoomCount\ ||\ y\ <\ -\/mRoomCount\ ||\ y\ >=\ mRoomCount)\ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Invalid\ room\ coordinates"{}});}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00127}00127\ \ \ \ \ mRooms[x\ +\ mRoomCount][y\ +\ mRoomCount].state\ =\ state;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00128}00128\ \}}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00130}\mbox{\hyperlink{classDungeon_a42d44a85b3b77c4ae18b4a1be4ad58a4}{00130}}\ \mbox{\hyperlink{structDungeon_1_1SaveData}{Dungeon::SaveData}}\ \mbox{\hyperlink{classDungeon_a42d44a85b3b77c4ae18b4a1be4ad58a4}{Dungeon::GetSaveData}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00131}00131\ \ \ \ \ \mbox{\hyperlink{structDungeon_1_1SaveData}{SaveData}}\ data;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00132}00132\ \ \ \ \ data.\mbox{\hyperlink{structDungeon_1_1SaveData_aef6e01e45f98e765df6005cb65e183d4}{roomCount}}\ =\ mRoomCount;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00133}00133\ \ \ \ \ data.\mbox{\hyperlink{structDungeon_1_1SaveData_a379dd7548af14c0a3665593f631df771}{seed}}\ =\ mSeed;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00134}00134\ \ \ \ \ data.\mbox{\hyperlink{structDungeon_1_1SaveData_aff332f63303280308e8d243efa1538ce}{curX}}\ =\ mCurX;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00135}00135\ \ \ \ \ data.\mbox{\hyperlink{structDungeon_1_1SaveData_afef208dc2268cd141ff12b24fa8296aa}{curY}}\ =\ mCurY;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00136}00136\ \ \ \ \ \textcolor{keywordflow}{return}\ data;}
+\DoxyCodeLine{\Hypertarget{dungeon_8cpp_source_l00137}00137\ \}}
+
+\end{DoxyCode}

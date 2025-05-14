@@ -1,0 +1,78 @@
+\doxysection{abstract\+\_\+image\+\_\+game\+\_\+object.\+cpp}
+\hypertarget{abstract__image__game__object_8cpp_source}{}\label{abstract__image__game__object_8cpp_source}\index{/home/vid/Dev/personal/game/src/engine/game\_objects/drawables/abstract\_image\_game\_object.cpp@{/home/vid/Dev/personal/game/src/engine/game\_objects/drawables/abstract\_image\_game\_object.cpp}}
+\mbox{\hyperlink{abstract__image__game__object_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__image__game__object_8hpp}{abstract\_image\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{drawable__game__object_8hpp}{drawable\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game_8hpp}{game.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}glm/common.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}glm/detail/qualifier.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}glm/ext/vector\_float2.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{resource__manager_8hpp}{resource\_manager.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00013}\mbox{\hyperlink{classAbstractImageGameObject_a565060fbfe36d570f6136103bf98d898}{00013}}\ \mbox{\hyperlink{classAbstractImageGameObject_a565060fbfe36d570f6136103bf98d898}{AbstractImageGameObject::AbstractImageGameObject}}(std::string\ name,\ std::string\ textureName,\ glm::vec3\ pos,\ glm::vec2\ scale,\ glm::vec4\ color)}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00014}\mbox{\hyperlink{classSpriteGameObject_a565060fbfe36d570f6136103bf98d898}{00014}}\ \ \ \ \ :\ \mbox{\hyperlink{classDrawableGameObject}{DrawableGameObject}}(name,\ pos,\ scale),\ \mbox{\hyperlink{classAbstractImageGameObject_aaff484e555bf802fbfca3ac848d5eee5}{mTexture}}(\mbox{\hyperlink{classResourceManager}{ResourceManager}}::GetInstance().\mbox{\hyperlink{classAbstractImageGameObject_ad9d8ffb995e73aa14a7575ebb93d9ad4}{GetTexture}}(textureName)),\ \mbox{\hyperlink{classAbstractImageGameObject_ac92e96b54b363a3327fa68570eaf80ca}{mColor}}(color)\ \{}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00015}\mbox{\hyperlink{classSpriteGameObject_a0c95310adf95223eaff50961acd8bbc4}{00015}}\ \}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00016}\mbox{\hyperlink{classSpriteGameObject_a15155ea16e881a066541b0a407d79cc6}{00016}}\ }
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00017}\mbox{\hyperlink{classAbstractImageGameObject_a0c95310adf95223eaff50961acd8bbc4}{00017}}\ \mbox{\hyperlink{classAbstractImageGameObject_a565060fbfe36d570f6136103bf98d898}{AbstractImageGameObject::AbstractImageGameObject}}(std::string\ name,\ \mbox{\hyperlink{classDrawableGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *parent,\ std::string\ textureName,\ glm::vec3\ pos,\ glm::vec2\ scale,\ glm::vec4\ color)}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00018}00018\ \ \ \ \ :\ \mbox{\hyperlink{classDrawableGameObject}{DrawableGameObject}}(name,\ parent,\ pos,\ scale),\ \mbox{\hyperlink{classAbstractImageGameObject_aaff484e555bf802fbfca3ac848d5eee5}{mTexture}}(\mbox{\hyperlink{classResourceManager}{ResourceManager}}::GetInstance().\mbox{\hyperlink{classAbstractImageGameObject_ad9d8ffb995e73aa14a7575ebb93d9ad4}{GetTexture}}(textureName)),\ \mbox{\hyperlink{classAbstractImageGameObject_ac92e96b54b363a3327fa68570eaf80ca}{mColor}}(color)\ \{}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00019}00019\ \}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00021}\mbox{\hyperlink{classAbstractImageGameObject_a15155ea16e881a066541b0a407d79cc6}{00021}}\ \mbox{\hyperlink{classAbstractImageGameObject_a565060fbfe36d570f6136103bf98d898}{AbstractImageGameObject::AbstractImageGameObject}}(std::string\ name,\ \mbox{\hyperlink{classTexture}{Texture}}\ \&texture,\ glm::vec3\ pos,\ glm::vec2\ scale,\ glm::vec4\ color)}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00022}00022\ \ \ \ \ :\ \mbox{\hyperlink{classDrawableGameObject}{DrawableGameObject}}(name,\ pos,\ scale),\ \mbox{\hyperlink{classAbstractImageGameObject_aaff484e555bf802fbfca3ac848d5eee5}{mTexture}}(texture),\ \mbox{\hyperlink{classAbstractImageGameObject_ac92e96b54b363a3327fa68570eaf80ca}{mColor}}(color)\ \{}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00025}\mbox{\hyperlink{classAbstractImageGameObject_a2079dd3eb0ce74a6445f785d34ae3d6b}{00025}}\ \mbox{\hyperlink{classAbstractImageGameObject_a565060fbfe36d570f6136103bf98d898}{AbstractImageGameObject::AbstractImageGameObject}}(std::string\ name,\ \mbox{\hyperlink{classDrawableGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *parent,\ \mbox{\hyperlink{classTexture}{Texture}}\ \&texture,\ glm::vec3\ pos,\ glm::vec2\ scale,\ glm::vec4\ color)}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00026}00026\ \ \ \ \ :\ \mbox{\hyperlink{classDrawableGameObject}{DrawableGameObject}}(name,\ parent,\ pos,\ scale),\ \mbox{\hyperlink{classAbstractImageGameObject_aaff484e555bf802fbfca3ac848d5eee5}{mTexture}}(texture),\ \mbox{\hyperlink{classAbstractImageGameObject_ac92e96b54b363a3327fa68570eaf80ca}{mColor}}(color)\ \{}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00029}\mbox{\hyperlink{classAbstractImageGameObject_a49c84676a9a1a428793b0f523aca76b3}{00029}}\ \mbox{\hyperlink{classAbstractImageGameObject_a565060fbfe36d570f6136103bf98d898}{AbstractImageGameObject}}\ *\mbox{\hyperlink{classAbstractImageGameObject_a49c84676a9a1a428793b0f523aca76b3}{AbstractImageGameObject::SetColor}}(glm::vec4\ color)\ \{}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00030}00030\ \ \ \ \ \mbox{\hyperlink{classAbstractImageGameObject_ac92e96b54b363a3327fa68570eaf80ca}{mColor}}\ =\ color;}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00032}00032\ \}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00034}\mbox{\hyperlink{classAbstractImageGameObject_a0b150e1bdd5b893ff3826b6a9a318e13}{00034}}\ \mbox{\hyperlink{classAbstractImageGameObject_a565060fbfe36d570f6136103bf98d898}{AbstractImageGameObject}}\ *\mbox{\hyperlink{classAbstractImageGameObject_a0b150e1bdd5b893ff3826b6a9a318e13}{AbstractImageGameObject::SetTexture}}(\mbox{\hyperlink{classTexture}{Texture}}\ \&texture)\ \{}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00035}00035\ \ \ \ \ \mbox{\hyperlink{classAbstractImageGameObject_aaff484e555bf802fbfca3ac848d5eee5}{mTexture}}\ =\ texture;}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00037}00037\ \}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00039}\mbox{\hyperlink{classAbstractImageGameObject_a9854b52551c4c2d19898a3d6e11023fa}{00039}}\ \mbox{\hyperlink{classAbstractImageGameObject_a565060fbfe36d570f6136103bf98d898}{AbstractImageGameObject}}\ *\mbox{\hyperlink{classAbstractImageGameObject_a9854b52551c4c2d19898a3d6e11023fa}{AbstractImageGameObject::SetScale}}(glm::vec2\ scale)\ \{}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00040}00040\ \ \ \ \ \mbox{\hyperlink{classGameObject_aa769e9608e85e0a5b35b12dd2ced5f01}{mScale}}\ =\ scale;}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00042}00042\ \}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00044}\mbox{\hyperlink{classAbstractImageGameObject_a6ab8d3a62d876f86ed73188b7c85bf1a}{00044}}\ \mbox{\hyperlink{classAbstractImageGameObject_a565060fbfe36d570f6136103bf98d898}{AbstractImageGameObject}}\ *\mbox{\hyperlink{classAbstractImageGameObject_a6ab8d3a62d876f86ed73188b7c85bf1a}{AbstractImageGameObject::SetScaleX}}(\textcolor{keywordtype}{float}\ scaleX)\ \{}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{classGameObject_aa769e9608e85e0a5b35b12dd2ced5f01}{mScale}}.x\ =\ scaleX;}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00047}00047\ \}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00049}\mbox{\hyperlink{classAbstractImageGameObject_a43980edeaf40a9c5b2b058368d5c7315}{00049}}\ \mbox{\hyperlink{classAbstractImageGameObject_a565060fbfe36d570f6136103bf98d898}{AbstractImageGameObject}}\ *\mbox{\hyperlink{classAbstractImageGameObject_a43980edeaf40a9c5b2b058368d5c7315}{AbstractImageGameObject::SetScaleY}}(\textcolor{keywordtype}{float}\ scaleY)\ \{}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00050}00050\ \ \ \ \ \mbox{\hyperlink{classGameObject_aa769e9608e85e0a5b35b12dd2ced5f01}{mScale}}.y\ =\ scaleY;}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00052}00052\ \}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00054}\mbox{\hyperlink{classAbstractImageGameObject_a0004e19ef2603f6f8d8b60cb32594b45}{00054}}\ glm::vec4\ \mbox{\hyperlink{classAbstractImageGameObject_a0004e19ef2603f6f8d8b60cb32594b45}{AbstractImageGameObject::GetColor}}()\ \{}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classAbstractImageGameObject_ac92e96b54b363a3327fa68570eaf80ca}{mColor}};}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00058}\mbox{\hyperlink{classAbstractImageGameObject_ad9d8ffb995e73aa14a7575ebb93d9ad4}{00058}}\ \mbox{\hyperlink{classTexture}{Texture}}\ \&\mbox{\hyperlink{classAbstractImageGameObject_ad9d8ffb995e73aa14a7575ebb93d9ad4}{AbstractImageGameObject::GetTexture}}()\ \{}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classAbstractImageGameObject_aaff484e555bf802fbfca3ac848d5eee5}{mTexture}};}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00060}00060\ \}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00062}\mbox{\hyperlink{classAbstractImageGameObject_ac6ad57e75ba339ba4985d7d7b0187c1f}{00062}}\ glm::vec2\ \mbox{\hyperlink{classAbstractImageGameObject_ac6ad57e75ba339ba4985d7d7b0187c1f}{AbstractImageGameObject::GetScale}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGameObject_aa769e9608e85e0a5b35b12dd2ced5f01}{mScale}};}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00064}00064\ \}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00066}\mbox{\hyperlink{classAbstractImageGameObject_a376b27d2c17fa54333f0fbc92e7646b5}{00066}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classAbstractImageGameObject_a376b27d2c17fa54333f0fbc92e7646b5}{AbstractImageGameObject::GetScaleX}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGameObject_aa769e9608e85e0a5b35b12dd2ced5f01}{mScale}}.x;}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00068}00068\ \}}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00070}\mbox{\hyperlink{classAbstractImageGameObject_a8b4fd5a806d00add21600f5db6d2162f}{00070}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classAbstractImageGameObject_a8b4fd5a806d00add21600f5db6d2162f}{AbstractImageGameObject::GetScaleY}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGameObject_aa769e9608e85e0a5b35b12dd2ced5f01}{mScale}}.y;}
+\DoxyCodeLine{\Hypertarget{abstract__image__game__object_8cpp_source_l00072}00072\ \}}
+
+\end{DoxyCode}

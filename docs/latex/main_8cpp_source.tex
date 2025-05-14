@@ -1,0 +1,38 @@
+\doxysection{main.\+cpp}
+\hypertarget{main_8cpp_source}{}\label{main_8cpp_source}\index{/home/vid/Dev/personal/game/src/main.cpp@{/home/vid/Dev/personal/game/src/main.cpp}}
+\mbox{\hyperlink{main_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{demo__scene_8hpp}{demo\_scene.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game_8hpp}{game.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__scene_8hpp}{game\_scene.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{menu__scene_8hpp}{menu\_scene.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{scoreboard__scene_8hpp}{scoreboard\_scene.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00007}\mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00007}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Init\ game}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}00009\ \ \ \ \ \mbox{\hyperlink{classGame}{Game}}\ \&game\ =\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010\ \ \ \ \ game.\mbox{\hyperlink{classGame_a555a9e4719fd49971765a2ab8b090b5c}{Init}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ Load\ shaders}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{classResourceManager_acb3f8ecc7b3de8c1c7ac956ce5114d47}{ResourceManager::GetInstance}}().\mbox{\hyperlink{classResourceManager_ae4fad243df8571c695724d0d625086a5}{LoadShader}}(\textcolor{stringliteral}{"{}shaders/font\_vertex.glsl"{}},\ \textcolor{stringliteral}{"{}shaders/font\_fragment.glsl"{}},\ \textcolor{keyword}{nullptr},\ \textcolor{stringliteral}{"{}default\_font"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}00014\ \ \ \ \ \mbox{\hyperlink{classResourceManager_acb3f8ecc7b3de8c1c7ac956ce5114d47}{ResourceManager::GetInstance}}().\mbox{\hyperlink{classResourceManager_ae4fad243df8571c695724d0d625086a5}{LoadShader}}(\textcolor{stringliteral}{"{}shaders/batch\_renderer\_vertex.glsl"{}},\ \textcolor{stringliteral}{"{}shaders/batch\_renderer\_fragment.glsl"{}},\ \textcolor{keyword}{nullptr},\ \textcolor{stringliteral}{"{}default\_sprite"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Load\ fonts}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017\ \ \ \ \ game.\mbox{\hyperlink{classGame_a1a0219c5956bdf84127db1767f736932}{AddFont}}(\textcolor{stringliteral}{"{}assets/fonts/alagard.ttf"{}},\ \textcolor{stringliteral}{"{}default"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}00018\ \ \ \ \ game.\mbox{\hyperlink{classGame_a1a0219c5956bdf84127db1767f736932}{AddFont}}(\textcolor{stringliteral}{"{}assets/fonts/slkscr.ttf"{}},\ \textcolor{stringliteral}{"{}slkscr"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//\ Manage\ scenes}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00021}00021\ \ \ \ \ game.\mbox{\hyperlink{classGame_a5866446758a07b6db7ec1a6ac6a63a61}{AddScene}}(\textcolor{stringliteral}{"{}Demo"{}},\ [\&]()\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classDemoScene}{DemoScene}}();\ \});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00022}00022\ \ \ \ \ game.\mbox{\hyperlink{classGame_a5866446758a07b6db7ec1a6ac6a63a61}{AddScene}}(\textcolor{stringliteral}{"{}Menu"{}},\ [\&]()\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classMenuScene}{MenuScene}}();\ \});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00023}00023\ \ \ \ \ game.\mbox{\hyperlink{classGame_a5866446758a07b6db7ec1a6ac6a63a61}{AddScene}}(\textcolor{stringliteral}{"{}Game"{}},\ [\&]()\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classGameScene}{GameScene}}();\ \});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00024}00024\ \ \ \ \ game.\mbox{\hyperlink{classGame_a5866446758a07b6db7ec1a6ac6a63a61}{AddScene}}(\textcolor{stringliteral}{"{}Scoreboard"{}},\ [\&]()\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classScoreboardScene}{ScoreboardScene}}();\ \});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00026}00026\ \ \ \ \ game.\mbox{\hyperlink{classGame_ad6ab1e8f200385101b27b91bbb82d42f}{RequestLoadScene}}(\textcolor{stringliteral}{"{}Menu"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//\ Run\ game}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00029}00029\ \ \ \ \ game.\mbox{\hyperlink{classGame_a96341ca5b54d90adc3ecb3bf0bcd2312}{Run}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00032}00032\ \}}
+
+\end{DoxyCode}

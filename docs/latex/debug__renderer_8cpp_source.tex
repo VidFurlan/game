@@ -1,0 +1,35 @@
+\doxysection{debug\+\_\+renderer.\+cpp}
+\hypertarget{debug__renderer_8cpp_source}{}\label{debug__renderer_8cpp_source}\index{/home/vid/Dev/personal/game/src/engine/debug/debug\_renderer.cpp@{/home/vid/Dev/personal/game/src/engine/debug/debug\_renderer.cpp}}
+\mbox{\hyperlink{debug__renderer_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{debug__renderer_8hpp}{debug\_renderer.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game_8hpp}{game.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__object_8hpp}{game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}glm/gtc/type\_ptr.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}glm/trigonometric.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00008}\mbox{\hyperlink{classDebugRenderer_a7932bea675a6a4f7e0611577852be28e}{00008}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDebugRenderer_a7932bea675a6a4f7e0611577852be28e}{DebugRenderer::drawLineGlobalPos}}(glm::vec2\ p1,\ glm::vec2\ p2,\ \textcolor{keyword}{const}\ glm::vec4\&\ color)\ \{}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00009}00009\ \ \ \ \ p1\ *=\ \mbox{\hyperlink{classGameObject_a2c7b29001627e8378982097be132c746}{GameObject::GAME\_SCALE\_FACTOR}};}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00010}00010\ \ \ \ \ p2\ *=\ \mbox{\hyperlink{classGameObject_a2c7b29001627e8378982097be132c746}{GameObject::GAME\_SCALE\_FACTOR}};}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00012}00012\ \ \ \ \ p1\ -\/=\ glm::make\_vec2(\mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().GetActiveScene()-\/>GetActiveCamera()-\/>GetPosition()\ *\ \mbox{\hyperlink{classGameObject_a2c7b29001627e8378982097be132c746}{GameObject::GAME\_SCALE\_FACTOR}});}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00013}00013\ \ \ \ \ p2\ -\/=\ glm::make\_vec2(\mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().GetActiveScene()-\/>GetActiveCamera()-\/>GetPosition()\ *\ \mbox{\hyperlink{classGameObject_a2c7b29001627e8378982097be132c746}{GameObject::GAME\_SCALE\_FACTOR}});}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00015}00015\ \ \ \ \ p1\ *=\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_ac99318a82ddc53292a7434d7d16a7236}{GetActiveScene}}()-\/>\mbox{\hyperlink{classSceneGameObject_a4fc91f3f54c2d8049c81fc97e3abf106}{GetActiveCamera}}()-\/>\mbox{\hyperlink{classCameraGameObject_aa21540eb548bbc0b30a8a221368df414}{GetZoom}}();}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00016}00016\ \ \ \ \ p2\ *=\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_ac99318a82ddc53292a7434d7d16a7236}{GetActiveScene}}()-\/>\mbox{\hyperlink{classSceneGameObject_a4fc91f3f54c2d8049c81fc97e3abf106}{GetActiveCamera}}()-\/>\mbox{\hyperlink{classCameraGameObject_aa21540eb548bbc0b30a8a221368df414}{GetZoom}}();}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00018}00018\ \ \ \ \ p1\ +=\ glm::vec2(\mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().GetWindow()-\/>GetWidth()\ /\ 2.0f,\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().GetWindow()-\/>GetHeight()\ /\ 2.0f);}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00019}00019\ \ \ \ \ p2\ +=\ glm::vec2(\mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().GetWindow()-\/>GetWidth()\ /\ 2.0f,\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().GetWindow()-\/>GetHeight()\ /\ 2.0f);}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00021}00021\ \ \ \ \ \mbox{\hyperlink{classDebugRenderer_a3da858b7b2e2646abcf9af8e3a2b68d2}{drawLineAbsolutPos}}(p1,\ p2,\ color);}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00024}\mbox{\hyperlink{classDebugRenderer_a3da858b7b2e2646abcf9af8e3a2b68d2}{00024}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDebugRenderer_a3da858b7b2e2646abcf9af8e3a2b68d2}{DebugRenderer::drawLineAbsolutPos}}(\textcolor{keyword}{const}\ glm::vec2\&\ p1,\ \textcolor{keyword}{const}\ glm::vec2\&\ p2,\ \textcolor{keyword}{const}\ glm::vec4\&\ color)\ \{}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00025}00025\ \ \ \ \ glm::vec2\ pos\ =\ (p1\ +\ p2)\ /\ 2.0f;}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00026}00026\ \ \ \ \ glm::vec2\ scale\ =\ glm::vec2(glm::distance(p1,\ p2),\ 2.0f)\ /\ \mbox{\hyperlink{classGameObject_a2c7b29001627e8378982097be132c746}{GameObject::GAME\_SCALE\_FACTOR}};}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordtype}{float}\ angle\ =\ glm::degrees(glm::atan(p2.y\ -\/\ p1.y,\ p2.x\ -\/\ p1.x));}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00028}00028\ \ \ \ \ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_a5e9a4eb75a357072bba7fbf89a841a10}{GetSpriteRenderer}}()-\/>\mbox{\hyperlink{classSpriteRenderer_a94c5010d6b30c47536a346280f924548}{DrawSprite}}(\_\_debugPixelTexture,\ pos,\ scale,\ angle,\ color);}
+\DoxyCodeLine{\Hypertarget{debug__renderer_8cpp_source_l00029}00029\ \}}
+
+\end{DoxyCode}

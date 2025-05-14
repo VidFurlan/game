@@ -1,0 +1,35 @@
+\doxysection{shape2d.\+hpp}
+\hypertarget{shape2d_8hpp_source}{}\label{shape2d_8hpp_source}\index{/home/vid/Dev/personal/game/src/engine/shapes/shape2d.hpp@{/home/vid/Dev/personal/game/src/engine/shapes/shape2d.hpp}}
+\mbox{\hyperlink{shape2d_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}glm/ext/vector\_float2.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}glm/ext/vector\_float3.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}glm/ext/vector\_float4.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}glm/fwd.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}glm/vec2.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}glm/vec3.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00013}\mbox{\hyperlink{classShape2D}{00013}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classShape2D_aa01ec0fa01c8c0709d54b396301d1698}{Shape2D}}\ \{}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00014}00014\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00015}\mbox{\hyperlink{classShape2D_aa01ec0fa01c8c0709d54b396301d1698}{00015}}\ \ \ \ \ \mbox{\hyperlink{classShape2D_aa01ec0fa01c8c0709d54b396301d1698}{Shape2D}}(glm::vec2\ \mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}}\ =\ glm::vec2(0.0f),\ glm::vec4\ \mbox{\hyperlink{classShape2D_a2f3ae03dbb52953f43b9003aeb5835da}{color}}\ =\ glm::vec4(0.0f,\ 1.0f,\ 0.0f,\ 1.0f))}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00016}00016\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}}(\mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}}),\ \mbox{\hyperlink{classShape2D_a2f3ae03dbb52953f43b9003aeb5835da}{color}}(\mbox{\hyperlink{classShape2D_a2f3ae03dbb52953f43b9003aeb5835da}{color}})\ \{\}}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00017}\mbox{\hyperlink{classShape2D_a06d1d12e3009473d292111db1c081242}{00017}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classShape2D_a06d1d12e3009473d292111db1c081242}{\string~Shape2D}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00019}\mbox{\hyperlink{classShape2D_ad59e5656abd1881e342f889f18478aac}{00019}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classShape2D_ad59e5656abd1881e342f889f18478aac}{DrawDebug}}(glm::vec2\ offset\ =\ glm::vec2(0.0f),\ \textcolor{keywordtype}{float}\ rot\ =\ 0.0f,\ glm::vec2\ \mbox{\hyperlink{classShape2D_a7772a37f10ee85cf0c1e7be590aa6f45}{scale}}\ =\ glm::vec2(1.0f))\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00020}\mbox{\hyperlink{classShape2D_a37a7f438ee8e3796e3023ac07a58ffea}{00020}}\ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<glm::vec2>\ \mbox{\hyperlink{classShape2D_a37a7f438ee8e3796e3023ac07a58ffea}{GetEdges}}(glm::vec3\ \mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}}\ =\ glm::vec3(0.0f))\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00021}\mbox{\hyperlink{classShape2D_ad68185cf0a1c47a08ab95af05d01ad66}{00021}}\ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<glm::vec2>\ \mbox{\hyperlink{classShape2D_ad68185cf0a1c47a08ab95af05d01ad66}{GetVertices}}(glm::vec3\ \mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}}\ =\ glm::vec3(0.0f))\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00023}\mbox{\hyperlink{classShape2D_a2f3ae03dbb52953f43b9003aeb5835da}{00023}}\ \ \ \ \ glm::vec4\ \mbox{\hyperlink{classShape2D_a2f3ae03dbb52953f43b9003aeb5835da}{color}};}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00024}\mbox{\hyperlink{classShape2D_a7772a37f10ee85cf0c1e7be590aa6f45}{00024}}\ \ \ \ \ glm::vec2\ \mbox{\hyperlink{classShape2D_a7772a37f10ee85cf0c1e7be590aa6f45}{scale}}\ =\ glm::vec2(1.0f);}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00025}\mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{00025}}\ \ \ \ \ glm::vec2\ \mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}};}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00027}00027\ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00028}\mbox{\hyperlink{classShape2D_ae996fba89e9a520924a9a6f4ba233fb0}{00028}}\ \ \ \ \ std::vector<glm::vec2>\ \mbox{\hyperlink{classShape2D_ae996fba89e9a520924a9a6f4ba233fb0}{vertices}};}
+\DoxyCodeLine{\Hypertarget{shape2d_8hpp_source_l00029}00029\ \};}
+
+\end{DoxyCode}

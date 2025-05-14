@@ -1,0 +1,53 @@
+\doxysection{batch\+\_\+renderer.\+hpp}
+\hypertarget{batch__renderer_8hpp_source}{}\label{batch__renderer_8hpp_source}\index{/home/vid/Dev/personal/game/src/engine/renderer/batch\_renderer.hpp@{/home/vid/Dev/personal/game/src/engine/renderer/batch\_renderer.hpp}}
+\mbox{\hyperlink{batch__renderer_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__window_8hpp}{game\_window.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}glm/ext/matrix\_float4x4.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}glm/ext/vector\_float2.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}glm/ext/vector\_float3.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}glm/ext/vector\_float4.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{texture_8hpp}{texture.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00013}\mbox{\hyperlink{classBatchRenderer}{00013}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBatchRenderer_a5778b04e1530a8862168f911d1cc8d38}{BatchRenderer}}\ \{}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00014}00014\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00015}\mbox{\hyperlink{structBatchRenderer_1_1Vertex}{00015}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structBatchRenderer_1_1Vertex}{Vertex}}\ \{}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00016}\mbox{\hyperlink{structBatchRenderer_1_1Vertex_afa51270d5d977a1e679d8f4a94f7062d}{00016}}\ \ \ \ \ \ \ \ \ glm::vec2\ \mbox{\hyperlink{structBatchRenderer_1_1Vertex_afa51270d5d977a1e679d8f4a94f7062d}{position}};}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00017}\mbox{\hyperlink{structBatchRenderer_1_1Vertex_a5d48499c26ea3e0681bc5dabb24b7071}{00017}}\ \ \ \ \ \ \ \ \ glm::vec2\ \mbox{\hyperlink{structBatchRenderer_1_1Vertex_a5d48499c26ea3e0681bc5dabb24b7071}{uv}};}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00018}\mbox{\hyperlink{structBatchRenderer_1_1Vertex_a2a0c5ab2f2f477c359d098fcf90b37d5}{00018}}\ \ \ \ \ \ \ \ \ glm::vec4\ \mbox{\hyperlink{structBatchRenderer_1_1Vertex_a2a0c5ab2f2f477c359d098fcf90b37d5}{color}};}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00019}\mbox{\hyperlink{structBatchRenderer_1_1Vertex_a1f639342000e9a6eccb30851d0c82d6c}{00019}}\ \ \ \ \ \ \ \ \ glm::vec4\ \mbox{\hyperlink{structBatchRenderer_1_1Vertex_a1f639342000e9a6eccb30851d0c82d6c}{modelCol0}};}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00020}\mbox{\hyperlink{structBatchRenderer_1_1Vertex_a11cca29ccd2fbb9c95c1ec7e70cf766f}{00020}}\ \ \ \ \ \ \ \ \ glm::vec4\ \mbox{\hyperlink{structBatchRenderer_1_1Vertex_a11cca29ccd2fbb9c95c1ec7e70cf766f}{modelCol1}};}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00021}\mbox{\hyperlink{structBatchRenderer_1_1Vertex_a2bf3cfb294731df715da41f6c398c683}{00021}}\ \ \ \ \ \ \ \ \ glm::vec4\ \mbox{\hyperlink{structBatchRenderer_1_1Vertex_a2bf3cfb294731df715da41f6c398c683}{modelCol2}};}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00022}\mbox{\hyperlink{structBatchRenderer_1_1Vertex_ab0e26a7f0cb2a03dc72e26bddab65b87}{00022}}\ \ \ \ \ \ \ \ \ glm::vec4\ \mbox{\hyperlink{structBatchRenderer_1_1Vertex_ab0e26a7f0cb2a03dc72e26bddab65b87}{modelCol3}};}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00023}00023\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{classBatchRenderer_a5778b04e1530a8862168f911d1cc8d38}{BatchRenderer}}(\textcolor{keywordtype}{int}\ maxCapacity);}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00026}00026\ \ \ \ \ \mbox{\hyperlink{classBatchRenderer_a2ea1d24ccca0940a6ae94ec218db2d75}{\string~BatchRenderer}}();}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBatchRenderer_a17666823c9c88468698966c0426e4487}{pushObject}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ textureID,\ glm::vec3\ position\ =\ glm::vec3(0.0f),\ glm::vec4\ uv\ =\ \{0.0f,\ 0.0f,\ 1.0f,\ 1.0f\},\ glm::vec2\ size\ =\ glm::vec2(1.0f),\ glm::vec4\ color\ =\ glm::vec4(1.0f),\ std::string\ shaderName\ =\ \textcolor{stringliteral}{"{}default\_sprite"{}});}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBatchRenderer_a17666823c9c88468698966c0426e4487}{pushObject}}(\mbox{\hyperlink{classTexture}{Texture}}\ \&texture,\ glm::vec3\ position\ =\ glm::vec3(0.0f),\ glm::vec4\ uv\ =\ \{0.0f,\ 0.0f,\ 1.0f,\ 1.0f\},\ glm::vec2\ size\ =\ glm::vec2(1.0f),\ glm::vec4\ color\ =\ glm::vec4(1.0f),\ std::string\ shaderName\ =\ \textcolor{stringliteral}{"{}default\_sprite"{}});}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBatchRenderer_a290fee60ff58b16db1a3ddeee965337c}{pushVertex}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ textureID,\ \mbox{\hyperlink{structBatchRenderer_1_1Vertex}{Vertex}}\ vertex);}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00031}00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBatchRenderer_a290fee60ff58b16db1a3ddeee965337c}{pushVertex}}(Texture\ \&texture,\ \mbox{\hyperlink{structBatchRenderer_1_1Vertex}{Vertex}}\ vertex);}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBatchRenderer_a0127107c6781f58934c4805484c63fca}{flush}}();}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00034}00034\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00035}00035\ \ \ \ \ GLuint\ mVao;}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00036}00036\ \ \ \ \ GLuint\ mVbo;}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00037}00037\ \ \ \ \ \textcolor{keywordtype}{int}\ mCount;}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{int}\ mMaxCount;}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00039}00039\ \ \ \ \ \mbox{\hyperlink{structBatchRenderer_1_1Vertex}{Vertex}}\ *mVertices;}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00041}00041\ \ \ \ \ GLuint\ mTexture;}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00042}00042\ \ \ \ \ GLuint\ mShader;}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00043}00043\ \ \ \ \ std::string\ mShaderName;}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00045}00045\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00046}\mbox{\hyperlink{classBatchRenderer_aafe0385e74e82d1f3bb10750a32d626f}{00046}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classBatchRenderer_aafe0385e74e82d1f3bb10750a32d626f}{mMvp}}[4][4];}
+\DoxyCodeLine{\Hypertarget{batch__renderer_8hpp_source_l00047}00047\ \};}
+
+\end{DoxyCode}

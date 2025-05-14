@@ -1,0 +1,81 @@
+\doxysection{/home/vid/\+Dev/personal/game/src/engine/game\+\_\+objects/drawables/drawable\+\_\+game\+\_\+object.hpp File Reference}
+\hypertarget{drawable__game__object_8hpp}{}\label{drawable__game__object_8hpp}\index{/home/vid/Dev/personal/game/src/engine/game\_objects/drawables/drawable\_game\_object.hpp@{/home/vid/Dev/personal/game/src/engine/game\_objects/drawables/drawable\_game\_object.hpp}}
+{\ttfamily \#include "{}game\+\_\+object.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classDrawableGameObject}{Drawable\+Game\+Object}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379a}{Screen\+Anchor}} \{ \newline
+\mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aaddf0d6b21537d984fea6544f58101fa8}{CAMERA}}
+, \mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa747385047b85ae751f83adb36435a3c1}{TOP\+\_\+\+LEFT}}
+, \mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aae4e8367937db13de78dd9a710df92164}{TOP\+\_\+\+CENTER}}
+, \mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa901d87dedda8db733f5e6d34c4eb5fe0}{TOP\+\_\+\+RIGHT}}
+, \newline
+\mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa3cd98a7cfaab4e96e43dc7cc0b9aefe6}{CENTER\+\_\+\+LEFT}}
+, \mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aac397289ee45877be0cd49811fe245b4e}{CENTER}}
+, \mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa08ff9677a4ace6c15b6e6361985d4f9b}{CENTER\+\_\+\+RIGHT}}
+, \mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa8d81ac82421d1b03da58fccb9174892e}{BOTTOM\+\_\+\+LEFT}}
+, \newline
+\mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa3480601794fd3b5473219ae158219fd4}{BOTTOM\+\_\+\+CENTER}}
+, \mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa341b72aaab1308a3e6667af1e52f5def}{BOTTOM\+\_\+\+RIGHT}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379a}\index{drawable\_game\_object.hpp@{drawable\_game\_object.hpp}!ScreenAnchor@{ScreenAnchor}}
+\index{ScreenAnchor@{ScreenAnchor}!drawable\_game\_object.hpp@{drawable\_game\_object.hpp}}
+\doxysubsubsection{\texorpdfstring{ScreenAnchor}{ScreenAnchor}}
+{\footnotesize\ttfamily \label{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379a} 
+enum class \mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379a}{Screen\+Anchor}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAMERA@{CAMERA}!drawable\_game\_object.hpp@{drawable\_game\_object.hpp}}\index{drawable\_game\_object.hpp@{drawable\_game\_object.hpp}!CAMERA@{CAMERA}}}\Hypertarget{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aaddf0d6b21537d984fea6544f58101fa8}\label{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aaddf0d6b21537d984fea6544f58101fa8} 
+CAMERA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TOP\_LEFT@{TOP\_LEFT}!drawable\_game\_object.hpp@{drawable\_game\_object.hpp}}\index{drawable\_game\_object.hpp@{drawable\_game\_object.hpp}!TOP\_LEFT@{TOP\_LEFT}}}\Hypertarget{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa747385047b85ae751f83adb36435a3c1}\label{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa747385047b85ae751f83adb36435a3c1} 
+TOP\+\_\+\+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TOP\_CENTER@{TOP\_CENTER}!drawable\_game\_object.hpp@{drawable\_game\_object.hpp}}\index{drawable\_game\_object.hpp@{drawable\_game\_object.hpp}!TOP\_CENTER@{TOP\_CENTER}}}\Hypertarget{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aae4e8367937db13de78dd9a710df92164}\label{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aae4e8367937db13de78dd9a710df92164} 
+TOP\+\_\+\+CENTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TOP\_RIGHT@{TOP\_RIGHT}!drawable\_game\_object.hpp@{drawable\_game\_object.hpp}}\index{drawable\_game\_object.hpp@{drawable\_game\_object.hpp}!TOP\_RIGHT@{TOP\_RIGHT}}}\Hypertarget{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa901d87dedda8db733f5e6d34c4eb5fe0}\label{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa901d87dedda8db733f5e6d34c4eb5fe0} 
+TOP\+\_\+\+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CENTER\_LEFT@{CENTER\_LEFT}!drawable\_game\_object.hpp@{drawable\_game\_object.hpp}}\index{drawable\_game\_object.hpp@{drawable\_game\_object.hpp}!CENTER\_LEFT@{CENTER\_LEFT}}}\Hypertarget{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa3cd98a7cfaab4e96e43dc7cc0b9aefe6}\label{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa3cd98a7cfaab4e96e43dc7cc0b9aefe6} 
+CENTER\+\_\+\+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CENTER@{CENTER}!drawable\_game\_object.hpp@{drawable\_game\_object.hpp}}\index{drawable\_game\_object.hpp@{drawable\_game\_object.hpp}!CENTER@{CENTER}}}\Hypertarget{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aac397289ee45877be0cd49811fe245b4e}\label{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aac397289ee45877be0cd49811fe245b4e} 
+CENTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CENTER\_RIGHT@{CENTER\_RIGHT}!drawable\_game\_object.hpp@{drawable\_game\_object.hpp}}\index{drawable\_game\_object.hpp@{drawable\_game\_object.hpp}!CENTER\_RIGHT@{CENTER\_RIGHT}}}\Hypertarget{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa08ff9677a4ace6c15b6e6361985d4f9b}\label{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa08ff9677a4ace6c15b6e6361985d4f9b} 
+CENTER\+\_\+\+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOTTOM\_LEFT@{BOTTOM\_LEFT}!drawable\_game\_object.hpp@{drawable\_game\_object.hpp}}\index{drawable\_game\_object.hpp@{drawable\_game\_object.hpp}!BOTTOM\_LEFT@{BOTTOM\_LEFT}}}\Hypertarget{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa8d81ac82421d1b03da58fccb9174892e}\label{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa8d81ac82421d1b03da58fccb9174892e} 
+BOTTOM\+\_\+\+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOTTOM\_CENTER@{BOTTOM\_CENTER}!drawable\_game\_object.hpp@{drawable\_game\_object.hpp}}\index{drawable\_game\_object.hpp@{drawable\_game\_object.hpp}!BOTTOM\_CENTER@{BOTTOM\_CENTER}}}\Hypertarget{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa3480601794fd3b5473219ae158219fd4}\label{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa3480601794fd3b5473219ae158219fd4} 
+BOTTOM\+\_\+\+CENTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOTTOM\_RIGHT@{BOTTOM\_RIGHT}!drawable\_game\_object.hpp@{drawable\_game\_object.hpp}}\index{drawable\_game\_object.hpp@{drawable\_game\_object.hpp}!BOTTOM\_RIGHT@{BOTTOM\_RIGHT}}}\Hypertarget{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa341b72aaab1308a3e6667af1e52f5def}\label{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa341b72aaab1308a3e6667af1e52f5def} 
+BOTTOM\+\_\+\+RIGHT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{drawable__game__object_8hpp_source_l00005}{5}} of file \mbox{\hyperlink{drawable__game__object_8hpp_source}{drawable\+\_\+game\+\_\+object.\+hpp}}.
+

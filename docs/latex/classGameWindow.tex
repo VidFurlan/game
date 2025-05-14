@@ -1,0 +1,132 @@
+\doxysection{Game\+Window Class Reference}
+\hypertarget{classGameWindow}{}\label{classGameWindow}\index{GameWindow@{GameWindow}}
+
+
+{\ttfamily \#include $<$game\+\_\+window.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameWindow_a86788e1bc9021d7b409c7c776b2c420b}{Game\+Window}} (int width, int height, const char \texorpdfstring{$\ast$}{*}title)
+\item 
+\mbox{\hyperlink{classGameWindow_a55b071c0390e45c064a160c1e6baaa08}{\texorpdfstring{$\sim$}{\string~}\+Game\+Window}} ()
+\item 
+void \mbox{\hyperlink{classGameWindow_a38f835585eb249e1577b4ac059ed6829}{Close}} ()
+\item 
+void \mbox{\hyperlink{classGameWindow_a0630e016fe792b359e38b3c07d6f950d}{Load\+Texture}} (const unsigned char \texorpdfstring{$\ast$}{*}data, int width, int height)
+\item 
+void \mbox{\hyperlink{classGameWindow_af2904aa5757834cf09a3051da285ea26}{Resize}} (int width, int height)
+\item 
+GLFWwindow \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameWindow_a9763c7ea0821d1a7a5e2e087a9378ead}{Get\+Window}} () const
+\item 
+int \mbox{\hyperlink{classGameWindow_a0dfcec214e2e853c31da1dd0f953c551}{Get\+Width}} () const
+\item 
+int \mbox{\hyperlink{classGameWindow_a1484d00ba94e9881973abac50f3ff7d7}{Get\+Height}} () const
+\item 
+glm\+::mat4 \mbox{\hyperlink{classGameWindow_a951996d3a50829805e0d25b4384cec4c}{Get\+MVP}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{game__window_8hpp_source_l00007}{7}} of file \mbox{\hyperlink{game__window_8hpp_source}{game\+\_\+window.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGameWindow_a86788e1bc9021d7b409c7c776b2c420b}\index{GameWindow@{GameWindow}!GameWindow@{GameWindow}}
+\index{GameWindow@{GameWindow}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{GameWindow()}{GameWindow()}}
+{\footnotesize\ttfamily \label{classGameWindow_a86788e1bc9021d7b409c7c776b2c420b} 
+Game\+Window\+::\+Game\+Window (\begin{DoxyParamCaption}\item[{int}]{width}{, }\item[{int}]{height}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{title}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game__window_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{game__window_8cpp_source}{game\+\_\+window.\+cpp}}.
+
+\Hypertarget{classGameWindow_a55b071c0390e45c064a160c1e6baaa08}\index{GameWindow@{GameWindow}!````~GameWindow@{\texorpdfstring{$\sim$}{\string~}GameWindow}}
+\index{````~GameWindow@{\texorpdfstring{$\sim$}{\string~}GameWindow}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}GameWindow()}{\string~GameWindow()}}
+{\footnotesize\ttfamily \label{classGameWindow_a55b071c0390e45c064a160c1e6baaa08} 
+Game\+Window\+::\texorpdfstring{$\sim$}{\string~}\+Game\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game__window_8cpp_source_l00063}{63}} of file \mbox{\hyperlink{game__window_8cpp_source}{game\+\_\+window.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGameWindow_a38f835585eb249e1577b4ac059ed6829}\index{GameWindow@{GameWindow}!Close@{Close}}
+\index{Close@{Close}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{Close()}{Close()}}
+{\footnotesize\ttfamily \label{classGameWindow_a38f835585eb249e1577b4ac059ed6829} 
+void Game\+Window\+::\+Close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game__window_8cpp_source_l00068}{68}} of file \mbox{\hyperlink{game__window_8cpp_source}{game\+\_\+window.\+cpp}}.
+
+\Hypertarget{classGameWindow_a1484d00ba94e9881973abac50f3ff7d7}\index{GameWindow@{GameWindow}!GetHeight@{GetHeight}}
+\index{GetHeight@{GetHeight}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{GetHeight()}{GetHeight()}}
+{\footnotesize\ttfamily \label{classGameWindow_a1484d00ba94e9881973abac50f3ff7d7} 
+int Game\+Window\+::\+Get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{game__window_8cpp_source_l00083}{83}} of file \mbox{\hyperlink{game__window_8cpp_source}{game\+\_\+window.\+cpp}}.
+
+\Hypertarget{classGameWindow_a951996d3a50829805e0d25b4384cec4c}\index{GameWindow@{GameWindow}!GetMVP@{GetMVP}}
+\index{GetMVP@{GetMVP}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{GetMVP()}{GetMVP()}}
+{\footnotesize\ttfamily \label{classGameWindow_a951996d3a50829805e0d25b4384cec4c} 
+glm\+::mat4 Game\+Window\+::\+Get\+MVP (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{game__window_8cpp_source_l00089}{89}} of file \mbox{\hyperlink{game__window_8cpp_source}{game\+\_\+window.\+cpp}}.
+
+\Hypertarget{classGameWindow_a0dfcec214e2e853c31da1dd0f953c551}\index{GameWindow@{GameWindow}!GetWidth@{GetWidth}}
+\index{GetWidth@{GetWidth}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{GetWidth()}{GetWidth()}}
+{\footnotesize\ttfamily \label{classGameWindow_a0dfcec214e2e853c31da1dd0f953c551} 
+int Game\+Window\+::\+Get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{game__window_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{game__window_8cpp_source}{game\+\_\+window.\+cpp}}.
+
+\Hypertarget{classGameWindow_a9763c7ea0821d1a7a5e2e087a9378ead}\index{GameWindow@{GameWindow}!GetWindow@{GetWindow}}
+\index{GetWindow@{GetWindow}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{GetWindow()}{GetWindow()}}
+{\footnotesize\ttfamily \label{classGameWindow_a9763c7ea0821d1a7a5e2e087a9378ead} 
+GLFWwindow \texorpdfstring{$\ast$}{*} Game\+Window\+::\+Get\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{game__window_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{game__window_8cpp_source}{game\+\_\+window.\+cpp}}.
+
+\Hypertarget{classGameWindow_a0630e016fe792b359e38b3c07d6f950d}\index{GameWindow@{GameWindow}!LoadTexture@{LoadTexture}}
+\index{LoadTexture@{LoadTexture}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{LoadTexture()}{LoadTexture()}}
+{\footnotesize\ttfamily \label{classGameWindow_a0630e016fe792b359e38b3c07d6f950d} 
+void Game\+Window\+::\+Load\+Texture (\begin{DoxyParamCaption}\item[{const unsigned char \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{int}]{width}{, }\item[{int}]{height}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classGameWindow_af2904aa5757834cf09a3051da285ea26}\index{GameWindow@{GameWindow}!Resize@{Resize}}
+\index{Resize@{Resize}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{Resize()}{Resize()}}
+{\footnotesize\ttfamily \label{classGameWindow_af2904aa5757834cf09a3051da285ea26} 
+void Game\+Window\+::\+Resize (\begin{DoxyParamCaption}\item[{int}]{width}{, }\item[{int}]{height}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game__window_8cpp_source_l00093}{93}} of file \mbox{\hyperlink{game__window_8cpp_source}{game\+\_\+window.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/vid/\+Dev/personal/game/src/engine/renderer/\mbox{\hyperlink{game__window_8hpp}{game\+\_\+window.\+hpp}}\item 
+/home/vid/\+Dev/personal/game/src/engine/renderer/\mbox{\hyperlink{game__window_8cpp}{game\+\_\+window.\+cpp}}\end{DoxyCompactItemize}

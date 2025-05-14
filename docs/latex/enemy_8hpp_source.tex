@@ -1,0 +1,26 @@
+\doxysection{enemy.\+hpp}
+\hypertarget{enemy_8hpp_source}{}\label{enemy_8hpp_source}\index{/home/vid/Dev/personal/game/src/game/objects/entities/enemy.hpp@{/home/vid/Dev/personal/game/src/game/objects/entities/enemy.hpp}}
+\mbox{\hyperlink{enemy_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{entity_8hpp}{objects/entities/entity.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player__ui_8hpp}{objects/ui/player\_ui.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00006}\mbox{\hyperlink{classEnemy}{00006}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEnemy_a21541e84d8cece159d4fdb718ab31acd}{Enemy}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classEntity_ad13c79db161eec726d9882f51934f86d}{Entity}}\ \{}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00007}00007\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00008}00008\ \ \ \ \ \mbox{\hyperlink{classEnemy_a21541e84d8cece159d4fdb718ab31acd}{Enemy}}(std::string\ name,\ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *parent,\ glm::vec3\ position\ =\ glm::vec3(0.0f));}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00009}00009\ \ \ \ \ \mbox{\hyperlink{classEnemy_ac0eec4755e28c02688065f9657150ac3}{\string~Enemy}}();}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00011}00011\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEnemy_a723b79407b55383b2c327f674e3ab3bc}{Update}}(\textcolor{keywordtype}{float}\ deltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEnemy_a83b859726f23a8bbc95a485ba45e04b8}{Death}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00015}00015\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00016}00016\ \ \ \ \ \textcolor{keywordtype}{float}\ moveSpeed\ =\ 20.0f;}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{float}\ mAnimationTimeElapsed\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordtype}{int}\ mAnimationFrame\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00020}00020\ \};}
+
+\end{DoxyCode}

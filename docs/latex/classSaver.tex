@@ -1,0 +1,333 @@
+\doxysection{Saver Class Reference}
+\hypertarget{classSaver}{}\label{classSaver}\index{Saver@{Saver}}
+
+
+{\ttfamily \#include $<$saver.\+hpp$>$}
+
+Inheritance diagram for Saver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSaver}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSaver_a3659ea3f52aead3567968bf00047fd3c}{Saver}} (const std\+::string \&name, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}parent=nullptr)
+\item 
+virtual void \mbox{\hyperlink{classSaver_a713f197a0aac1eae88bb970fd55bf610}{Update}} (float delta\+Time) override
+\item 
+void \mbox{\hyperlink{classSaver_ac052342a699ee8aa7045263def560f93}{Save}} ()
+\item 
+void \mbox{\hyperlink{classSaver_ae6a67352d7c04328247757585169111b}{Load}} ()
+\item 
+void \mbox{\hyperlink{classSaver_a5c4f9e59a3b0a3aefae943bdae1b894d}{Delete\+Save}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classGameObject}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{Game\+Object}} (std\+::string name, glm\+::vec3 pos=glm\+::vec3(0.\+0f), glm\+::vec2 scale=glm\+::vec2(1.\+0f))
+\item 
+\mbox{\hyperlink{classGameObject_a76a02ab352553240743add593efeb0cd}{Game\+Object}} (std\+::string name, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}parent, glm\+::vec3 pos=glm\+::vec3(0.\+0f), glm\+::vec2 scale=glm\+::vec2(1.\+0f))
+\item 
+virtual \mbox{\hyperlink{classGameObject_ab82dfdb656f9051c0587e6593b2dda97}{\texorpdfstring{$\sim$}{\string~}\+Game\+Object}} ()
+\item 
+virtual void \mbox{\hyperlink{classGameObject_a7cb32aba9790897365708d74ac10c7e1}{Late\+Update}} (float delta\+Time=0.\+0f)
+\item 
+virtual void \mbox{\hyperlink{classGameObject_a554078170496d6fc31af134e76e1e1bd}{Render}} ()
+\item 
+std\+::string \mbox{\hyperlink{classGameObject_a986731c4dfb08336dbf0731e6514bad9}{Get\+Name}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a8b78cd9270733086927a4f8a4f07398e}{Set\+Active}} (bool active)
+\item 
+bool \mbox{\hyperlink{classGameObject_aeacebf64d0153edf9e02a43defc0d26f}{Get\+Active}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_ae6411c30a8a2c258b52288f6aecb220e}{Set\+Visible}} (bool visible)
+\item 
+bool \mbox{\hyperlink{classGameObject_a821630aa6f0c19413a22475cac54c7b4}{Get\+Visible}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a404b760fb13e77e57c6512db9d11da81}{Set\+Position}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a453acd691b437cb3b5c91946c11db064}{Set\+Position}} (glm\+::vec3 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_aae995b3b06e73711a1163ae0b0a7f1fd}{Set\+Rotation}} (float rot)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_ad236d752fd3d90424af28bd8cb60a575}{Set\+Rotation}} (glm\+::vec3 rot)
+\item 
+glm\+::vec3 \mbox{\hyperlink{classGameObject_a977d4bbb9ebe2266bae702b59508303b}{Get\+Position}} () const
+\item 
+glm\+::vec3 \mbox{\hyperlink{classGameObject_adc256761dbcea9050030f4017ad41ad1}{Get\+Global\+Position}} () const
+\item 
+float \mbox{\hyperlink{classGameObject_a53875b706c5c9ebc0cdd8600a423ed20}{Get\+Rotation}} () const
+\item 
+float \mbox{\hyperlink{classGameObject_a213cb8316ac2eac26032e33805e3710f}{Get\+Global\+Rotation}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a407f5d1d8117bc7ce210b64d58c04662}{Set\+ZIndex}} (int z\+Index)
+\item 
+int \mbox{\hyperlink{classGameObject_a8604b8941849f9000abb3eb582f66176}{Get\+ZIndex}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a7eec3f82ecf749dd495cf6e3cacd264a}{Get\+Parent}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{Get\+Child}} (std\+::string name) const
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a9c38119383137784bcbaeef5147be51d}{Get\+Children}} () const
+\item 
+unsigned int \mbox{\hyperlink{classGameObject_a4d1b2597afd1207e05082ea3263b4409}{Get\+Children\+Count}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a31ab3f560b5d6880141f42ae9904478b}{Add\+Child}} (\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}child)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_ae606e30f9db273a9d360849d5632bfe6}{Add\+Child\+To\+Local\+Pos}} (\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}child)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a0acf0dc8a35cf32076ffe3a77bc8bd59}{Remove\+Child}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Remove a child from the game object but do not delete it! If memory is leaking check here! \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGameObject_aa6a1e2ef75a4913addc5b2d21c9126c3}{Safe\+Delete}} ()
+\item 
+void \mbox{\hyperlink{classGameObject_a9bda3668364eebde8670fe4435963c01}{Delete\+Child}} (std\+::string name)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a7abb447984e2d10efe0cbe71b22a9179}{operator+=}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_aa6c5abb1c90b176b0908fabc666838f1}{operator-\/=}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a6b1d674ce2b0d9b18dfe2b392963684e}{operator\texorpdfstring{$\ast$}{*}=}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_aad0532b9af49e6016e3e55e4b6644385}{operator/=}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_af774be813ecbf7bed6f43ecfcff2de58}{operator+=}} (glm\+::vec3 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a10f5ccb22aa853701287815f08624470}{operator-\/=}} (glm\+::vec3 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a77ee0c0f255f2fa39ee02b976fa55289}{operator\texorpdfstring{$\ast$}{*}=}} (glm\+::vec3 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a9fda54e55885533d12b0456fdc6a2a8a}{operator/=}} (glm\+::vec3 pos)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classSaver_a5b30841cb5da82c7a4fc8a88ec7d96ab}{Save\+Highscore}} (int score, std\+::string user="{}Player"{})
+\item 
+static std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$ \mbox{\hyperlink{classSaver_abb8fa13e408265d86c50438cee79efbd}{Load\+Highscore}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classSaver_ab387902d97342d53c54e0798a4179f0e}{m\+Save\+File\+Path}} = "{}saves/"{}
+\item 
+static std\+::string \mbox{\hyperlink{classSaver_ae918a17af7e7cd65352440e97b9b015d}{m\+Save\+File\+Name}} = "{}save"{}
+\item 
+static bool \mbox{\hyperlink{classSaver_a235e9ea10824101370f087de904fc98d}{m\+Should\+Load}} = false
+\item 
+static bool \mbox{\hyperlink{classSaver_a8b816fd722d96754627d8d0ac3b1a6c1}{m\+Ready\+To\+Load}} = false
+\item 
+static std\+::vector$<$ \mbox{\hyperlink{structEntity_1_1SaveData}{Entity\+::\+Save\+Data}} $>$ \mbox{\hyperlink{classSaver_a8e58d803d843035ececbb893ea1ae679}{m\+Entity\+Save\+Data}}
+\item 
+static std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{structDungeon_1_1RoomData}{Dungeon\+::\+Room\+Data}} $>$ $>$ \mbox{\hyperlink{classSaver_a1beb509f7d02669c1832863d9b30c0b1}{m\+Room\+Save\+Data}}
+\item 
+static \mbox{\hyperlink{structDungeon_1_1SaveData}{Dungeon\+::\+Save\+Data}} \mbox{\hyperlink{classSaver_a956996413f98459b596d65d842694243}{m\+Dungeon\+Save\+Data}}
+\item 
+static \mbox{\hyperlink{structEntity_1_1SaveData}{Entity\+::\+Save\+Data}} \mbox{\hyperlink{classSaver_a5e64d291cbc147d778f057530f29ff2b}{m\+Player\+Save\+Data}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classGameObject}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr float \mbox{\hyperlink{classGameObject_a2c7b29001627e8378982097be132c746}{GAME\+\_\+\+SCALE\+\_\+\+FACTOR}} = 10.\+0f
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classGameObject}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::string \mbox{\hyperlink{classGameObject_a0c88acca9ecfc4990c50d9e371e963a7}{m\+Name}}
+\item 
+bool \mbox{\hyperlink{classGameObject_a5101d9de8eb4e44410d875ccb6bade8b}{m\+Active}}
+\item 
+bool \mbox{\hyperlink{classGameObject_afa97a45840ebad6ba7bc14eb7f7f9041}{m\+Visible}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{classGameObject_aa6ee0f1d35fc6959859a98f9998b197b}{m\+Pos}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{classGameObject_aa769e9608e85e0a5b35b12dd2ced5f01}{m\+Scale}}
+\item 
+int \mbox{\hyperlink{classGameObject_ae54f9fed22969f992d4bd2c55999967d}{m\+ZIndex}} = 1000
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a544c86d162dd917b26ad77deed2ce9e6}{p\+Parent}} = nullptr
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGameObject_af80e9ee891dd30e6d390dd680e3c83f4}{children}}
+\item 
+std\+::map$<$ int, std\+::set$<$ \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$, std\+::greater$<$ int $>$ $>$ \mbox{\hyperlink{classGameObject_a91498e29040e119a948105b5ea4a9883}{m\+Children\+By\+ZIndex}}
+\item 
+std\+::list$<$ \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGameObject_aa036de331741bef1ed8c312a5d5c465e}{m\+Children\+To\+Remove}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{saver_8hpp_source_l00011}{11}} of file \mbox{\hyperlink{saver_8hpp_source}{saver.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSaver_a3659ea3f52aead3567968bf00047fd3c}\index{Saver@{Saver}!Saver@{Saver}}
+\index{Saver@{Saver}!Saver@{Saver}}
+\doxysubsubsection{\texorpdfstring{Saver()}{Saver()}}
+{\footnotesize\ttfamily \label{classSaver_a3659ea3f52aead3567968bf00047fd3c} 
+Saver\+::\+Saver (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{, }\item[{\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{saver_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{saver_8cpp_source}{saver.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSaver_a5c4f9e59a3b0a3aefae943bdae1b894d}\index{Saver@{Saver}!DeleteSave@{DeleteSave}}
+\index{DeleteSave@{DeleteSave}!Saver@{Saver}}
+\doxysubsubsection{\texorpdfstring{DeleteSave()}{DeleteSave()}}
+{\footnotesize\ttfamily \label{classSaver_a5c4f9e59a3b0a3aefae943bdae1b894d} 
+void Saver\+::\+Delete\+Save (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{saver_8cpp_source_l00157}{157}} of file \mbox{\hyperlink{saver_8cpp_source}{saver.\+cpp}}.
+
+\Hypertarget{classSaver_ae6a67352d7c04328247757585169111b}\index{Saver@{Saver}!Load@{Load}}
+\index{Load@{Load}!Saver@{Saver}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily \label{classSaver_ae6a67352d7c04328247757585169111b} 
+void Saver\+::\+Load (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{saver_8cpp_source_l00119}{119}} of file \mbox{\hyperlink{saver_8cpp_source}{saver.\+cpp}}.
+
+\Hypertarget{classSaver_abb8fa13e408265d86c50438cee79efbd}\index{Saver@{Saver}!LoadHighscore@{LoadHighscore}}
+\index{LoadHighscore@{LoadHighscore}!Saver@{Saver}}
+\doxysubsubsection{\texorpdfstring{LoadHighscore()}{LoadHighscore()}}
+{\footnotesize\ttfamily \label{classSaver_abb8fa13e408265d86c50438cee79efbd} 
+std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$ Saver\+::\+Load\+Highscore (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{saver_8cpp_source_l00105}{105}} of file \mbox{\hyperlink{saver_8cpp_source}{saver.\+cpp}}.
+
+\Hypertarget{classSaver_ac052342a699ee8aa7045263def560f93}\index{Saver@{Saver}!Save@{Save}}
+\index{Save@{Save}!Saver@{Saver}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily \label{classSaver_ac052342a699ee8aa7045263def560f93} 
+void Saver\+::\+Save (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{saver_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{saver_8cpp_source}{saver.\+cpp}}.
+
+\Hypertarget{classSaver_a5b30841cb5da82c7a4fc8a88ec7d96ab}\index{Saver@{Saver}!SaveHighscore@{SaveHighscore}}
+\index{SaveHighscore@{SaveHighscore}!Saver@{Saver}}
+\doxysubsubsection{\texorpdfstring{SaveHighscore()}{SaveHighscore()}}
+{\footnotesize\ttfamily \label{classSaver_a5b30841cb5da82c7a4fc8a88ec7d96ab} 
+void Saver\+::\+Save\+Highscore (\begin{DoxyParamCaption}\item[{int}]{score}{, }\item[{std\+::string}]{user}{ = {\ttfamily "{}Player"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{saver_8cpp_source_l00078}{78}} of file \mbox{\hyperlink{saver_8cpp_source}{saver.\+cpp}}.
+
+\Hypertarget{classSaver_a713f197a0aac1eae88bb970fd55bf610}\index{Saver@{Saver}!Update@{Update}}
+\index{Update@{Update}!Saver@{Saver}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{classSaver_a713f197a0aac1eae88bb970fd55bf610} 
+void Saver\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classGameObject_a9e6d53f4ebbaf13a26353f1888584a26}{Game\+Object}}.
+
+
+
+Definition at line \mbox{\hyperlink{saver_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{saver_8cpp_source}{saver.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classSaver_a956996413f98459b596d65d842694243}\index{Saver@{Saver}!mDungeonSaveData@{mDungeonSaveData}}
+\index{mDungeonSaveData@{mDungeonSaveData}!Saver@{Saver}}
+\doxysubsubsection{\texorpdfstring{mDungeonSaveData}{mDungeonSaveData}}
+{\footnotesize\ttfamily \label{classSaver_a956996413f98459b596d65d842694243} 
+\mbox{\hyperlink{structDungeon_1_1SaveData}{Dungeon\+::\+Save\+Data}} Saver\+::m\+Dungeon\+Save\+Data\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{saver_8hpp_source_l00028}{28}} of file \mbox{\hyperlink{saver_8hpp_source}{saver.\+hpp}}.
+
+\Hypertarget{classSaver_a8e58d803d843035ececbb893ea1ae679}\index{Saver@{Saver}!mEntitySaveData@{mEntitySaveData}}
+\index{mEntitySaveData@{mEntitySaveData}!Saver@{Saver}}
+\doxysubsubsection{\texorpdfstring{mEntitySaveData}{mEntitySaveData}}
+{\footnotesize\ttfamily \label{classSaver_a8e58d803d843035ececbb893ea1ae679} 
+std\+::vector$<$ \mbox{\hyperlink{structEntity_1_1SaveData}{Entity\+::\+Save\+Data}} $>$ Saver\+::m\+Entity\+Save\+Data\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{saver_8hpp_source_l00026}{26}} of file \mbox{\hyperlink{saver_8hpp_source}{saver.\+hpp}}.
+
+\Hypertarget{classSaver_a5e64d291cbc147d778f057530f29ff2b}\index{Saver@{Saver}!mPlayerSaveData@{mPlayerSaveData}}
+\index{mPlayerSaveData@{mPlayerSaveData}!Saver@{Saver}}
+\doxysubsubsection{\texorpdfstring{mPlayerSaveData}{mPlayerSaveData}}
+{\footnotesize\ttfamily \label{classSaver_a5e64d291cbc147d778f057530f29ff2b} 
+\mbox{\hyperlink{structEntity_1_1SaveData}{Entity\+::\+Save\+Data}} Saver\+::m\+Player\+Save\+Data\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{saver_8hpp_source_l00029}{29}} of file \mbox{\hyperlink{saver_8hpp_source}{saver.\+hpp}}.
+
+\Hypertarget{classSaver_a8b816fd722d96754627d8d0ac3b1a6c1}\index{Saver@{Saver}!mReadyToLoad@{mReadyToLoad}}
+\index{mReadyToLoad@{mReadyToLoad}!Saver@{Saver}}
+\doxysubsubsection{\texorpdfstring{mReadyToLoad}{mReadyToLoad}}
+{\footnotesize\ttfamily \label{classSaver_a8b816fd722d96754627d8d0ac3b1a6c1} 
+bool Saver\+::m\+Ready\+To\+Load = false\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{saver_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{saver_8hpp_source}{saver.\+hpp}}.
+
+\Hypertarget{classSaver_a1beb509f7d02669c1832863d9b30c0b1}\index{Saver@{Saver}!mRoomSaveData@{mRoomSaveData}}
+\index{mRoomSaveData@{mRoomSaveData}!Saver@{Saver}}
+\doxysubsubsection{\texorpdfstring{mRoomSaveData}{mRoomSaveData}}
+{\footnotesize\ttfamily \label{classSaver_a1beb509f7d02669c1832863d9b30c0b1} 
+std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{structDungeon_1_1RoomData}{Dungeon\+::\+Room\+Data}} $>$ $>$ Saver\+::m\+Room\+Save\+Data\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{saver_8hpp_source_l00027}{27}} of file \mbox{\hyperlink{saver_8hpp_source}{saver.\+hpp}}.
+
+\Hypertarget{classSaver_ae918a17af7e7cd65352440e97b9b015d}\index{Saver@{Saver}!mSaveFileName@{mSaveFileName}}
+\index{mSaveFileName@{mSaveFileName}!Saver@{Saver}}
+\doxysubsubsection{\texorpdfstring{mSaveFileName}{mSaveFileName}}
+{\footnotesize\ttfamily \label{classSaver_ae918a17af7e7cd65352440e97b9b015d} 
+std\+::string Saver\+::m\+Save\+File\+Name = "{}save"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{saver_8hpp_source_l00022}{22}} of file \mbox{\hyperlink{saver_8hpp_source}{saver.\+hpp}}.
+
+\Hypertarget{classSaver_ab387902d97342d53c54e0798a4179f0e}\index{Saver@{Saver}!mSaveFilePath@{mSaveFilePath}}
+\index{mSaveFilePath@{mSaveFilePath}!Saver@{Saver}}
+\doxysubsubsection{\texorpdfstring{mSaveFilePath}{mSaveFilePath}}
+{\footnotesize\ttfamily \label{classSaver_ab387902d97342d53c54e0798a4179f0e} 
+std\+::string Saver\+::m\+Save\+File\+Path = "{}saves/"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{saver_8hpp_source_l00021}{21}} of file \mbox{\hyperlink{saver_8hpp_source}{saver.\+hpp}}.
+
+\Hypertarget{classSaver_a235e9ea10824101370f087de904fc98d}\index{Saver@{Saver}!mShouldLoad@{mShouldLoad}}
+\index{mShouldLoad@{mShouldLoad}!Saver@{Saver}}
+\doxysubsubsection{\texorpdfstring{mShouldLoad}{mShouldLoad}}
+{\footnotesize\ttfamily \label{classSaver_a235e9ea10824101370f087de904fc98d} 
+bool Saver\+::m\+Should\+Load = false\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{saver_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{saver_8hpp_source}{saver.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/vid/\+Dev/personal/game/src/game/objects/\mbox{\hyperlink{saver_8hpp}{saver.\+hpp}}\item 
+/home/vid/\+Dev/personal/game/src/game/objects/\mbox{\hyperlink{saver_8cpp}{saver.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,124 @@
+\doxysection{Resource\+Manager Class Reference}
+\hypertarget{classResourceManager}{}\label{classResourceManager}\index{ResourceManager@{ResourceManager}}
+
+
+{\ttfamily \#include $<$resource\+\_\+manager.\+hpp$>$}
+
+Inheritance diagram for Resource\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classResourceManager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTexture}{Texture}} \mbox{\hyperlink{classResourceManager_aa0a7786078185202d39fabd535ca31d6}{Load\+Texture}} (const char \texorpdfstring{$\ast$}{*}file, bool alpha, const std\+::string \&name)
+\item 
+\mbox{\hyperlink{classTexture}{Texture}} \& \mbox{\hyperlink{classResourceManager_af671097d8527451f3cc97ae4f7e14893}{Get\+Texture}} (const std\+::string \&name)
+\item 
+\mbox{\hyperlink{classShader}{Shader}} \mbox{\hyperlink{classResourceManager_ae4fad243df8571c695724d0d625086a5}{Load\+Shader}} (const char \texorpdfstring{$\ast$}{*}v\+Shader\+File, const char \texorpdfstring{$\ast$}{*}f\+Shader\+File, const char \texorpdfstring{$\ast$}{*}g\+Shader\+File, const std\+::string \&name)
+\item 
+\mbox{\hyperlink{classShader}{Shader}} \& \mbox{\hyperlink{classResourceManager_a7271dc68134357c6faafb3458bfc713e}{Get\+Shader}} (const std\+::string \&name)
+\item 
+void \mbox{\hyperlink{classResourceManager_aecd08b92634fad3316442c267a04e8c4}{Clear}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classSingleton}{Singleton}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSingleton_a84227bd639f8097db70b60e51aae00b8}{Singleton}} (\mbox{\hyperlink{classSingleton}{Singleton}} const \&)=delete
+\item 
+void \mbox{\hyperlink{classSingleton_aa194cf3a430784a890bc0ceba41705e9}{operator=}} (\mbox{\hyperlink{classSingleton}{Singleton}} const \&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classResourceManager}{Resource\+Manager}} \& \mbox{\hyperlink{classResourceManager_acb3f8ecc7b3de8c1c7ac956ce5114d47}{Get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classSingleton}{Singleton}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classSingleton}{Singleton}} \& \mbox{\hyperlink{classSingleton_a4604f975faaf832905d18c2354157c0e}{Get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classSingleton}{Singleton}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSingleton_a0e21dfc9afab45b0a6a70f6665ce5819}{Singleton}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{resource__manager_8hpp_source_l00010}{10}} of file \mbox{\hyperlink{resource__manager_8hpp_source}{resource\+\_\+manager.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classResourceManager_aecd08b92634fad3316442c267a04e8c4}\index{ResourceManager@{ResourceManager}!Clear@{Clear}}
+\index{Clear@{Clear}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{classResourceManager_aecd08b92634fad3316442c267a04e8c4} 
+void Resource\+Manager\+::\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{resource__manager_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{resource__manager_8cpp_source}{resource\+\_\+manager.\+cpp}}.
+
+\Hypertarget{classResourceManager_acb3f8ecc7b3de8c1c7ac956ce5114d47}\index{ResourceManager@{ResourceManager}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily \label{classResourceManager_acb3f8ecc7b3de8c1c7ac956ce5114d47} 
+static \mbox{\hyperlink{classResourceManager}{Resource\+Manager}} \& Resource\+Manager\+::\+Get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{resource__manager_8hpp_source_l00012}{12}} of file \mbox{\hyperlink{resource__manager_8hpp_source}{resource\+\_\+manager.\+hpp}}.
+
+\Hypertarget{classResourceManager_a7271dc68134357c6faafb3458bfc713e}\index{ResourceManager@{ResourceManager}!GetShader@{GetShader}}
+\index{GetShader@{GetShader}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{GetShader()}{GetShader()}}
+{\footnotesize\ttfamily \label{classResourceManager_a7271dc68134357c6faafb3458bfc713e} 
+\mbox{\hyperlink{classShader}{Shader}} \& Resource\+Manager\+::\+Get\+Shader (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{resource__manager_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{resource__manager_8cpp_source}{resource\+\_\+manager.\+cpp}}.
+
+\Hypertarget{classResourceManager_af671097d8527451f3cc97ae4f7e14893}\index{ResourceManager@{ResourceManager}!GetTexture@{GetTexture}}
+\index{GetTexture@{GetTexture}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{GetTexture()}{GetTexture()}}
+{\footnotesize\ttfamily \label{classResourceManager_af671097d8527451f3cc97ae4f7e14893} 
+\mbox{\hyperlink{classTexture}{Texture}} \& Resource\+Manager\+::\+Get\+Texture (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{resource__manager_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{resource__manager_8cpp_source}{resource\+\_\+manager.\+cpp}}.
+
+\Hypertarget{classResourceManager_ae4fad243df8571c695724d0d625086a5}\index{ResourceManager@{ResourceManager}!LoadShader@{LoadShader}}
+\index{LoadShader@{LoadShader}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{LoadShader()}{LoadShader()}}
+{\footnotesize\ttfamily \label{classResourceManager_ae4fad243df8571c695724d0d625086a5} 
+\mbox{\hyperlink{classShader}{Shader}} Resource\+Manager\+::\+Load\+Shader (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{v\+Shader\+File}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{f\+Shader\+File}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{g\+Shader\+File}{, }\item[{const std\+::string \&}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{resource__manager_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{resource__manager_8cpp_source}{resource\+\_\+manager.\+cpp}}.
+
+\Hypertarget{classResourceManager_aa0a7786078185202d39fabd535ca31d6}\index{ResourceManager@{ResourceManager}!LoadTexture@{LoadTexture}}
+\index{LoadTexture@{LoadTexture}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{LoadTexture()}{LoadTexture()}}
+{\footnotesize\ttfamily \label{classResourceManager_aa0a7786078185202d39fabd535ca31d6} 
+\mbox{\hyperlink{classTexture}{Texture}} Resource\+Manager\+::\+Load\+Texture (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{file}{, }\item[{bool}]{alpha}{, }\item[{const std\+::string \&}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{resource__manager_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{resource__manager_8cpp_source}{resource\+\_\+manager.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/vid/\+Dev/personal/game/src/engine/renderer/\mbox{\hyperlink{resource__manager_8hpp}{resource\+\_\+manager.\+hpp}}\item 
+/home/vid/\+Dev/personal/game/src/engine/renderer/\mbox{\hyperlink{resource__manager_8cpp}{resource\+\_\+manager.\+cpp}}\end{DoxyCompactItemize}

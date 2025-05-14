@@ -1,0 +1,142 @@
+\doxysection{Post\+Processor Class Reference}
+\hypertarget{classPostProcessor}{}\label{classPostProcessor}\index{PostProcessor@{PostProcessor}}
+
+
+{\ttfamily \#include $<$post\+\_\+processor.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPostProcessor_a09121c69e5513541a99065ccd03e3788}{Post\+Processor}} (\mbox{\hyperlink{classShader}{Shader}} shader, unsigned int width, unsigned int height)
+\item 
+void \mbox{\hyperlink{classPostProcessor_a701af81027102dd36d1c0f66e15bd63d}{Begin\+Render}} ()
+\item 
+void \mbox{\hyperlink{classPostProcessor_a0350986295119733e7bc8a0360036000}{End\+Render}} ()
+\item 
+void \mbox{\hyperlink{classPostProcessor_a08eb581860236db09fc22854eec569bf}{Render}} (float time)
+\item 
+void \mbox{\hyperlink{classPostProcessor_a8d002ff9c2fec8b4fbade21c54a4841f}{Resize}} (int new\+Width, int new\+Height)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classShader}{Shader}} \mbox{\hyperlink{classPostProcessor_a050471c23d45efcb3a272a8d9dd933a3}{m\+Post\+Processing\+Shader}}
+\item 
+\mbox{\hyperlink{classTexture}{Texture}} \mbox{\hyperlink{classPostProcessor_a5f573c8f9028144bb76d711fac46a28a}{m\+Texture}}
+\item 
+unsigned int \mbox{\hyperlink{classPostProcessor_a58d386f64bfde0ab02db38b72926804f}{m\+Width}}
+\item 
+unsigned int \mbox{\hyperlink{classPostProcessor_a1cacec3fcb1fcf8d9b7df0200a6b3a59}{m\+Height}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{post__processor_8hpp_source_l00006}{6}} of file \mbox{\hyperlink{post__processor_8hpp_source}{post\+\_\+processor.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPostProcessor_a09121c69e5513541a99065ccd03e3788}\index{PostProcessor@{PostProcessor}!PostProcessor@{PostProcessor}}
+\index{PostProcessor@{PostProcessor}!PostProcessor@{PostProcessor}}
+\doxysubsubsection{\texorpdfstring{PostProcessor()}{PostProcessor()}}
+{\footnotesize\ttfamily \label{classPostProcessor_a09121c69e5513541a99065ccd03e3788} 
+Post\+Processor\+::\+Post\+Processor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classShader}{Shader}}}]{shader}{, }\item[{unsigned int}]{width}{, }\item[{unsigned int}]{height}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{post__processor_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{post__processor_8cpp_source}{post\+\_\+processor.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPostProcessor_a701af81027102dd36d1c0f66e15bd63d}\index{PostProcessor@{PostProcessor}!BeginRender@{BeginRender}}
+\index{BeginRender@{BeginRender}!PostProcessor@{PostProcessor}}
+\doxysubsubsection{\texorpdfstring{BeginRender()}{BeginRender()}}
+{\footnotesize\ttfamily \label{classPostProcessor_a701af81027102dd36d1c0f66e15bd63d} 
+void Post\+Processor\+::\+Begin\+Render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{post__processor_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{post__processor_8cpp_source}{post\+\_\+processor.\+cpp}}.
+
+\Hypertarget{classPostProcessor_a0350986295119733e7bc8a0360036000}\index{PostProcessor@{PostProcessor}!EndRender@{EndRender}}
+\index{EndRender@{EndRender}!PostProcessor@{PostProcessor}}
+\doxysubsubsection{\texorpdfstring{EndRender()}{EndRender()}}
+{\footnotesize\ttfamily \label{classPostProcessor_a0350986295119733e7bc8a0360036000} 
+void Post\+Processor\+::\+End\+Render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{post__processor_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{post__processor_8cpp_source}{post\+\_\+processor.\+cpp}}.
+
+\Hypertarget{classPostProcessor_a08eb581860236db09fc22854eec569bf}\index{PostProcessor@{PostProcessor}!Render@{Render}}
+\index{Render@{Render}!PostProcessor@{PostProcessor}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily \label{classPostProcessor_a08eb581860236db09fc22854eec569bf} 
+void Post\+Processor\+::\+Render (\begin{DoxyParamCaption}\item[{float}]{time}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{post__processor_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{post__processor_8cpp_source}{post\+\_\+processor.\+cpp}}.
+
+\Hypertarget{classPostProcessor_a8d002ff9c2fec8b4fbade21c54a4841f}\index{PostProcessor@{PostProcessor}!Resize@{Resize}}
+\index{Resize@{Resize}!PostProcessor@{PostProcessor}}
+\doxysubsubsection{\texorpdfstring{Resize()}{Resize()}}
+{\footnotesize\ttfamily \label{classPostProcessor_a8d002ff9c2fec8b4fbade21c54a4841f} 
+void Post\+Processor\+::\+Resize (\begin{DoxyParamCaption}\item[{int}]{new\+Width}{, }\item[{int}]{new\+Height}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{post__processor_8cpp_source_l00124}{124}} of file \mbox{\hyperlink{post__processor_8cpp_source}{post\+\_\+processor.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classPostProcessor_a1cacec3fcb1fcf8d9b7df0200a6b3a59}\index{PostProcessor@{PostProcessor}!mHeight@{mHeight}}
+\index{mHeight@{mHeight}!PostProcessor@{PostProcessor}}
+\doxysubsubsection{\texorpdfstring{mHeight}{mHeight}}
+{\footnotesize\ttfamily \label{classPostProcessor_a1cacec3fcb1fcf8d9b7df0200a6b3a59} 
+unsigned int Post\+Processor\+::m\+Height}
+
+
+
+Definition at line \mbox{\hyperlink{post__processor_8hpp_source_l00010}{10}} of file \mbox{\hyperlink{post__processor_8hpp_source}{post\+\_\+processor.\+hpp}}.
+
+\Hypertarget{classPostProcessor_a050471c23d45efcb3a272a8d9dd933a3}\index{PostProcessor@{PostProcessor}!mPostProcessingShader@{mPostProcessingShader}}
+\index{mPostProcessingShader@{mPostProcessingShader}!PostProcessor@{PostProcessor}}
+\doxysubsubsection{\texorpdfstring{mPostProcessingShader}{mPostProcessingShader}}
+{\footnotesize\ttfamily \label{classPostProcessor_a050471c23d45efcb3a272a8d9dd933a3} 
+\mbox{\hyperlink{classShader}{Shader}} Post\+Processor\+::m\+Post\+Processing\+Shader}
+
+
+
+Definition at line \mbox{\hyperlink{post__processor_8hpp_source_l00008}{8}} of file \mbox{\hyperlink{post__processor_8hpp_source}{post\+\_\+processor.\+hpp}}.
+
+\Hypertarget{classPostProcessor_a5f573c8f9028144bb76d711fac46a28a}\index{PostProcessor@{PostProcessor}!mTexture@{mTexture}}
+\index{mTexture@{mTexture}!PostProcessor@{PostProcessor}}
+\doxysubsubsection{\texorpdfstring{mTexture}{mTexture}}
+{\footnotesize\ttfamily \label{classPostProcessor_a5f573c8f9028144bb76d711fac46a28a} 
+\mbox{\hyperlink{classTexture}{Texture}} Post\+Processor\+::m\+Texture}
+
+
+
+Definition at line \mbox{\hyperlink{post__processor_8hpp_source_l00009}{9}} of file \mbox{\hyperlink{post__processor_8hpp_source}{post\+\_\+processor.\+hpp}}.
+
+\Hypertarget{classPostProcessor_a58d386f64bfde0ab02db38b72926804f}\index{PostProcessor@{PostProcessor}!mWidth@{mWidth}}
+\index{mWidth@{mWidth}!PostProcessor@{PostProcessor}}
+\doxysubsubsection{\texorpdfstring{mWidth}{mWidth}}
+{\footnotesize\ttfamily \label{classPostProcessor_a58d386f64bfde0ab02db38b72926804f} 
+unsigned int Post\+Processor\+::m\+Width}
+
+
+
+Definition at line \mbox{\hyperlink{post__processor_8hpp_source_l00010}{10}} of file \mbox{\hyperlink{post__processor_8hpp_source}{post\+\_\+processor.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/vid/\+Dev/personal/game/src/engine/renderer/\mbox{\hyperlink{post__processor_8hpp}{post\+\_\+processor.\+hpp}}\item 
+/home/vid/\+Dev/personal/game/src/engine/renderer/\mbox{\hyperlink{post__processor_8cpp}{post\+\_\+processor.\+cpp}}\end{DoxyCompactItemize}

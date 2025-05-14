@@ -1,0 +1,41 @@
+\doxysection{spritesheet\+\_\+game\+\_\+object.\+hpp}
+\hypertarget{spritesheet__game__object_8hpp_source}{}\label{spritesheet__game__object_8hpp_source}\index{/home/vid/Dev/personal/game/src/engine/game\_objects/drawables/spritesheet\_game\_object.hpp@{/home/vid/Dev/personal/game/src/engine/game\_objects/drawables/spritesheet\_game\_object.hpp}}
+\mbox{\hyperlink{spritesheet__game__object_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__image__game__object_8hpp}{abstract\_image\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}glm/ext/vector\_float2.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}glm/ext/vector\_float3.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00012}\mbox{\hyperlink{classSpriteSheetGameObject}{00012}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSpriteSheetGameObject_a63547ca4d4633ab459d47ad10b3bc265}{SpriteSheetGameObject}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classAbstractImageGameObject_a565060fbfe36d570f6136103bf98d898}{AbstractImageGameObject}}\ \{}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00013}00013\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00014}00014\ \ \ \ \ \mbox{\hyperlink{classSpriteSheetGameObject_a63547ca4d4633ab459d47ad10b3bc265}{SpriteSheetGameObject}}(std::string\ name,\ std::string\ textureName,\ std::pair<unsigned\ int,\ unsigned\ int>\ framesResolution,\ glm::vec3\ pos,\ glm::vec2\ scale\ =\ glm::vec2(1.0f),\ glm::vec4\ color\ =\ glm::vec4(1.0f));}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00015}00015\ \ \ \ \ \mbox{\hyperlink{classSpriteSheetGameObject_a63547ca4d4633ab459d47ad10b3bc265}{SpriteSheetGameObject}}(std::string\ name,\ \mbox{\hyperlink{classDrawableGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *parent,\ std::string\ textureName,\ std::pair<unsigned\ int,\ unsigned\ int>\ framesResolution,\ glm::vec3\ pos\ =\ glm::vec3(0.0f),\ glm::vec2\ scale\ =\ glm::vec2(1.0f),\ glm::vec4\ color\ =\ glm::vec4(1.0f));}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00016}00016\ \ \ \ \ \mbox{\hyperlink{classSpriteSheetGameObject_a63547ca4d4633ab459d47ad10b3bc265}{SpriteSheetGameObject}}(std::string\ name,\ \mbox{\hyperlink{classTexture}{Texture}}\ \&texture,\ std::pair<unsigned\ int,\ unsigned\ int>\ framesResolution,\ glm::vec3\ pos,\ glm::vec2\ scale\ =\ glm::vec2(1.0f),\ glm::vec4\ color\ =\ glm::vec4(1.0f));}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00017}00017\ \ \ \ \ \mbox{\hyperlink{classSpriteSheetGameObject_a63547ca4d4633ab459d47ad10b3bc265}{SpriteSheetGameObject}}(std::string\ name,\ \mbox{\hyperlink{classDrawableGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *parent,\ \mbox{\hyperlink{classTexture}{Texture}}\ \&texture,\ std::pair<unsigned\ int,\ unsigned\ int>\ framesResolution,\ glm::vec3\ pos,\ glm::vec2\ scale\ =\ glm::vec2(1.0f),\ glm::vec4\ color\ =\ glm::vec4(1.0f));}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpriteSheetGameObject_afd2622dc9f2de84cf354a19303566ece}{Render}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00021}00021\ \ \ \ \ \mbox{\hyperlink{classSpriteSheetGameObject_a63547ca4d4633ab459d47ad10b3bc265}{SpriteSheetGameObject}}\ *\mbox{\hyperlink{classSpriteSheetGameObject_aa645f50f6653ad3643e6f3cc4df398e3}{SetSpriteSheetFrame}}(\textcolor{keywordtype}{int}\ frame);}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{classSpriteSheetGameObject_a63547ca4d4633ab459d47ad10b3bc265}{SpriteSheetGameObject}}\ *\mbox{\hyperlink{classSpriteSheetGameObject_aa645f50f6653ad3643e6f3cc4df398e3}{SetSpriteSheetFrame}}(\textcolor{keywordtype}{int}\ row,\ \textcolor{keywordtype}{int}\ col);}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{classSpriteSheetGameObject_a63547ca4d4633ab459d47ad10b3bc265}{SpriteSheetGameObject}}\ *\mbox{\hyperlink{classSpriteSheetGameObject_aa645f50f6653ad3643e6f3cc4df398e3}{SetSpriteSheetFrame}}(glm::vec2\ frame);}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{classSpriteSheetGameObject_a63547ca4d4633ab459d47ad10b3bc265}{SpriteSheetGameObject}}\ *\mbox{\hyperlink{classSpriteSheetGameObject_a71443578af6abe3ab5c24361d83db92c}{AddFrameSequence}}(std::string\ name,\ std::vector<glm::vec2>\ frames);}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00027}00027\ \ \ \ \ std::vector<glm::vec2>\ *\mbox{\hyperlink{classSpriteSheetGameObject_ad9af5f840cb7469e5f2a99e45b57eed1}{GetFrameSequence}}(std::string\ name)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00028}00028\ \ \ \ \ glm::vec2\ \mbox{\hyperlink{classSpriteSheetGameObject_ac5dab8bf7032a588d2e09371514de5e0}{GetFrameFromSequence}}(std::string\ name)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classSpriteSheetGameObject_af576f1f2f440060b052755e21cff7848}{GetFrameIndex}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00031}00031\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00032}00032\ \ \ \ \ std::map<std::string,\ std::vector<glm::vec2>>\ mFrameSequences;}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00033}00033\ \ \ \ \ std::pair<unsigned\ int,\ unsigned\ int>\ mFramesResolution;}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ mFrameIndex\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{spritesheet__game__object_8hpp_source_l00035}00035\ \};}
+
+\end{DoxyCode}

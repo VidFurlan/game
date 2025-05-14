@@ -1,0 +1,22 @@
+\doxysection{polygon2d.\+hpp}
+\hypertarget{polygon2d_8hpp_source}{}\label{polygon2d_8hpp_source}\index{/home/vid/Dev/personal/game/src/engine/shapes/polygon2d.hpp@{/home/vid/Dev/personal/game/src/engine/shapes/polygon2d.hpp}}
+\mbox{\hyperlink{polygon2d_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{polygon2d_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{polygon2d_8hpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{polygon2d_8hpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{polygon2d_8hpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{polygon2d_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}glm/ext/vector\_float4.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{polygon2d_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}glm/fwd.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{polygon2d_8hpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{shape2d_8hpp}{shapes/shape2d.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{polygon2d_8hpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{polygon2d_8hpp_source_l00009}\mbox{\hyperlink{classPolygon2D}{00009}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPolygon2D_ac063667c071d8717626747a1af573b37}{Polygon2D}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classShape2D_aa01ec0fa01c8c0709d54b396301d1698}{Shape2D}}\ \{}
+\DoxyCodeLine{\Hypertarget{polygon2d_8hpp_source_l00010}00010\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{polygon2d_8hpp_source_l00011}00011\ \ \ \ \ \mbox{\hyperlink{classPolygon2D_ac063667c071d8717626747a1af573b37}{Polygon2D}}(std::vector<glm::vec2>\ \mbox{\hyperlink{classShape2D_ae996fba89e9a520924a9a6f4ba233fb0}{vertices}},\ glm::vec2\ \mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}}\ =\ glm::vec2(0.0f),\ glm::vec4\ \mbox{\hyperlink{classShape2D_a2f3ae03dbb52953f43b9003aeb5835da}{color}}\ =\ glm::vec4(0.0f,\ 1.0f,\ 0.0f,\ 1.0f));}
+\DoxyCodeLine{\Hypertarget{polygon2d_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{polygon2d_8hpp_source_l00013}00013\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPolygon2D_a8355b78b5461188004f4f74a865aefbb}{DrawDebug}}(glm::vec2\ offset\ =\ glm::vec2(0.0f),\ \textcolor{keywordtype}{float}\ rot\ =\ 0.0f,\ glm::vec2\ \mbox{\hyperlink{classShape2D_a7772a37f10ee85cf0c1e7be590aa6f45}{scale}}\ =\ glm::vec2(1.0f))\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{polygon2d_8hpp_source_l00014}00014\ \ \ \ \ std::vector<glm::vec2>\ \mbox{\hyperlink{classPolygon2D_aaee32018f2223baea249a6e3a69a6878}{GetEdges}}(glm::vec3\ \mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}}\ =\ glm::vec3(0.0f))\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{polygon2d_8hpp_source_l00015}00015\ \ \ \ \ std::vector<glm::vec2>\ \mbox{\hyperlink{classPolygon2D_aec3904c904757af2fc393f2ec4ea9001}{GetVertices}}(glm::vec3\ \mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}}\ =\ glm::vec3(0.0f))\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{\Hypertarget{polygon2d_8hpp_source_l00016}00016\ \};}
+
+\end{DoxyCode}

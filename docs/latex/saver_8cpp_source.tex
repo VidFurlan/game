@@ -1,0 +1,169 @@
+\doxysection{saver.\+cpp}
+\hypertarget{saver_8cpp_source}{}\label{saver_8cpp_source}\index{/home/vid/Dev/personal/game/src/game/objects/saver.cpp@{/home/vid/Dev/personal/game/src/game/objects/saver.cpp}}
+\mbox{\hyperlink{saver_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{saver_8hpp}{saver.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game_8hpp}{game.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__object_8hpp}{game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{dungeon_8hpp}{objects/dungeon/dungeon.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{entity_8hpp}{objects/entities/entity.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8hpp}{objects/player.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00016}00016\ std::string\ \mbox{\hyperlink{classSaver_ab387902d97342d53c54e0798a4179f0e}{Saver::mSaveFilePath}}\ =\ \textcolor{stringliteral}{"{}saves/"{}};}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00017}00017\ std::string\ \mbox{\hyperlink{classSaver_ae918a17af7e7cd65352440e97b9b015d}{Saver::mSaveFileName}}\ =\ \textcolor{stringliteral}{"{}save"{}};}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00018}00018\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSaver_a235e9ea10824101370f087de904fc98d}{Saver::mShouldLoad}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00019}00019\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSaver_a8b816fd722d96754627d8d0ac3b1a6c1}{Saver::mReadyToLoad}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00020}00020\ std::vector<Entity::SaveData>\ \mbox{\hyperlink{classSaver_a8e58d803d843035ececbb893ea1ae679}{Saver::mEntitySaveData}};}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00021}00021\ std::vector<std::vector<Dungeon::RoomData>>\ \mbox{\hyperlink{classSaver_a1beb509f7d02669c1832863d9b30c0b1}{Saver::mRoomSaveData}};}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00022}00022\ \mbox{\hyperlink{structDungeon_1_1SaveData}{Dungeon::SaveData}}\ \mbox{\hyperlink{classSaver_a956996413f98459b596d65d842694243}{Saver::mDungeonSaveData}};}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00023}00023\ \mbox{\hyperlink{structEntity_1_1SaveData}{Entity::SaveData}}\ \mbox{\hyperlink{classSaver_a5e64d291cbc147d778f057530f29ff2b}{Saver::mPlayerSaveData}};}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00025}\mbox{\hyperlink{classSaver_a3659ea3f52aead3567968bf00047fd3c}{00025}}\ \mbox{\hyperlink{classSaver_a3659ea3f52aead3567968bf00047fd3c}{Saver::Saver}}(\textcolor{keyword}{const}\ std::string\ \&name,\ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *parent)}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00026}00026\ \ \ \ \ :\ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}(name,\ parent)\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00029}\mbox{\hyperlink{classSaver_a713f197a0aac1eae88bb970fd55bf610}{00029}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSaver_a713f197a0aac1eae88bb970fd55bf610}{Saver::Update}}(\textcolor{keywordtype}{float}\ deltaTime)\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00030}00030\ \ \ \ \ \mbox{\hyperlink{classSaver_ac052342a699ee8aa7045263def560f93}{Save}}();}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00033}\mbox{\hyperlink{classSaver_ac052342a699ee8aa7045263def560f93}{00033}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSaver_ac052342a699ee8aa7045263def560f93}{Saver::Save}}()\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().GetState()\ !=\ \mbox{\hyperlink{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285ae5953e65e20db2684e778eb530191a43}{GameState::GAME\_ACTIVE}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00036}00036\ \ \ \ \ std::filesystem::create\_directory(\mbox{\hyperlink{classSaver_ab387902d97342d53c54e0798a4179f0e}{mSaveFilePath}});}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00037}00037\ \ \ \ \ std::ofstream\ saveFile(\mbox{\hyperlink{classSaver_ab387902d97342d53c54e0798a4179f0e}{mSaveFilePath}}\ +\ \mbox{\hyperlink{classSaver_ae918a17af7e7cd65352440e97b9b015d}{mSaveFileName}},\ std::ios::binary);}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (!saveFile.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ open\ save\ file\ for\ writing"{}});}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00042}00042\ \ \ \ \ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *scene\ =\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_ac99318a82ddc53292a7434d7d16a7236}{GetActiveScene}}();}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{comment}{//\ Dungeon\ save\ data}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{classDungeon}{Dungeon}}\ *dungeon\ =\ (\mbox{\hyperlink{classDungeon}{Dungeon}}\ *)(scene-\/>\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}Dungeon"{}}));}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{if}\ (dungeon\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Dungeon\ not\ found"{}});}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{structDungeon_1_1SaveData}{Dungeon::SaveData}}\ dungeonSaveData\ =\ dungeon-\/>\mbox{\hyperlink{classDungeon_a42d44a85b3b77c4ae18b4a1be4ad58a4}{GetSaveData}}();}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00050}00050\ \ \ \ \ saveFile.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&dungeonSaveData),\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structDungeon_1_1SaveData}{Dungeon::SaveData}}));}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ -\/dungeonSaveData.\mbox{\hyperlink{structDungeon_1_1SaveData_aef6e01e45f98e765df6005cb65e183d4}{roomCount}};\ i\ <\ dungeonSaveData.\mbox{\hyperlink{structDungeon_1_1SaveData_aef6e01e45f98e765df6005cb65e183d4}{roomCount}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ -\/dungeonSaveData.\mbox{\hyperlink{structDungeon_1_1SaveData_aef6e01e45f98e765df6005cb65e183d4}{roomCount}};\ j\ <\ dungeonSaveData.\mbox{\hyperlink{structDungeon_1_1SaveData_aef6e01e45f98e765df6005cb65e183d4}{roomCount}};\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structDungeon_1_1RoomData}{Dungeon::RoomData}}\ roomData\ =\ dungeon-\/>\mbox{\hyperlink{classDungeon_a74bfda8ce3e7779a6362d9669fa34321}{GetRoomData}}(i,\ j);}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ saveFile.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&roomData),\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structDungeon_1_1RoomData}{Dungeon::RoomData}}));}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Player\ save\ data}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00059}00059\ \ \ \ \ \mbox{\hyperlink{structEntity_1_1SaveData}{Entity::SaveData}}\ playerSaveData;}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00060}00060\ \ \ \ \ playerSaveData.\mbox{\hyperlink{structEntity_1_1SaveData_a5af209fdff59f92b787793da4ff0ce98}{type}}\ =\ \mbox{\hyperlink{entity_8hpp_ad79a57ed3105eb60d991a1aeb4a9dc44ade5dc3e0dbd007d995ed3e37bde5ce7e}{EntityType::PLAYER}};}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00061}00061\ \ \ \ \ playerSaveData.\mbox{\hyperlink{structEntity_1_1SaveData_aafafab93f2163929d39731f76ddd6b7b}{position}}\ =\ scene-\/>\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}Player"{}})-\/>\mbox{\hyperlink{classGameObject_a977d4bbb9ebe2266bae702b59508303b}{GetPosition}}();}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00062}00062\ \ \ \ \ playerSaveData.\mbox{\hyperlink{structEntity_1_1SaveData_a408224012a30161e63211da8a77a7c44}{health}}\ =\ ((\mbox{\hyperlink{classEntity}{Entity}}\ *)scene-\/>\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}Player"{}}))-\/>GetHealth();}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00063}00063\ \ \ \ \ saveFile.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&playerSaveData),\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structEntity_1_1SaveData}{Entity::SaveData}}));}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00064}00064\ \ \ \ \ saveFile.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&\mbox{\hyperlink{classPlayer_ae733a39dd7d8456b764520bf19278353}{Player::mCatCount}}),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00065}00065\ \ \ \ \ saveFile.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&\mbox{\hyperlink{classPlayer_ad6ad26f8a90ce069ed3d04bf1ce80eda}{Player::mKillCount}}),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//\ Entity\ save\ data}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00068}00068\ \ \ \ \ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *entities\ =\ dungeon-\/>\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}DungeonRoom"{}})-\/>\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}Entities"{}});}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ [name,\ child]\ :\ *entities-\/>\mbox{\hyperlink{classGameObject_a9c38119383137784bcbaeef5147be51d}{GetChildren}}())\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEntity}{Entity}}\ *entity\ =\ \textcolor{keyword}{dynamic\_cast<}\mbox{\hyperlink{classEntity}{Entity}}\ *\textcolor{keyword}{>}(child);}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structEntity_1_1SaveData}{Entity::SaveData}}\ entitySaveData\ =\ entity-\/>\mbox{\hyperlink{classEntity_a78197a5d3519d5e3c27c4481260d9fc9}{GetSaveData}}();}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ saveFile.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&entitySaveData),\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structEntity_1_1SaveData}{Entity::SaveData}}));}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00075}00075\ \ \ \ \ saveFile.close();}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00076}00076\ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00078}\mbox{\hyperlink{classSaver_a5b30841cb5da82c7a4fc8a88ec7d96ab}{00078}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSaver_a5b30841cb5da82c7a4fc8a88ec7d96ab}{Saver::SaveHighscore}}(\textcolor{keywordtype}{int}\ score,\ std::string\ user)\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00079}00079\ \ \ \ \ std::ifstream\ saveFile(\mbox{\hyperlink{classSaver_ab387902d97342d53c54e0798a4179f0e}{mSaveFilePath}}\ +\ \textcolor{stringliteral}{"{}highscore"{}});}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00080}00080\ \ \ \ \ std::vector<std::pair<int,\ std::string>>\ highscoreData;}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{if}\ (saveFile.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!saveFile.eof())\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ std::pair<int,\ std::string>\ data;}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ saveFile\ >>\ data.first\ >>\ data.second;}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ highscoreData.push\_back(data);}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00088}00088\ \ \ \ \ saveFile.close();}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00090}00090\ \ \ \ \ highscoreData.push\_back(\{score,\ user\});}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00091}00091\ \ \ \ \ std::sort(highscoreData.rbegin(),\ highscoreData.rend());}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00092}00092\ \ \ \ \ highscoreData.reserve(std::min((\textcolor{keywordtype}{int})highscoreData.size(),\ 10));}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00094}00094\ \ \ \ \ std::ofstream\ saveFileOut(\mbox{\hyperlink{classSaver_ab387902d97342d53c54e0798a4179f0e}{mSaveFilePath}}\ +\ \textcolor{stringliteral}{"{}highscore"{}});}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{if}\ (saveFileOut.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ highscoreData.size();}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ saveFileOut\ <<\ highscoreData[i].first\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ highscoreData[i].second;}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ !=\ n\ -\/\ 1)\ saveFileOut\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00101}00101\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00102}00102\ \ \ \ \ saveFileOut.close();}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00103}00103\ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00105}\mbox{\hyperlink{classSaver_abb8fa13e408265d86c50438cee79efbd}{00105}}\ std::vector<std::pair<int,\ std::string>>\ \mbox{\hyperlink{classSaver_abb8fa13e408265d86c50438cee79efbd}{Saver::LoadHighscore}}()\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00106}00106\ \ \ \ \ std::ifstream\ saveFile(\mbox{\hyperlink{classSaver_ab387902d97342d53c54e0798a4179f0e}{mSaveFilePath}}\ +\ \textcolor{stringliteral}{"{}highscore"{}});}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00107}00107\ \ \ \ \ std::vector<std::pair<int,\ std::string>>\ highscoreData;}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00108}00108\ \ \ \ \ \textcolor{keywordflow}{if}\ (saveFile.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!saveFile.eof())\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ std::pair<int,\ std::string>\ data;}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ saveFile\ >>\ data.first\ >>\ data.second;}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ highscoreData.push\_back(data);}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00114}00114\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00115}00115\ \ \ \ \ saveFile.close();}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{keywordflow}{return}\ highscoreData;}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00117}00117\ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00119}\mbox{\hyperlink{classSaver_ae6a67352d7c04328247757585169111b}{00119}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSaver_ae6a67352d7c04328247757585169111b}{Saver::Load}}()\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00120}00120\ \ \ \ \ std::ifstream\ saveFile(\mbox{\hyperlink{classSaver_ab387902d97342d53c54e0798a4179f0e}{mSaveFilePath}}\ +\ \mbox{\hyperlink{classSaver_ae918a17af7e7cd65352440e97b9b015d}{mSaveFileName}},\ std::ios::binary);}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00121}00121\ \ \ \ \ \textcolor{keywordflow}{if}\ (!saveFile.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00123}00123\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00125}00125\ \ \ \ \ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *scene\ =\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_ac99318a82ddc53292a7434d7d16a7236}{GetActiveScene}}();}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{comment}{//\ Dungeon\ load\ data}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00128}00128\ \ \ \ \ saveFile.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&\mbox{\hyperlink{classSaver_a956996413f98459b596d65d842694243}{mDungeonSaveData}}),\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structDungeon_1_1SaveData}{Dungeon::SaveData}}));}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00129}00129\ \ \ \ \ \mbox{\hyperlink{classSaver_a1beb509f7d02669c1832863d9b30c0b1}{mRoomSaveData}}.clear();}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00130}00130\ \ \ \ \ \mbox{\hyperlink{classSaver_a1beb509f7d02669c1832863d9b30c0b1}{mRoomSaveData}}.resize(\mbox{\hyperlink{classSaver_a956996413f98459b596d65d842694243}{mDungeonSaveData}}.roomCount\ *\ 2,\ std::vector<Dungeon::RoomData>(\mbox{\hyperlink{classSaver_a956996413f98459b596d65d842694243}{mDungeonSaveData}}.roomCount\ *\ 2));}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00131}00131\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ -\/\mbox{\hyperlink{classSaver_a956996413f98459b596d65d842694243}{mDungeonSaveData}}.roomCount;\ i\ <\ \mbox{\hyperlink{classSaver_a956996413f98459b596d65d842694243}{mDungeonSaveData}}.roomCount;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ -\/\mbox{\hyperlink{classSaver_a956996413f98459b596d65d842694243}{mDungeonSaveData}}.roomCount;\ j\ <\ \mbox{\hyperlink{classSaver_a956996413f98459b596d65d842694243}{mDungeonSaveData}}.roomCount;\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structDungeon_1_1RoomData}{Dungeon::RoomData}}\ roomData;}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ saveFile.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&roomData),\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structDungeon_1_1RoomData}{Dungeon::RoomData}}));}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSaver_a1beb509f7d02669c1832863d9b30c0b1}{mRoomSaveData}}[i\ +\ \mbox{\hyperlink{classSaver_a956996413f98459b596d65d842694243}{mDungeonSaveData}}.roomCount][j\ +\ \mbox{\hyperlink{classSaver_a956996413f98459b596d65d842694243}{mDungeonSaveData}}.roomCount]\ =\ roomData;}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00139}00139\ \ \ \ \ \textcolor{comment}{//\ Player\ load\ data}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00140}00140\ \ \ \ \ saveFile.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&\mbox{\hyperlink{classSaver_a5e64d291cbc147d778f057530f29ff2b}{mPlayerSaveData}}),\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structEntity_1_1SaveData}{Entity::SaveData}}));}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00141}00141\ \ \ \ \ saveFile.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&\mbox{\hyperlink{classPlayer_ae733a39dd7d8456b764520bf19278353}{Player::mCatCount}}),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00142}00142\ \ \ \ \ saveFile.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&\mbox{\hyperlink{classPlayer_ad6ad26f8a90ce069ed3d04bf1ce80eda}{Player::mKillCount}}),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00144}00144\ \ \ \ \ \textcolor{comment}{//\ Entity\ load\ data}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00145}00145\ \ \ \ \ \mbox{\hyperlink{classSaver_a8e58d803d843035ececbb893ea1ae679}{mEntitySaveData}}.clear();}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00146}00146\ \ \ \ \ \mbox{\hyperlink{structEntity_1_1SaveData}{Entity::SaveData}}\ entitySaveData;}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00147}00147\ \ \ \ \ \textcolor{keywordflow}{while}\ (saveFile.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&entitySaveData),\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structEntity_1_1SaveData}{Entity::SaveData}})))\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSaver_a8e58d803d843035ececbb893ea1ae679}{mEntitySaveData}}.push\_back(entitySaveData);}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00149}00149\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00151}00151\ \ \ \ \ saveFile.close();}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00153}00153\ \ \ \ \ \mbox{\hyperlink{classSaver_a8b816fd722d96754627d8d0ac3b1a6c1}{mReadyToLoad}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00154}00154\ \ \ \ \ \mbox{\hyperlink{classSaver_a235e9ea10824101370f087de904fc98d}{mShouldLoad}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00155}00155\ \}}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00157}\mbox{\hyperlink{classSaver_a5c4f9e59a3b0a3aefae943bdae1b894d}{00157}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSaver_a5c4f9e59a3b0a3aefae943bdae1b894d}{Saver::DeleteSave}}()\ \{}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00158}00158\ \ \ \ \ std::filesystem::remove(\mbox{\hyperlink{classSaver_ab387902d97342d53c54e0798a4179f0e}{mSaveFilePath}}\ +\ \mbox{\hyperlink{classSaver_ae918a17af7e7cd65352440e97b9b015d}{mSaveFileName}});}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00159}00159\ \ \ \ \ \mbox{\hyperlink{classSaver_a235e9ea10824101370f087de904fc98d}{mShouldLoad}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00160}00160\ \ \ \ \ \mbox{\hyperlink{classSaver_a8b816fd722d96754627d8d0ac3b1a6c1}{mReadyToLoad}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00161}00161\ \ \ \ \ \mbox{\hyperlink{classSaver_a8e58d803d843035ececbb893ea1ae679}{mEntitySaveData}}.clear();}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00162}00162\ \ \ \ \ \mbox{\hyperlink{classSaver_a1beb509f7d02669c1832863d9b30c0b1}{mRoomSaveData}}.clear();}
+\DoxyCodeLine{\Hypertarget{saver_8cpp_source_l00163}00163\ \}}
+
+\end{DoxyCode}

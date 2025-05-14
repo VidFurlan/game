@@ -1,0 +1,162 @@
+\doxysection{font\+\_\+renderer.\+cpp}
+\hypertarget{font__renderer_8cpp_source}{}\label{font__renderer_8cpp_source}\index{/home/vid/Dev/personal/game/src/engine/renderer/font\_renderer.cpp@{/home/vid/Dev/personal/game/src/engine/renderer/font\_renderer.cpp}}
+\mbox{\hyperlink{font__renderer_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{font__renderer_8hpp}{font\_renderer.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{batch__renderer_8hpp}{batch\_renderer.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game_8hpp}{game.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__object_8hpp}{game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}glm/ext/vector\_float2.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}glm/ext/vector\_float3.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}glm/gtc/type\_ptr.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00015}\mbox{\hyperlink{font__renderer_8cpp_aefe397a94e8feddc652f92ef40ce9597}{00015}}\ \textcolor{preprocessor}{\#define\ STB\_IMAGE\_WRITE\_IMPLEMENTATION}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}stb\_image\_write.h"{}}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00018}\mbox{\hyperlink{font__renderer_8cpp_afaa2f2d0d9d6726cfae6da070e736347}{00018}}\ \textcolor{preprocessor}{\#define\ STB\_TRUETYPE\_IMPLEMENTATION}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}stb\_truetype.h"{}}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00021}\mbox{\hyperlink{classFontRenderer_a5aab80f1bd11579f31f0f8095b5f58a6}{00021}}\ \mbox{\hyperlink{classFontRenderer_a5aab80f1bd11579f31f0f8095b5f58a6}{FontRenderer::FontRenderer}}(std::string\ path)\ \{}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00022}00022\ \ \ \ \ std::ifstream\ inputFile(path,\ std::ios::binary);}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00023}00023\ \ \ \ \ inputFile.seekg(0,\ std::ios::end);}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00024}00024\ \ \ \ \ std::streampos\ end\ =\ inputFile.tellg();}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00025}00025\ \ \ \ \ inputFile.seekg(0,\ std::ios::beg);}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00026}00026\ \ \ \ \ std::streampos\ begin\ =\ inputFile.tellg();}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ fileSize\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(end\ -\/\ begin);}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00029}00029\ \ \ \ \ uint8\_t\ *fontData\ =\ \textcolor{keyword}{new}\ uint8\_t[fileSize];}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00030}00030\ \ \ \ \ inputFile.read((\textcolor{keywordtype}{char}\ *)fontData,\ fileSize);}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordtype}{int}\ fontCount\ =\ stbtt\_GetNumberOfFonts(fontData);}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{if}\ (fontCount\ ==\ -\/1)}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Invalid\ font\ data."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}File\ contains\ "{}}\ <<\ fontCount\ <<\ \textcolor{stringliteral}{"{}\ fonts."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00038}00038\ \ \ \ \ uint8\_t\ *fontAtlasBitmap\ =\ \textcolor{keyword}{new}\ uint8\_t[ATLAS\_WIDTH\ *\ ATLAS\_HEIGHT];}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00040}00040\ \ \ \ \ packedChars\ =\ \textcolor{keyword}{new}\ stbtt\_packedchar[charCount];}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00041}00041\ \ \ \ \ alignedQuads\ =\ \textcolor{keyword}{new}\ stbtt\_aligned\_quad[charCount];}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00042}00042\ \ \ \ \ stbtt\_pack\_context\ ctx;}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00044}00044\ \ \ \ \ stbtt\_PackBegin(}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \&ctx,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ stbtt\_pack\_context\ (this\ call\ will\ initialize\ it)}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *)fontAtlasBitmap,\ \ \textcolor{comment}{//\ Font\ Atlas\ bitmap\ data}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ ATLAS\_WIDTH,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Width\ of\ the\ font\ atlas\ texture}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ ATLAS\_HEIGHT,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Height\ of\ the\ font\ atlas\ texture}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Stride\ in\ bytes}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ 1,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Padding\ between\ the\ glyphs}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00053}00053\ \ \ \ \ stbtt\_PackFontRange(}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \&ctx,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ stbtt\_pack\_context}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ fontData,\ \ \ \ \textcolor{comment}{//\ Font\ Atlas\ texture\ data}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Font\ Index}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ fontSize,\ \ \ \ \textcolor{comment}{//\ Size\ of\ font\ in\ pixels.\ (Use\ STBTT\_POINT\_SIZE(fontSize)\ to\ use\ points)}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ firstChar,\ \ \ \textcolor{comment}{//\ Code\ point\ of\ the\ first\ character}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ charCount,\ \ \ \textcolor{comment}{//\ No.\ of\ charecters\ to\ be\ included\ in\ the\ font\ atlas}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ packedChars\ \ \textcolor{comment}{//\ stbtt\_packedchar\ array,\ this\ struct\ will\ contain\ the\ data\ to\ render\ a\ glyph}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00061}00061\ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00062}00062\ \ \ \ \ stbtt\_PackEnd(\&ctx);}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ charCount;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ unusedX,\ unusedY;}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ stbtt\_GetPackedQuad(}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ packedChars,\ \ \ \textcolor{comment}{//\ Array\ of\ stbtt\_packedchar}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ ATLAS\_WIDTH,\ \ \ \textcolor{comment}{//\ Width\ of\ the\ font\ atlas\ texture}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ ATLAS\_HEIGHT,\ \ \textcolor{comment}{//\ Height\ of\ the\ font\ atlas\ texture}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ i,\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Index\ of\ the\ glyph}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \&unusedX,}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \&unusedY,\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ current\ position\ of\ the\ glyph\ in\ screen\ pixel\ coordinates,\ (not\ required\ as\ we\ have\ a\ different\ corrdinate\ system)}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \&alignedQuads[i],\ \ \textcolor{comment}{//\ stbtt\_alligned\_quad\ struct.\ (this\ struct\ mainly\ consists\ of\ the\ texture\ coordinates)}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Allign\ X\ and\ Y\ position\ to\ a\ integer\ (doesn't\ matter\ because\ we\ are\ not\ using\ 'unusedX'\ and\ 'unusedY')}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00077}00077\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{comment}{//\ stbi\_write\_png("{}fontAtlas.png"{},\ ATLAS\_WIDTH,\ ATLAS\_HEIGHT,\ 1,\ fontAtlasBitmap,\ ATLAS\_WIDTH);}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00081}00081\ \ \ \ \ glGenTextures(1,\ \&mFontAtlasTexture);}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00082}00082\ \ \ \ \ glBindTexture(GL\_TEXTURE\_2D,\ mFontAtlasTexture);}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00084}00084\ \ \ \ \ glTexImage2D(GL\_TEXTURE\_2D,\ 0,\ GL\_R8,\ ATLAS\_WIDTH,\ ATLAS\_HEIGHT,\ 0,\ GL\_RED,\ GL\_UNSIGNED\_BYTE,\ fontAtlasBitmap);}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00086}00086\ \ \ \ \ glTexParameteri(GL\_TEXTURE\_2D,\ GL\_TEXTURE\_MIN\_FILTER,\ GL\_LINEAR);}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00087}00087\ \ \ \ \ glTexParameteri(GL\_TEXTURE\_2D,\ GL\_TEXTURE\_MAG\_FILTER,\ GL\_LINEAR);}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00088}00088\ \ \ \ \ glTexParameteri(GL\_TEXTURE\_2D,\ GL\_TEXTURE\_WRAP\_S,\ GL\_REPEAT);}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00089}00089\ \ \ \ \ glTexParameteri(GL\_TEXTURE\_2D,\ GL\_TEXTURE\_WRAP\_T,\ GL\_REPEAT);}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00091}00091\ \ \ \ \ glBindTexture(GL\_TEXTURE\_2D,\ 0);}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00093}00093\ \ \ \ \ \textcolor{keyword}{delete}[]\ fontAtlasBitmap;}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00094}00094\ \ \ \ \ \textcolor{keyword}{delete}[]\ fontData;}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00095}00095\ \}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00097}\mbox{\hyperlink{classFontRenderer_a03a2a7f5c405a44b8c090e94445a6845}{00097}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classFontRenderer_a03a2a7f5c405a44b8c090e94445a6845}{FontRenderer::DrawText}}(\textcolor{keyword}{const}\ std::string\ \&text,\ glm::vec2\ position,\ \textcolor{keywordtype}{float}\ scale,\ glm::vec4\ color,\ \textcolor{keywordtype}{bool}\ center)\ \{}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00098}00098\ \ \ \ \ \textcolor{keywordtype}{int}\ order[6]\ =\ \{0,\ 1,\ 2,\ 0,\ 2,\ 3\};}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00099}00099\ \ \ \ \ scale\ /=\ fontSize\ /\ 10.0f;}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00100}00100\ \ \ \ \ \textcolor{keywordtype}{float}\ pixelScale\ =\ 2.0f\ /\ 1600.0f;}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00102}00102\ \ \ \ \ std::vector<glm::vec3>\ positions;}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00103}00103\ \ \ \ \ \textcolor{keywordtype}{float}\ width\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char}\ ch\ :\ text)\ \{}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ch\ >=\ firstChar\ \&\&\ ch\ <=\ firstChar\ +\ charCount)\ \{}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ stbtt\_packedchar\ *packedChar\ =\ \&packedChars[ch\ -\/\ firstChar];}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ width\ +=\ packedChar-\/>xadvance\ *\ pixelScale\ *\ scale;}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (ch\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})\ \{}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (center)}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ positions.push\_back(glm::vec3(position.x\ -\/\ width\ /\ 2.0f,\ position.y,\ 0.0f));}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ positions.push\_back(glm::vec3(position.x,\ position.y,\ 0.0f));}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ width\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00115}00115\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{keywordflow}{if}\ (center)}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ positions.push\_back(glm::vec3(position.x\ -\/\ width\ /\ 2.0f,\ position.y,\ 0.0f));}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00118}00118\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ positions.push\_back(glm::vec3(position.x,\ position.y,\ 0.0f));}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00121}00121\ \ \ \ \ \textcolor{keywordtype}{int}\ row\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00122}00122\ \ \ \ \ glm::vec3\ localPosition\ =\ positions[row];}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00123}00123\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char}\ ch\ :\ text)\ \{}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ localPosition.y\ +=\ row\ *\ fontSize\ *\ pixelScale\ *\ scale;}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ch\ >=\ firstChar\ \&\&\ ch\ <=\ firstChar\ +\ charCount)\ \{}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ stbtt\_packedchar\ *packedChar\ =\ \&packedChars[ch\ -\/\ firstChar];}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ stbtt\_aligned\_quad\ *alignedQuad\ =\ \&alignedQuads[ch\ -\/\ firstChar];}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ glyphSize\ =\ \{}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (packedChar-\/>x1\ -\/\ packedChar-\/>x0)\ *\ pixelScale\ *\ scale,}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (packedChar-\/>y1\ -\/\ packedChar-\/>y0)\ *\ pixelScale\ *\ scale\};}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ glyphBottomLeft\ =\ \{}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ localPosition.x\ +\ (packedChar-\/>xoff\ *\ pixelScale\ *\ scale),}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ localPosition.y\ -\/\ (packedChar-\/>yoff\ +\ packedChar-\/>y1\ -\/\ packedChar-\/>y0)\ *\ pixelScale\ *\ scale\};}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ vertices[4]\ =\ \{}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{glyphBottomLeft.x\ +\ glyphSize.x,\ glyphBottomLeft.y\ +\ glyphSize.y\},}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{glyphBottomLeft.x,\ glyphBottomLeft.y\ +\ glyphSize.y\},}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{glyphBottomLeft.x,\ glyphBottomLeft.y\},}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{glyphBottomLeft.x\ +\ glyphSize.x,\ glyphBottomLeft.y\}\};}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ uvs[4]\ =\ \{}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{alignedQuad-\/>s0,\ alignedQuad-\/>t1\},}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{alignedQuad-\/>s1,\ alignedQuad-\/>t1\},}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{alignedQuad-\/>s1,\ alignedQuad-\/>t0\},}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{alignedQuad-\/>s0,\ alignedQuad-\/>t0\}\};}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_a35199250e05e722450f97c7f6d3ca921}{GetBatchRenderer}}()-\/>\mbox{\hyperlink{classBatchRenderer_a17666823c9c88468698966c0426e4487}{pushObject}}(mFontAtlasTexture,\ localPosition,\ \{alignedQuad-\/>s0,\ alignedQuad-\/>t0,\ alignedQuad-\/>s1,\ alignedQuad-\/>t1\},\ glm::vec2(glyphSize.x,\ glyphSize.y)\ /\ \mbox{\hyperlink{classGameObject_a2c7b29001627e8378982097be132c746}{GameObject::GAME\_SCALE\_FACTOR}},\ color,\ \textcolor{stringliteral}{"{}default\_font"{}});}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ localPosition.x\ +=\ packedChar-\/>xadvance\ *\ pixelScale\ *\ scale;}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (ch\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})\ \{}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ localPosition\ =\ positions[++row];}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00155}00155\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{font__renderer_8cpp_source_l00156}00156\ \}}
+
+\end{DoxyCode}

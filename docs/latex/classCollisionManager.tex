@@ -1,0 +1,136 @@
+\doxysection{Collision\+Manager Class Reference}
+\hypertarget{classCollisionManager}{}\label{classCollisionManager}\index{CollisionManager@{CollisionManager}}
+
+
+{\ttfamily \#include $<$collision\+\_\+manager.\+hpp$>$}
+
+Inheritance diagram for Collision\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCollisionManager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classCollisionManager_af53fc66def0d3de7080e7e5fa8c930cf}{Update}} (float delta\+Time)
+\item 
+void \mbox{\hyperlink{classCollisionManager_a74fdefc6d9a8a8c81bf16f393f0563ae}{Check\+Agains\+All}} (\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}obj1)
+\item 
+\mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collider\+Game\+Object\+::\+Collision\+Type}} \mbox{\hyperlink{classCollisionManager_abf021b6dd7c595f9cdc4a125de0eded6}{Check\+Collision}} (\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}obj1, \mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}obj2)
+\item 
+\mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collider\+Game\+Object\+::\+Collision\+Type}} \mbox{\hyperlink{classCollisionManager_a38c6ca0ecab7dd6ac8385b3491768db6}{Check\+Agains\+All\+No\+Callback}} (\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}obj1)
+\item 
+void \mbox{\hyperlink{classCollisionManager_ae2ecae00e555094e544664d1ece4dcc7}{Add\+Game\+Object}} (\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}game\+Object)
+\item 
+void \mbox{\hyperlink{classCollisionManager_a97f535774a3d628673ff28c495f4b205}{Remove\+Game\+Object}} (\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}game\+Object)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classSingleton}{Singleton}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSingleton_a84227bd639f8097db70b60e51aae00b8}{Singleton}} (\mbox{\hyperlink{classSingleton}{Singleton}} const \&)=delete
+\item 
+void \mbox{\hyperlink{classSingleton_aa194cf3a430784a890bc0ceba41705e9}{operator=}} (\mbox{\hyperlink{classSingleton}{Singleton}} const \&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classCollisionManager}{Collision\+Manager}} \& \mbox{\hyperlink{classCollisionManager_aa09d45b47440a44100455d9c5ed750d1}{Get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classSingleton}{Singleton}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classSingleton}{Singleton}} \& \mbox{\hyperlink{classSingleton_a4604f975faaf832905d18c2354157c0e}{Get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classSingleton}{Singleton}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSingleton_a0e21dfc9afab45b0a6a70f6665ce5819}{Singleton}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{collision__manager_8hpp_source_l00009}{9}} of file \mbox{\hyperlink{collision__manager_8hpp_source}{collision\+\_\+manager.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCollisionManager_ae2ecae00e555094e544664d1ece4dcc7}\index{CollisionManager@{CollisionManager}!AddGameObject@{AddGameObject}}
+\index{AddGameObject@{AddGameObject}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{AddGameObject()}{AddGameObject()}}
+{\footnotesize\ttfamily \label{classCollisionManager_ae2ecae00e555094e544664d1ece4dcc7} 
+void Collision\+Manager\+::\+Add\+Game\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}}]{game\+Object}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{collision__manager_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{collision__manager_8cpp_source}{collision\+\_\+manager.\+cpp}}.
+
+\Hypertarget{classCollisionManager_a74fdefc6d9a8a8c81bf16f393f0563ae}\index{CollisionManager@{CollisionManager}!CheckAgainsAll@{CheckAgainsAll}}
+\index{CheckAgainsAll@{CheckAgainsAll}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{CheckAgainsAll()}{CheckAgainsAll()}}
+{\footnotesize\ttfamily \label{classCollisionManager_a74fdefc6d9a8a8c81bf16f393f0563ae} 
+void Collision\+Manager\+::\+Check\+Agains\+All (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}}]{obj1}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{collision__manager_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{collision__manager_8cpp_source}{collision\+\_\+manager.\+cpp}}.
+
+\Hypertarget{classCollisionManager_a38c6ca0ecab7dd6ac8385b3491768db6}\index{CollisionManager@{CollisionManager}!CheckAgainsAllNoCallback@{CheckAgainsAllNoCallback}}
+\index{CheckAgainsAllNoCallback@{CheckAgainsAllNoCallback}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{CheckAgainsAllNoCallback()}{CheckAgainsAllNoCallback()}}
+{\footnotesize\ttfamily \label{classCollisionManager_a38c6ca0ecab7dd6ac8385b3491768db6} 
+\mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collider\+Game\+Object\+::\+Collision\+Type}} Collision\+Manager\+::\+Check\+Agains\+All\+No\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}}]{obj1}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{collision__manager_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{collision__manager_8cpp_source}{collision\+\_\+manager.\+cpp}}.
+
+\Hypertarget{classCollisionManager_abf021b6dd7c595f9cdc4a125de0eded6}\index{CollisionManager@{CollisionManager}!CheckCollision@{CheckCollision}}
+\index{CheckCollision@{CheckCollision}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{CheckCollision()}{CheckCollision()}}
+{\footnotesize\ttfamily \label{classCollisionManager_abf021b6dd7c595f9cdc4a125de0eded6} 
+\mbox{\hyperlink{classColliderGameObject_a3c2f875ba21662fa1da2f0353c41e4cb}{Collider\+Game\+Object\+::\+Collision\+Type}} Collision\+Manager\+::\+Check\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}}]{obj1}{, }\item[{\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}}]{obj2}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{collision__manager_8cpp_source_l00063}{63}} of file \mbox{\hyperlink{collision__manager_8cpp_source}{collision\+\_\+manager.\+cpp}}.
+
+\Hypertarget{classCollisionManager_aa09d45b47440a44100455d9c5ed750d1}\index{CollisionManager@{CollisionManager}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily \label{classCollisionManager_aa09d45b47440a44100455d9c5ed750d1} 
+static \mbox{\hyperlink{classCollisionManager}{Collision\+Manager}} \& Collision\+Manager\+::\+Get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{collision__manager_8hpp_source_l00011}{11}} of file \mbox{\hyperlink{collision__manager_8hpp_source}{collision\+\_\+manager.\+hpp}}.
+
+\Hypertarget{classCollisionManager_a97f535774a3d628673ff28c495f4b205}\index{CollisionManager@{CollisionManager}!RemoveGameObject@{RemoveGameObject}}
+\index{RemoveGameObject@{RemoveGameObject}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{RemoveGameObject()}{RemoveGameObject()}}
+{\footnotesize\ttfamily \label{classCollisionManager_a97f535774a3d628673ff28c495f4b205} 
+void Collision\+Manager\+::\+Remove\+Game\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classColliderGameObject}{Collider\+Game\+Object}} \texorpdfstring{$\ast$}{*}}]{game\+Object}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{collision__manager_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{collision__manager_8cpp_source}{collision\+\_\+manager.\+cpp}}.
+
+\Hypertarget{classCollisionManager_af53fc66def0d3de7080e7e5fa8c930cf}\index{CollisionManager@{CollisionManager}!Update@{Update}}
+\index{Update@{Update}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{classCollisionManager_af53fc66def0d3de7080e7e5fa8c930cf} 
+void Collision\+Manager\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{collision__manager_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{collision__manager_8cpp_source}{collision\+\_\+manager.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/vid/\+Dev/personal/game/src/engine/game\+\_\+objects/colliders/\mbox{\hyperlink{collision__manager_8hpp}{collision\+\_\+manager.\+hpp}}\item 
+/home/vid/\+Dev/personal/game/src/engine/game\+\_\+objects/colliders/\mbox{\hyperlink{collision__manager_8cpp}{collision\+\_\+manager.\+cpp}}\end{DoxyCompactItemize}

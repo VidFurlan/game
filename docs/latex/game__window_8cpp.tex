@@ -1,0 +1,67 @@
+\doxysection{/home/vid/\+Dev/personal/game/src/engine/renderer/game\+\_\+window.cpp File Reference}
+\hypertarget{game__window_8cpp}{}\label{game__window_8cpp}\index{/home/vid/Dev/personal/game/src/engine/renderer/game\_window.cpp@{/home/vid/Dev/personal/game/src/engine/renderer/game\_window.cpp}}
+{\ttfamily \#include "{}game\+\_\+window.\+hpp"{}}\newline
+{\ttfamily \#include $<$GL/glew.\+h$>$}\newline
+{\ttfamily \#include $<$GL/glu.\+h$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include "{}GLFW/glfw3.\+h"{}}\newline
+{\ttfamily \#include "{}game.\+hpp"{}}\newline
+{\ttfamily \#include "{}glm/ext/matrix\+\_\+clip\+\_\+space.\+hpp"{}}\newline
+{\ttfamily \#include "{}glm/ext/matrix\+\_\+float4x4.\+hpp"{}}\newline
+{\ttfamily \#include "{}imgui.\+h"{}}\newline
+{\ttfamily \#include "{}imgui\+\_\+impl\+\_\+glfw.\+h"{}}\newline
+{\ttfamily \#include "{}resource\+\_\+manager.\+hpp"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{game__window_8cpp_a5180f7bf2b71421af837035824a8c8ac}{framebuffer\+\_\+size\+\_\+callback}} (GLFWwindow \texorpdfstring{$\ast$}{*}window, int width, int height)
+\item 
+void \mbox{\hyperlink{game__window_8cpp_aa48aaf412b9e33386433680c25b3883c}{key\+\_\+callback}} (GLFWwindow \texorpdfstring{$\ast$}{*}window, int key, int scancode, int action, int mode)
+\item 
+void \mbox{\hyperlink{game__window_8cpp_af4ca2891044ac10a664b8d83ce590f1f}{mouse\+\_\+callback}} (GLFWwindow \texorpdfstring{$\ast$}{*}window, double xpos, double ypos)
+\item 
+void \mbox{\hyperlink{game__window_8cpp_a5515d805e76ce6728de3c0dc5e187c86}{mouse\+\_\+button\+\_\+callback}} (GLFWwindow \texorpdfstring{$\ast$}{*}window, int button, int action, int mods)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{game__window_8cpp_a5180f7bf2b71421af837035824a8c8ac}\index{game\_window.cpp@{game\_window.cpp}!framebuffer\_size\_callback@{framebuffer\_size\_callback}}
+\index{framebuffer\_size\_callback@{framebuffer\_size\_callback}!game\_window.cpp@{game\_window.cpp}}
+\doxysubsubsection{\texorpdfstring{framebuffer\_size\_callback()}{framebuffer\_size\_callback()}}
+{\footnotesize\ttfamily \label{game__window_8cpp_a5180f7bf2b71421af837035824a8c8ac} 
+void framebuffer\+\_\+size\+\_\+callback (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{int}]{width}{, }\item[{int}]{height}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game__window_8cpp_source_l00155}{155}} of file \mbox{\hyperlink{game__window_8cpp_source}{game\+\_\+window.\+cpp}}.
+
+\Hypertarget{game__window_8cpp_aa48aaf412b9e33386433680c25b3883c}\index{game\_window.cpp@{game\_window.cpp}!key\_callback@{key\_callback}}
+\index{key\_callback@{key\_callback}!game\_window.cpp@{game\_window.cpp}}
+\doxysubsubsection{\texorpdfstring{key\_callback()}{key\_callback()}}
+{\footnotesize\ttfamily \label{game__window_8cpp_aa48aaf412b9e33386433680c25b3883c} 
+void key\+\_\+callback (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{int}]{key}{, }\item[{int}]{scancode}{, }\item[{int}]{action}{, }\item[{int}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game__window_8cpp_source_l00131}{131}} of file \mbox{\hyperlink{game__window_8cpp_source}{game\+\_\+window.\+cpp}}.
+
+\Hypertarget{game__window_8cpp_a5515d805e76ce6728de3c0dc5e187c86}\index{game\_window.cpp@{game\_window.cpp}!mouse\_button\_callback@{mouse\_button\_callback}}
+\index{mouse\_button\_callback@{mouse\_button\_callback}!game\_window.cpp@{game\_window.cpp}}
+\doxysubsubsection{\texorpdfstring{mouse\_button\_callback()}{mouse\_button\_callback()}}
+{\footnotesize\ttfamily \label{game__window_8cpp_a5515d805e76ce6728de3c0dc5e187c86} 
+void mouse\+\_\+button\+\_\+callback (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{int}]{button}{, }\item[{int}]{action}{, }\item[{int}]{mods}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game__window_8cpp_source_l00161}{161}} of file \mbox{\hyperlink{game__window_8cpp_source}{game\+\_\+window.\+cpp}}.
+
+\Hypertarget{game__window_8cpp_af4ca2891044ac10a664b8d83ce590f1f}\index{game\_window.cpp@{game\_window.cpp}!mouse\_callback@{mouse\_callback}}
+\index{mouse\_callback@{mouse\_callback}!game\_window.cpp@{game\_window.cpp}}
+\doxysubsubsection{\texorpdfstring{mouse\_callback()}{mouse\_callback()}}
+{\footnotesize\ttfamily \label{game__window_8cpp_af4ca2891044ac10a664b8d83ce590f1f} 
+void mouse\+\_\+callback (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{double}]{xpos}{, }\item[{double}]{ypos}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game__window_8cpp_source_l00151}{151}} of file \mbox{\hyperlink{game__window_8cpp_source}{game\+\_\+window.\+cpp}}.
+

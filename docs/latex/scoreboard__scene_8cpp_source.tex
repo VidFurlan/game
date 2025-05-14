@@ -1,0 +1,87 @@
+\doxysection{scoreboard\+\_\+scene.\+cpp}
+\hypertarget{scoreboard__scene_8cpp_source}{}\label{scoreboard__scene_8cpp_source}\index{/home/vid/Dev/personal/game/src/game/scenes/scoreboard\_scene.cpp@{/home/vid/Dev/personal/game/src/game/scenes/scoreboard\_scene.cpp}}
+\mbox{\hyperlink{scoreboard__scene_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{scoreboard__scene_8hpp}{scoreboard\_scene.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <ios>}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <numeric>}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game_8hpp}{game.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}glm/ext/vector\_float2.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{saver_8hpp}{objects/saver.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{button_8hpp}{objects/ui/button.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprite__game__object_8hpp}{sprite\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{text__game__object_8hpp}{text\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00018}\mbox{\hyperlink{classScoreboardScene_aa2ccff1bb96cb6e26eeba1c994f9e667}{00018}}\ \mbox{\hyperlink{classScoreboardScene_aa2ccff1bb96cb6e26eeba1c994f9e667}{ScoreboardScene::ScoreboardScene}}()}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00019}00019\ \ \ \ \ :\ \mbox{\hyperlink{classSceneGameObject_a714103aa37e5240811e2b0c32ea0d618}{SceneGameObject}}(\textcolor{stringliteral}{"{}Game"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00020}00020\ \}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00022}\mbox{\hyperlink{classScoreboardScene_ab0dc57f5ef2b17af5f4dd25255394116}{00022}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classScoreboardScene_ab0dc57f5ef2b17af5f4dd25255394116}{ScoreboardScene::Init}}()\ \{}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{classSceneGameObject_a80c76030b75e1314ae726305acb3d8f0}{pResourceManager}}\ =\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_acdc42cc04e0b10e37cdd75093e56d312}{GetResourceManager}}();}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00024}00024\ \ \ \ \ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_a3c6ec5ea738e575d55967931f832ee04}{SetState}}(\mbox{\hyperlink{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285aa65481e2492a0d2954f4e8de6dabf01d}{GameState::GAME\_MENU}});}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//\ =========================================================================}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ General\ Setup\ ===========================================================}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//\ =========================================================================}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{classSceneGameObject_abab85cea9f0eb41e385add38a5bb8cac}{mBackgroundColor}}\ =\ glm::vec3(0.145f,\ 0.075f,\ 0.102f);}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ =========================================================================}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//\ Load\ textures\ ===========================================================}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ =========================================================================}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00035}00035\ \ \ \ \ \mbox{\hyperlink{classSceneGameObject_a80c76030b75e1314ae726305acb3d8f0}{pResourceManager}}-\/>LoadTexture(\textcolor{stringliteral}{"{}assets/textures/enviroment/spritesheet.png"{}},\ \textcolor{keyword}{true},\ \textcolor{stringliteral}{"{}atlas"{}});}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00036}00036\ \ \ \ \ \mbox{\hyperlink{classSceneGameObject_a80c76030b75e1314ae726305acb3d8f0}{pResourceManager}}-\/>LoadTexture(\textcolor{stringliteral}{"{}assets/textures/enviroment/tileset.png"{}},\ \textcolor{keyword}{true},\ \textcolor{stringliteral}{"{}tileset"{}});}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{classSceneGameObject_a80c76030b75e1314ae726305acb3d8f0}{pResourceManager}}-\/>LoadTexture(\textcolor{stringliteral}{"{}assets/textures/engine/pixel.png"{}},\ \textcolor{keyword}{false},\ \textcolor{stringliteral}{"{}transition"{}});}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00040}00040\ \ \ \ \ \mbox{\hyperlink{classSceneGameObject_a80c76030b75e1314ae726305acb3d8f0}{pResourceManager}}-\/>LoadTexture(\textcolor{stringliteral}{"{}assets/textures/ui/banner.png"{}},\ \textcolor{keyword}{true},\ \textcolor{stringliteral}{"{}banner"{}});}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{comment}{//\ =========================================================================}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//\ Create\ game\ objects\ =====================================================}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{comment}{//\ =========================================================================}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{classCameraGameObject}{CameraGameObject}}\ *camera\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classCameraGameObject}{CameraGameObject}}(\textcolor{stringliteral}{"{}MainCamera"{}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ this-\/>AddGameCamera(camera);}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{comment}{//\ this-\/>SetActiveCamera(camera);}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00049}00049\ \ \ \ \ \mbox{\hyperlink{classSaver}{Saver}}\ *saver\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classSaver}{Saver}}(\textcolor{stringliteral}{"{}Saver"{}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00050}00050\ \ \ \ \ saver-\/>\mbox{\hyperlink{classSaver_ae6a67352d7c04328247757585169111b}{Load}}();}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00052}00052\ \ \ \ \ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *ui\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}(\textcolor{stringliteral}{"{}UI"{}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00054}00054\ \ \ \ \ ui-\/>\mbox{\hyperlink{classGameObject_a31ab3f560b5d6880141f42ae9904478b}{AddChild}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classTextGameObject}{TextGameObject}}(\textcolor{stringliteral}{"{}Text"{}},\ \textcolor{stringliteral}{"{}LEADERBOARD"{}},\ \mbox{\hyperlink{structTextGameObject_1_1TextProperties}{TextGameObject::TextProperties}}(\textcolor{stringliteral}{"{}default"{}},\ 300.0f,\ \textcolor{keyword}{true}),\ \{0.0f,\ -\/30.0f,\ 0.0f\},\ \{20.0f,\ 20.0f\}))-\/>\mbox{\hyperlink{classGameObject_a407f5d1d8117bc7ce210b64d58c04662}{SetZIndex}}(0);}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{auto}\ highscoreData\ =\ \mbox{\hyperlink{classSaver_abb8fa13e408265d86c50438cee79efbd}{Saver::LoadHighscore}}();}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordtype}{int}\ idx\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&[score,\ name]\ :\ highscoreData)\ \{}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ name.resize(10,\ \textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ std::string\ text\ =\ std::to\_string(idx\ +\ 1)\ +\ \textcolor{stringliteral}{"{}.\ "{}}\ +\ name\ +\ \textcolor{stringliteral}{"{}\ \ "{}}\ +\ std::to\_string(score);}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ std::transform(text.begin(),\ text.end(),\ text.begin(),\ [](\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ c)\ \{\ return\ std::toupper(c);\ \});}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ ui-\/>\mbox{\hyperlink{classGameObject_a31ab3f560b5d6880141f42ae9904478b}{AddChild}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classTextGameObject}{TextGameObject}}(\textcolor{stringliteral}{"{}Text"{}}\ +\ std::to\_string(idx),\ \textcolor{keyword}{this},\ text,\ \mbox{\hyperlink{structTextGameObject_1_1TextProperties}{TextGameObject::TextProperties}}(\textcolor{stringliteral}{"{}default"{}},\ 150.0f,\ \textcolor{keyword}{true}),\ \{0.0f,\ -\/15.0f\ +\ idx\ *\ 10.0f,\ 0.0f\},\ \{20.0f,\ 20.0f\}))-\/>\mbox{\hyperlink{classGameObject_a407f5d1d8117bc7ce210b64d58c04662}{SetZIndex}}(0);}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ idx++;}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00066}00066\ \ \ \ \ \mbox{\hyperlink{classButton}{Button}}\ *leaderboardButton\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classButton}{Button}}(\textcolor{stringliteral}{"{}LeaderboardButton"{}},\ ui,\ \{0.0f,\ 0.0f,\ 0.0f\},\ \{192.0f\ /\ 2.5,\ 32.0f\ /\ 2.5\},\ []()\ \{\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_ad6ab1e8f200385101b27b91bbb82d42f}{RequestLoadScene}}(\textcolor{stringliteral}{"{}Menu"{}});\ \},\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classSpriteGameObject}{SpriteGameObject}}(\textcolor{stringliteral}{"{}Image"{}},\ \textcolor{keyword}{this},\ \textcolor{stringliteral}{"{}banner"{}},\ \{0.0f,\ 0.0f,\ 0.0f\},\ \{192.0f\ /\ 2.0,\ 32.0f\ /\ 2.0\}));}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00067}00067\ \ \ \ \ leaderboardButton-\/>\mbox{\hyperlink{classGameObject_a404b760fb13e77e57c6512db9d11da81}{SetPosition}}(\{0.0f,\ 40.0f,\ 0.0f\});}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00068}00068\ \ \ \ \ leaderboardButton-\/>\mbox{\hyperlink{classGameObject_a31ab3f560b5d6880141f42ae9904478b}{AddChild}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{classTextGameObject}{TextGameObject}}(\textcolor{stringliteral}{"{}Text"{}},\ \textcolor{stringliteral}{"{}BACK"{}},\ \mbox{\hyperlink{structTextGameObject_1_1TextProperties}{TextGameObject::TextProperties}}(\textcolor{stringliteral}{"{}default"{}},\ 190.0f,\ \textcolor{keyword}{true}),\ \{0.0f,\ 0.6f,\ 0.0f\},\ \{20.0f,\ 20.0f\}))-\/>\mbox{\hyperlink{classGameObject_a407f5d1d8117bc7ce210b64d58c04662}{SetZIndex}}(100);}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00069}00069\ \}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00071}\mbox{\hyperlink{classScoreboardScene_a16ca1c25531cf1a68815bcbbb3a82fd8}{00071}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classScoreboardScene_a16ca1c25531cf1a68815bcbbb3a82fd8}{ScoreboardScene::Update}}(\textcolor{keywordtype}{float}\ deltaTime)\ \{}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGameObject_a5101d9de8eb4e44410d875ccb6bade8b}{mActive}}\ ==\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00076}00076\ \ \ \ \ \mbox{\hyperlink{classSceneGameObject_a5083b0b9a9832624faa2c2e57eef164c}{SceneGameObject::Update}}(deltaTime);}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00079}\mbox{\hyperlink{classScoreboardScene_af358e76f4b39809292c53c95b5541b66}{00079}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classScoreboardScene_af358e76f4b39809292c53c95b5541b66}{ScoreboardScene::Render}}()\ \{}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00080}00080\ \ \ \ \ \mbox{\hyperlink{classSceneGameObject_a1e648803cffd99c74f1da31cfa150482}{SceneGameObject::Render}}();}
+\DoxyCodeLine{\Hypertarget{scoreboard__scene_8cpp_source_l00081}00081\ \}}
+
+\end{DoxyCode}

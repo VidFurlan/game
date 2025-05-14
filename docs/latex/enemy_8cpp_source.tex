@@ -1,0 +1,60 @@
+\doxysection{enemy.\+cpp}
+\hypertarget{enemy_8cpp_source}{}\label{enemy_8cpp_source}\index{/home/vid/Dev/personal/game/src/game/objects/entities/enemy.cpp@{/home/vid/Dev/personal/game/src/game/objects/entities/enemy.cpp}}
+\mbox{\hyperlink{enemy_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{enemy_8hpp}{enemy.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game_8hpp}{game.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__object_8hpp}{game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}glm/geometric.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{dungeon__room_8hpp}{objects/dungeon/dungeon\_room.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{entity_8hpp}{objects/entities/entity.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{polygon2d_8hpp}{polygon2d.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{spritesheet__game__object_8hpp}{spritesheet\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00011}\mbox{\hyperlink{classEnemy_a21541e84d8cece159d4fdb718ab31acd}{00011}}\ \mbox{\hyperlink{classEnemy_a21541e84d8cece159d4fdb718ab31acd}{Enemy::Enemy}}(std::string\ name,\ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *parent,\ glm::vec3\ position)}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00012}00012\ \ \ \ \ :\ \mbox{\hyperlink{classEntity_ad13c79db161eec726d9882f51934f86d}{Entity}}(name,\ parent,\ \mbox{\hyperlink{entity_8hpp_ad79a57ed3105eb60d991a1aeb4a9dc44}{EntityType}}::\mbox{\hyperlink{entity_8hpp_ad79a57ed3105eb60d991a1aeb4a9dc44abfcf19564f4b77dc7ac3e84ea26a3c11}{GRAY\_BLOB}},\ new\ \mbox{\hyperlink{classPolygon2D}{Polygon2D}}(\{\{-\/2.0f,\ -\/2.0f\},\ \{-\/2.0f,\ 2.0f\},\ \{2.0f,\ 2.0f\},\ \{2.0f,\ -\/2.0f\}\}),\ position,\ \{1.0f,\ 1.0f\})\ \{}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00013}00013\ \ \ \ \ mMaxHealth\ =\ 3;}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00014}00014\ \ \ \ \ mHealth\ =\ mMaxHealth;}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00015}00015\ \ \ \ \ mImmunityTime\ =\ 0.3f;}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00016}00016\ \ \ \ \ SetTag(\textcolor{stringliteral}{"{}Enemy"{}});}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00017}00017\ \ \ \ \ SetZIndex(900);}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00018}00018\ \ \ \ \ (\textcolor{keyword}{new}\ \mbox{\hyperlink{classSpriteSheetGameObject}{SpriteSheetGameObject}}(\textcolor{stringliteral}{"{}Sprite"{}},\ \textcolor{keyword}{this},\ \textcolor{stringliteral}{"{}enemy"{}},\ \{32,\ 32\},\ \{0.0f,\ -\/2.2f,\ 0.0f\},\ \{8,\ 8\}))}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ -\/>SetSpriteSheetFrame(\{1,\ 23\});}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00020}00020\ \ \ \ \ moveSpeed\ *=\ (rand()\ \%\ 100)\ /\ 200.0f\ -\/\ 0.5f\ +\ 1.0f;}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{classDungeonRoom}{DungeonRoom}}\ *room\ =\ ((\mbox{\hyperlink{classDungeonRoom}{DungeonRoom}}\ *)GetParent()-\/>GetParent());}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00025}\mbox{\hyperlink{classEnemy_ac0eec4755e28c02688065f9657150ac3}{00025}}\ \mbox{\hyperlink{classEnemy_ac0eec4755e28c02688065f9657150ac3}{Enemy::\string~Enemy}}()\ \{}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00026}00026\ \ \ \ \ \mbox{\hyperlink{classDungeonRoom}{DungeonRoom}}\ *room\ =\ ((\mbox{\hyperlink{classDungeonRoom}{DungeonRoom}}\ *)\mbox{\hyperlink{classGameObject_a7eec3f82ecf749dd495cf6e3cacd264a}{GetParent}}()-\/>\mbox{\hyperlink{classGameObject_a7eec3f82ecf749dd495cf6e3cacd264a}{GetParent}}());}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00029}\mbox{\hyperlink{classEnemy_a83b859726f23a8bbc95a485ba45e04b8}{00029}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEnemy_a83b859726f23a8bbc95a485ba45e04b8}{Enemy::Death}}()\ \{}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00030}00030\ \ \ \ \ \mbox{\hyperlink{classPlayer_ad6ad26f8a90ce069ed3d04bf1ce80eda}{Player::mKillCount}}++;}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00033}\mbox{\hyperlink{classEnemy_a723b79407b55383b2c327f674e3ab3bc}{00033}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEnemy_a723b79407b55383b2c327f674e3ab3bc}{Enemy::Update}}(\textcolor{keywordtype}{float}\ deltaTime)\ \{}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00034}00034\ \ \ \ \ \mbox{\hyperlink{classEntity_a00da26ec82bc1681a2ec9967c38f36b0}{Entity::Update}}(deltaTime);}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGameObject_a5101d9de8eb4e44410d875ccb6bade8b}{mActive}}\ ==\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00040}00040\ \ \ \ \ mAnimationTimeElapsed\ +=\ deltaTime;}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{if}\ (mAnimationTimeElapsed\ >\ 0.1f)\ \{}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ mAnimationTimeElapsed\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ mAnimationFrame\ =\ (mAnimationFrame\ +\ 1)\ \%\ 4;}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ ((\mbox{\hyperlink{classSpriteSheetGameObject}{SpriteSheetGameObject}}\ *)\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}Sprite"{}}))-\/>SetSpriteSheetFrame(\{1,\ 23\ +\ mAnimationFrame\});}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00047}00047\ \ \ \ \ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *player\ =\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_ac99318a82ddc53292a7434d7d16a7236}{GetActiveScene}}()-\/>\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}Player"{}});}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00048}00048\ \ \ \ \ glm::vec3\ move\ =\ player-\/>\mbox{\hyperlink{classGameObject_adc256761dbcea9050030f4017ad41ad1}{GetGlobalPosition}}()\ -\/\ \mbox{\hyperlink{classGameObject_adc256761dbcea9050030f4017ad41ad1}{GetGlobalPosition}}()\ +\ glm::vec3((rand()\ \%\ 100)\ /\ 20.0f\ -\/\ 2.5f,\ (rand()\ \%\ 100)\ /\ 20.0f\ -\/\ 2.5f,\ 0.0f);}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (std::abs(move.x)\ >\ 3.0f)\ ((\mbox{\hyperlink{classSpriteSheetGameObject}{SpriteSheetGameObject}}\ *)\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}Sprite"{}}))-\/>SetScaleX(move.x\ >\ 0\ ?\ 8.0f\ :\ -\/8.0f);}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{if}\ ((move.x\ !=\ 0\ ||\ move.y\ !=\ 0)\ \&\&\ glm::length(move)\ >\ 6.0f)\ \{}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ move\ =\ glm::normalize(move);}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameObject_aa6ee0f1d35fc6959859a98f9998b197b}{mPos}}\ +=\ move\ *\ moveSpeed\ *\ deltaTime;}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{enemy_8cpp_source_l00054}00054\ \}}
+
+\end{DoxyCode}

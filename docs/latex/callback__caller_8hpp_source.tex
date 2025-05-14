@@ -1,0 +1,28 @@
+\doxysection{callback\+\_\+caller.\+hpp}
+\hypertarget{callback__caller_8hpp_source}{}\label{callback__caller_8hpp_source}\index{/home/vid/Dev/personal/game/src/engine/utils/callback\_caller.hpp@{/home/vid/Dev/personal/game/src/engine/utils/callback\_caller.hpp}}
+\mbox{\hyperlink{callback__caller_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{callback__callee_8hpp}{callback\_callee.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00004}\mbox{\hyperlink{classCaller}{00004}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCaller}{Caller}}\ \{}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00005}00005\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00006}00006\ \ \ \ \ \textcolor{comment}{//\ Clients\ can\ connect\ their\ callback\ with\ this}}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00007}\mbox{\hyperlink{classCaller_a2108979cb9c67352f46b2753db6a0819}{00007}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCaller_a2108979cb9c67352f46b2753db6a0819}{connectCallback}}(\mbox{\hyperlink{classCallbackInterface}{CallbackInterface}}\ *cb)\ \{}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00008}00008\ \ \ \ \ \ \ \ \ m\_cb\ =\ cb;}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00009}00009\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ Test\ the\ callback\ to\ make\ sure\ it\ works.}}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00012}\mbox{\hyperlink{classCaller_a60e232a018d26c708e0dc26c2e3b010c}{00012}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCaller_a60e232a018d26c708e0dc26c2e3b010c}{test}}()\ \{}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00013}00013\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Caller::test()\ called"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i\ =\ m\_cb-\/>callbackFunction(10);}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00016}00016\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Result\ (20):\ "{}}\ <<\ i\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00017}00017\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00019}00019\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//\ The\ callback\ provided\ by\ the\ client\ via\ connectCallback().}}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00021}00021\ \ \ \ \ \mbox{\hyperlink{classCallbackInterface}{CallbackInterface}}\ *m\_cb;}
+\DoxyCodeLine{\Hypertarget{callback__caller_8hpp_source_l00022}00022\ \};}
+
+\end{DoxyCode}

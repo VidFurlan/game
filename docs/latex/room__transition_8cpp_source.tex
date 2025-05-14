@@ -1,0 +1,52 @@
+\doxysection{room\+\_\+transition.\+cpp}
+\hypertarget{room__transition_8cpp_source}{}\label{room__transition_8cpp_source}\index{/home/vid/Dev/personal/game/src/game/objects/room\_transition.cpp@{/home/vid/Dev/personal/game/src/game/objects/room\_transition.cpp}}
+\mbox{\hyperlink{room__transition_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{room__transition_8hpp}{room\_transition.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game_8hpp}{game.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00008}\mbox{\hyperlink{classRoomTransition_a32cf3d33c63057e19452411f41ab2781}{00008}}\ \mbox{\hyperlink{classRoomTransition_a32cf3d33c63057e19452411f41ab2781}{RoomTransition::RoomTransition}}(std::string\ name,\ \mbox{\hyperlink{classDrawableGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *parent)\ :\ \mbox{\hyperlink{classSpriteGameObject}{SpriteGameObject}}(name,\ parent,\ \textcolor{stringliteral}{"{}transition"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00009}00009\ \ \ \ \ \mbox{\hyperlink{classAbstractImageGameObject_a9854b52551c4c2d19898a3d6e11023fa}{SetScale}}(\{\mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_a0e3e1d9988be2c785ea2b90da12940f1}{GetWindow}}()-\/>\mbox{\hyperlink{classGameWindow_a0dfcec214e2e853c31da1dd0f953c551}{GetWidth}}(),\ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_a0e3e1d9988be2c785ea2b90da12940f1}{GetWindow}}()-\/>\mbox{\hyperlink{classGameWindow_a1484d00ba94e9881973abac50f3ff7d7}{GetHeight}}()\});}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00010}00010\ \ \ \ \ \mbox{\hyperlink{classGameObject_ae6411c30a8a2c258b52288f6aecb220e}{SetVisible}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00011}00011\ \ \ \ \ \mbox{\hyperlink{classGameObject_a407f5d1d8117bc7ce210b64d58c04662}{SetZIndex}}(100);}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00012}00012\ \}}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00014}\mbox{\hyperlink{classRoomTransition_a0bb5377ea6793ea72a8072b74fea4d32}{00014}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRoomTransition_a0bb5377ea6793ea72a8072b74fea4d32}{RoomTransition::Update}}(\textcolor{keywordtype}{float}\ deltaTime)\ \{}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordflow}{if}\ (mTransitioning)\ \{}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ mTransitionTimeElapsed\ +=\ deltaTime;}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ rising\ =\ mTransitionTimeElapsed\ <\ mTransitionTime\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rising\ !=\ mPreviousRising)\ \{}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mCallback)\ \{}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mCallback();}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ mPreviousRising\ =\ rising;}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mTransitionTimeElapsed\ >\ mTransitionTime\ /\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAbstractImageGameObject_ac92e96b54b363a3327fa68570eaf80ca}{mColor}}.a\ =\ 1.0f\ -\/\ (mTransitionTimeElapsed\ -\/\ mTransitionTime\ /\ 2)\ /\ (mTransitionTime\ /\ 2);}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAbstractImageGameObject_ac92e96b54b363a3327fa68570eaf80ca}{mColor}}.a\ =\ mTransitionTimeElapsed\ /\ (mTransitionTime\ /\ 2);}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mTransitionTimeElapsed\ >\ mTransitionTime)\ \{}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ mTransitioning\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ mTransitionTimeElapsed\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGameObject_ae6411c30a8a2c258b52288f6aecb220e}{SetVisible}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_a3c6ec5ea738e575d55967931f832ee04}{SetState}}(\mbox{\hyperlink{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285ae5953e65e20db2684e778eb530191a43}{GameState::GAME\_ACTIVE}});}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00037}00037\ \}}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00039}\mbox{\hyperlink{classRoomTransition_a9456079bd6ab7f3057e5f4c78bd98b2e}{00039}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRoomTransition_a9456079bd6ab7f3057e5f4c78bd98b2e}{RoomTransition::Transition}}(std::function<\textcolor{keywordtype}{void}()>\ callback)\ \{}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00040}00040\ \ \ \ \ mTransitioning\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00041}00041\ \ \ \ \ mPreviousRising\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00042}00042\ \ \ \ \ \mbox{\hyperlink{classGameObject_ae6411c30a8a2c258b52288f6aecb220e}{SetVisible}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00043}00043\ \ \ \ \ \mbox{\hyperlink{classAbstractImageGameObject_ac92e96b54b363a3327fa68570eaf80ca}{mColor}}.a\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00044}00044\ \ \ \ \ mCallback\ =\ callback;}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_a3c6ec5ea738e575d55967931f832ee04}{SetState}}(\mbox{\hyperlink{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285a9a887dd203c6c4924d5a5b2313da97a5}{GameState::GAME\_TRANSITION}});}
+\DoxyCodeLine{\Hypertarget{room__transition_8cpp_source_l00046}00046\ \}}
+
+\end{DoxyCode}

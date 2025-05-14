@@ -1,0 +1,143 @@
+\doxysection{post\+\_\+processor.\+cpp}
+\hypertarget{post__processor_8cpp_source}{}\label{post__processor_8cpp_source}\index{/home/vid/Dev/personal/game/src/engine/renderer/post\_processor.cpp@{/home/vid/Dev/personal/game/src/engine/renderer/post\_processor.cpp}}
+\mbox{\hyperlink{post__processor_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{post__processor_8hpp}{post\_processor.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__window_8hpp}{game\_window.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00008}\mbox{\hyperlink{classPostProcessor_a09121c69e5513541a99065ccd03e3788}{00008}}\ \mbox{\hyperlink{classPostProcessor_a09121c69e5513541a99065ccd03e3788}{PostProcessor::PostProcessor}}(\mbox{\hyperlink{classShader}{Shader}}\ shader,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ height)}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00009}00009\ \ \ \ \ :\ \mbox{\hyperlink{classPostProcessor_a050471c23d45efcb3a272a8d9dd933a3}{mPostProcessingShader}}(shader),\ \mbox{\hyperlink{classPostProcessor_a5f573c8f9028144bb76d711fac46a28a}{mTexture}}(),\ \mbox{\hyperlink{classPostProcessor_a58d386f64bfde0ab02db38b72926804f}{mWidth}}(width),\ \mbox{\hyperlink{classPostProcessor_a1cacec3fcb1fcf8d9b7df0200a6b3a59}{mHeight}}(height)\ \{}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00010}00010\ \ \ \ \ glGenFramebuffers(1,\ \&this-\/>MSFBO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00011}00011\ \ \ \ \ glGenFramebuffers(1,\ \&this-\/>FBO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00012}00012\ \ \ \ \ glGenRenderbuffers(1,\ \&this-\/>RBO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00014}00014\ \ \ \ \ glBindFramebuffer(GL\_FRAMEBUFFER,\ this-\/>MSFBO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00015}00015\ \ \ \ \ glBindRenderbuffer(GL\_RENDERBUFFER,\ this-\/>RBO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00016}00016\ \ \ \ \ glRenderbufferStorageMultisample(GL\_RENDERBUFFER,\ 4,\ GL\_RGB,\ width,\ height);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00017}00017\ \ \ \ \ glFramebufferRenderbuffer(GL\_FRAMEBUFFER,\ GL\_COLOR\_ATTACHMENT0,\ GL\_RENDERBUFFER,\ this-\/>RBO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{if}\ (glCheckFramebufferStatus(GL\_FRAMEBUFFER)\ !=\ GL\_FRAMEBUFFER\_COMPLETE)\ \{}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}ERROR::POSTPROCESSOR:\ Failed\ to\ initialize\ MSFBO"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00022}00022\ \ \ \ \ glBindFramebuffer(GL\_FRAMEBUFFER,\ this-\/>FBO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00023}00023\ \ \ \ \ this-\/>\mbox{\hyperlink{classPostProcessor_a5f573c8f9028144bb76d711fac46a28a}{mTexture}}.Generate(width,\ height,\ NULL);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00024}00024\ \ \ \ \ glFramebufferTexture2D(GL\_FRAMEBUFFER,\ GL\_COLOR\_ATTACHMENT0,\ GL\_TEXTURE\_2D,\ this-\/>\mbox{\hyperlink{classPostProcessor_a5f573c8f9028144bb76d711fac46a28a}{mTexture}}.ID,\ 0);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{if}\ (glCheckFramebufferStatus(GL\_FRAMEBUFFER)\ !=\ GL\_FRAMEBUFFER\_COMPLETE)}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}ERROR::POSTPROCESSOR:\ Failed\ to\ initialize\ FBO"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00027}00027\ \ \ \ \ glBindFramebuffer(GL\_FRAMEBUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00029}00029\ \ \ \ \ this-\/>InitRenderData();}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00030}00030\ \ \ \ \ this-\/>\mbox{\hyperlink{classPostProcessor_a050471c23d45efcb3a272a8d9dd933a3}{mPostProcessingShader}}.SetInteger(\textcolor{stringliteral}{"{}scene"{}},\ 0,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{keywordtype}{float}\ offset\ =\ 1.0f\ /\ 300.0f;}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordtype}{float}\ offsets[9][2]\ =\ \{}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \{-\/offset,\ offset\},\ \ \ \textcolor{comment}{//\ top-\/left}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \{0.0f,\ offset\},\ \ \ \ \ \ \textcolor{comment}{//\ top-\/center}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \{offset,\ offset\},\ \ \ \ \textcolor{comment}{//\ top-\/right}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \{-\/offset,\ 0.0f\},\ \ \ \ \ \textcolor{comment}{//\ center-\/left}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \{0.0f,\ 0.0f\},\ \ \ \ \ \ \ \ \textcolor{comment}{//\ center-\/center}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \{offset,\ 0.0f\},\ \ \ \ \ \ \textcolor{comment}{//\ center\ -\/\ right}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \{-\/offset,\ -\/offset\},\ \ \textcolor{comment}{//\ bottom-\/left}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \{0.0f,\ -\/offset\},\ \ \ \ \ \textcolor{comment}{//\ bottom-\/center}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \{offset,\ -\/offset\}\ \ \ \ \textcolor{comment}{//\ bottom-\/right}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00042}00042\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00043}00043\ \ \ \ \ glUniform2fv(glGetUniformLocation(this-\/>\mbox{\hyperlink{classPostProcessor_a050471c23d45efcb3a272a8d9dd933a3}{mPostProcessingShader}}.ID,\ \textcolor{stringliteral}{"{}offsets"{}}),\ 9,\ (\textcolor{keywordtype}{float}*)offsets);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordtype}{int}\ edge\_kernel[9]\ =\ \{}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ -\/1,\ -\/1,\ -\/1,\ -\/1,\ 8,\ -\/1,\ -\/1,\ -\/1,\ -\/1\};}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00046}00046\ \ \ \ \ glUniform1iv(glGetUniformLocation(this-\/>\mbox{\hyperlink{classPostProcessor_a050471c23d45efcb3a272a8d9dd933a3}{mPostProcessingShader}}.ID,\ \textcolor{stringliteral}{"{}edge\_kernel"{}}),\ 9,\ edge\_kernel);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordtype}{float}\ blur\_kernel[9]\ =\ \{}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ 1.0f\ /\ 16.0f,\ 2.0f\ /\ 16.0f,\ 1.0f\ /\ 16.0f,\ 2.0f\ /\ 16.0f,\ 4.0f\ /\ 16.0f,\ 2.0f\ /\ 16.0f,\ 1.0f\ /\ 16.0f,\ 2.0f\ /\ 16.0f,\ 1.0f\ /\ 16.0f\};}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00049}00049\ \ \ \ \ glUniform1fv(glGetUniformLocation(this-\/>\mbox{\hyperlink{classPostProcessor_a050471c23d45efcb3a272a8d9dd933a3}{mPostProcessingShader}}.ID,\ \textcolor{stringliteral}{"{}blur\_kernel"{}}),\ 9,\ blur\_kernel);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00050}00050\ \}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00052}\mbox{\hyperlink{classPostProcessor_a701af81027102dd36d1c0f66e15bd63d}{00052}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPostProcessor_a701af81027102dd36d1c0f66e15bd63d}{PostProcessor::BeginRender}}()\ \{}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00053}00053\ \ \ \ \ glBindFramebuffer(GL\_FRAMEBUFFER,\ this-\/>MSFBO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00054}00054\ \ \ \ \ glClearColor(0.0f,\ 0.0f,\ 0.0f,\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00055}00055\ \ \ \ \ glClear(GL\_COLOR\_BUFFER\_BIT);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00057}\mbox{\hyperlink{classPostProcessor_a0350986295119733e7bc8a0360036000}{00057}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPostProcessor_a0350986295119733e7bc8a0360036000}{PostProcessor::EndRender}}()\ \{}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00058}00058\ \ \ \ \ glBindFramebuffer(GL\_READ\_FRAMEBUFFER,\ this-\/>MSFBO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00059}00059\ \ \ \ \ glBindFramebuffer(GL\_DRAW\_FRAMEBUFFER,\ this-\/>FBO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00060}00060\ \ \ \ \ glBlitFramebuffer(0,\ 0,\ this-\/>\mbox{\hyperlink{classPostProcessor_a58d386f64bfde0ab02db38b72926804f}{mWidth}},\ this-\/>\mbox{\hyperlink{classPostProcessor_a1cacec3fcb1fcf8d9b7df0200a6b3a59}{mHeight}},\ 0,\ 0,\ this-\/>\mbox{\hyperlink{classPostProcessor_a58d386f64bfde0ab02db38b72926804f}{mWidth}},\ this-\/>\mbox{\hyperlink{classPostProcessor_a1cacec3fcb1fcf8d9b7df0200a6b3a59}{mHeight}},\ GL\_COLOR\_BUFFER\_BIT,\ GL\_NEAREST);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00061}00061\ \ \ \ \ glBindFramebuffer(GL\_FRAMEBUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00062}00062\ \}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00064}\mbox{\hyperlink{classPostProcessor_a08eb581860236db09fc22854eec569bf}{00064}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPostProcessor_a08eb581860236db09fc22854eec569bf}{PostProcessor::Render}}(\textcolor{keywordtype}{float}\ time)\ \{}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00065}00065\ \ \ \ \ this-\/>\mbox{\hyperlink{classPostProcessor_a050471c23d45efcb3a272a8d9dd933a3}{mPostProcessingShader}}.Use();}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00066}00066\ \ \ \ \ this-\/>\mbox{\hyperlink{classPostProcessor_a050471c23d45efcb3a272a8d9dd933a3}{mPostProcessingShader}}.SetFloat(\textcolor{stringliteral}{"{}time"{}},\ time);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00067}00067\ \ \ \ \ this-\/>\mbox{\hyperlink{classPostProcessor_a050471c23d45efcb3a272a8d9dd933a3}{mPostProcessingShader}}.SetVector2f(\textcolor{stringliteral}{"{}screenResolution"{}},\ glm::vec2(\mbox{\hyperlink{classPostProcessor_a58d386f64bfde0ab02db38b72926804f}{mWidth}},\ \mbox{\hyperlink{classPostProcessor_a1cacec3fcb1fcf8d9b7df0200a6b3a59}{mHeight}}));}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00068}00068\ \ \ \ \ this-\/>\mbox{\hyperlink{classPostProcessor_a050471c23d45efcb3a272a8d9dd933a3}{mPostProcessingShader}}.SetVector2f(\textcolor{stringliteral}{"{}scanLineOpacity"{}},\ glm::vec2(0.15f,\ 0.15f));}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00069}00069\ \ \ \ \ this-\/>\mbox{\hyperlink{classPostProcessor_a050471c23d45efcb3a272a8d9dd933a3}{mPostProcessingShader}}.SetFloat(\textcolor{stringliteral}{"{}vignetteOpacity"{}},\ 0.25f);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00071}00071\ \ \ \ \ this-\/>\mbox{\hyperlink{classPostProcessor_a050471c23d45efcb3a272a8d9dd933a3}{mPostProcessingShader}}.SetFloat(\textcolor{stringliteral}{"{}distortion\_amount"{}},\ 0.02f);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00072}00072\ \ \ \ \ this-\/>\mbox{\hyperlink{classPostProcessor_a050471c23d45efcb3a272a8d9dd933a3}{mPostProcessingShader}}.SetFloat(\textcolor{stringliteral}{"{}blood\_amount"{}},\ 0.3f);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00073}00073\ \ \ \ \ this-\/>\mbox{\hyperlink{classPostProcessor_a050471c23d45efcb3a272a8d9dd933a3}{mPostProcessingShader}}.SetFloat(\textcolor{stringliteral}{"{}mask\_amount"{}},\ 0.0f);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00075}00075\ \ \ \ \ glActiveTexture(GL\_TEXTURE0);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00076}00076\ \ \ \ \ this-\/>\mbox{\hyperlink{classPostProcessor_a5f573c8f9028144bb76d711fac46a28a}{mTexture}}.Bind();}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00077}00077\ \ \ \ \ glBindVertexArray(this-\/>VAO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00078}00078\ \ \ \ \ glDrawArrays(GL\_TRIANGLES,\ 0,\ 6);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00079}00079\ \ \ \ \ glBindVertexArray(0);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00080}00080\ \}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00082}00082\ \textcolor{keywordtype}{void}\ PostProcessor::InitRenderData()\ \{}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ VBO;}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{float}\ vertices[]\ =\ \{}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ pos\ \ \ \ \ \ \ \ //\ tex}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ -\/1.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ -\/1.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ 0.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ 0.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ 1.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ 1.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ 1.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ 1.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ -\/1.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ 1.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ 0.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ 1.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ -\/1.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ -\/1.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ 0.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ 0.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ 1.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ -\/1.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ 1.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ 0.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ 1.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ 1.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ 1.0f,}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ 1.0f\};}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00111}00111\ \ \ \ \ glGenVertexArrays(1,\ \&this-\/>VAO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00112}00112\ \ \ \ \ glGenBuffers(1,\ \&VBO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00114}00114\ \ \ \ \ glBindBuffer(GL\_ARRAY\_BUFFER,\ VBO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00115}00115\ \ \ \ \ glBufferData(GL\_ARRAY\_BUFFER,\ \textcolor{keyword}{sizeof}(vertices),\ vertices,\ GL\_STATIC\_DRAW);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00117}00117\ \ \ \ \ glBindVertexArray(this-\/>VAO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00118}00118\ \ \ \ \ glEnableVertexAttribArray(0);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00119}00119\ \ \ \ \ glVertexAttribPointer(0,\ 4,\ GL\_FLOAT,\ GL\_FALSE,\ 4\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}),\ (\textcolor{keywordtype}{void}*)0);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00120}00120\ \ \ \ \ glBindBuffer(GL\_ARRAY\_BUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00121}00121\ \ \ \ \ glBindVertexArray(0);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00122}00122\ \}}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00124}\mbox{\hyperlink{classPostProcessor_a8d002ff9c2fec8b4fbade21c54a4841f}{00124}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPostProcessor_a8d002ff9c2fec8b4fbade21c54a4841f}{PostProcessor::Resize}}(\textcolor{keywordtype}{int}\ newWidth,\ \textcolor{keywordtype}{int}\ newHeight)\ \{}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00125}00125\ \ \ \ \ this-\/>\mbox{\hyperlink{classPostProcessor_a58d386f64bfde0ab02db38b72926804f}{mWidth}}\ =\ newWidth;}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00126}00126\ \ \ \ \ this-\/>\mbox{\hyperlink{classPostProcessor_a1cacec3fcb1fcf8d9b7df0200a6b3a59}{mHeight}}\ =\ newHeight;}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00128}00128\ \ \ \ \ glBindFramebuffer(GL\_FRAMEBUFFER,\ this-\/>MSFBO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00129}00129\ \ \ \ \ glBindRenderbuffer(GL\_RENDERBUFFER,\ this-\/>RBO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00130}00130\ \ \ \ \ glRenderbufferStorageMultisample(GL\_RENDERBUFFER,\ 4,\ GL\_RGB,\ newWidth,\ newHeight);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00132}00132\ \ \ \ \ glBindFramebuffer(GL\_FRAMEBUFFER,\ this-\/>FBO);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00133}00133\ \ \ \ \ this-\/>\mbox{\hyperlink{classPostProcessor_a5f573c8f9028144bb76d711fac46a28a}{mTexture}}.Generate(newWidth,\ newHeight,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00134}00134\ \ \ \ \ glFramebufferTexture2D(GL\_FRAMEBUFFER,\ GL\_COLOR\_ATTACHMENT0,\ GL\_TEXTURE\_2D,\ this-\/>\mbox{\hyperlink{classPostProcessor_a5f573c8f9028144bb76d711fac46a28a}{mTexture}}.ID,\ 0);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00136}00136\ \ \ \ \ glBindFramebuffer(GL\_FRAMEBUFFER,\ 0);}
+\DoxyCodeLine{\Hypertarget{post__processor_8cpp_source_l00137}00137\ \}}
+
+\end{DoxyCode}

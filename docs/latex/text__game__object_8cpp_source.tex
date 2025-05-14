@@ -1,0 +1,42 @@
+\doxysection{text\+\_\+game\+\_\+object.\+cpp}
+\hypertarget{text__game__object_8cpp_source}{}\label{text__game__object_8cpp_source}\index{/home/vid/Dev/personal/game/src/engine/game\_objects/drawables/text\_game\_object.cpp@{/home/vid/Dev/personal/game/src/engine/game\_objects/drawables/text\_game\_object.cpp}}
+\mbox{\hyperlink{text__game__object_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{text__game__object_8hpp}{text\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__image__game__object_8hpp}{abstract\_image\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{drawable__game__object_8hpp}{drawable\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game_8hpp}{game.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00007}\mbox{\hyperlink{classTextGameObject_a087e9794e7bbe3822853afeeb06e6cc8}{00007}}\ \mbox{\hyperlink{classTextGameObject_a087e9794e7bbe3822853afeeb06e6cc8}{TextGameObject::TextGameObject}}(std::string\ name,\ std::string\ text,\ \mbox{\hyperlink{structTextGameObject_1_1TextProperties}{TextProperties}}\ textProperties,\ glm::vec3\ pos,\ glm::vec2\ scale)}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00008}00008\ \ \ \ \ :\ \mbox{\hyperlink{classDrawableGameObject}{DrawableGameObject}}(name,\ pos,\ scale),\ mText(text),\ mTextProperties(textProperties)\ \{\}}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00010}\mbox{\hyperlink{classTextGameObject_ac0fe9645a803603a7aab4cca4ec937d4}{00010}}\ \mbox{\hyperlink{classTextGameObject_a087e9794e7bbe3822853afeeb06e6cc8}{TextGameObject::TextGameObject}}(std::string\ name,\ \mbox{\hyperlink{classDrawableGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *parent,\ std::string\ text,\ \mbox{\hyperlink{structTextGameObject_1_1TextProperties}{TextProperties}}\ textProperties,\ glm::vec3\ pos,\ glm::vec2\ scale)}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00011}00011\ \ \ \ \ :\ \mbox{\hyperlink{classDrawableGameObject}{DrawableGameObject}}(name,\ parent,\ pos,\ scale),\ mText(text),\ mTextProperties(textProperties)\ \{\}}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00013}\mbox{\hyperlink{classTextGameObject_a88a656d6040a0a40cfb48a8480cc0ed2}{00013}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTextGameObject_a88a656d6040a0a40cfb48a8480cc0ed2}{TextGameObject::Render}}()\ \{}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGameObject_a821630aa6f0c19413a22475cac54c7b4}{GetVisible}}())\ \{}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDrawableGameObject_aa5c384421e0701f2032a1bd1fee2896f}{DrawableGameObject::Render}}();}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_a8ce7282dc33b14771428acd287dd3256}{GetFontRenderer}}(mTextProperties.fontName)-\/>\mbox{\hyperlink{classFontRenderer_a03a2a7f5c405a44b8c090e94445a6845}{DrawText}}(mText,\ \mbox{\hyperlink{classDrawableGameObject_a6430cb0a8dba33cf3166cbaf7c6cf046}{mRenderPosition}},\ \mbox{\hyperlink{classDrawableGameObject_adebfd11685b5bb1547c12914efe7b4dd}{mRenderSize}}.x\ *\ mTextProperties.scale,\ mTextProperties.color,\ mTextProperties.center);}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00017}00017\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00020}\mbox{\hyperlink{classTextGameObject_a6e8947fcf1c4cfe34422905a654b07d7}{00020}}\ \mbox{\hyperlink{classTextGameObject_a087e9794e7bbe3822853afeeb06e6cc8}{TextGameObject}}\ *\mbox{\hyperlink{classTextGameObject_a6e8947fcf1c4cfe34422905a654b07d7}{TextGameObject::SetText}}(std::string\ text)\ \{}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00021}00021\ \ \ \ \ mText\ =\ text;}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00025}\mbox{\hyperlink{classTextGameObject_ac936e4fd25ea4493abf274fc327ce82c}{00025}}\ std::string\ \mbox{\hyperlink{classTextGameObject_ac936e4fd25ea4493abf274fc327ce82c}{TextGameObject::GetText}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{return}\ mText;}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00029}\mbox{\hyperlink{classTextGameObject_a621fcba98498b213d37496c73cca1ef0}{00029}}\ \mbox{\hyperlink{classTextGameObject_a087e9794e7bbe3822853afeeb06e6cc8}{TextGameObject}}\ *\mbox{\hyperlink{classTextGameObject_a621fcba98498b213d37496c73cca1ef0}{TextGameObject::SetTextProperties}}(\mbox{\hyperlink{structTextGameObject_1_1TextProperties}{TextProperties}}\ textProperties)\ \{}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00030}00030\ \ \ \ \ mTextProperties\ =\ textProperties;}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00032}00032\ \}}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00034}\mbox{\hyperlink{classTextGameObject_a295af7c488c20b7a466a096f702549ff}{00034}}\ \mbox{\hyperlink{structTextGameObject_1_1TextProperties}{TextGameObject::TextProperties}}\ \mbox{\hyperlink{classTextGameObject_a295af7c488c20b7a466a096f702549ff}{TextGameObject::GetTextProperties}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{return}\ mTextProperties;}
+\DoxyCodeLine{\Hypertarget{text__game__object_8cpp_source_l00036}00036\ \}}
+
+\end{DoxyCode}

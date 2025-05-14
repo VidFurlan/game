@@ -1,0 +1,56 @@
+\doxysection{chest.\+cpp}
+\hypertarget{chest_8cpp_source}{}\label{chest_8cpp_source}\index{/home/vid/Dev/personal/game/src/game/objects/entities/chest.cpp@{/home/vid/Dev/personal/game/src/game/objects/entities/chest.cpp}}
+\mbox{\hyperlink{chest_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{chest_8hpp}{chest.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__image__game__object_8hpp}{abstract\_image\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game_8hpp}{game.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}glm/ext/vector\_float4.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{dungeon__room_8hpp}{objects/dungeon/dungeon\_room.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{entity_8hpp}{objects/entities/entity.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{menu__transition_8hpp}{objects/menu\_transition.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8hpp}{objects/player.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{polygon2d_8hpp}{polygon2d.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprite__game__object_8hpp}{sprite\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{spritesheet__game__object_8hpp}{spritesheet\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00014}\mbox{\hyperlink{classChest_a858150fe1769862a851e7b21a45eddac}{00014}}\ \mbox{\hyperlink{classChest_a858150fe1769862a851e7b21a45eddac}{Chest::Chest}}(std::string\ name,\ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *parent,\ glm::vec3\ position)\ :\ \mbox{\hyperlink{classEntity_ad13c79db161eec726d9882f51934f86d}{Entity}}(name,\ parent,\ \mbox{\hyperlink{entity_8hpp_ad79a57ed3105eb60d991a1aeb4a9dc44}{EntityType}}::\mbox{\hyperlink{entity_8hpp_ad79a57ed3105eb60d991a1aeb4a9dc44a5ebb5f9d5d2fe40a3b5e9865a8c6c8d0}{TREASURE\_CHEST}},\ new\ \mbox{\hyperlink{classPolygon2D}{Polygon2D}}(\{\{-\/3.0f,\ -\/3.0f\},\ \{-\/3.0f,\ 3.0f\},\ \{3.0f,\ 3.0f\},\ \{3.0f,\ -\/3.0f\}\}),\ position,\ \{1.0f,\ 1.0f\})\ \{}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00015}00015\ \ \ \ \ mMaxHealth\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00016}00016\ \ \ \ \ mHealth\ =\ mMaxHealth;}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00017}00017\ \ \ \ \ mImmunityTime\ =\ 0.3f;}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00019}00019\ \ \ \ \ SetTag(\textcolor{stringliteral}{"{}Enemy"{}});}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00020}00020\ \ \ \ \ SetZIndex(900);}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00021}00021\ \ \ \ \ (\textcolor{keyword}{new}\ \mbox{\hyperlink{classSpriteGameObject}{SpriteGameObject}}(\textcolor{stringliteral}{"{}Sprite"{}},\ \textcolor{keyword}{this},\ \textcolor{stringliteral}{"{}ice"{}},\ \{0.0f,\ 0.0f,\ 0.0f\},\ \{12.0f,\ 12.0f\}))-\/>SetColor(\{1.0f,\ 1.0f,\ 1.0f,\ 0.5f\});}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00022}00022\ \ \ \ \ (\textcolor{keyword}{new}\ \mbox{\hyperlink{classSpriteSheetGameObject}{SpriteSheetGameObject}}(\textcolor{stringliteral}{"{}Cat"{}},\ \textcolor{keyword}{this},\ \textcolor{stringliteral}{"{}cat"{}},\ \{8,\ 8\},\ \{0.0f,\ -\/2.0f,\ 0.0f\},\ \{10.0f,\ 10.0f\}))}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ -\/>SetSpriteSheetFrame(\{0,\ 6\})}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ -\/>SetZIndex(1100);}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//(new\ SpriteSheetGameObject("{}Sprite"{},\ this,\ "{}enemy"{},\ \{32,\ 32\},\ \{0.0f,\ -\/2.2f,\ 0.0f\},\ \{8,\ 8\}))}}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ \ \ \ -\/>SetSpriteSheetFrame(\{26,\ 19\});}}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{classDungeonRoom}{DungeonRoom}}\ *room\ =\ ((\mbox{\hyperlink{classDungeonRoom}{DungeonRoom}}\ *)GetParent()-\/>GetParent());}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00032}\mbox{\hyperlink{classChest_a7812197e36be9b1474ec09ca6aaad404}{00032}}\ \mbox{\hyperlink{classChest_a7812197e36be9b1474ec09ca6aaad404}{Chest::\string~Chest}}()\ \{}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00033}00033\ \ \ \ \ \mbox{\hyperlink{classDungeonRoom}{DungeonRoom}}\ *room\ =\ ((\mbox{\hyperlink{classDungeonRoom}{DungeonRoom}}\ *)\mbox{\hyperlink{classGameObject_a7eec3f82ecf749dd495cf6e3cacd264a}{GetParent}}()-\/>\mbox{\hyperlink{classGameObject_a7eec3f82ecf749dd495cf6e3cacd264a}{GetParent}}());}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00034}00034\ \}}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00036}\mbox{\hyperlink{classChest_a8dce977cf54610fe1a0038340e19cc75}{00036}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classChest_a8dce977cf54610fe1a0038340e19cc75}{Chest::Death}}()\ \{}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{classPlayer_ae733a39dd7d8456b764520bf19278353}{Player::mCatCount}}++;}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_a3c6ec5ea738e575d55967931f832ee04}{SetState}}(\mbox{\hyperlink{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285a263d613b5188d0c835659517bccbde72}{GameState::GAME\_PAUSED}});}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00039}00039\ \ \ \ \ ((\mbox{\hyperlink{classMenuTransition}{MenuTransition}}\ *)\mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().GetActiveScene()-\/>\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}MenuTransition"{}}))-\/>Transition([]()\ \{}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGame_a77f163ad12c9ef69ab7b5097e290515b}{Game::GetInstance}}().\mbox{\hyperlink{classGame_ac99318a82ddc53292a7434d7d16a7236}{GetActiveScene}}()-\/>\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}UI"{}})-\/>\mbox{\hyperlink{classGameObject_a8b78cd9270733086927a4f8a4f07398e}{SetActive}}(\textcolor{keyword}{true})-\/>\mbox{\hyperlink{classGameObject_ae6411c30a8a2c258b52288f6aecb220e}{SetVisible}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPlayer_afa26227712c7272522445009471a71d4}{Player::mLevelCleared}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00042}00042\ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00045}\mbox{\hyperlink{classChest_a2fe3246e39c5ffbfb2f8fe3119173c82}{00045}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classChest_a2fe3246e39c5ffbfb2f8fe3119173c82}{Chest::Update}}(\textcolor{keywordtype}{float}\ deltaTime)\ \{}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00046}00046\ \ \ \ \ \mbox{\hyperlink{classEntity_a00da26ec82bc1681a2ec9967c38f36b0}{Entity::Update}}(deltaTime);}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00047}00047\ \ \ \ \ glm::vec4\ color\ =\ ((\mbox{\hyperlink{classAbstractImageGameObject}{AbstractImageGameObject}}\ *)\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}Sprite"{}}))-\/>GetColor();}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00048}00048\ \ \ \ \ color.a\ =\ 0.5;}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00049}00049\ \ \ \ \ ((\mbox{\hyperlink{classAbstractImageGameObject}{AbstractImageGameObject}}\ *)\mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{GetChild}}(\textcolor{stringliteral}{"{}Sprite"{}}))-\/>SetColor(color);}
+\DoxyCodeLine{\Hypertarget{chest_8cpp_source_l00050}00050\ \}}
+
+\end{DoxyCode}

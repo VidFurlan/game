@@ -1,0 +1,92 @@
+\doxysection{/home/vid/\+Dev/personal/game/src/engine/game.hpp File Reference}
+\hypertarget{game_8hpp}{}\label{game_8hpp}\index{/home/vid/Dev/personal/game/src/engine/game.hpp@{/home/vid/Dev/personal/game/src/engine/game.hpp}}
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+set$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}font\+\_\+renderer.\+hpp"{}}\newline
+{\ttfamily \#include $<$GL/glew.\+h$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include "{}batch\+\_\+renderer.\+hpp"{}}\newline
+{\ttfamily \#include "{}game\+\_\+window.\+hpp"{}}\newline
+{\ttfamily \#include "{}post\+\_\+processor.\+hpp"{}}\newline
+{\ttfamily \#include "{}resource\+\_\+manager.\+hpp"{}}\newline
+{\ttfamily \#include "{}scene\+\_\+game\+\_\+object.\+hpp"{}}\newline
+{\ttfamily \#include "{}singleton.\+hpp"{}}\newline
+{\ttfamily \#include "{}sprite\+\_\+renderer.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classGame}{Game}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{game_8hpp_abcde84ea0ef5f934384e4620f092c85a}{GLEW\+\_\+\+STATIC}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} \{ \newline
+\mbox{\hyperlink{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285ae5953e65e20db2684e778eb530191a43}{GAME\+\_\+\+ACTIVE}}
+, \mbox{\hyperlink{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285a263d613b5188d0c835659517bccbde72}{GAME\+\_\+\+PAUSED}}
+, \mbox{\hyperlink{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285aa65481e2492a0d2954f4e8de6dabf01d}{GAME\+\_\+\+MENU}}
+, \mbox{\hyperlink{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285a9a887dd203c6c4924d5a5b2313da97a5}{GAME\+\_\+\+TRANSITION}}
+, \newline
+\mbox{\hyperlink{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285a871723195985a4ae22d7e10d99bf8a00}{GAME\+\_\+\+OVER}}
+, \mbox{\hyperlink{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285ac6fc8943a041e5db95cc3e770e862470}{GAME\+\_\+\+REPLAY}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{game_8hpp_abcde84ea0ef5f934384e4620f092c85a}\index{game.hpp@{game.hpp}!GLEW\_STATIC@{GLEW\_STATIC}}
+\index{GLEW\_STATIC@{GLEW\_STATIC}!game.hpp@{game.hpp}}
+\doxysubsubsection{\texorpdfstring{GLEW\_STATIC}{GLEW\_STATIC}}
+{\footnotesize\ttfamily \label{game_8hpp_abcde84ea0ef5f934384e4620f092c85a} 
+\#define GLEW\+\_\+\+STATIC}
+
+
+
+Definition at line \mbox{\hyperlink{game_8hpp_source_l00009}{9}} of file \mbox{\hyperlink{game_8hpp_source}{game.\+hpp}}.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285}\index{game.hpp@{game.hpp}!GameState@{GameState}}
+\index{GameState@{GameState}!game.hpp@{game.hpp}}
+\doxysubsubsection{\texorpdfstring{GameState}{GameState}}
+{\footnotesize\ttfamily \label{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285} 
+enum \mbox{\hyperlink{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_ACTIVE@{GAME\_ACTIVE}!game.hpp@{game.hpp}}\index{game.hpp@{game.hpp}!GAME\_ACTIVE@{GAME\_ACTIVE}}}\Hypertarget{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285ae5953e65e20db2684e778eb530191a43}\label{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285ae5953e65e20db2684e778eb530191a43} 
+GAME\+\_\+\+ACTIVE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_PAUSED@{GAME\_PAUSED}!game.hpp@{game.hpp}}\index{game.hpp@{game.hpp}!GAME\_PAUSED@{GAME\_PAUSED}}}\Hypertarget{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285a263d613b5188d0c835659517bccbde72}\label{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285a263d613b5188d0c835659517bccbde72} 
+GAME\+\_\+\+PAUSED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_MENU@{GAME\_MENU}!game.hpp@{game.hpp}}\index{game.hpp@{game.hpp}!GAME\_MENU@{GAME\_MENU}}}\Hypertarget{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285aa65481e2492a0d2954f4e8de6dabf01d}\label{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285aa65481e2492a0d2954f4e8de6dabf01d} 
+GAME\+\_\+\+MENU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_TRANSITION@{GAME\_TRANSITION}!game.hpp@{game.hpp}}\index{game.hpp@{game.hpp}!GAME\_TRANSITION@{GAME\_TRANSITION}}}\Hypertarget{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285a9a887dd203c6c4924d5a5b2313da97a5}\label{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285a9a887dd203c6c4924d5a5b2313da97a5} 
+GAME\+\_\+\+TRANSITION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_OVER@{GAME\_OVER}!game.hpp@{game.hpp}}\index{game.hpp@{game.hpp}!GAME\_OVER@{GAME\_OVER}}}\Hypertarget{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285a871723195985a4ae22d7e10d99bf8a00}\label{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285a871723195985a4ae22d7e10d99bf8a00} 
+GAME\+\_\+\+OVER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_REPLAY@{GAME\_REPLAY}!game.hpp@{game.hpp}}\index{game.hpp@{game.hpp}!GAME\_REPLAY@{GAME\_REPLAY}}}\Hypertarget{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285ac6fc8943a041e5db95cc3e770e862470}\label{game_8hpp_a7899b65f1ea0f655e4bbf8d2a5714285ac6fc8943a041e5db95cc3e770e862470} 
+GAME\+\_\+\+REPLAY&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{game_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{game_8hpp_source}{game.\+hpp}}.
+

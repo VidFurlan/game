@@ -1,0 +1,61 @@
+\doxysection{/home/vid/\+Dev/personal/game/src/game/objects/player.cpp File Reference}
+\hypertarget{player_8cpp}{}\label{player_8cpp}\index{/home/vid/Dev/personal/game/src/game/objects/player.cpp@{/home/vid/Dev/personal/game/src/game/objects/player.cpp}}
+{\ttfamily \#include "{}player.\+hpp"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include "{}GLFW/glfw3.\+h"{}}\newline
+{\ttfamily \#include "{}collider\+\_\+game\+\_\+object.\+hpp"{}}\newline
+{\ttfamily \#include "{}collision\+\_\+manager.\+hpp"{}}\newline
+{\ttfamily \#include "{}game.\+hpp"{}}\newline
+{\ttfamily \#include "{}game\+\_\+object.\+hpp"{}}\newline
+{\ttfamily \#include "{}glm/ext/vector\+\_\+float2.\+hpp"{}}\newline
+{\ttfamily \#include "{}glm/ext/vector\+\_\+float3.\+hpp"{}}\newline
+{\ttfamily \#include "{}glm/gtc/type\+\_\+ptr.\+hpp"{}}\newline
+{\ttfamily \#include "{}menu\+\_\+scene.\+hpp"{}}\newline
+{\ttfamily \#include "{}objects/entities/entity.\+hpp"{}}\newline
+{\ttfamily \#include "{}objects/menu\+\_\+transition.\+hpp"{}}\newline
+{\ttfamily \#include "{}objects/saver.\+hpp"{}}\newline
+{\ttfamily \#include "{}polygon2d.\+hpp"{}}\newline
+{\ttfamily \#include "{}rect\+\_\+collider\+\_\+game\+\_\+object.\+hpp"{}}\newline
+{\ttfamily \#include "{}spritesheet\+\_\+game\+\_\+object.\+hpp"{}}\newline
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const float \mbox{\hyperlink{player_8cpp_ac168dde298384b905d2d45217f0b30f7}{hitbox\+Size}} = 2.\+5f
+\item 
+const float \mbox{\hyperlink{player_8cpp_ad18df46137992b3c28de4d4e243caa8c}{hitbox\+Corner}} = 0.\+9f
+\item 
+const float \mbox{\hyperlink{player_8cpp_ad090cc291394d7e8af5d9bd0fd9bb7cb}{slash\+Size}} = 5.\+0f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{player_8cpp_ad18df46137992b3c28de4d4e243caa8c}\index{player.cpp@{player.cpp}!hitboxCorner@{hitboxCorner}}
+\index{hitboxCorner@{hitboxCorner}!player.cpp@{player.cpp}}
+\doxysubsubsection{\texorpdfstring{hitboxCorner}{hitboxCorner}}
+{\footnotesize\ttfamily \label{player_8cpp_ad18df46137992b3c28de4d4e243caa8c} 
+const float hitbox\+Corner = 0.\+9f}
+
+
+
+Definition at line \mbox{\hyperlink{player_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{player_8cpp_source}{player.\+cpp}}.
+
+\Hypertarget{player_8cpp_ac168dde298384b905d2d45217f0b30f7}\index{player.cpp@{player.cpp}!hitboxSize@{hitboxSize}}
+\index{hitboxSize@{hitboxSize}!player.cpp@{player.cpp}}
+\doxysubsubsection{\texorpdfstring{hitboxSize}{hitboxSize}}
+{\footnotesize\ttfamily \label{player_8cpp_ac168dde298384b905d2d45217f0b30f7} 
+const float hitbox\+Size = 2.\+5f}
+
+
+
+Definition at line \mbox{\hyperlink{player_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{player_8cpp_source}{player.\+cpp}}.
+
+\Hypertarget{player_8cpp_ad090cc291394d7e8af5d9bd0fd9bb7cb}\index{player.cpp@{player.cpp}!slashSize@{slashSize}}
+\index{slashSize@{slashSize}!player.cpp@{player.cpp}}
+\doxysubsubsection{\texorpdfstring{slashSize}{slashSize}}
+{\footnotesize\ttfamily \label{player_8cpp_ad090cc291394d7e8af5d9bd0fd9bb7cb} 
+const float slash\+Size = 5.\+0f}
+
+
+
+Definition at line \mbox{\hyperlink{player_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{player_8cpp_source}{player.\+cpp}}.
+

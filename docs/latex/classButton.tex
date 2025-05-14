@@ -1,0 +1,214 @@
+\doxysection{Button Class Reference}
+\hypertarget{classButton}{}\label{classButton}\index{Button@{Button}}
+
+
+{\ttfamily \#include $<$button.\+hpp$>$}
+
+Inheritance diagram for Button\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classButton}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classButton_a10a3c0b4b512d3f462bb7514b489d1a7}{Button}} (std\+::string name, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}parent, glm\+::vec3 position, glm\+::vec2 size, std\+::function$<$ void()$>$ on\+Click, \mbox{\hyperlink{classAbstractImageGameObject}{Abstract\+Image\+Game\+Object}} \texorpdfstring{$\ast$}{*}image, \mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379a}{Screen\+Anchor}} screen\+Anchor=\mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa747385047b85ae751f83adb36435a3c1}{Screen\+Anchor\+::\+TOP\+\_\+\+LEFT}})
+\item 
+\mbox{\hyperlink{classButton_acdf8e4ba2f771b795368bccb8e493909}{\texorpdfstring{$\sim$}{\string~}\+Button}} () override
+\item 
+virtual void \mbox{\hyperlink{classButton_a1dbb1ed974234d1baaeb38e369be4f6f}{Update}} (float delta\+Time) override
+\item 
+virtual void \mbox{\hyperlink{classButton_aa4641749ee69d7c5a9f0e4987314d388}{Late\+Update}} (float delta\+Time) override
+\item 
+void \mbox{\hyperlink{classButton_a175d070e4794146ad04916afa80585ae}{Set\+On\+Click}} (std\+::function$<$ void()$>$ on\+Click)
+\item 
+void \mbox{\hyperlink{classButton_a73b40a3b9ffeaa7492fff1876d5d6f87}{Register\+Click}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classGameObject}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{Game\+Object}} (std\+::string name, glm\+::vec3 pos=glm\+::vec3(0.\+0f), glm\+::vec2 scale=glm\+::vec2(1.\+0f))
+\item 
+\mbox{\hyperlink{classGameObject_a76a02ab352553240743add593efeb0cd}{Game\+Object}} (std\+::string name, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}parent, glm\+::vec3 pos=glm\+::vec3(0.\+0f), glm\+::vec2 scale=glm\+::vec2(1.\+0f))
+\item 
+virtual \mbox{\hyperlink{classGameObject_ab82dfdb656f9051c0587e6593b2dda97}{\texorpdfstring{$\sim$}{\string~}\+Game\+Object}} ()
+\item 
+virtual void \mbox{\hyperlink{classGameObject_a554078170496d6fc31af134e76e1e1bd}{Render}} ()
+\item 
+std\+::string \mbox{\hyperlink{classGameObject_a986731c4dfb08336dbf0731e6514bad9}{Get\+Name}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a8b78cd9270733086927a4f8a4f07398e}{Set\+Active}} (bool active)
+\item 
+bool \mbox{\hyperlink{classGameObject_aeacebf64d0153edf9e02a43defc0d26f}{Get\+Active}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_ae6411c30a8a2c258b52288f6aecb220e}{Set\+Visible}} (bool visible)
+\item 
+bool \mbox{\hyperlink{classGameObject_a821630aa6f0c19413a22475cac54c7b4}{Get\+Visible}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a404b760fb13e77e57c6512db9d11da81}{Set\+Position}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a453acd691b437cb3b5c91946c11db064}{Set\+Position}} (glm\+::vec3 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_aae995b3b06e73711a1163ae0b0a7f1fd}{Set\+Rotation}} (float rot)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_ad236d752fd3d90424af28bd8cb60a575}{Set\+Rotation}} (glm\+::vec3 rot)
+\item 
+glm\+::vec3 \mbox{\hyperlink{classGameObject_a977d4bbb9ebe2266bae702b59508303b}{Get\+Position}} () const
+\item 
+glm\+::vec3 \mbox{\hyperlink{classGameObject_adc256761dbcea9050030f4017ad41ad1}{Get\+Global\+Position}} () const
+\item 
+float \mbox{\hyperlink{classGameObject_a53875b706c5c9ebc0cdd8600a423ed20}{Get\+Rotation}} () const
+\item 
+float \mbox{\hyperlink{classGameObject_a213cb8316ac2eac26032e33805e3710f}{Get\+Global\+Rotation}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a407f5d1d8117bc7ce210b64d58c04662}{Set\+ZIndex}} (int z\+Index)
+\item 
+int \mbox{\hyperlink{classGameObject_a8604b8941849f9000abb3eb582f66176}{Get\+ZIndex}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a7eec3f82ecf749dd495cf6e3cacd264a}{Get\+Parent}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_aba1240b72af3fb617eb70769be086512}{Get\+Child}} (std\+::string name) const
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a9c38119383137784bcbaeef5147be51d}{Get\+Children}} () const
+\item 
+unsigned int \mbox{\hyperlink{classGameObject_a4d1b2597afd1207e05082ea3263b4409}{Get\+Children\+Count}} () const
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a31ab3f560b5d6880141f42ae9904478b}{Add\+Child}} (\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}child)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_ae606e30f9db273a9d360849d5632bfe6}{Add\+Child\+To\+Local\+Pos}} (\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}child)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a0acf0dc8a35cf32076ffe3a77bc8bd59}{Remove\+Child}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Remove a child from the game object but do not delete it! If memory is leaking check here! \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGameObject_aa6a1e2ef75a4913addc5b2d21c9126c3}{Safe\+Delete}} ()
+\item 
+void \mbox{\hyperlink{classGameObject_a9bda3668364eebde8670fe4435963c01}{Delete\+Child}} (std\+::string name)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a7abb447984e2d10efe0cbe71b22a9179}{operator+=}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_aa6c5abb1c90b176b0908fabc666838f1}{operator-\/=}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a6b1d674ce2b0d9b18dfe2b392963684e}{operator\texorpdfstring{$\ast$}{*}=}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_aad0532b9af49e6016e3e55e4b6644385}{operator/=}} (glm\+::vec2 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_af774be813ecbf7bed6f43ecfcff2de58}{operator+=}} (glm\+::vec3 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a10f5ccb22aa853701287815f08624470}{operator-\/=}} (glm\+::vec3 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a77ee0c0f255f2fa39ee02b976fa55289}{operator\texorpdfstring{$\ast$}{*}=}} (glm\+::vec3 pos)
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a9fda54e55885533d12b0456fdc6a2a8a}{operator/=}} (glm\+::vec3 pos)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classGameObject}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr float \mbox{\hyperlink{classGameObject_a2c7b29001627e8378982097be132c746}{GAME\+\_\+\+SCALE\+\_\+\+FACTOR}} = 10.\+0f
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classGameObject}{Game\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::string \mbox{\hyperlink{classGameObject_a0c88acca9ecfc4990c50d9e371e963a7}{m\+Name}}
+\item 
+bool \mbox{\hyperlink{classGameObject_a5101d9de8eb4e44410d875ccb6bade8b}{m\+Active}}
+\item 
+bool \mbox{\hyperlink{classGameObject_afa97a45840ebad6ba7bc14eb7f7f9041}{m\+Visible}}
+\item 
+glm\+::vec3 \mbox{\hyperlink{classGameObject_aa6ee0f1d35fc6959859a98f9998b197b}{m\+Pos}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{classGameObject_aa769e9608e85e0a5b35b12dd2ced5f01}{m\+Scale}}
+\item 
+int \mbox{\hyperlink{classGameObject_ae54f9fed22969f992d4bd2c55999967d}{m\+ZIndex}} = 1000
+\item 
+\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameObject_a544c86d162dd917b26ad77deed2ce9e6}{p\+Parent}} = nullptr
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGameObject_af80e9ee891dd30e6d390dd680e3c83f4}{children}}
+\item 
+std\+::map$<$ int, std\+::set$<$ \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$, std\+::greater$<$ int $>$ $>$ \mbox{\hyperlink{classGameObject_a91498e29040e119a948105b5ea4a9883}{m\+Children\+By\+ZIndex}}
+\item 
+std\+::list$<$ \mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGameObject_aa036de331741bef1ed8c312a5d5c465e}{m\+Children\+To\+Remove}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{button_8hpp_source_l00008}{8}} of file \mbox{\hyperlink{button_8hpp_source}{button.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classButton_a10a3c0b4b512d3f462bb7514b489d1a7}\index{Button@{Button}!Button@{Button}}
+\index{Button@{Button}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{Button()}{Button()}}
+{\footnotesize\ttfamily \label{classButton_a10a3c0b4b512d3f462bb7514b489d1a7} 
+Button\+::\+Button (\begin{DoxyParamCaption}\item[{std\+::string}]{name}{, }\item[{\mbox{\hyperlink{classGameObject}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{glm\+::vec3}]{position}{, }\item[{glm\+::vec2}]{size}{, }\item[{std\+::function$<$ void()$>$}]{on\+Click}{, }\item[{\mbox{\hyperlink{classAbstractImageGameObject}{Abstract\+Image\+Game\+Object}} \texorpdfstring{$\ast$}{*}}]{image}{, }\item[{\mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379a}{Screen\+Anchor}}}]{screen\+Anchor}{ = {\ttfamily \mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa747385047b85ae751f83adb36435a3c1}{Screen\+Anchor\+::\+TOP\+\_\+\+LEFT}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{button_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{button_8cpp_source}{button.\+cpp}}.
+
+\Hypertarget{classButton_acdf8e4ba2f771b795368bccb8e493909}\index{Button@{Button}!````~Button@{\texorpdfstring{$\sim$}{\string~}Button}}
+\index{````~Button@{\texorpdfstring{$\sim$}{\string~}Button}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Button()}{\string~Button()}}
+{\footnotesize\ttfamily \label{classButton_acdf8e4ba2f771b795368bccb8e493909} 
+Button\+::\texorpdfstring{$\sim$}{\string~}\+Button (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Definition at line \mbox{\hyperlink{button_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{button_8cpp_source}{button.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classButton_aa4641749ee69d7c5a9f0e4987314d388}\index{Button@{Button}!LateUpdate@{LateUpdate}}
+\index{LateUpdate@{LateUpdate}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{LateUpdate()}{LateUpdate()}}
+{\footnotesize\ttfamily \label{classButton_aa4641749ee69d7c5a9f0e4987314d388} 
+void Button\+::\+Late\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classGameObject_a7cb32aba9790897365708d74ac10c7e1}{Game\+Object}}.
+
+
+
+Definition at line \mbox{\hyperlink{button_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{button_8cpp_source}{button.\+cpp}}.
+
+\Hypertarget{classButton_a73b40a3b9ffeaa7492fff1876d5d6f87}\index{Button@{Button}!RegisterClick@{RegisterClick}}
+\index{RegisterClick@{RegisterClick}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{RegisterClick()}{RegisterClick()}}
+{\footnotesize\ttfamily \label{classButton_a73b40a3b9ffeaa7492fff1876d5d6f87} 
+void Button\+::\+Register\+Click (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classButton_a175d070e4794146ad04916afa80585ae}\index{Button@{Button}!SetOnClick@{SetOnClick}}
+\index{SetOnClick@{SetOnClick}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{SetOnClick()}{SetOnClick()}}
+{\footnotesize\ttfamily \label{classButton_a175d070e4794146ad04916afa80585ae} 
+void Button\+::\+Set\+On\+Click (\begin{DoxyParamCaption}\item[{std\+::function$<$ void()$>$}]{on\+Click}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{button_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{button_8cpp_source}{button.\+cpp}}.
+
+\Hypertarget{classButton_a1dbb1ed974234d1baaeb38e369be4f6f}\index{Button@{Button}!Update@{Update}}
+\index{Update@{Update}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{classButton_a1dbb1ed974234d1baaeb38e369be4f6f} 
+void Button\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classGameObject_a9e6d53f4ebbaf13a26353f1888584a26}{Game\+Object}}.
+
+
+
+Definition at line \mbox{\hyperlink{button_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{button_8cpp_source}{button.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/vid/\+Dev/personal/game/src/game/objects/ui/\mbox{\hyperlink{button_8hpp}{button.\+hpp}}\item 
+/home/vid/\+Dev/personal/game/src/game/objects/ui/\mbox{\hyperlink{button_8cpp}{button.\+cpp}}\end{DoxyCompactItemize}

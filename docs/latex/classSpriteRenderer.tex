@@ -1,0 +1,100 @@
+\doxysection{Sprite\+Renderer Class Reference}
+\hypertarget{classSpriteRenderer}{}\label{classSpriteRenderer}\index{SpriteRenderer@{SpriteRenderer}}
+
+
+{\ttfamily \#include $<$sprite\+\_\+renderer.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSpriteRenderer_ab343c543b6e70b521bbc07efaee9f544}{Sprite\+Renderer}} (\mbox{\hyperlink{classShader}{Shader}} \&shader)
+\item 
+\mbox{\hyperlink{classSpriteRenderer_ae53730ef86000bf59905c2cf67e4d3a4}{\texorpdfstring{$\sim$}{\string~}\+Sprite\+Renderer}} ()
+\item 
+void \mbox{\hyperlink{classSpriteRenderer_a94c5010d6b30c47536a346280f924548}{Draw\+Sprite}} (\mbox{\hyperlink{classTexture}{Texture}} \&texture, glm\+::vec2 position, glm\+::vec2 size=glm\+::vec2(10.\+0f), float rotate=0.\+0f, glm\+::vec4 color=glm\+::vec4(1.\+0f))
+\item 
+void \mbox{\hyperlink{classSpriteRenderer_a3f7cfcb09cde53dc2e79a47198a9a57c}{Draw\+Sprite}} (\mbox{\hyperlink{classTexture}{Texture}} \&texture, glm\+::vec2 position, float u1, float v1, float u2, float v2, glm\+::vec2 size=glm\+::vec2(10.\+0f), float rotate=0.\+0f, glm\+::vec4 color=glm\+::vec4(1.\+0f))
+\item 
+void \mbox{\hyperlink{classSpriteRenderer_aa4c9d8b95034ba687e7398f46fd2c7f6}{Draw\+Sprite\+Sheet}} (\mbox{\hyperlink{classTexture}{Texture}} \&texture, glm\+::vec2 position, int index, int rows, int cols, glm\+::vec2 size=glm\+::vec2(10.\+0f), float rotate=0.\+0f, glm\+::vec4 color=glm\+::vec4(1.\+0f))
+\item 
+void \mbox{\hyperlink{classSpriteRenderer_afb29b87f25295d458f941eb855c3b86f}{Draw\+Sprite\+With\+Mask}} (\mbox{\hyperlink{classTexture}{Texture}} \&sprite\+Texture, \mbox{\hyperlink{classTexture}{Texture}} \&mask\+Texture, glm\+::vec2 position, glm\+::vec2 size=glm\+::vec2(10.\+0f), float rotate=0.\+0f, glm\+::vec4 color=glm\+::vec4(1.\+0f))
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{sprite__renderer_8hpp_source_l00009}{9}} of file \mbox{\hyperlink{sprite__renderer_8hpp_source}{sprite\+\_\+renderer.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSpriteRenderer_ab343c543b6e70b521bbc07efaee9f544}\index{SpriteRenderer@{SpriteRenderer}!SpriteRenderer@{SpriteRenderer}}
+\index{SpriteRenderer@{SpriteRenderer}!SpriteRenderer@{SpriteRenderer}}
+\doxysubsubsection{\texorpdfstring{SpriteRenderer()}{SpriteRenderer()}}
+{\footnotesize\ttfamily \label{classSpriteRenderer_ab343c543b6e70b521bbc07efaee9f544} 
+Sprite\+Renderer\+::\+Sprite\+Renderer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classShader}{Shader}} \&}]{shader}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sprite__renderer_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{sprite__renderer_8cpp_source}{sprite\+\_\+renderer.\+cpp}}.
+
+\Hypertarget{classSpriteRenderer_ae53730ef86000bf59905c2cf67e4d3a4}\index{SpriteRenderer@{SpriteRenderer}!````~SpriteRenderer@{\texorpdfstring{$\sim$}{\string~}SpriteRenderer}}
+\index{````~SpriteRenderer@{\texorpdfstring{$\sim$}{\string~}SpriteRenderer}!SpriteRenderer@{SpriteRenderer}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}SpriteRenderer()}{\string~SpriteRenderer()}}
+{\footnotesize\ttfamily \label{classSpriteRenderer_ae53730ef86000bf59905c2cf67e4d3a4} 
+Sprite\+Renderer\+::\texorpdfstring{$\sim$}{\string~}\+Sprite\+Renderer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sprite__renderer_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{sprite__renderer_8cpp_source}{sprite\+\_\+renderer.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSpriteRenderer_a3f7cfcb09cde53dc2e79a47198a9a57c}\index{SpriteRenderer@{SpriteRenderer}!DrawSprite@{DrawSprite}}
+\index{DrawSprite@{DrawSprite}!SpriteRenderer@{SpriteRenderer}}
+\doxysubsubsection{\texorpdfstring{DrawSprite()}{DrawSprite()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classSpriteRenderer_a3f7cfcb09cde53dc2e79a47198a9a57c} 
+void Sprite\+Renderer\+::\+Draw\+Sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTexture}{Texture}} \&}]{texture}{, }\item[{glm\+::vec2}]{position}{, }\item[{float}]{u1}{, }\item[{float}]{v1}{, }\item[{float}]{u2}{, }\item[{float}]{v2}{, }\item[{glm\+::vec2}]{size}{ = {\ttfamily glm\+:\+:vec2(10.0f)}, }\item[{float}]{rotate}{ = {\ttfamily 0.0f}, }\item[{glm\+::vec4}]{color}{ = {\ttfamily glm\+:\+:vec4(1.0f)}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sprite__renderer_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{sprite__renderer_8cpp_source}{sprite\+\_\+renderer.\+cpp}}.
+
+\Hypertarget{classSpriteRenderer_a94c5010d6b30c47536a346280f924548}\index{SpriteRenderer@{SpriteRenderer}!DrawSprite@{DrawSprite}}
+\index{DrawSprite@{DrawSprite}!SpriteRenderer@{SpriteRenderer}}
+\doxysubsubsection{\texorpdfstring{DrawSprite()}{DrawSprite()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classSpriteRenderer_a94c5010d6b30c47536a346280f924548} 
+void Sprite\+Renderer\+::\+Draw\+Sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTexture}{Texture}} \&}]{texture}{, }\item[{glm\+::vec2}]{position}{, }\item[{glm\+::vec2}]{size}{ = {\ttfamily glm\+:\+:vec2(10.0f)}, }\item[{float}]{rotate}{ = {\ttfamily 0.0f}, }\item[{glm\+::vec4}]{color}{ = {\ttfamily glm\+:\+:vec4(1.0f)}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sprite__renderer_8cpp_source_l00125}{125}} of file \mbox{\hyperlink{sprite__renderer_8cpp_source}{sprite\+\_\+renderer.\+cpp}}.
+
+\Hypertarget{classSpriteRenderer_aa4c9d8b95034ba687e7398f46fd2c7f6}\index{SpriteRenderer@{SpriteRenderer}!DrawSpriteSheet@{DrawSpriteSheet}}
+\index{DrawSpriteSheet@{DrawSpriteSheet}!SpriteRenderer@{SpriteRenderer}}
+\doxysubsubsection{\texorpdfstring{DrawSpriteSheet()}{DrawSpriteSheet()}}
+{\footnotesize\ttfamily \label{classSpriteRenderer_aa4c9d8b95034ba687e7398f46fd2c7f6} 
+void Sprite\+Renderer\+::\+Draw\+Sprite\+Sheet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTexture}{Texture}} \&}]{texture}{, }\item[{glm\+::vec2}]{position}{, }\item[{int}]{index}{, }\item[{int}]{rows}{, }\item[{int}]{cols}{, }\item[{glm\+::vec2}]{size}{ = {\ttfamily glm\+:\+:vec2(10.0f)}, }\item[{float}]{rotate}{ = {\ttfamily 0.0f}, }\item[{glm\+::vec4}]{color}{ = {\ttfamily glm\+:\+:vec4(1.0f)}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sprite__renderer_8cpp_source_l00130}{130}} of file \mbox{\hyperlink{sprite__renderer_8cpp_source}{sprite\+\_\+renderer.\+cpp}}.
+
+\Hypertarget{classSpriteRenderer_afb29b87f25295d458f941eb855c3b86f}\index{SpriteRenderer@{SpriteRenderer}!DrawSpriteWithMask@{DrawSpriteWithMask}}
+\index{DrawSpriteWithMask@{DrawSpriteWithMask}!SpriteRenderer@{SpriteRenderer}}
+\doxysubsubsection{\texorpdfstring{DrawSpriteWithMask()}{DrawSpriteWithMask()}}
+{\footnotesize\ttfamily \label{classSpriteRenderer_afb29b87f25295d458f941eb855c3b86f} 
+void Sprite\+Renderer\+::\+Draw\+Sprite\+With\+Mask (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTexture}{Texture}} \&}]{sprite\+Texture}{, }\item[{\mbox{\hyperlink{classTexture}{Texture}} \&}]{mask\+Texture}{, }\item[{glm\+::vec2}]{position}{, }\item[{glm\+::vec2}]{size}{ = {\ttfamily glm\+:\+:vec2(10.0f)}, }\item[{float}]{rotate}{ = {\ttfamily 0.0f}, }\item[{glm\+::vec4}]{color}{ = {\ttfamily glm\+:\+:vec4(1.0f)}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sprite__renderer_8cpp_source_l00146}{146}} of file \mbox{\hyperlink{sprite__renderer_8cpp_source}{sprite\+\_\+renderer.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/vid/\+Dev/personal/game/src/engine/renderer/\mbox{\hyperlink{sprite__renderer_8hpp}{sprite\+\_\+renderer.\+hpp}}\item 
+/home/vid/\+Dev/personal/game/src/engine/renderer/\mbox{\hyperlink{sprite__renderer_8cpp}{sprite\+\_\+renderer.\+cpp}}\end{DoxyCompactItemize}

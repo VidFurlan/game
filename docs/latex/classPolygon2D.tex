@@ -1,0 +1,116 @@
+\doxysection{Polygon2D Class Reference}
+\hypertarget{classPolygon2D}{}\label{classPolygon2D}\index{Polygon2D@{Polygon2D}}
+
+
+{\ttfamily \#include $<$polygon2d.\+hpp$>$}
+
+Inheritance diagram for Polygon2D\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPolygon2D}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPolygon2D_ac063667c071d8717626747a1af573b37}{Polygon2D}} (std\+::vector$<$ glm\+::vec2 $>$ \mbox{\hyperlink{classShape2D_ae996fba89e9a520924a9a6f4ba233fb0}{vertices}}, glm\+::vec2 \mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}}=glm\+::vec2(0.\+0f), glm\+::vec4 \mbox{\hyperlink{classShape2D_a2f3ae03dbb52953f43b9003aeb5835da}{color}}=glm\+::vec4(0.\+0f, 1.\+0f, 0.\+0f, 1.\+0f))
+\item 
+void \mbox{\hyperlink{classPolygon2D_a8355b78b5461188004f4f74a865aefbb}{Draw\+Debug}} (glm\+::vec2 offset=glm\+::vec2(0.\+0f), float rot=0.\+0f, glm\+::vec2 \mbox{\hyperlink{classShape2D_a7772a37f10ee85cf0c1e7be590aa6f45}{scale}}=glm\+::vec2(1.\+0f)) const override
+\item 
+std\+::vector$<$ glm\+::vec2 $>$ \mbox{\hyperlink{classPolygon2D_aaee32018f2223baea249a6e3a69a6878}{Get\+Edges}} (glm\+::vec3 \mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}}=glm\+::vec3(0.\+0f)) const override
+\item 
+std\+::vector$<$ glm\+::vec2 $>$ \mbox{\hyperlink{classPolygon2D_aec3904c904757af2fc393f2ec4ea9001}{Get\+Vertices}} (glm\+::vec3 \mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}}=glm\+::vec3(0.\+0f)) const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classShape2D}{Shape2D}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classShape2D_aa01ec0fa01c8c0709d54b396301d1698}{Shape2D}} (glm\+::vec2 \mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}}=glm\+::vec2(0.\+0f), glm\+::vec4 \mbox{\hyperlink{classShape2D_a2f3ae03dbb52953f43b9003aeb5835da}{color}}=glm\+::vec4(0.\+0f, 1.\+0f, 0.\+0f, 1.\+0f))
+\item 
+virtual \mbox{\hyperlink{classShape2D_a06d1d12e3009473d292111db1c081242}{\texorpdfstring{$\sim$}{\string~}\+Shape2D}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classShape2D}{Shape2D}}}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::vec4 \mbox{\hyperlink{classShape2D_a2f3ae03dbb52953f43b9003aeb5835da}{color}}
+\item 
+glm\+::vec2 \mbox{\hyperlink{classShape2D_a7772a37f10ee85cf0c1e7be590aa6f45}{scale}} = glm\+::vec2(1.\+0f)
+\item 
+glm\+::vec2 \mbox{\hyperlink{classShape2D_a3cf535f39ea76d1232dc396761eea87a}{pos}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classShape2D}{Shape2D}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ glm\+::vec2 $>$ \mbox{\hyperlink{classShape2D_ae996fba89e9a520924a9a6f4ba233fb0}{vertices}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{polygon2d_8hpp_source_l00009}{9}} of file \mbox{\hyperlink{polygon2d_8hpp_source}{polygon2d.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPolygon2D_ac063667c071d8717626747a1af573b37}\index{Polygon2D@{Polygon2D}!Polygon2D@{Polygon2D}}
+\index{Polygon2D@{Polygon2D}!Polygon2D@{Polygon2D}}
+\doxysubsubsection{\texorpdfstring{Polygon2D()}{Polygon2D()}}
+{\footnotesize\ttfamily \label{classPolygon2D_ac063667c071d8717626747a1af573b37} 
+Polygon2\+D\+::\+Polygon2D (\begin{DoxyParamCaption}\item[{std\+::vector$<$ glm\+::vec2 $>$}]{vertices}{, }\item[{glm\+::vec2}]{pos}{ = {\ttfamily glm\+:\+:vec2(0.0f)}, }\item[{glm\+::vec4}]{color}{ = {\ttfamily glm\+:\+:vec4(0.0f,~1.0f,~0.0f,~1.0f)}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{polygon2d_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{polygon2d_8cpp_source}{polygon2d.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPolygon2D_a8355b78b5461188004f4f74a865aefbb}\index{Polygon2D@{Polygon2D}!DrawDebug@{DrawDebug}}
+\index{DrawDebug@{DrawDebug}!Polygon2D@{Polygon2D}}
+\doxysubsubsection{\texorpdfstring{DrawDebug()}{DrawDebug()}}
+{\footnotesize\ttfamily \label{classPolygon2D_a8355b78b5461188004f4f74a865aefbb} 
+void Polygon2\+D\+::\+Draw\+Debug (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{offset}{ = {\ttfamily glm\+:\+:vec2(0.0f)}, }\item[{float}]{rot}{ = {\ttfamily 0.0f}, }\item[{glm\+::vec2}]{scale}{ = {\ttfamily glm\+:\+:vec2(1.0f)}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classShape2D_ad59e5656abd1881e342f889f18478aac}{Shape2D}}.
+
+
+
+Definition at line \mbox{\hyperlink{polygon2d_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{polygon2d_8cpp_source}{polygon2d.\+cpp}}.
+
+\Hypertarget{classPolygon2D_aaee32018f2223baea249a6e3a69a6878}\index{Polygon2D@{Polygon2D}!GetEdges@{GetEdges}}
+\index{GetEdges@{GetEdges}!Polygon2D@{Polygon2D}}
+\doxysubsubsection{\texorpdfstring{GetEdges()}{GetEdges()}}
+{\footnotesize\ttfamily \label{classPolygon2D_aaee32018f2223baea249a6e3a69a6878} 
+std\+::vector$<$ glm\+::vec2 $>$ Polygon2\+D\+::\+Get\+Edges (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{pos}{ = {\ttfamily glm\+:\+:vec3(0.0f)}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classShape2D_a37a7f438ee8e3796e3023ac07a58ffea}{Shape2D}}.
+
+
+
+Definition at line \mbox{\hyperlink{polygon2d_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{polygon2d_8cpp_source}{polygon2d.\+cpp}}.
+
+\Hypertarget{classPolygon2D_aec3904c904757af2fc393f2ec4ea9001}\index{Polygon2D@{Polygon2D}!GetVertices@{GetVertices}}
+\index{GetVertices@{GetVertices}!Polygon2D@{Polygon2D}}
+\doxysubsubsection{\texorpdfstring{GetVertices()}{GetVertices()}}
+{\footnotesize\ttfamily \label{classPolygon2D_aec3904c904757af2fc393f2ec4ea9001} 
+std\+::vector$<$ glm\+::vec2 $>$ Polygon2\+D\+::\+Get\+Vertices (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{pos}{ = {\ttfamily glm\+:\+:vec3(0.0f)}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classShape2D_ad68185cf0a1c47a08ab95af05d01ad66}{Shape2D}}.
+
+
+
+Definition at line \mbox{\hyperlink{polygon2d_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{polygon2d_8cpp_source}{polygon2d.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/vid/\+Dev/personal/game/src/engine/shapes/\mbox{\hyperlink{polygon2d_8hpp}{polygon2d.\+hpp}}\item 
+/home/vid/\+Dev/personal/game/src/engine/shapes/\mbox{\hyperlink{polygon2d_8cpp}{polygon2d.\+cpp}}\end{DoxyCompactItemize}

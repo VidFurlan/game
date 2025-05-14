@@ -1,0 +1,106 @@
+\doxysection{resource\+\_\+manager.\+cpp}
+\hypertarget{resource__manager_8cpp_source}{}\label{resource__manager_8cpp_source}\index{/home/vid/Dev/personal/game/src/engine/renderer/resource\_manager.cpp@{/home/vid/Dev/personal/game/src/engine/renderer/resource\_manager.cpp}}
+\mbox{\hyperlink{resource__manager_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{resource__manager_8hpp}{resource\_manager.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__window_8hpp}{game\_window.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00010}\mbox{\hyperlink{resource__manager_8cpp_a18372412ad2fc3ce1e3240b3cf0efe78}{00010}}\ \textcolor{preprocessor}{\#define\ STB\_IMAGE\_IMPLEMENTATION}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}stb\_image.h"{}}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00013}\mbox{\hyperlink{classResourceManager_ae4fad243df8571c695724d0d625086a5}{00013}}\ \mbox{\hyperlink{classShader}{Shader}}\ \mbox{\hyperlink{classResourceManager_ae4fad243df8571c695724d0d625086a5}{ResourceManager::LoadShader}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vShaderFile,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fShaderFile,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ gShaderFile,\ \textcolor{keyword}{const}\ std::string\&\ name)\ \{}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordflow}{if}\ (Shaders.find(name)\ !=\ Shaders.end())\ \{}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Shaders[name];}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00016}00016\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00017}00017\ \ \ \ \ Shaders[name]\ =\ LoadShaderFromFile(vShaderFile,\ fShaderFile,\ gShaderFile);}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{return}\ Shaders[name];}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00019}00019\ \}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00021}\mbox{\hyperlink{classResourceManager_a7271dc68134357c6faafb3458bfc713e}{00021}}\ \mbox{\hyperlink{classShader}{Shader}}\&\ \mbox{\hyperlink{classResourceManager_a7271dc68134357c6faafb3458bfc713e}{ResourceManager::GetShader}}(\textcolor{keyword}{const}\ std::string\&\ name)\ \{}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{if}\ (Shaders.find(name)\ ==\ Shaders.end())\ \{}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Shader\ "{}}\ <<\ name\ <<\ \textcolor{stringliteral}{"{}\ not\ found"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{return}\ Shaders[name];}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00028}\mbox{\hyperlink{classResourceManager_aa0a7786078185202d39fabd535ca31d6}{00028}}\ \mbox{\hyperlink{classTexture}{Texture}}\ \mbox{\hyperlink{classResourceManager_aa0a7786078185202d39fabd535ca31d6}{ResourceManager::LoadTexture}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ file,\ \textcolor{keywordtype}{bool}\ alpha,\ \textcolor{keyword}{const}\ std::string\&\ name)\ \{}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{if}\ (Textures.find(name)\ !=\ Textures.end())\ \{}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Textures[name];}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00032}00032\ \ \ \ \ Textures[name]\ =\ LoadTextureFromFile(file,\ alpha);}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{return}\ Textures[name];}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00034}00034\ \}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00036}\mbox{\hyperlink{classResourceManager_af671097d8527451f3cc97ae4f7e14893}{00036}}\ \mbox{\hyperlink{classTexture}{Texture}}\&\ \mbox{\hyperlink{classResourceManager_af671097d8527451f3cc97ae4f7e14893}{ResourceManager::GetTexture}}(\textcolor{keyword}{const}\ std::string\&\ name)\ \{}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{if}\ (Textures.find(name)\ ==\ Textures.end())\ \{}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Texture\ "{}}\ <<\ name\ <<\ \textcolor{stringliteral}{"{}\ not\ found"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{return}\ Textures[name];}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00041}00041\ \}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00043}\mbox{\hyperlink{classResourceManager_aecd08b92634fad3316442c267a04e8c4}{00043}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classResourceManager_aecd08b92634fad3316442c267a04e8c4}{ResourceManager::Clear}}()\ \{}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ :\ Shaders)\ \{}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ glDeleteProgram(it.second.ID);}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00046}00046\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ :\ Textures)\ \{}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ glDeleteTextures(1,\ \&it.second.ID);}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00053}00053\ \mbox{\hyperlink{classShader}{Shader}}\ ResourceManager::LoadShaderFromFile(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vShaderFile,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fShaderFile,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ gShaderFile)\ \{}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00054}00054\ \ \ \ \ std::string\ vertexCode;}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00055}00055\ \ \ \ \ std::string\ fragmentCode;}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00056}00056\ \ \ \ \ std::string\ geometryCode;}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ std::ifstream\ vertexShaderFile(vShaderFile);}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ std::ifstream\ fragmentShaderFile(fShaderFile);}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ std::stringstream\ vShaderStream,\ fShaderStream;}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ vShaderStream\ <<\ vertexShaderFile.rdbuf();}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ fShaderStream\ <<\ fragmentShaderFile.rdbuf();}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ vertexShaderFile.close();}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ fragmentShaderFile.close();}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ vertexCode\ =\ vShaderStream.str();}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ fragmentCode\ =\ fShaderStream.str();}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gShaderFile\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ std::ifstream\ geometryShaderFile(gShaderFile);}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ std::stringstream\ gShaderStream;}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ gShaderStream\ <<\ geometryShaderFile.rdbuf();}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ geometryShaderFile.close();}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ geometryCode\ =\ gShaderStream.str();}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00078}00078\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (std::exception\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}ERROR::SHADER:\ Failed\ to\ read\ shader\ files"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vShaderCode\ =\ vertexCode.c\_str();}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fShaderCode\ =\ fragmentCode.c\_str();}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ gShaderCode\ =\ geometryCode.c\_str();}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00085}00085\ \ \ \ \ Shader\ shader;}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00086}00086\ \ \ \ \ shader.\mbox{\hyperlink{classShader_ace30758935fc09126ec99f5b602cb18f}{Compile}}(vShaderCode,\ fShaderCode,\ gShaderFile\ !=\ \textcolor{keyword}{nullptr}\ ?\ gShaderCode\ :\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{keywordflow}{return}\ shader;}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00088}00088\ \}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00090}00090\ \mbox{\hyperlink{classTexture}{Texture}}\ ResourceManager::LoadTextureFromFile(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ file,\ \textcolor{keywordtype}{bool}\ alpha)\ \{}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00091}00091\ \ \ \ \ Texture\ texture;}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{keywordflow}{if}\ (alpha)\ \{}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ texture.\mbox{\hyperlink{classTexture_a54b9353d3a36a5882a829ddc9caad841}{InternalFormat}}\ =\ GL\_RGBA;}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ texture.\mbox{\hyperlink{classTexture_a67cb201cc8386e3c7cdc681fd9e2a080}{ImageFormat}}\ =\ GL\_RGBA;}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00095}00095\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{keywordtype}{int}\ width,\ height,\ nrChannels;}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00097}00097\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ data\ =\ stbi\_load(file,\ \&width,\ \&height,\ \&nrChannels,\ 0);}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00098}00098\ \ \ \ \ texture.\mbox{\hyperlink{classTexture_a3728c38cd8881db6b655a172f844e969}{Generate}}(width,\ height,\ data);}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00099}00099\ \ \ \ \ \textcolor{keywordflow}{return}\ texture;}
+\DoxyCodeLine{\Hypertarget{resource__manager_8cpp_source_l00100}00100\ \}}
+
+\end{DoxyCode}

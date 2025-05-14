@@ -1,0 +1,28 @@
+\doxysection{menu\+\_\+transition.\+hpp}
+\hypertarget{menu__transition_8hpp_source}{}\label{menu__transition_8hpp_source}\index{/home/vid/Dev/personal/game/src/game/objects/menu\_transition.hpp@{/home/vid/Dev/personal/game/src/game/objects/menu\_transition.hpp}}
+\mbox{\hyperlink{menu__transition_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__object_8hpp}{game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprite__game__object_8hpp}{sprite\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00008}\mbox{\hyperlink{classMenuTransition}{00008}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMenuTransition_ad1b034f5a6cabefc28175a44592740f4}{MenuTransition}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classSpriteGameObject}{SpriteGameObject}}\ \{}
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00009}00009\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00010}00010\ \ \ \ \ \mbox{\hyperlink{classMenuTransition_ad1b034f5a6cabefc28175a44592740f4}{MenuTransition}}(std::string\ name,\ \mbox{\hyperlink{classDrawableGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *parent);}
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00012}00012\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenuTransition_a97ee9e77226b104e297bcd1ffcf4915e}{Update}}(\textcolor{keywordtype}{float}\ deltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenuTransition_a127cc5c555b049df7d16360d17ae31cd}{Transition}}(std::function<\textcolor{keywordtype}{void}()>\ callback\ =\ []()\ \{\});}
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00016}00016\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{bool}\ mTransitioning\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{float}\ mTransitionTime\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordtype}{float}\ mTransitionTimeElapsed\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00021}00021\ \ \ \ \ std::function<void()>\ mCallback;}
+\DoxyCodeLine{\Hypertarget{menu__transition_8hpp_source_l00022}00022\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,29 @@
+\doxysection{button.\+hpp}
+\hypertarget{button_8hpp_source}{}\label{button_8hpp_source}\index{/home/vid/Dev/personal/game/src/game/objects/ui/button.hpp@{/home/vid/Dev/personal/game/src/game/objects/ui/button.hpp}}
+\mbox{\hyperlink{button_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__image__game__object_8hpp}{abstract\_image\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__object_8hpp}{game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{rect__collider__game__object_8hpp}{rect\_collider\_game\_object.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00008}\mbox{\hyperlink{classButton}{00008}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classButton_a10a3c0b4b512d3f462bb7514b489d1a7}{Button}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ \{}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00009}00009\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00010}00010\ \ \ \ \ \mbox{\hyperlink{classButton_a10a3c0b4b512d3f462bb7514b489d1a7}{Button}}(std::string\ name,\ \mbox{\hyperlink{classGameObject_ac348b5276f2ee7aae0d11253ca3fe420}{GameObject}}\ *parent,\ glm::vec3\ position,\ glm::vec2\ size,\ std::function<\textcolor{keywordtype}{void}()>\ onClick,\ \mbox{\hyperlink{classAbstractImageGameObject}{AbstractImageGameObject}}\ *image,\ \mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379a}{ScreenAnchor}}\ screenAnchor\ =\ \mbox{\hyperlink{drawable__game__object_8hpp_a6be446152a677aa0b3a61456756f379aa747385047b85ae751f83adb36435a3c1}{ScreenAnchor::TOP\_LEFT}});}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00011}00011\ \ \ \ \ \mbox{\hyperlink{classButton_acdf8e4ba2f771b795368bccb8e493909}{\string~Button}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classButton_a1dbb1ed974234d1baaeb38e369be4f6f}{Update}}(\textcolor{keywordtype}{float}\ deltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classButton_aa4641749ee69d7c5a9f0e4987314d388}{LateUpdate}}(\textcolor{keywordtype}{float}\ deltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classButton_a175d070e4794146ad04916afa80585ae}{SetOnClick}}(std::function<\textcolor{keywordtype}{void}()>\ onClick);}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00017}\mbox{\hyperlink{classButton_a73b40a3b9ffeaa7492fff1876d5d6f87}{00017}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classButton_a73b40a3b9ffeaa7492fff1876d5d6f87}{RegisterClick}}();}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00019}00019\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00020}00020\ \ \ \ \ std::function<void()>\ mOnClick;}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ mClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ mHovered\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{button_8hpp_source_l00023}00023\ \};}
+
+\end{DoxyCode}
